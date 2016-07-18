@@ -120,7 +120,7 @@ function ShurikenOnHit( keys )
 		-- caster is Enchanter with Fork spell
 		-- get all units in a target radius
 		local units_in_radius = FindUnitsInRadius(caster:GetTeam(), target:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, ability:GetAbilityTargetType(), 0, 0, false)
-		DebugDrawCircle(target:GetAbsOrigin(), Vector(255,0,0), 50, radius, true, 3)
+		--DebugDrawCircle(target:GetAbsOrigin(), Vector(255,0,0), 50, radius, true, 3)
 
 		local enemy_count = 0
         if #units_in_radius > 0 then
