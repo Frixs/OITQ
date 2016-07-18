@@ -64,7 +64,7 @@
             "07"
             {
                 "var_type"                  "FIELD_INTEGER"
-                "ability_fork_bounce_range" "350"                   // Fork spell
+                "ability_fork_bounce_range" "525"                   // Fork spell
             }
             "08"
             {
@@ -77,7 +77,6 @@
       	{
         	"soundfile" "soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
             "particle"  "particles/items2_fx/mask_of_madness.vpcf"
-            "particle"  "particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf"
             "particle"  "particles/spells/shuriken_spell.vpcf"
       	}
 
@@ -153,6 +152,8 @@
                 "damage_value"      "%AbilityDamage"
                 "bounce_range"      "%ability_fork_bounce_range"
                 "max_bounces"       "%ability_fork_bounce_max"
+                "channel_time"      "%AbilityChannelTime"
+                "particle_shuriken" "particles/spells/shuriken_spell.vpcf"
             }  
       	}
 
@@ -214,6 +215,11 @@
                 		"Function"    "set_stacks"
               		}
             	}
+            }
+
+            "modifier_ability_fork_target_lock"
+            {
+                "IsHidden" "1"
             }
         }     
   	}
