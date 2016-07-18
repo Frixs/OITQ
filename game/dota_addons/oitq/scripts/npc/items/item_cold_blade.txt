@@ -49,7 +49,7 @@
             "04"
             {
                 "var_type"              "FIELD_FLOAT"
-                "ability_cooldown"      "5.5"
+                "ability_cooldown"      "4.5"
             }
         }
 

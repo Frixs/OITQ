@@ -35,7 +35,7 @@
             "01"
             {
                 "var_type"                  "FIELD_FLOAT"
-                "time_period"               "3.5"
+                "time_period"               "3.2"
             }
             "02"
             {
