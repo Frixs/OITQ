@@ -20,7 +20,7 @@ function UpdateStats(hero)
     var strength     = Entities.GetDamageMax( hero );
     var attkSpeed    = Entities.GetAttacksPerSecond( hero );
     var resistance   = Entities.GetBaseMagicalResistanceValue( hero );
-    var movSpeed     = Entities.IsShop( hero );
+    var movSpeed     = Entities.GetIdealSpeed( hero );
     var goldAmount   = Players.GetGold( player );
     
     if( currentLevel < 7 )

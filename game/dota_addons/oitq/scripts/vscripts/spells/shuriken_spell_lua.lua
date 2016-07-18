@@ -1,14 +1,10 @@
 function set_stacks( event )
-	if IsServer() then
-	    local caster			= event.caster
-
-		if caster == nil then
-		  return
-		end
-	    
-		if caster:HasModifier("modifier_shuriken_shots") then
-			caster:SetModifierStackCount("modifier_shuriken_shots", caster, 1)
-		end
+	local caster = event.caster
+	if caster == nil then return end
+	
+	-- initial shuriken after respawn
+	if caster:HasModifier("modifier_shuriken_shots") then
+		caster:SetModifierStackCount("modifier_shuriken_shots", caster, 1)
 	end
 end
 
@@ -105,6 +101,18 @@ function shuriken_projectile( event )
 			end
 		end
 	end
+end
+
+function ShurikenOnHit( keys )
+	local caster 			= keys.caster
+	local target 			= keys.target
+	local ability 			= keys.ability
+	local damage 			= keys.damage_value
+	local AbilityDamageType = ability:GetAbilityDamageType()
+	local particle_bounce   = keys.particle_damage
+
+	-- deal damage to targets
+	ApplyDamage({ victim = target, attacker = caster, damage = damage, damage_type = AbilityDamageType})
 end
 
 --[[
