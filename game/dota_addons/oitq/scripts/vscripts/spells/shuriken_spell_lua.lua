@@ -107,11 +107,31 @@ function ShurikenOnHit( keys )
 	local caster 			= keys.caster
 	local target 			= keys.target
 	local ability 			= keys.ability
+	local radius 			= keys.bounce_range
 	local damage 			= keys.damage_value
+	local max_bounces 		= keys.max_bounces
 	local AbilityDamageType = ability:GetAbilityDamageType()
-	local particle_bounce   = keys.particle_damage
 
-	-- deal damage to targets
+	-- if caster has fork ability
+	if caster:HasModifier("modifier_ability_fork_spell") then
+		-- caster is Enchanter with Fork spell
+		-- get all units in a target radius
+		local units_in_radius = FindUnitsInRadius(caster:GetTeam(), target:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, ability:GetAbilityTargetType(), 0, 0, false)
+
+		local enemy_count = 0
+        if #units_in_radius > 0 then
+            for _,unit in pairs(units_in_radius) do
+            	if enemy_count >= max_bounces then break end
+                if target ~= unit and unit ~= nil then
+                	local unitAbsOrigin = unit:GetAbsOrigin()
+
+                	enemy_count = enemy_count + 1
+                end
+            end
+        end
+	end
+	
+	-- deal damage to target
 	ApplyDamage({ victim = target, attacker = caster, damage = damage, damage_type = AbilityDamageType})
 end
 

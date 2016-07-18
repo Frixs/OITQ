@@ -23,7 +23,14 @@
             "01"
             {
                 "var_type"              "FIELD_INTEGER"
-                "bounce_range"          "350"                   // Shuriken set
+                // !!! This value must be also changed in ability_shuriken.txt (ability_fork_bounce_range) !!!
+                "bounce_range"          "350"
+            }
+            "02"
+            {
+                "var_type"              "FIELD_INTEGER"
+                // !!! This value must be also changed in ability_shuriken.txt (ability_fork_bounce_max) !!!
+                "bounce_max"          "2"
             }
         }
 
@@ -31,7 +38,7 @@
         //-------------------------------------------------------------------------------------
         "Modifiers"
         {
-            "modifier_fork"
+            "modifier_ability_fork_spell"
             {
                 "Passive"            "1"
                 "IsHidden"           "0"

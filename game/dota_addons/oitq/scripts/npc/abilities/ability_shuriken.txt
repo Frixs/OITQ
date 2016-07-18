@@ -64,7 +64,12 @@
             "07"
             {
                 "var_type"                  "FIELD_INTEGER"
-                "ability_fork_bounce_range" "350"                   // Fork spell radius
+                "ability_fork_bounce_range" "350"                   // Fork spell
+            }
+            "08"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "ability_fork_bounce_max"   "2"                     // Fork spell
             }
       	}
 
@@ -147,7 +152,7 @@
                 "Function"          "ShurikenOnHit"
                 "damage_value"      "%AbilityDamage"
                 "bounce_range"      "%ability_fork_bounce_range"
-                "particle_damage"   "particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf"                
+                "max_bounces"       "%ability_fork_bounce_max"
             }  
       	}
 
