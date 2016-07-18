@@ -1,0 +1,36 @@
+<root>
+  <styles>
+    <include src="file://{resources}/styles/custom_game/custom_gui_hp_bar.css" />
+  </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/custom_gui_hp_bar.js" />
+  </scripts>
+  <Panel class="BaseHud" hittest="false">
+    <Panel id="hp-wrapper" class="AspectRatio-normal" hittest="false">
+        <Panel id="hp-bar" hittest="false">
+            <Panel id="heart-0" class="hearts heart_2" />
+            <Panel id="heart-1" class="hearts heart_2" />
+            <Panel id="heart-2" class="hearts heart_2" />
+            <Panel id="heart-3" class="hearts heart_2" />
+            <Panel id="heart-4" class="hearts heart_2" />
+            <Panel id="heart-5" class="hearts heart_2" />
+            <Panel id="heart-6" class="hearts heart_2" />
+            <Panel id="heart-7" class="hearts heart_2" />
+            <Panel id="heart-8" class="hearts heart_2" />
+            <Panel id="heart-9" class="hearts heart_2" />
+        </Panel>
+        <Panel id="hp-bar-bonus" class="hiddenBox" hittest="false">
+            <Panel id="heart-10" class="hearts heart_2" />
+            <Panel id="heart-11" class="hearts heart_2" />
+            <Panel id="heart-12" class="hearts heart_2" />
+            <Panel id="heart-13" class="hearts heart_2" />
+            <Panel id="heart-14" class="hearts heart_2" />
+            <Panel id="heart-15" class="hearts heart_2" />
+            <Panel id="heart-16" class="hearts heart_2" />
+            <Panel id="heart-17" class="hearts heart_2" />
+            <Panel id="heart-18" class="hearts heart_2" />
+            <Panel id="heart-19" class="hearts heart_2" />
+        </Panel>
+    </Panel>
+  </Panel>
+</root>

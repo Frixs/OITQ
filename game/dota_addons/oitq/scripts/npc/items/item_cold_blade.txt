@@ -1,0 +1,110 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+    // Item: Cold blade
+    //=================================================================================================================
+    "item_cold_blade"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "ID"                        "1845"
+        "BaseClass"                 "item_datadriven"
+        "AbilityTextureName"        "item_cold_blade"
+
+        "ItemCost"                  "100"
+        "ItemKillable"              "0"
+        "ItemSellable"              "1"
+        "ItemPurchasable"           "1"
+        "ItemDroppable"             "1"
+        "ItemShareability"          "ITEM_FULLY_SHAREABLE"
+
+        "ItemPermanent"             "1"
+        
+        "HomeShop"                  "1"
+        "SideShop"                  "0"
+        "SecretShop"                "0"
+        "ItemQuality"               "common"
+
+        "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
+
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "cold_movement_speed"   "-25"
+            }
+            "02"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "cold_attack_speed"     "-20"
+            }
+            "03"
+            {
+                "var_type"              "FIELD_FLOAT"
+                "cold_duration"         "1.1"
+            }
+            "04"
+            {
+                "var_type"              "FIELD_FLOAT"
+                "ability_cooldown"      "5.5"
+            }
+        }
+
+        "precache"
+        {
+            "particle"  "particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/maiden_freezing_field_explosion_white_arcana1.vpcf"
+            "particle"  "particles/units/heroes/hero_invoker/invoker_ice_wall_glow_ground.vpcf"
+        }
+
+        "Modifiers"
+        {
+            "modifier_item_cold_blade"
+            {
+                "Passive"             "1"
+                "IsHidden"            "1"
+
+                "OnAttackLanded"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"            "items/item_cold_blade_lua.lua"
+                        "Function"              "modifier_item_cold_blade_on_attack_landed"
+                        "ColdDuration"          "%cold_duration"
+                        "Cooldown"              "%ability_cooldown"
+                    }
+                }
+            }
+
+            "modifier_item_cold_blade_cold_attack"
+            {
+                "IsHidden"              "0"
+                "IsDebuff"              "1"
+
+                "OnCreated"
+                {
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/maiden_freezing_field_explosion_white_arcana1.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "TARGET"
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/units/heroes/hero_invoker/invoker_ice_wall_glow_ground.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "TARGET"
+                    }
+                }
+                    
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"      "%cold_attack_speed"
+                    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"      "%cold_movement_speed"
+                }
+            }
+        }
+    }
+}

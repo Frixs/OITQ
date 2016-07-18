@@ -1,0 +1,257 @@
+.BaseHud
+{
+    width: 100%;
+    height: 100%;
+    flow-children: down;
+}
+
+#spell-wrapper
+{
+    z-index: 1;
+    horizontal-align: left;
+    vertical-align: bottom;
+    /*width: 33%;*/
+    /*height: 25.185%;*/
+    width:  592px;
+    height: 254px;
+    max-width:  910px;
+    max-height: 390px;
+    background-image: url("file://{images}/custom_game/custom_gui/spell_wrapper.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+}
+
+#LPAdd-box
+{
+    horizontal-align: right;
+    vertical-align: top;
+    width:  162px;
+    height: 115px;
+    margin-right: 70px;
+    background-image: url("file://{images}/custom_game/custom_gui/spell_LPAdd_button.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+}
+
+#LPAdd-text
+{
+    font-size: 36px;
+    color: gradient( linear, 0% 0%, 0% 100%, from( #fffb84 ), color-stop( 0.05, #c88423 ), color-stop( 0.4, #fffb84 ), color-stop( 0.75, #c88423 ), to( #fffb84 ) );
+    text-shadow: 0px 0px 5px #000000FF;
+    font-weight: bold;
+    margin-top: 43px;
+    margin-left: 60px;
+}
+
+    #LPAdd-text:hover
+    {
+        text-shadow: 0px 0px 10px #000000FF;
+        color: gradient( linear, 0% 0%, 0% 100%, from( #fffc9c ), color-stop( 0.05, #bf9f31 ), color-stop( 0.4, #fffc9c ), color-stop( 0.75, #bf9f31 ), to( #fffc9c ) );
+    }
+
+
+
+#abilityBox-0
+{
+    margin-top:  0px;
+    margin-left: 23px;
+}
+#abilityBox-1
+{
+    margin-top:  24px;
+    margin-left: 171px;
+}
+#abilityBox-2
+{
+    margin-top:  127px;
+    margin-left: 224px;
+}
+#abilityBox-3
+{
+    margin-top:  127px;
+    margin-left: 331px;
+}
+#abilityBox-4
+{
+    margin-top:  127px;
+    margin-left: 438px;
+}
+#abilityBox-5
+{
+    margin-top:  127px;
+    margin-left: 117px;
+}
+
+
+
+.abilitySlot-bigger .abilityButton
+{
+    margin-left: 37px;
+    margin-top: 60px;
+    width:  83.2px;
+    height: 83.2px;
+}
+
+.abilitySlot-smaller .abilityButton
+{
+    margin-left: 39px;
+    margin-top: 28px;
+    width:  62.4px;
+    height: 62.4px;
+}
+
+    .abilityButton:hover
+    {
+        opacity: .8;
+    }
+
+    .abilityButton:active
+    {
+        opacity: .6;
+    }
+
+.abilityIcon
+{
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+}
+
+.abilitySlot-bigger .abilityIconFrame
+{
+    width:  161px;
+    height: 183px;
+    background-image: url("file://{images}/custom_game/custom_gui/spell_icon_frame_primary.png");
+}
+
+.abilitySlot-smaller .abilityIconFrame
+{
+    width:  134px;
+    height: 125px;
+    background-image: url("file://{images}/custom_game/custom_gui/spell_icon_frame_normal.png");
+}
+
+.abilityIconFrame
+{
+    z-index: 7;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+}
+
+.abilitySlot-bigger .keybindAbbr
+{
+    margin-top: 48px;
+    margin-left: 30px;    
+}
+
+.abilitySlot-smaller .keybindAbbr
+{
+    margin-top: 23px;
+    margin-left: 32px;    
+}
+
+.keybindAbbr
+{
+    color: #000000FF;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.cooldownBox
+{
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+}
+
+.cooldownTime
+{
+    opacity: 0;
+    horizontal-align: center;
+    vertical-align: center;
+    text-align: center;
+    color: #CCCCCCFF;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+    .cooldownActive { opacity: 1; }
+
+.learnModeBox
+{
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+}
+
+.abilityLearnPoints
+{
+    vertical-align: bottom;
+    z-index: 8;
+    margin-left: 39px;
+    margin-bottom: 20px;
+    width:  62.4px;
+    height: 9px;
+}
+
+.learnPoint
+{
+    width:  9px;
+    height: 9px;
+    border-radius: 10px;
+    background-color: #000000FF;
+    border: 1px solid #ff890088;
+}
+
+    .LPActive
+    {
+        background-color: #FFC400FF;
+    }
+
+.LPoint-1 { margin-left: 1.7px; }
+.LPoint-2 { margin-left: 11.7px; }
+.LPoint-3 { margin-left: 21.7px; }
+.LPoint-4 { margin-left: 31.7px; }
+.LPoint-5 { margin-left: 41.7px; }
+.LPoint-6 { margin-left: 51.7px; }
+
+#shurikenCharges
+{
+    z-index: 6;
+    horizontal-align: center;
+    vertical-align: bottom;
+    text-align: center;
+    font-family: "Courier New"; /* Goudy Trajan Medium */
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffba00;
+    text-shadow: 0px 0px 4px #000000FF;
+}
+
+.passiveBox
+{
+    z-index: 4;
+    width: 100%;
+    height: 100%;
+}
+
+.passiveBox-on
+{
+    box-shadow: inset #fa7d00b0 5px 5px 8px 10px;
+}
+
+.silenceBox
+{
+    z-index: 6;
+    width: 100%;
+    height: 100%;
+}
+
+.silenceBox-on
+{
+    background-color: #46085088;
+    box-shadow: inset #900aa544 5px 5px 8px 10px;
+}

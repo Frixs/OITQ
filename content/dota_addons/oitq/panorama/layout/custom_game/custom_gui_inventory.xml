@@ -1,0 +1,143 @@
+<root>
+  <styles>
+    <include src="file://{resources}/styles/custom_game/custom_gui_inventory.css" />
+  </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/custom_gui_inventory.js" />      
+  </scripts>
+  <Panel class="BaseHud" hittest="false">
+    <Panel id="inventory-wrapper" hittest="false">
+        <!-- Item slot 1 -->
+        <Panel id="itemPanel-0" class="itemPanel" hittest="false">
+            <Button class="itemButton"
+                    onmouseover ="ItemShowTooltip(0)"
+                    onmouseout  ="ItemHideTooltip(0)"
+                    onactivate     ="ActivateItem(0)"
+                    oncontextmenu="RightClickItem(0)"
+                    >
+                <DOTAItemImage class="itemIcon" />
+                <Panel class="cooldownBox" hittest="false">
+                    <Label class="cooldownTime" text="0.0" hittest="false" />
+                </Panel>
+                <Label class="charges" hittest="false" />
+            </Button>
+            <Panel class="itemIconFrame" hittest="false">
+                <Label class="keybindAbbr" text="X" />
+            </Panel>
+            <Panel class="itemSlotArrows" hittest="false">
+                <Panel class="buttonArrow-right arrow-right" hittest="true" onactivate     ="MoveItemRight(0)" />
+            </Panel>
+        </Panel>
+        <!-- Item slot 2 -->
+        <Panel id="itemPanel-1" class="itemPanel" hittest="false">
+            <Button class="itemButton"
+                    onmouseover ="ItemShowTooltip(1)"
+                    onmouseout  ="ItemHideTooltip(1)"
+                    onactivate     ="ActivateItem(1)"
+                    oncontextmenu="RightClickItem(1)"
+                    >
+                <DOTAItemImage class="itemIcon" />
+                <Panel class="cooldownBox" hittest="false">
+                    <Label class="cooldownTime" text="0.0" hittest="false" />
+                </Panel>
+                <Label class="charges" hittest="false" />
+            </Button>
+            <Panel class="itemIconFrame" hittest="false">
+                <Label class="keybindAbbr" text="X" hittest="false" />
+            </Panel>
+            <Panel class="itemSlotArrows" hittest="false">
+                <Panel class="buttonArrow-left arrow-left" hittest="true" onactivate     ="MoveItemLeft(1)" />
+                <Panel class="buttonArrow-right arrow-down" hittest="true" onactivate     ="MoveItemRight(1)" />
+            </Panel>
+        </Panel>
+        <!-- Item slot 3 -->
+        <Panel id="itemPanel-2" class="itemPanel" hittest="false">
+            <Button class="itemButton"
+                    onmouseover ="ItemShowTooltip(2)"
+                    onmouseout  ="ItemHideTooltip(2)"
+                    onactivate     ="ActivateItem(2)"
+                    oncontextmenu="RightClickItem(2)"
+                    >
+                <DOTAItemImage class="itemIcon" />
+                <Panel class="cooldownBox">
+                    <Label class="cooldownTime" text="0.0" />
+                </Panel>
+                <Label class="charges" hittest="false" />
+            </Button>
+            <Panel class="itemIconFrame" hittest="false">
+                <Label class="keybindAbbr" text="X" />
+            </Panel>
+            <Panel class="itemSlotArrows" hittest="false">
+                <Panel class="buttonArrow-left arrow-up" hittest="true" onactivate     ="MoveItemLeft(2)" />
+                <Panel class="buttonArrow-right arrow-right" hittest="true" onactivate     ="MoveItemRight(2)" />
+            </Panel>
+        </Panel>
+        <!-- Item slot 4 -->
+        <Panel id="itemPanel-3" class="itemPanel" hittest="false">
+            <Button class="itemButton"
+                    onmouseover ="ItemShowTooltip(3)"
+                    onmouseout  ="ItemHideTooltip(3)"
+                    onactivate     ="ActivateItem(3)"
+                    oncontextmenu="RightClickItem(3)"
+                    >
+                <DOTAItemImage class="itemIcon" />
+                <Panel class="cooldownBox">
+                    <Label class="cooldownTime" text="0.0" />
+                </Panel>
+                <Label class="charges" hittest="false" />
+            </Button>
+            <Panel class="itemIconFrame" hittest="false">
+                <Label class="keybindAbbr" text="X" />
+            </Panel>
+            <Panel class="itemSlotArrows" hittest="false">
+                <Panel class="buttonArrow-left arrow-left" hittest="true" onactivate     ="MoveItemLeft(3)" />
+                <Panel class="buttonArrow-right arrow-right" hittest="true" onactivate     ="MoveItemRight(3)" />
+            </Panel>
+        </Panel>
+        <!-- Item slot 5 -->
+        <Panel id="itemPanel-4" class="itemPanel" hittest="false">
+            <Button class="itemButton"
+                    onmouseover ="ItemShowTooltip(4)"
+                    onmouseout  ="ItemHideTooltip(4)"
+                    onactivate     ="ActivateItem(4)"
+                    oncontextmenu="RightClickItem(4)"
+                    >
+                <DOTAItemImage class="itemIcon" />
+                <Panel class="cooldownBox">
+                    <Label class="cooldownTime" text="0.0" />
+                </Panel>
+                <Label class="charges" hittest="false" />
+            </Button>
+            <Panel class="itemIconFrame" hittest="false">
+                <Label class="keybindAbbr" text="X" />
+            </Panel>
+            <Panel class="itemSlotArrows" hittest="false">
+                <Panel class="buttonArrow-left arrow-left" hittest="true" onactivate     ="MoveItemLeft(4)" />
+                <Panel class="buttonArrow-right arrow-right" hittest="true" onactivate     ="MoveItemRight(4)" />
+            </Panel>
+        </Panel>
+        <!-- Item slot 6 -->
+        <Panel id="itemPanel-5" class="itemPanel" hittest="false">
+            <Button class="itemButton"
+                    onmouseover ="ItemShowTooltip(5)"
+                    onmouseout  ="ItemHideTooltip(5)"
+                    onactivate     ="ActivateItem(5)"
+                    oncontextmenu="RightClickItem(6)"
+                    >
+                <DOTAItemImage class="itemIcon" />
+                <Panel class="cooldownBox">
+                    <Label class="cooldownTime" text="0.0" />
+                </Panel>
+                <Label class="charges" hittest="false" />
+            </Button>
+            <Panel class="itemIconFrame" hittest="false">
+                <Label class="keybindAbbr" text="X" />
+            </Panel>
+            <Panel class="itemSlotArrows" hittest="false">
+                <Panel class="buttonArrow-left arrow-left" hittest="true" onactivate     ="MoveItemLeft(5)" />
+                <Panel class="buttonArrow-right" hittest="false" />
+            </Panel>
+        </Panel>
+    </Panel>
+  </Panel>
+</root>

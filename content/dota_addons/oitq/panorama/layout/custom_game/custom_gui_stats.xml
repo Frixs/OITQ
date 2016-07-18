@@ -1,0 +1,21 @@
+<root>
+  <styles>
+    <include src="file://{resources}/styles/custom_game/custom_gui_stats.css" />
+  </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/custom_gui_stats.js" />
+  </scripts>
+  <Panel class="BaseHud" hittest="false">
+    <Panel id="stats-wrapper" hittest="false">
+        <Panel id="XPprogress" hittest="true" />
+        <Panel id="XPprogress-frame" hittest="false" />
+        <Label id="levelNumber" text="1" />
+        <Label id="heroName" text="Hero name" />
+        <Label id="strengthNumber" text="0" />
+        <Label id="attkSpeedNumber" text="0.00/s" />
+        <Label id="resistanceNumber" text="100" />
+        <Label id="speedNumber" text="999" />
+        <Label id="goldNumber" text="9999" />
+    </Panel>
+  </Panel>
+</root>

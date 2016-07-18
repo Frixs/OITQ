@@ -1,0 +1,248 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+    // Spell: Shuriken
+    //=================================================================================================================    
+    "shuriken_spell"
+    {
+    	// General
+        //-------------------------------------------------------------------------------------
+        "BaseClass"           	"ability_datadriven" 
+        "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+        "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
+        "SpellImmunityType"     "SPELL_IMMUNITY_ENEMIES_NO"        
+        "AbilityTextureName"    "shuriken_spell"
+        "MaxLevel"              "1"
+    	"AbilityCastAnimation"  "ACT_DOTA_CAST_ABILITY_4"
+    	"AbilityUnitDamageType" "DAMAGE_TYPE_PHYSICAL"
+    	"FightRecapLevel"       "1"
+
+    	// Casting
+    	//-------------------------------------------------------------------------------------------------------------
+      	"AbilityCastRange"            "1500"
+        "AbilityChannelTime"      "1.5"
+        "AbilityDuration"               "1.5"
+
+	    // Time   
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityCooldown"       "0"
+
+	    // Cost
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityManaCost"       "0"
+
+	    // Stats
+	    //-------------------------------------------------------------------------------------
+	    "AbilityDamage"         "20"
+
+        // Special
+        //-------------------------------------------------------------------------------------
+        "AbilitySpecial"
+        {
+	      	"01"
+	        {
+	            "var_type"              "FIELD_INTEGER"
+	          	"toss_speed"            "750"
+	        }
+	      	"02"
+	        {
+	            "var_type"              "FIELD_INTEGER"
+	          	"toss_speed_max"        "1050"
+	        }       
+	        "03"
+	        {
+	            "var_type"              "FIELD_INTEGER"
+	            "toss_distance"       	"600"
+	        }
+	        "04"
+	        {
+	            "var_type"              "FIELD_INTEGER"
+	            "toss_distance_max"     "1500"
+	        }       
+	      	"05"
+	        {
+	            "var_type"              "FIELD_INTEGER"
+	          	"radius_min"            "65"
+	        }
+	        "06"
+	        {
+	            "var_type"              "FIELD_INTEGER"
+	            "radius_max"        	"125"
+	        }
+            "07"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "bounce_range"          "350"                   // Fork spell radius
+            }
+      	}
+
+      	"precache"
+      	{
+          	"particle" "particles/items2_fx/mask_of_madness.vpcf"
+          	"particle" "particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf"
+          	"particle" "particles/spells/shuriken_spell.vpcf"
+        	"soundfile" "soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
+      	}
+
+		// Data Driven
+		//-------------------------------------------------------------------------------------
+		"OnOwnerSpawned"
+      	{
+        	"ApplyModifier"
+        	{
+            	"ModifierName" "modifier_shuriken_usability"
+              	"Target"       "CASTER"
+          	}
+      	}
+
+     	"OnSpellStart"
+     	{
+            "ApplyModifier"
+            {
+                "ModifierName" "modifier_shuriken_channel_anim"
+                "Target"       "CASTER"
+            }
+
+	        "ApplyModifier"
+	        {
+	            "ModifierName" "modifier_shuriken_set_channel_time"
+	            "Target"       "CASTER"
+	        }
+
+            "RemoveModifier"
+            {
+                "ModifierName" "modifier_shuriken_usability"
+                "Target"       "CASTER"
+            }
+      	}
+
+	    "OnChannelFinish"
+	    {
+	        "ApplyModifier"
+	        {
+	        	"ModifierName"  "modifier_shuriken_cast_anim"
+	          	"Target"        "CASTER"
+                "Duration"      "1" // reset after cast animation is done
+	        }
+
+	        "RunScript"
+	        {
+	          	"ScriptFile"        "spells/shuriken_spell_lua.lua"
+	          	"Function"          "shuriken_projectile"
+	            "Target"            "POINT"
+	            "particle_shuriken" "particles/spells/shuriken_spell.vpcf"
+	            "sound_shuriken"    "Hero_BountyHunter.Shuriken"
+	        }       
+
+            "RemoveModifier"
+            {
+                "ModifierName" "modifier_shuriken_channel_anim"
+                "Target"       "CASTER"
+            }
+
+            "RemoveModifier"
+            {
+                "ModifierName" "modifier_shuriken_set_channel_time"
+                "Target"       "CASTER"
+            }            
+      	}
+
+	    "OnProjectileHitUnit"
+	    {
+        	"DeleteOnHit" "1" // This will make the projectile continues its trajectory after hitting      
+
+            "Damage"
+            {
+                "Target"    "TARGET"
+                "Type"      "DAMAGE_TYPE_PHYSICAL"
+                "Damage"    "%AbilityDamage"
+            }
+
+            // Fork spell - scriptfile
+            "RunScript"
+            {
+                "ScriptFile"        "spells/fork_spell_lua.lua"
+                "Function"          "OnHit"
+                "damage_value"      "%AbilityDamage"
+                "bounce_range"      "%bounce_range"
+                "particle_damage"   "particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf"                
+            }             
+            //
+
+            "FireSound"
+            {
+              	"EffectName"  "Hero_BountyHunter.Shuriken.Impact"
+                "Target"      "TARGET"
+            }     
+      	}
+
+        "Modifiers"
+        {
+            "modifier_shuriken_channel_anim"
+            {
+                "IsBuff"   "1"
+                "IsHidden" "1"
+
+	         	"precache"
+	         	{
+	         		"particle" "particles/items2_fx/mask_of_madness.vpcf"
+	         	}
+
+          		"OnCreated"
+          		{
+	              	"AttachEffect"
+	                {
+	                  	"EffectName" "particles/items2_fx/mask_of_madness.vpcf"
+	                    "EffectAttachType" "follow_origin"
+	                    "Target" "CASTER"
+	                }
+            	}
+            }
+
+            "modifier_shuriken_cast_anim"
+            {
+                "IsBuff"   "1"
+                "IsHidden" "1"
+
+              	"OverrideAnimation"          "ACT_DOTA_ATTACK"
+            }
+
+            "modifier_shuriken_set_channel_time"
+            {
+                "IsBuff"   "1"
+                "IsHidden" "1"
+
+        		"ThinkInterval" "0.095"
+              	"OnIntervalThink"
+              	{
+		        	"RunScript"
+		         	{
+		            	"ScriptFile"    "spells/shuriken_spell_lua.lua"
+		            	"Function"      "channel_time"
+		          	}
+              	}
+            }
+
+            "modifier_shuriken_shots"
+            {
+            	"Passive" "1"
+            	"IsHidden" "0"
+            }         
+
+            "modifier_shuriken_usability"
+            {
+            	"IsHidden" "1"
+
+            	"OnCreated"
+            	{
+              		"RunScript"
+              		{
+                		"ScriptFile"  "spells/shuriken_spell_lua.lua"
+                		"Function"    "set_stacks"
+              		}
+            	}
+            }
+        }     
+  	}
+}

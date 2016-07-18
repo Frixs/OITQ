@@ -1,0 +1,42 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+    // Spell: Fork
+    //=================================================================================================================    
+    "fork_spell"
+    {
+        // General
+        //-------------------------------------------------------------------------------------
+        "BaseClass"             "ability_datadriven"
+        "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+        "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
+        "SpellImmunityType"     "SPELL_IMMUNITY_ENEMIES_NO"
+        "AbilityTextureName"    "fork_spell"
+        "MaxLevel"              "1"
+        "FightRecapLevel"       "1"
+
+        // Special
+        //-------------------------------------------------------------------------------------
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "bounce_range"          "350"                   // Shuriken set
+            }
+        }
+
+        // Data Driven
+        //-------------------------------------------------------------------------------------
+        "Modifiers"
+        {
+            "modifier_fork"
+            {
+                "Passive"            "1"
+                "IsHidden"           "0"
+                "IsBuff"             "1"
+            }
+        }
+    }
+}

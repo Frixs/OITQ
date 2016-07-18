@@ -1,0 +1,41 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+    // Spell: Anger Aura
+    //=================================================================================================================    
+    "anger_aura_spell"
+    {
+        // General
+        //-------------------------------------------------------------------------------------
+        "BaseClass"             "ability_datadriven"
+        "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+        "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
+        "AbilityTextureName"    "anger_aura_spell"
+        "MaxLevel"              "1"
+        "FightRecapLevel"       "1"
+
+        // Special
+        //-------------------------------------------------------------------------------------
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "bonus_damage"          "1"
+            }         
+        }
+
+        // Data Driven
+        //-------------------------------------------------------------------------------------
+        "Modifiers"
+        {
+            "modifier_anger_aura"
+            {
+                "Passive"            "1"
+                "IsHidden"           "0"
+                "IsBuff"             "1"
+            }
+        }
+    }
+}

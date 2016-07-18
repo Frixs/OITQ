@@ -1,0 +1,107 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+    // Spell: Vanishing Act
+    //=================================================================================================================    
+    "vanishing_act_spell"
+    {
+        // General
+        //-------------------------------------------------------------------------------------
+        "BaseClass"             "ability_datadriven"
+        "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+        "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
+        "SpellImmunityType"     "SPELL_IMMUNITY_ENEMIES_NO"
+        "AbilityTextureName"    "vanishing_act_spell"
+        "MaxLevel"              "1"
+        "FightRecapLevel"       "1"
+
+        // Special
+        //-------------------------------------------------------------------------------------
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"              "FIELD_FLOAT"
+                "duration"              "5.0"
+            }
+            "02"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "bonus_speed_pcnt"      "10"
+            }
+            "03"
+            {
+                "var_type"             "FIELD_FLOAT"
+                "bonus_atk_speed"      "55"
+            }
+        }
+
+        "precache"
+        {
+            "particle"  "particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
+        }
+
+        // Data Driven
+        //-------------------------------------------------------------------------------------
+        "Modifiers"
+        {
+            "modifier_vanishing_act_passive"
+            {
+                "Passive"             "1"
+                "IsHidden"            "1"
+
+                "OnHeroKilled"
+                {
+                    "ApplyModifier"
+                    {
+                        "ModifierName"    "modifier_vanishing_act_invis"
+                        "Target"          "CASTER"
+                        "Duration"        "%duration"
+                    }
+
+                    "ApplyModifier"
+                    {
+                        "ModifierName"    "modifier_persistent_invisibility"
+                        "Target"          "CASTER"
+                        "Duration"        "%duration"
+                    }
+                }
+            }
+
+            "modifier_vanishing_act_invis"
+            {
+                "IsHidden"            "1"
+
+                "OnCreated"
+                {
+                    "FireSound"
+                    {
+                        "EffectName"     "Hero_BountyHunter.WindWalk"
+                        "Target"         "CASTER"
+                    }
+
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "CASTER"
+                    }
+                }
+
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%bonus_speed_pcnt"
+                    "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_atk_speed"
+                }
+
+                "States"
+                {
+                    "MODIFIER_STATE_INVISIBLE"         "MODIFIER_STATE_VALUE_ENABLED"
+                    "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
+                }
+            }
+        }
+    }
+}

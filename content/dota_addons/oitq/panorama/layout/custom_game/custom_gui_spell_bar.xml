@@ -1,0 +1,154 @@
+<root>
+  <styles>
+    <include src="file://{resources}/styles/custom_game/custom_gui_spell_bar.css" />
+  </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/custom_gui_spell_bar.js" />      
+  </scripts>
+  <Panel class="BaseHud" hittest="false">
+    <Panel id="spell-wrapper" hittest="false">
+        <Panel id="LPAdd-box">
+            <Label id="LPAdd-text" text="+0" onactivate="OnLevelUpClicked()" />
+        </Panel>
+        <!-- Primary -->
+        <Panel id="abilityBox-0" class="abilityBox abilitySlot-bigger" hittest="false">
+            <Button class="abilityButton"
+                    onmouseover="AbilityShowTooltip(0)"
+                    onmouseout= "AbilityHideTooltip(0)"
+                    onactivate=    "ActivateAbility(0)"
+                    >
+                <DOTAAbilityImage class="abilityIcon" abilityname="shuriken_spell" />
+                <Panel class="cooldownBox">
+                    <Label class="cooldownTime" text="0.0" />
+                </Panel>
+                <Panel class="learnModeBox" />
+                <Panel class="silenceBox" />
+                <Panel class="passiveBox" />
+                <Label id="shurikenCharges" text="0" />
+            </Button>
+            <Panel class="abilityIconFrame" hittest="false">
+                <Label class="keybindAbbr" text="X" />
+            </Panel>
+        </Panel>
+        <!-- Secondary -->
+        <Panel id="abilityBox-1" class="abilityBox abilitySlot-smaller" hittest="false">
+            <Button class="abilityButton"
+                    onmouseover="AbilityShowTooltip(1)"
+                    onmouseout= "AbilityHideTooltip(1)"
+                    onactivate=    "ActivateAbility(1)"
+                    >
+                <DOTAAbilityImage class="abilityIcon" abilityname="shuriken_spell" />
+                <Panel class="cooldownBox">
+                    <Label class="cooldownTime" text="0.0" />
+                </Panel>
+                <Panel class="learnModeBox" />
+                <Panel class="silenceBox" />
+                <Panel class="passiveBox" />
+            </Button>
+            <Panel class="abilityIconFrame" hittest="false">
+                <Label class="keybindAbbr" text="X" />
+            </Panel>
+        </Panel>
+        <!-- Ultimate -->
+        <Panel id="abilityBox-5" class="abilityBox abilitySlot-smaller" hittest="false">
+            <Button class="abilityButton"
+                    onmouseover="AbilityShowTooltip(5)"
+                    onmouseout= "AbilityHideTooltip(5)"
+                    onactivate=    "ActivateAbility(5)"
+                    >
+                <DOTAAbilityImage class="abilityIcon" abilityname="shuriken_spell" />
+                <Panel class="cooldownBox">
+                    <Label class="cooldownTime" text="0.0" />
+                </Panel>
+                <Panel class="learnModeBox" />
+                <Panel class="silenceBox" />
+                <Panel class="passiveBox" />
+            </Button>
+            <Panel class="abilityIconFrame" hittest="false">
+                <Label class="keybindAbbr" text="X" />
+            </Panel>
+        </Panel>
+        <!-- Normal1 -->
+        <Panel id="abilityBox-2" class="abilityBox abilitySlot-smaller" hittest="false">
+            <Button class="abilityButton"
+                    onmouseover="AbilityShowTooltip(2)"
+                    onmouseout= "AbilityHideTooltip(2)"
+                    onactivate=    "ActivateAbility(2)"
+                    >
+                <DOTAAbilityImage class="abilityIcon" abilityname="shuriken_spell" />
+                <Panel class="cooldownBox">
+                    <Label class="cooldownTime" text="0.0" />
+                </Panel>
+                <Panel class="learnModeBox" />
+                <Panel class="silenceBox" />
+                <Panel class="passiveBox" />
+            </Button>
+            <Panel class="abilityIconFrame" hittest="false">
+                <Label class="keybindAbbr" text="X" />
+            </Panel>
+            <Panel class="abilityLearnPoints">
+                <Panel class="learnPoint LPoint-1" />
+                <Panel class="learnPoint LPoint-2" />
+                <Panel class="learnPoint LPoint-3" />
+                <Panel class="learnPoint LPoint-4" />
+                <Panel class="learnPoint LPoint-5" />
+                <Panel class="learnPoint LPoint-6" />
+            </Panel>
+        </Panel>
+        <!-- Normal2 -->
+        <Panel id="abilityBox-3" class="abilityBox abilitySlot-smaller" hittest="false">
+            <Button class="abilityButton"
+                    onmouseover="AbilityShowTooltip(3)"
+                    onmouseout= "AbilityHideTooltip(3)"
+                    onactivate=    "ActivateAbility(3)"
+                    >
+                <DOTAAbilityImage class="abilityIcon" abilityname="shuriken_spell" />
+                <Panel class="cooldownBox">
+                    <Label class="cooldownTime" text="0.0" />
+                </Panel>
+                <Panel class="learnModeBox" />
+                <Panel class="silenceBox" />
+                <Panel class="passiveBox" />
+            </Button>
+            <Panel class="abilityIconFrame" hittest="false">
+                <Label class="keybindAbbr" text="X" />
+            </Panel>
+            <Panel class="abilityLearnPoints">
+                <Panel class="learnPoint LPoint-1" />
+                <Panel class="learnPoint LPoint-2" />
+                <Panel class="learnPoint LPoint-3" />
+                <Panel class="learnPoint LPoint-4" />
+                <Panel class="learnPoint LPoint-5" />
+                <Panel class="learnPoint LPoint-6" />
+            </Panel>
+        </Panel>
+        <!-- Normal3 -->
+        <Panel id="abilityBox-4" class="abilityBox abilitySlot-smaller" hittest="false">
+            <Button class="abilityButton"
+                    onmouseover="AbilityShowTooltip(4)"
+                    onmouseout= "AbilityHideTooltip(4)"
+                    onactivate=    "ActivateAbility(4)"
+                    >
+                <DOTAAbilityImage class="abilityIcon" abilityname="shuriken_spell" />
+                <Panel class="cooldownBox">
+                    <Label class="cooldownTime" text="0.0" />
+                </Panel>
+                <Panel class="learnModeBox" />
+                <Panel class="silenceBox" />
+                <Panel class="passiveBox" />
+            </Button>
+            <Panel class="abilityIconFrame" hittest="false">
+                <Label class="keybindAbbr" text="X" />
+            </Panel>
+            <Panel class="abilityLearnPoints">
+                <Panel class="learnPoint LPoint-1" />
+                <Panel class="learnPoint LPoint-2" />
+                <Panel class="learnPoint LPoint-3" />
+                <Panel class="learnPoint LPoint-4" />
+                <Panel class="learnPoint LPoint-5" />
+                <Panel class="learnPoint LPoint-6" />
+            </Panel>
+        </Panel>
+    </Panel>
+  </Panel>
+</root>

@@ -1,0 +1,209 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+    // Item: Hazzard goggles
+    //=================================================================================================================
+    "item_hazzard_goggles"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "ID"                        "1841"
+        "BaseClass"                 "item_datadriven"
+        "AbilityTextureName"        "item_hazzard_goggles"
+
+        "ItemCost"                  "2000"
+        "ItemKillable"              "0" 
+        "ItemSellable"              "0"
+        "ItemPurchasable"           "1"
+        "ItemDroppable"             "1"
+        "ItemShareability"          "ITEM_FULLY_SHAREABLE"
+        
+        "ItemInitialCharges"        "0" //How many charges should the item start with - Tango x3 
+        "ItemDisplayCharges"        "1" //Hide the charges of the item - Aegis 
+        "ItemRequiresCharges"       "0" //The active ability needs charges to be used - Urn
+        "ItemPermanent"             "1"
+        
+        "HomeShop"                  "0"
+        "SideShop"                  "0"
+        "SecretShop"                "1"
+        "ItemQuality"               "artifact"
+
+        "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+        "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"           "1.7"
+        "AbilitySharedCooldown"     "crossgoggles"
+
+
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "debuff_health_per_charge"  "-4"
+            }
+            "02"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "buff_damage_per_charge"    "1"
+            }
+            "03"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "max_charges"               "3"
+            }
+            "04"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "damageCooldown"            "3"
+            }
+        }
+
+        "precache"
+        {
+            "particle"  "particles/econ/items/sven/sven_warcry_ti5/sven_spell_warcry_small_c_it_5.vpcf"
+            "particle"  "particles/econ/items/sven/sven_warcry_ti5/sven_warcry_cast_arc_lightning.vpcf"
+            "particle"  "particles/units/heroes/hero_doom_bringer/doom_scorched_earth.vpcf"
+            "particle"  "particles/world_environmental_fx/fire_torch_smokefast.vpcf"
+            "particle"  "particles/units/heroes/hero_brewmaster/brewmaster_fire_ambient_hands.vpcf"
+        }
+
+        "OnEquip"
+        {
+            "RunScript"
+            {
+                "ScriptFile"                "items/item_hazzard_goggles_lua.lua"
+                "Function"                  "item_hazzard_goggles_on_equip"
+            }
+        }
+
+        "OnSpellStart"
+        {
+            "AttachEffect"
+            {
+                "EffectName"                "particles/econ/items/sven/sven_warcry_ti5/sven_spell_warcry_small_c_it_5.vpcf"
+                "EffectAttachType"          "follow_origin"
+                "Target"                    "CASTER"
+            }
+            "AttachEffect"
+            {
+                "EffectName"                "particles/econ/items/sven/sven_warcry_ti5/sven_warcry_cast_arc_lightning.vpcf"
+                "EffectAttachType"          "follow_origin"
+                "Target"                    "CASTER"
+            }
+
+            "FireSound"
+            {
+                "EffectName"    "DOTA_CustomItem.HazzardGoggles.Activate"
+                "Target"        "CASTER"
+            }
+
+            "RunScript"
+            {
+                "ScriptFile"                "items/item_hazzard_goggles_lua.lua"
+                "Function"                  "item_hazzard_goggles_on_spell_start"
+                "max_charges"               "%max_charges"
+            }
+        }
+
+        "Modifiers"
+        {
+            //When the unit takes damage, the item is put on cooldown.
+            "modifier_item_hazzard_goggles_damage_cooldown"
+            {
+                "Passive"           "1"
+                "IsHidden"          "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                
+                "OnTakeDamage"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"                "items/item_hazzard_goggles_lua.lua"
+                        "Function"                  "modifier_item_hazzard_goggles_damage_cooldown_on_take_damage"
+                        "damageCooldown"            "%damageCooldown"
+                    }
+                }
+            }
+            "modifier_item_hazzard_goggles_charge_1"
+            {
+                "IsBuff"   "1"
+                "IsHidden" "0" 
+
+                "OnCreated"
+                {
+                    "AttachEffect"
+                    {
+                        "EffectName"                "particles/units/heroes/hero_doom_bringer/doom_scorched_earth.vpcf"
+                        "EffectAttachType"          "follow_origin"
+                        "Target"                    "CASTER"
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"                "particles/world_environmental_fx/fire_torch_smokefast.vpcf"
+                        "EffectAttachType"          "follow_origin"
+                        "Target"                    "CASTER"
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"                "particles/units/heroes/hero_brewmaster/brewmaster_fire_ambient_hands.vpcf"
+                        "EffectAttachType"          "follow_origin"
+                        "Target"                    "CASTER"
+                    }
+                }
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"  "%buff_damage_per_charge"
+                    "MODIFIER_PROPERTY_HEALTH_BONUS"            "%debuff_health_per_charge"
+                }
+                "OnDestroy"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"                "items/item_hazzard_goggles_lua.lua"
+                        "Function"                  "item_hazzard_goggles_on_death"
+                    }
+                }
+            }
+            "modifier_item_hazzard_goggles_charge_2"
+            {
+                "IsBuff"   "1"
+                "IsHidden" "0" 
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"  "%buff_damage_per_charge"
+                    "MODIFIER_PROPERTY_HEALTH_BONUS"            "%debuff_health_per_charge"
+                }
+                "OnDestroy"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"                "items/item_hazzard_goggles_lua.lua"
+                        "Function"                  "item_hazzard_goggles_on_death"
+                    }
+                }
+            }
+            "modifier_item_hazzard_goggles_charge_3"
+            {
+                "IsBuff"   "1"
+                "IsHidden" "0" 
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"  "%buff_damage_per_charge"
+                    "MODIFIER_PROPERTY_HEALTH_BONUS"            "%debuff_health_per_charge"
+                }
+                "OnDestroy"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"                "items/item_hazzard_goggles_lua.lua"
+                        "Function"                  "item_hazzard_goggles_on_death"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,241 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 900
+	m_BoundingBoxMin = [ -8.0, -8.0, -8.0 ]
+	m_BoundingBoxMax = [ 8.0, 8.0, 8.0 ]
+	m_bShouldSort = false
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderTrails"
+			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
+			m_bAdditive = true
+			m_flOverbrightFactor = 2.0
+			m_hTexture = resource:"materials/particle/particle_square_gradient_2.vtex"
+			m_flMaxLength = 16.0
+			m_flMinLength = 7.0
+			m_flRadiusScale = 0.5
+			m_flFinalTextureScaleV = -1.0
+			m_flFinalTextureOffsetV = 1.0
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_Decay"
+			m_nOpEndCapState = 0
+		},
+		{
+			_class = "C_OP_BasicMovement"
+		},
+		{
+			_class = "C_OP_FadeOut"
+			m_flFadeOutTimeMax = 0.75
+			m_flFadeOutTimeMin = 0.5
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flBias = 0.45
+			m_flEndScale = 0.25
+		},
+		{
+			_class = "C_OP_SetControlPointPositions"
+			m_nCP4 = 5
+			m_nCP3 = 5
+			m_nCP2 = 5
+			m_vecCP1Pos = [ 0.0, 0.0, 512.0 ]
+		},
+		{
+			_class = "C_OP_SetSingleControlPointPosition"
+			m_nCP1 = 3
+			m_vecCP1Pos = [ 0.0, 0.0, 0.0 ]
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_OP_SetSingleControlPointPosition"
+			m_nCP1 = 4
+			m_vecCP1Pos = [ 0.0, 350.0, 0.0 ]
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_OP_SetSingleControlPointPosition"
+			m_nCP1 = 5
+			m_vecCP1Pos = [ 350.0, 0.0, 0.0 ]
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_OP_SetSingleControlPointPosition"
+			m_nCP1 = 6
+			m_vecCP1Pos = [ 0.0, -350.0, 0.0 ]
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_OP_SetSingleControlPointPosition"
+			m_nCP1 = 7
+			m_vecCP1Pos = [ -350.0, 0.0, 0.0 ]
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_OP_SetSingleControlPointPosition"
+			m_nCP1 = 8
+			m_vecCP1Pos = [ 275.0, 275.0, 0.0 ]
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_OP_SetSingleControlPointPosition"
+			m_nCP1 = 9
+			m_vecCP1Pos = [ -275.0, 275.0, 0.0 ]
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_OP_SetSingleControlPointPosition"
+			m_nCP1 = 10
+			m_vecCP1Pos = [ -275.0, -275.0, 0.0 ]
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_OP_SetSingleControlPointPosition"
+			m_nCP1 = 11
+			m_vecCP1Pos = [ 275.0, -275.0, 0.0 ]
+			m_bDisableOperator = true
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RandomAlpha"
+		},
+		{
+			_class = "C_INIT_RandomRadius"
+			m_flRadiusMax = 2.0
+		},
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMax = 0.5
+			m_fLifetimeMin = 0.5
+		},
+		{
+			_class = "C_INIT_CreateWithinSphere"
+			m_LocalCoordinateSystemSpeedMax = [ 0.0, 0.0, -1800.0 ]
+			m_LocalCoordinateSystemSpeedMin = [ 0.0, 0.0, -1800.0 ]
+			m_nControlPointNumber = 1
+			m_vecDistanceBias = [ 1.0, 1.0, 0.0 ]
+			m_fRadiusMax = 650.0
+		},
+		{
+			_class = "C_INIT_RandomTrailLength"
+			m_flMinLength = 0.28
+			m_flMaxLength = 0.7
+		},
+		{
+			_class = "C_INIT_RandomColor"
+			m_flUpdateThreshold = 256.0
+			m_TintMax = [ 220, 214, 214, 255 ]
+			m_TintMin = [ 61, 58, 58, 0 ]
+			m_nTintCP = 1
+			m_ColorMax = [ 69, 67, 67, 255 ]
+			m_ColorMin = [ 110, 121, 129, 255 ]
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMin = [ 0.0, 0.0, -90.0 ]
+		},
+		{
+			_class = "C_INIT_LifespanFromVelocity"
+			m_nMaxPlanes = 64
+			m_flMaxTraceLength = 1200.0
+			m_CollisionGroupName = "DEBRIS"
+			m_flTraceTolerance = 80.0
+		},
+		{
+			_class = "C_INIT_InitialVelocityNoise"
+			m_vecOutputMax = [ 180.0, 180.0, 0.0 ]
+			m_vecOutputMin = [ 18.0, 18.0, 0.0 ]
+			m_vecAbsValInv = [ 1.0, 1.0, 0.0 ]
+			m_vecAbsVal = [ 1.0, 1.0, 0.0 ]
+			m_flNoiseScaleLoc = 0.0
+			m_flNoiseScale = 0.065
+		},
+		{
+			_class = "C_INIT_RandomSequence"
+			m_nSequenceMax = 8
+		},
+		{
+			_class = "C_INIT_RandomSecondSequence"
+			m_nSequenceMin = 9
+			m_nSequenceMax = 10
+		},
+		{
+			_class = "C_INIT_DistanceToCPInit"
+			m_flInputMin = 460.0
+			m_flInputMax = 512.0
+			m_nFieldOutput = 7
+			m_flOutputMin = 1.0
+			m_flOutputMax = 0.0
+			m_nStartCP = 1
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_ContinuousEmitter"
+			m_flEmitRate = 948.0
+			m_flStartTime = 0.5
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_razor_reduced_flash/razor_rain_storm_impact_04_reduced_flash.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_razor_reduced_flash/rain_storm_leaves_reduced_flash.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/items/storm_cloud_large_01.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/items/storm_cloud_large_02.vpcf"
+			m_flDelay = 0.5
+		},
+		{
+			m_ChildRef = resource:"particles/items/storm_cloud_large_03.vpcf"
+			m_flDelay = 0.2
+		},
+		{
+			m_ChildRef = resource:"particles/items/storm_cloud_large_04.vpcf"
+			m_flDelay = 0.09
+		},
+		{
+			m_ChildRef = resource:"particles/items/storm_cloud_large_05.vpcf"
+			m_flDelay = 0.29
+		},
+		{
+			m_ChildRef = resource:"particles/items/storm_cloud_large_06.vpcf"
+			m_flDelay = 0.4
+		},
+		{
+			m_ChildRef = resource:"particles/items/storm_cloud_large_07.vpcf"
+			m_flDelay = 0.32
+		},
+		{
+			m_ChildRef = resource:"particles/items/storm_cloud_large_08.vpcf"
+			m_flDelay = 0.48
+		},
+		{
+			m_ChildRef = resource:"particles/items/storm_cloud_large_09.vpcf"
+			m_flDelay = 0.6
+		},
+		{
+			m_ChildRef = resource:"particles/items/storm_surface_lightning_shards.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/items/storm_cloud_lightnings.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/items/storm_surface_lightning_dots_decay.vpcf"
+		},
+	]
+}

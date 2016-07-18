@@ -1,0 +1,383 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+    // Spell: Ground Pound
+    //=================================================================================================================    
+    "ground_pound_spell"
+    {
+        // General
+        //-------------------------------------------------------------------------------------
+        "BaseClass"             "ability_datadriven"
+        "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+        "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "AbilityUnitDamageType" "DAMAGE_TYPE_PHYSICAL"
+        "SpellImmunityType"     "SPELL_IMMUNITY_ENEMIES_NO"
+        "AbilityTextureName"    "ground_pound_spell"
+        "MaxLevel"              "1"
+        "FightRecapLevel"       "1"
+
+        // Casting
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCastRange"        "300"
+        "AbilityCastPoint"        "0.2"
+        "AOERadius"               "%radius"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"       "18"
+
+        // Cost
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityManaCost"       "0"
+
+        // Special
+        //-------------------------------------------------------------------------------------
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "radius"                "250"
+            }
+            "02"
+            {
+                "var_type"              "FIELD_FLOAT"
+                "air_time"              "2.5"
+            }
+            "03"
+            {
+                "var_type"              "FIELD_FLOAT"
+                "bonus_period"          "3.25"
+            }
+            "04"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "height"                "620"
+            }
+            "05"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "damage_cast"           "1"
+            }
+            "06"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "damage_fall"           "3"
+            }
+        }
+
+        "precache"
+        {
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts"
+            "particle"  "particles/units/heroes/hero_nevermore/nevermore_requiemofsouls_ground_cracks.vpcf"
+            "particle"  "particles/units/heroes/hero_ursa/ursa_earthshock_rocks.vpcf"
+            "particle"  "particles/units/heroes/hero_arc_warden/arc_warden_magnetic_start_dust_hit.vpcf"
+
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_leshrac.vsndevts"
+            "particle"  "particles/econ/items/meepo/meepo_colossal_crystal_chorus/meepo_divining_rod_loadout.vpcf"
+            "particle"  "particles/units/unit_greevil/loot_greevil_death_dust.vpcf"
+            "particle"  "particles/units/heroes/hero_earth_spirit/espirit_geomagentic_target_spherewarp.vpcf"
+            "particle"  "particles/units/heroes/hero_meepo/meepo_poof_dirt.vpcf"
+            "particle"  "particles/units/heroes/hero_earthshaker/temp_eruption_dirt.vpcf"
+            "particle"  "particles/spells/invoker_sun_strike_ground_smaller.vpcf"
+
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_tiny.vsndevts"
+            "particle"  "particles/units/heroes/hero_tiny/tiny_toss_impact_d.vpcf"
+            "particle"  "particles/econ/items/undying/undying_manyone/undying_pale_tower_destruction_dust_hit.vpcf"
+            "particle"  "particles/units/heroes/hero_tiny/tiny_toss_impact_b.vpcf"
+            "particle"  "particles/units/heroes/hero_tiny/tiny_toss_impact.vpcf"
+            "particle"  "particles/units/heroes/hero_lone_druid/lone_druid_bear_entangle_rope_dust.vpcf"
+        }
+
+        // Data Driven
+        //-------------------------------------------------------------------------------------
+        "OnAbilityPhaseStart"
+        {
+            "FireSound"
+            {
+                "EffectName"     "Hero_EarthSpirit.RollingBoulder.Target"
+                "Target"         "CASTER"
+            }
+
+            "AttachEffect"
+            {
+                "EffectName"        "particles/units/heroes/hero_nevermore/nevermore_requiemofsouls_ground_cracks.vpcf"
+                "EffectAttachType"  "start_at_customorigin"
+                "Target"            "CASTER"
+            }
+            "AttachEffect"
+            {
+                "EffectName"        "particles/units/heroes/hero_ursa/ursa_earthshock_rocks.vpcf"
+                "EffectAttachType"  "start_at_customorigin"
+                "Target"            "CASTER"
+            }
+            "AttachEffect"
+            {
+                "EffectName"        "particles/units/heroes/hero_arc_warden/arc_warden_magnetic_start_dust_hit.vpcf"
+                "EffectAttachType"  "start_at_customorigin"
+                "Target"            "CASTER"
+            }
+        }
+        "OnSpellStart"
+        {
+            "Knockback"
+            {
+                "Target"
+                {
+                    "Center"    "POINT"
+                    "Radius"    "%radius"
+                    "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                }
+                "Center"    "CASTER"
+                "Distance"  "0"
+                "Duration"  "%air_time"
+                "Height"    "%height"
+                "IsFixedDistance"   "1"
+            }
+
+            "Damage"
+            {
+                "Target"
+                {
+                    "Center"    "POINT"
+                    "Radius"    "%radius"
+                    "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                }
+                "Type"          "DAMAGE_TYPE_PHYSICAL"
+                "Damage"        "%damage_cast"
+            }            
+
+            "FireSound"
+            {
+                "EffectName"     "Hero_Leshrac.Split_Earth"
+                "Target"
+                {
+                    "Center"    "POINT"
+                    "Radius"    "%radius"
+                    "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                }
+            }
+
+            "AttachEffect"
+            {
+                "EffectName"        "particles/units/heroes/hero_nevermore/nevermore_requiemofsouls_ground_cracks.vpcf"
+                "EffectAttachType"  "start_at_customorigin"
+                "Target"
+                {
+                    "Center"    "POINT"
+                    "Radius"    "%radius"
+                    "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                }
+            }
+            "AttachEffect"
+            {
+                "EffectName"        "particles/econ/items/meepo/meepo_colossal_crystal_chorus/meepo_divining_rod_loadout.vpcf"
+                "EffectAttachType"  "start_at_customorigin"
+                "Target"
+                {
+                    "Center"    "POINT"
+                    "Radius"    "%radius"
+                    "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                }
+            }
+            "AttachEffect"
+            {
+                "EffectName"        "particles/units/unit_greevil/loot_greevil_death_dust.vpcf"
+                "EffectAttachType"  "start_at_customorigin"
+                "Target"
+                {
+                    "Center"    "POINT"
+                    "Radius"    "%radius"
+                    "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                }
+            }
+            "AttachEffect"
+            {
+                "EffectName"        "particles/units/heroes/hero_earth_spirit/espirit_geomagentic_target_spherewarp.vpcf"
+                "EffectAttachType"  "start_at_customorigin"
+                "Target"
+                {
+                    "Center"    "POINT"
+                    "Radius"    "%radius"
+                    "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                }
+            }
+            "AttachEffect"
+            {
+                "EffectName"        "particles/units/heroes/hero_meepo/meepo_poof_dirt.vpcf"
+                "EffectAttachType"  "start_at_customorigin"
+                "Target"
+                {
+                    "Center"    "POINT"
+                    "Radius"    "%radius"
+                    "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                }
+            }
+            "AttachEffect"
+            {
+                "EffectName"        "particles/units/heroes/hero_earthshaker/temp_eruption_dirt.vpcf"
+                "EffectAttachType"  "start_at_customorigin"
+                "Target"
+                {
+                    "Center"    "POINT"
+                    "Radius"    "%radius"
+                    "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                }
+            }
+            "AttachEffect"
+            {
+                "EffectName"        "particles/spells/invoker_sun_strike_ground_smaller.vpcf"
+                "EffectAttachType"  "start_at_customorigin"
+                "Target"
+                {
+                    "Center"    "POINT"
+                    "Radius"    "%radius"
+                    "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                }
+            }
+
+            "DelayedAction"
+            {
+                "Delay"     "%air_time"
+
+                "Action"
+                {
+                    "Damage"
+                    {
+                        "Target"
+                        {
+                            "Center"    "POINT"
+                            "Radius"    "%radius"
+                            "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                        }
+                        "Type"          "DAMAGE_TYPE_PHYSICAL"
+                        "Damage"        "%damage_fall"
+                    }
+
+                    "FireSound"
+                    {
+                        "EffectName"    "Ability.TossImpact"
+                        "Target"
+                        {
+                            "Center"    "POINT"
+                            "Radius"    "%radius"
+                            "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                        }
+                    }
+
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/units/heroes/hero_tiny/tiny_toss_impact_d.vpcf"
+                        "EffectAttachType"  "start_at_customorigin"
+                        "Target"
+                        {
+                            "Center"    "POINT"
+                            "Radius"    "%radius"
+                            "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                        }
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/econ/items/undying/undying_manyone/undying_pale_tower_destruction_dust_hit.vpcf"
+                        "EffectAttachType"  "start_at_customorigin"
+                        "Target"
+                        {
+                            "Center"    "POINT"
+                            "Radius"    "%radius"
+                            "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                        }
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/units/heroes/hero_tiny/tiny_toss_impact_b.vpcf"
+                        "EffectAttachType"  "start_at_customorigin"
+                        "Target"
+                        {
+                            "Center"    "POINT"
+                            "Radius"    "%radius"
+                            "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                        }
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/units/heroes/hero_tiny/tiny_toss_impact.vpcf"
+                        "EffectAttachType"  "start_at_customorigin"
+                        "Target"
+                        {
+                            "Center"    "POINT"
+                            "Radius"    "%radius"
+                            "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                        }
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/units/heroes/hero_lone_druid/lone_druid_bear_entangle_rope_dust.vpcf"
+                        "EffectAttachType"  "start_at_customorigin"
+                        "Target"
+                        {
+                            "Center"    "POINT"
+                            "Radius"    "%radius"
+                            "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                        }
+                    }
+                }
+            }
+
+            "ApplyModifier"
+            {
+                "ModifierName"    "modifier_air_protection"
+                "Target"
+                {
+                    "Center"    "POINT"
+                    "Radius"    "%radius"
+                    "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                }
+                "Duration"        "%air_time -0.3"
+            }
+
+            "ApplyModifier"
+            {
+                "ModifierName"    "modifier_shuriken_ground_pound_bonus"
+                "Target"
+                {
+                    "Center"    "POINT"
+                    "Radius"    "%radius"
+                    "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                }
+                "Duration"        "%bonus_period"
+            }
+
+            "ApplyModifier"
+            {
+                "ModifierName"    "modifier_ground_pound_bonus"
+                "Target"          "CASTER"
+                "Duration"        "%bonus_period"
+            }
+        }
+
+        "Modifiers"
+        {
+            "modifier_air_protection"
+            {
+                "IsHidden"            "1"
+                
+                "States"
+                {
+                    "MODIFIER_STATE_ATTACK_IMMUNE"        "MODIFIER_STATE_VALUE_ENABLED"
+                }
+            }
+
+            "modifier_shuriken_ground_pound_bonus"
+            {
+                "IsHidden"            "1"
+            }
+
+            "modifier_ground_pound_bonus"
+            {
+                "IsHidden"            "0"
+                "IsBuff"              "1"
+            }            
+        }
+    }
+}

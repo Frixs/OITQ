@@ -1,0 +1,14 @@
+<root>
+  <styles>
+    <include src="file://{resources}/styles/custom_game/events_custom.css" />
+  </styles>
+  <scripts>
+    <!-- initialize custom event functions -->
+    <include src="file://{resources}/scripts/custom_game/events_custom.js" />
+  </scripts>
+  <Panel class="BaseHud" hittest="false">      
+    <Panel class="CustomEventsHud" hittest="false">
+        <Label id="CustomEvent_InitialCamera_Delay" text="0" hittest="false" />
+    </Panel>
+  </Panel>
+</root>

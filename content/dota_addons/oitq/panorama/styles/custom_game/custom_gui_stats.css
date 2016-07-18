@@ -1,0 +1,118 @@
+.BaseHud
+{
+    width: 100%;
+    height: 100%;
+    flow-children: down;
+}
+
+#stats-wrapper
+{
+    z-index: 1;
+    horizontal-align: right;
+    vertical-align: middle;
+    width:  225px;
+    height: 258px;
+    background-image: url("file://{images}/custom_game/custom_gui/stats_wrapper.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+
+#XPprogress
+{
+    z-index: 2;
+    horizontal-align: left;
+    vertical-align: top;
+    margin-top: 24px;
+    margin-left: 39px;
+    width: 130px;
+    height: 6.5px;
+    max-width: 130px;
+    background-color: #ffd800;
+}
+
+#XPprogress-frame
+{
+    z-index: 3;
+    width: 169px;
+    height: 68px;
+    position: 0px -6px 0px;
+    margin-left: 17px;
+    background-image: url("file://{images}/custom_game/custom_gui/stats_icon_frame_xp_progress.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+
+#levelNumber
+{
+    z-index: 4;
+    margin-top: 7px;
+    margin-left: 31px;
+    font-family: "Tahoma";
+    font-size: 18px;
+    color: #000;
+    font-weight: bold;
+}
+
+#heroName
+{
+    horizontal-align: right;
+    text-align: right;
+    margin-top: 33px;
+    margin-right: 58px;
+    font-family: Goudy Trajan Medium;
+    font-weight: bold;
+    font-size: 20px;
+    color: #ffefccFF;
+    text-shadow: 0px 0px 3px #000000FF;
+    text-transform: uppercase;
+}
+
+#strengthNumber, #attkSpeedNumber, #resistanceNumber, #speedNumber, #goldNumber
+{
+    horizontal-align: right;
+    vertical-align: bottom;
+    text-align: right;
+}
+
+#strengthNumber, #attkSpeedNumber, #resistanceNumber, #speedNumber
+{
+    color: #CCCCCCFF;
+    font-size: 14px;
+    text-shadow: 0px 0px 5px #000000FF;
+}
+
+#goldNumber
+{
+    color: gradient( linear, 0% 0%, 0% 100%, from( #c88423 ), color-stop( 0.05, #c88423 ), color-stop( 0.4, #fffb84 ), color-stop( 0.95, #c88423 ), to( #fffb84 ) );
+    text-shadow: 2px 2px 2px #000000FF;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#strengthNumber
+{
+    margin-bottom: 172px;
+    margin-right:  102px;
+}
+#attkSpeedNumber
+{
+    margin-bottom: 137px;
+    margin-right:  102px;
+}
+#resistanceNumber
+{
+    margin-bottom: 102px;
+    margin-right:  102px;
+}
+#speedNumber
+{
+    margin-bottom: 65px;
+    margin-right:  102px;
+}
+#goldNumber
+{
+    margin-bottom: 28px;
+    margin-right:  102px;
+}

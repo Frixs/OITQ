@@ -1,0 +1,167 @@
+.BaseHud
+{
+    width: 100%;
+    height: 100%;
+    flow-children: down;
+}
+
+#inventory-wrapper
+{
+    horizontal-align: right;
+    vertical-align: bottom;
+    width:  606px;
+    height: 236px;
+    background-image: url("file://{images}/custom_game/custom_gui/inventory_wrapper.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+}
+
+
+
+#itemPanel-0
+{
+    margin-bottom: 119px;
+    margin-right:  147px;
+}
+#itemPanel-1
+{
+    margin-bottom: 119px;
+    margin-right:  39px;
+}
+#itemPanel-2
+{
+    margin-bottom: 15px;
+    margin-right:  468px;
+}
+#itemPanel-3
+{
+    margin-bottom: 15px;
+    margin-right:  361px;
+}
+#itemPanel-4
+{
+    margin-bottom: 15px;
+    margin-right:  253px;
+}
+#itemPanel-5
+{
+    margin-bottom: 15px;
+    margin-right:  147px;
+}
+
+
+
+.itemPanel
+{
+    horizontal-align: right;
+    vertical-align: bottom;
+    padding-bottom: 10px;
+}
+
+    .itemButton:hover
+    {
+        opacity: .8;
+    }
+
+    .itemButton:active
+    {
+        opacity: .6;
+    }
+
+.itemIcon
+{
+    z-index: 2;
+    height: 88px;
+    width: 64px;
+    margin-left: 30px;
+}
+
+.itemIconFrame
+{
+    z-index: 5;
+    width:  116px;
+    height: 90px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-image: url("file://{images}/custom_game/custom_gui/item_icon_frame.png");
+}
+
+.cooldownBox
+{
+    opacity: 0;
+    z-index: 3;
+    height: 47px;
+    width: 64px;
+    margin-top: 20px;
+    margin-left: 30px;
+    background-color: #000000DA;
+}
+
+.cooldownTime
+{
+    horizontal-align: center;
+    vertical-align: center;
+    text-align: center;
+    color: #CCCCCCFF;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+    .cooldownActive { opacity: 1; }
+
+.charges
+{
+    z-index: 4;
+    horizontal-align: left;
+    vertical-align: bottom;
+    margin-bottom: 20px;
+    margin-left: 32px;
+    color: #FFFFFFFF;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.keybindAbbr
+{
+    margin-top: 11px;
+    margin-left: 17px;
+    color: #000000FF;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.itemSlotArrows
+{
+    z-index: 6;
+    horizontal-align: right;
+    margin-right: 1px;
+    vertical-align: bottom;
+    position: 0px 10px 0px;
+}
+
+.buttonArrow-left, .buttonArrow-right
+{
+    horizontal-align: left;
+    width: 52px;
+    height: 30px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+
+.buttonArrow-right
+{
+    margin-left: 52px;
+}
+
+.arrow-left  { background-image: url("file://{images}/custom_game/custom_gui/button_arrow_left_idle.png");}
+    .arrow-left:hover  { background-image: url("file://{images}/custom_game/custom_gui/button_arrow_left_hover.png");}
+.arrow-right { background-image: url("file://{images}/custom_game/custom_gui/button_arrow_right_idle.png");}
+    .arrow-right:hover { background-image: url("file://{images}/custom_game/custom_gui/button_arrow_right_hover.png");}
+.arrow-up    { background-image: url("file://{images}/custom_game/custom_gui/button_arrow_up_idle.png");}
+    .arrow-up:hover    { background-image: url("file://{images}/custom_game/custom_gui/button_arrow_up_hover.png");}
+.arrow-down  { background-image: url("file://{images}/custom_game/custom_gui/button_arrow_down_idle.png");}
+    .arrow-down:hover  { background-image: url("file://{images}/custom_game/custom_gui/button_arrow_down_hover.png");}

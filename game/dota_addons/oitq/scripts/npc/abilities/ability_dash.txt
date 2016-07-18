@@ -1,0 +1,59 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+    // Spell: Dash
+    //=================================================================================================================    
+    "dash_spell"
+    {
+        // General
+        //-------------------------------------------------------------------------------------
+        "BaseClass"             "ability_datadriven"
+        "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+        "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
+        "AbilityTextureName"    "dash_spell"
+        "MaxLevel"              "1"
+        "FightRecapLevel"       "1"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"       "9"
+
+        // Cost
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityManaCost"       "0"
+
+        // Special
+        //-------------------------------------------------------------------------------------
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "push_length"           "400"
+            }         
+        }
+
+        "precache"
+        {
+            "soundfile" "soundevents/game_sounds_items.vsndevts"
+        }
+
+        // Data Driven
+        //-------------------------------------------------------------------------------------
+        "OnSpellStart"
+        {
+            "ApplyModifier"
+            {
+                "ModifierName"   "modifier_item_forcestaff_active"
+                "Target"         "CASTER"
+            }
+
+            "FireSound"
+            {
+                "EffectName"    "DOTA_Item.ForceStaff.Activate"
+                "Target"        "CASTER"
+            }
+        }
+    }
+}

@@ -1,0 +1,91 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+    // Spell: Evasion
+    //=================================================================================================================    
+    "ability_evasion"
+    {
+        // General
+        //-------------------------------------------------------------------------------------
+        "BaseClass"             "ability_datadriven"
+        "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT"
+        "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
+        "SpellImmunityType"     "SPELL_IMMUNITY_ALLIES_YES"
+        "AbilityTextureName"    "ability_evasion"
+        "MaxLevel"              "6"
+        "LevelsBetweenUpgrades" "1"
+        "FightRecapLevel"       "1"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"       "15 14 14 13 12 12"
+
+        // Special
+        //-------------------------------------------------------------------------------------
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"              "FIELD_FLOAT"
+                "duration"              "0.5 0.6 0.8 0.9 1.0 1.2"
+            }
+        }
+
+        "precache"
+        {
+            "particle"  "particles/spells/evade_character_blur.vpcf"
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_chaos_knight.vsndevts"
+        }
+
+        // Data Driven
+        //-------------------------------------------------------------------------------------
+        "OnSpellStart"
+        {
+            "FireSound"
+            {
+                "EffectName"      "Hero_ChaosKnight.Phantasm"
+                "Target"          "CASTER"
+            }
+
+            "ApplyModifier"
+            {
+                "ModifierName"    "modifier_ability_evasion"
+                "Target"          "CASTER"
+                "Duration"        "%duration"
+            }
+        }
+
+        "Modifiers"
+        {
+            "modifier_ability_evasion"
+            {
+                "IsBuff"             "1"
+                "IsHidden"           "0"
+
+                "OnCreated"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"    "spells/ability_evasion_lua.lua"
+                        "Function"      "evasion_onCreated"
+                    }
+                }
+
+                "OnDestroy"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"    "spells/ability_evasion_lua.lua"
+                        "Function"      "evasion_onDestroy"
+                    }
+                }
+
+                "States"
+                { 
+                    "MODIFIER_STATE_INVULNERABLE" "MODIFIER_STATE_VALUE_ENABLED"
+                }
+            }
+        }
+    }
+}

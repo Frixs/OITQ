@@ -1,0 +1,492 @@
+"Creature.FireBreath.Cast"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/mini_rosh_firebreath.vsnd"
+						}
+					}
+					"volume_min"
+					{
+						"value"		"1.000000"
+					}
+					"volume_max"
+					{
+						"value"		"1.000000"
+					}
+					"pitch_min"
+					{
+						"value"		"0.950000"
+					}
+					"pitch_max"
+					{
+						"value"		"1.050000"
+					}
+					"chan_type"
+					{
+						"value"		"6"
+					}
+					"memory_type"
+					{
+						"value"		"0"
+					}
+					"soundlevel_min"
+					{
+						"value"		"90.000000"
+					}
+					"soundlevel_max"
+					{
+						"value"		"90.000000"
+					}
+				}
+			}
+		}
+	}
+}
+
+"Reflex.Midnight_Pulse"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/weapons/hero/enigma/midnight_pulse.vsnd"
+						}
+					}
+					"volume_min"
+					{
+						"value"		"1.000000"
+					}
+					"volume_max"
+					{
+						"value"		"1.000000"
+					}
+					"pitch_min"
+					{
+						"value"		"1.000000"
+					}
+					"pitch_max"
+					{
+						"value"		"1.000000"
+					}
+					"chan_type"
+					{
+						"value"		"6"
+					}
+					"memory_type"
+					{
+						"value"		"0"
+					}
+					"soundlevel_min"
+					{
+						"value"		"81.000000"
+					}
+					"soundlevel_max"
+					{
+						"value"		"81.000000"
+					}
+					"mixgroup"
+					{
+						"value"		"Weapons"
+					}
+					"spread_radius"
+					{
+						"value"		"600.000000"
+					}
+				}
+			}
+		}
+	}
+}
+
+"Game.Start.Countdown"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/gameInitialCooldown.vsnd"
+						}
+					}
+					"volume_min"
+					{
+						"value"		"1.000000"
+					}
+					"volume_max"
+					{
+						"value"		"1.000000"
+					}
+					"pitch_min"
+					{
+						"value"		"0.950000"
+					}
+					"pitch_max"
+					{
+						"value"		"1.050000"
+					}
+					"chan_type"
+					{
+						"value"		"6"
+					}
+					"memory_type"
+					{
+						"value"		"0"
+					}
+					"soundlevel_min"
+					{
+						"value"		"90.000000"
+					}
+					"soundlevel_max"
+					{
+						"value"		"90.000000"
+					}
+					"spread_radius"
+					{
+						"value"		"15000.000000"
+					}
+				}
+			}
+		}
+	}
+}
+
+"DOTA_CustomItem.CrossOfEternity.Activate"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/items/faerie_spark.vsnd"
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+"DOTA_CustomItem.HazzardGoggles.Activate"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/items/item_mael_lightning_02.vsnd"
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+"DOTA_CustomItem.StompingMechanism.Activate"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/weapons/hero/elder_titan/echo_stomp_cast.vsnd"
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+"DOTA_CustomItem.BoxOfLostSouls.Activate"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/weapons/hero/invoker/ghost_walk.vsnd"
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+"DOTA_CustomItem.AdrenalineInjection.Activate"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/items/lotus_cast.vsnd"
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+"DOTA_CustomItem.AdrenalineInjection.End"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/items/lotus_end.vsnd"
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+"DOTA_CustomItem.ThunderstormTotem.Activate"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/weapons/hero/razor/storm_cast.vsnd"
+						}
+					}
+					"spread_radius"
+					{
+						"value"		"2000.000000"
+					}
+				}
+			}
+		}
+	}
+}
+
+"DOTA_CustomItem.ThunderstormTotem.Loop"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/weapons/hero/razor/storm_loop.vsnd"
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+"DOTA_CustomItem.ThunderstormTotem.Impact"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/weapons/hero/razor/razor_lightning_strike_01.vsnd"
+							"value1"		"sounds/weapons/hero/razor/razor_lightning_strike_02.vsnd"
+							"value2"		"sounds/weapons/hero/razor/razor_lightning_strike_03.vsnd"
+							"value3"		"sounds/weapons/hero/razor/razor_lightning_strike_04.vsnd"
+							"value4"		"sounds/weapons/hero/razor/razor_lightning_strike_05.vsnd"
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+"DOTA_CustomItem.ThunderstormTotem.End"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/weapons/hero/sven/storm_bolt.vsnd"
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+"DOTA_CustomItem.ThunderstormTotem.Cast"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/items/ward_activate.vsnd"
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+"DOTA_CustomItem.ThunderstormTotem.Jump"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/weapons/hero/shadowshaman/shock01.vsnd"
+							"value1"		"sounds/weapons/hero/shadowshaman/shock02.vsnd"
+							"value2"		"sounds/weapons/hero/shadowshaman/shock03.vsnd"
+						}
+					}
+				}
+			}
+		}
+	}
+}

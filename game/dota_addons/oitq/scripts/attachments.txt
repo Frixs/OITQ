@@ -1,0 +1,36 @@
+"Attachments"
+{
+	"models/heroes/juggernaut/juggernaut.vmdl"
+	{
+		"attach_sword"
+		{
+			"models/items/juggernaut/highplains_sword_long.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-9"
+				"roll"		"-100"
+				"ZPos"		"-87"
+				"YPos"		"50"
+				"yaw"		"5"
+				"XPos"		"-20"
+			}
+		}
+	}
+	"models/heroes/meepo/meepo.vmdl"
+	{
+		"attach_attack1"
+		{
+			"models/heroes/meepo/meepo_weapon.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-140"
+				"roll"		"-20"
+				"ZPos"		"-45"
+				"YPos"		"27"
+				"yaw"		"-7"
+				"XPos"		"-35"
+			}
+		}
+	}
+	"ExtraKeys"		"Can Be Added Wherever"
+}

@@ -1,0 +1,252 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+    // Item: Stomping mechanism
+    //=================================================================================================================
+    "item_stomping_mechanism"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "ID"                        "1842"
+        "BaseClass"                 "item_datadriven"
+        "AbilityTextureName"        "item_stomping_mechanism"
+
+        "ItemCost"                  "250"
+        "ItemKillable"              "0"
+        "ItemSellable"              "1"
+        "ItemPurchasable"           "1"
+        "ItemDroppable"             "1"
+        "ItemShareability"          "ITEM_FULLY_SHAREABLE"
+
+        "ItemPermanent"             "1"
+        
+        "HomeShop"                  "1"
+        "SideShop"                  "0"
+        "SecretShop"                "0"
+        "ItemQuality"               "rare"
+
+        "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+        "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
+        "AbilityUnitDamageType"     "DAMAGE_TYPE_PHYSICAL"
+
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"                  "FIELD_FLOAT"
+                "time_period"               "3.5"
+            }
+            "02"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "damage"                    "1"
+            }
+            "03"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "radius"                    "275"
+            }
+            "04"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "movespeed_reduction"       "-5"
+            }
+            "05"
+            {
+                "var_type"                       "FIELD_INTEGER"
+                "movespeed_reduction_percentage" "-25"
+            }
+            "06"
+            {
+                "var_type"                  "FIELD_FLOAT"
+                "debuff_duration"           "0.9"
+            }
+        }
+
+        "precache"
+        {
+            "particle"  "particles/units/heroes/hero_magnataur/magnataur_reverse_polarity_shockwave.vpcf"
+            "particle"  "particles/units/heroes/hero_tiny/tiny_toss_impact.vpcf"
+            "particle"  "particles/ui/ui_generic_treasure_impact_dust_hit.vpcf"
+        }
+
+        "OnSpellStart"  //Switch to the inactive version.
+        {
+            "RunScript"
+            {
+                "ScriptFile"            "items/item_stomping_mechanism_lua.lua"
+                "Function"              "item_stomping_mechanism_on_spell_start"
+            }
+        }
+
+        "Modifiers"
+        {
+            "modifier_item_stomping_mechanism"
+            {
+                "Passive"             "1"
+                "IsHidden"            "0"
+                "IsDebuff"            "0"
+
+                "ThinkInterval" "%time_period"
+                "OnIntervalThink"
+                {
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/units/heroes/hero_magnataur/magnataur_reverse_polarity_shockwave.vpcf"
+                        "EffectAttachType"  "start_at_customorigin"
+                        "Target"            "CASTER"
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/units/heroes/hero_tiny/tiny_toss_impact.vpcf"
+                        "EffectAttachType"  "start_at_customorigin"
+                        "Target"            "CASTER"
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/ui/ui_generic_treasure_impact_dust_hit.vpcf"
+                        "EffectAttachType"  "start_at_customorigin"
+                        "Target"            "CASTER"
+                    }
+
+                    "FireSound"
+                    {
+                        "EffectName"    "DOTA_CustomItem.StompingMechanism.Activate"
+                        "Target"        "CASTER"
+                    }
+
+                    "Damage"
+                    {
+                        "Target"
+                        {
+                            "Center" "CASTER"
+                            "Radius" "%radius"
+                            "Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                            "Types"  "DOTA_UNIT_TARGET_HERO"
+                        }    
+                        "Type"          "DAMAGE_TYPE_PHYSICAL"
+                        "Damage"        "%damage"
+                    }
+
+                    "ApplyModifier"
+                    {
+                        "ModifierName"    "modifier_item_stomping_mechanism_slow"
+                        "Target"
+                        {
+                            "Center" "CASTER"
+                            "Radius" "%radius"
+                            "Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                            "Types"  "DOTA_UNIT_TARGET_HERO"
+                        }    
+                        "Duration"        "%debuff_duration"
+                    }
+                }
+
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT" "%movespeed_reduction" 
+                }
+            }
+
+            "modifier_item_stomping_mechanism_slow"
+            {
+                "IsHidden"            "0"
+                "IsDebuff"            "1"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%movespeed_reduction_percentage" 
+                }
+            }
+        }
+    }
+
+    //=================================================================================================================
+    // Item: Stomping mechanism - INACTIVE
+    //=================================================================================================================
+    "item_stomping_mechanism_inactive"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "ID"                        "1843"
+        "BaseClass"                 "item_datadriven"
+        "AbilityTextureName"        "item_stomping_mechanism_inactive"
+
+        "ItemCost"                  "250"
+        "ItemKillable"              "0"
+        "ItemSellable"              "1"
+        "ItemPurchasable"           "1"
+        "ItemDroppable"             "1"
+        "ItemShareability"          "ITEM_FULLY_SHAREABLE"
+
+        "ItemPermanent"             "1"
+        
+        "HomeShop"                  "0"
+        "SideShop"                  "0"
+        "SecretShop"                "0"
+        "ItemQuality"               "rare"
+
+        "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+        "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
+        "AbilityUnitDamageType"     "DAMAGE_TYPE_PHYSICAL"
+
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "time_period"               "6"
+            }
+            "02"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "damage"                    "1"
+            }
+            "03"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "radius"                    "275"
+            }
+            "04"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "movespeed_reduction"       "-5"
+            }
+            "05"
+            {
+                "var_type"                       "FIELD_INTEGER"
+                "movespeed_reduction_percentage" "-25"
+            }
+            "06"
+            {
+                "var_type"                  "FIELD_FLOAT"
+                "debuff_duration"           "0.9"
+            }
+        }
+
+        "OnSpellStart"  //Switch to the active version.
+        {
+            "RunScript"
+            {
+                "ScriptFile"            "items/item_stomping_mechanism_lua.lua"
+                "Function"              "item_stomping_mechanism_inactive_on_spell_start"
+            }
+        }
+
+        "Modifiers"
+        {
+            "modifier_item_stomping_mechanism_inactive"
+            {
+                "Passive"             "1"
+                "IsHidden"            "0"
+                "IsDebuff"            "0"
+
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT" "%movespeed_reduction" 
+                }
+            }
+        }
+    }
+}

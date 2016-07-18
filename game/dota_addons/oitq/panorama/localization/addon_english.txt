@@ -1,0 +1,32 @@
+"addon"
+{
+	"Unassigned"      								"Unassigned Team"
+	"Spectator"       								"Spectator Team"
+	"Neutrals"        								"Neutral Team"
+	"NoTeam"          								"No Team"
+
+	"DOTA_GoodGuys"   								"Teal Tiger"
+	"DOTA_BadGuys"    								"Yellow Monkey"
+	"DOTA_Custom1"    								"Pink Dragon"
+	"DOTA_Custom2"    								"Orange Dog"
+	"DOTA_Custom3"    								"Blue Rooster"
+	"DOTA_Custom4"    								"Green Ram"
+	"DOTA_Custom5"    								"Brown Rat"
+	"DOTA_Custom6"    								"Cyan Boar"
+	"DOTA_Custom7"    								"Olive Snake"
+	"DOTA_Custom8"    								"Purple Horse"
+	
+	"addonname"										"ONE IN THE QUIVER"
+	"addonname2"									"REMASTER"
+
+	//------------------------
+	// HUD: Game Info
+	//------------------------
+	"oitq_game_info_header_objective"				"Welcome to OITQ!"
+	"oitq_brief_description"						"What is going on? It is a fighter minigame - deathmatch. Goal of this game is to reach required number of kills. You have only a couple of golds and your deadly shuriken at the start.\n\nIt is not simple task to survive...   Can you beat it?"
+    "oitq_game_info_header_how_to_play"             "How to play"
+    "oitq_game_info_1"                              "<b class='header_text'>Basis: </b><i> This game is based on your primary spell - <b>Shuriken</b>. Your standard <b>HP</b> value is <b>20</b>. The same value has a damage of the <b>Shuriken</b>. It means instant kill, if you know how to aim.</i>"
+    "oitq_game_info_2"                              "<b class='header_text'>Items: </b><i> You can <b>buy</b> them in <b>shops</b> across arena, where you play. There are attribute items to start, but once you are stronger you can buy some better items. Anyway, not all items can be found in the shops. Some of them are <b>special</b> and <b>rare</b> and they can be only <b>dropped</b> from another player as additional loot.</i>"
+    "oitq_game_info_3"                              "<b class='header_text'>Drop system: </b><i> It is not easy as  it looks like. Your inventory is splitted into 2 layers - SAFE & DANGEROUS. Whole inventory has 6 slots, 2 slots for safe layer and 4 slots for dangerous layer. Safe layer is normal layer as you know. Dangerous layer has some differences. If your items lays in this layer while you die, 2 <b>items</b> will be <b>dropped</b>.</i>"
+    "oitq_game_info_tips_header"                    "Good luck warrior... and have fun!"
+}

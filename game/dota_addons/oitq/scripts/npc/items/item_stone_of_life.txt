@@ -1,0 +1,52 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+    // Item: Stone of life
+    //=================================================================================================================
+    "item_stone_of_life"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "ID"                        "1849"
+        "BaseClass"                 "item_datadriven"
+        "AbilityTextureName"        "item_stone_of_life"
+
+        "ItemCost"                  "500"
+        "ItemKillable"              "0"
+        "ItemSellable"              "1"
+        "ItemPurchasable"           "1"
+        "ItemDroppable"             "1"
+        "ItemShareability"          "ITEM_FULLY_SHAREABLE"
+
+        "ItemPermanent"             "1"
+        
+        "HomeShop"                  "0"
+        "SideShop"                  "1"
+        "SecretShop"                "0"
+        "ItemQuality"               "epic"
+
+        "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"             "FIELD_INTEGER"
+                "health_bonus"         "2"
+            }
+        }
+
+        "Modifiers"
+        {
+            "modifier_item_stone_of_life"
+            {
+                "Passive"             "1"
+                "IsHidden"            "1"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_HEALTH_BONUS"      "%health_bonus"
+                }
+            }
+        }
+    }
+}

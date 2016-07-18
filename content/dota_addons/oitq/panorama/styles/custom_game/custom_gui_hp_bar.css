@@ -1,0 +1,142 @@
+.BaseHud
+{
+    width: 100%;
+    height: 100%;
+    flow-children: down;
+}
+
+#hp-wrapper
+{
+    horizontal-align: center;
+    vertical-align: bottom;
+    width:  654px;
+    height: 83px;
+    max-width:  654px;
+    max-height: 83px;
+    background-image: url("file://{images}/custom_game/custom_gui/hp_bar_wrapper.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+}
+
+    .AspectRatio-normal
+    {
+        margin-bottom: 15px;
+    }
+
+    .AspectRatio-small
+    {
+        margin-bottom: 125px;
+    }
+
+.hiddenBox
+{
+    opacity: 0;
+}
+
+#hp-bar
+{
+    vertical-align: middle;
+    horizontal-align: center;
+}
+
+#hp-bar-bonus
+{
+    vertical-align: middle;
+    horizontal-align: left;
+    position: 0px -50px 0px;
+}
+
+.hearts
+{
+    width:  50px;
+    height: 50px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+}
+
+.heart_2 { background-image: url("file://{images}/custom_game/custom_gui/heart_2.png"); }
+.heart_1 { background-image: url("file://{images}/custom_game/custom_gui/heart_1.png"); }
+.heart_0 { background-image: url("file://{images}/custom_game/custom_gui/heart_0.png"); }
+
+#heart-0
+{
+    margin-left: 0px;
+}
+#heart-1
+{
+    margin-left: 42px;
+}
+#heart-2
+{
+    margin-left: 84px;
+}
+#heart-3
+{
+    margin-left: 126px;
+}
+#heart-4
+{
+    margin-left: 168px;
+}
+#heart-5
+{
+    margin-left: 210px;
+}
+#heart-6
+{
+    margin-left: 252px;
+}
+#heart-7
+{
+    margin-left: 294px;
+}
+#heart-8
+{
+    margin-left: 336px;
+}
+#heart-9
+{
+    margin-left: 378px;
+}
+#heart-10
+{
+    margin-left: 113px;
+}
+#heart-11
+{
+    margin-left: 155px;
+}
+#heart-12
+{
+    margin-left: 197px;
+}
+#heart-13
+{
+    margin-left: 239px;
+}
+#heart-14
+{
+    margin-left: 281px;
+}
+#heart-15
+{
+    margin-left: 323px;
+}
+#heart-16
+{
+    margin-left: 365px;
+}
+#heart-17
+{
+    margin-left: 407px;
+}
+#heart-18
+{
+    margin-left: 449px;
+}
+#heart-19
+{
+    margin-left: 491px;
+}

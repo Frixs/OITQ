@@ -1,0 +1,60 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+    // Function: Pre-Game Invulnerability
+    //=================================================================================================================    
+    "dota_ability_pre_game_invul_global"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "BaseClass"                 "ability_datadriven"
+        "AbilityName"               "dota_ability_pre_game_invul_global"
+        "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+        "precache"
+        {
+            "particle"  "particles/econ/events/ti6/mjollnir_shield_ti6.vpcf"
+        }
+
+        "Modifiers"
+        {
+            "modifier_dota_ability_pre_game_invul_global"
+            {
+                "IsHidden"              "1"
+                "Passive"               "1"
+
+                "Aura"                  "modifier_get_pre_game_invul_global"
+                "Aura_Radius"           "15000"
+                "Aura_Teams"            "DOTA_UNIT_TARGET_TEAM_BOTH"
+                "Aura_Types"            "DOTA_UNIT_TARGET_HERO"
+                "Aura_ApplyToCaster"    "0"
+                "Aura_Flags"            "DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS"
+
+                "States"
+                {
+                    "MODIFIER_STATE_UNSELECTABLE"   "MODIFIER_STATE_VALUE_ENABLED"
+                    "MODIFIER_STATE_NO_HEALTH_BAR"  "MODIFIER_STATE_VALUE_ENABLED"
+                    "MODIFIER_STATE_INVULNERABLE"   "MODIFIER_STATE_VALUE_ENABLED"
+                    "MODIFIER_STATE_INVISIBLE"      "MODIFIER_STATE_VALUE_ENABLED"
+                    "MODIFIER_STATE_OUT_OF_GAME"    "MODIFIER_STATE_VALUE_ENABLED"
+                }
+            }
+
+            "modifier_get_pre_game_invul_global"
+            {
+                "Passive"       "1"
+                "IsHidden"      "1"
+
+                "EffectName"        "particles/econ/events/ti6/mjollnir_shield_ti6.vpcf"
+                "EffectAttachType"  "follow_origin"
+
+                "States"
+                {
+                    "MODIFIER_STATE_UNSELECTABLE"   "MODIFIER_STATE_VALUE_ENABLED"
+                    "MODIFIER_STATE_INVULNERABLE"   "MODIFIER_STATE_VALUE_ENABLED"
+                    "MODIFIER_STATE_SILENCED"       "MODIFIER_STATE_VALUE_ENABLED"
+                }
+            }
+        }
+    }
+}

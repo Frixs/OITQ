@@ -1,0 +1,208 @@
+"DOTAAbilities"
+{
+  	//=================================================================================================================
+  	// Spell: Ice Block
+  	//=================================================================================================================    
+  	"ice_block_spell"
+  	{
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"                 "ability_datadriven"
+	    "AbilityTextureName"        "ice_block_spell"
+	    "MaxLevel"                  "1"
+        "AbilityType"               "DOTA_ABILITY_TYPE_ULTIMATE"
+	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NOASSIST | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	    "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_2"
+	    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
+	    "SpellImmunityType"         "SPELL_IMMUNITY_ALLIES_YES"
+	    "FightRecapLevel"           "1"
+	        
+	    // Casting
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityCastRange"          "700"
+	    "AbilityCastPoint"          "0.0"
+	    "AbilityChannelTime"        "3"
+	    "AbilityDuration"           "3"
+
+	    // Time   
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityCooldown"       "70"
+
+	    // Special
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	      	"01"
+	      	{
+		        "var_type"              "FIELD_INTEGER"
+		        "cooldown"          	"10 9 8 7"
+	      	}
+	      	"02"
+	      	{
+		      	"var_type"              "FIELD_INTEGER"
+		        "duration"              "3"
+	      	}
+	      	"03"
+	      	{
+		        "var_type"        		"FIELD_INTEGER"
+		        "time_to_recovery"    	"4"
+	      	}
+	      	"04"
+	      	{
+		        "var_type"        		"FIELD_INTEGER"
+		        "slow_steps"      		"10"
+	      	}            
+	    }
+        
+        "precache"
+        {
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_winter_wyvern.vsndevts"
+            "particle"  "particles/units/heroes/hero_winter_wyvern/wyvern_cold_embrace_buff.vpcf"
+            "particle"  "particles/units/heroes/hero_winter_wyvern/wyvern_cold_embrace_borealis_magic_instant.vpcf"
+            "particle"  "particles/units/heroes/hero_winter_wyvern/wyvern_cold_embrace_start.vpcf"
+            "particle"  "particles/units/heroes/hero_winter_wyvern/wyvern_cold_embrace_buff_vapor.vpcf"
+            "particle"  "particles/units/heroes/hero_winter_wyvern/wyvern_cold_embrace_buff_smoke.vpcf"
+        }        
+
+        "OnSpellStart"
+        {
+            "ApplyModifier"
+            {
+                "ModifierName" "modifier_ice_block_animation"
+                "Target"       "CASTER"
+            }
+            
+            "ApplyModifier"
+            {
+                "ModifierName" "modifier_ice_block_slow"
+                "Target"       "CASTER"
+            }
+            
+            "DelayedAction"
+            {
+                "Delay"     "%time_to_recovery"
+                "Action"
+                {
+                    "RemoveModifier"
+                    {
+                        "ModifierName" "modifier_ice_block_slow"
+                        "Target"       "CASTER"
+                    }                
+                }
+            }
+        }
+        
+        "OnChannelFinish"
+        {
+            "RemoveModifier"
+            {
+                "ModifierName" "modifier_ice_block_animation"
+                "Target"       "CASTER"
+            }
+            
+            "AttachEffect"
+            {
+                "EffectName" "particles/units/heroes/hero_winter_wyvern/wyvern_cold_embrace_borealis_magic_instant.vpcf"
+                "EffectAttachType" "follow_origin"
+                "Target" "CASTER"
+            }            
+            
+            "RunScript"
+            {
+                "ScriptFile"    "spells/ice_block_spell_lua.lua"
+                "Function"      "set_invul_off"
+                "Target"        "CASTER"
+            }
+        }        
+
+        "Modifiers"
+        {
+            "modifier_ice_block_animation"
+            {            
+                "IsBuff"   "1"
+                "IsHidden" "1"
+                
+                "precache"
+                {
+                    "soundfile" "soundevents/game_sounds_heroes/game_sounds_winter_wyvern.vsndevts"
+                    "particle"  "particles/units/heroes/hero_winter_wyvern/wyvern_cold_embrace_buff.vpcf"
+                    "particle"  "particles/units/heroes/hero_winter_wyvern/wyvern_cold_embrace_start.vpcf"
+                    "particle"  "particles/units/heroes/hero_winter_wyvern/wyvern_cold_embrace_buff_vapor.vpcf"
+                    "particle"  "particles/units/heroes/hero_winter_wyvern/wyvern_cold_embrace_buff_smoke.vpcf"
+                }
+                
+                "OnCreated"
+                {
+                    "FireSound"
+                    {
+                        "EffectName"  "Hero_Winter_Wyvern.ColdEmbrace.Cast"
+                        "Target"      "CASTER"
+                    }
+                    
+                    "FireSound"
+                    {
+                        "EffectName"  "Hero_Winter_Wyvern.ColdEmbrace"
+                        "Target"      "CASTER"
+                    }                    
+                    
+                    "AttachEffect"
+                    {
+                        "EffectName" "particles/units/heroes/hero_winter_wyvern/wyvern_cold_embrace_buff.vpcf"
+                        "EffectAttachType" "follow_origin"
+                        "Target" "CASTER"
+                    }                 
+                    
+                    "AttachEffect"
+                    {
+                        "EffectName" "particles/units/heroes/hero_winter_wyvern/wyvern_cold_embrace_start.vpcf"
+                        "EffectAttachType" "follow_origin"
+                        "Target" "CASTER"
+                    }  
+                    
+                    "AttachEffect"
+                    {
+                        "EffectName" "particles/units/heroes/hero_winter_wyvern/wyvern_cold_embrace_buff_vapor.vpcf"
+                        "EffectAttachType" "follow_origin"
+                        "Target" "CASTER"
+                    }
+                    
+                    "AttachEffect"
+                    {
+                        "EffectName" "particles/units/heroes/hero_winter_wyvern/wyvern_cold_embrace_buff_smoke.vpcf"
+                        "EffectAttachType" "follow_origin"
+                        "Target" "CASTER"
+                    }                    
+                    
+                    "RunScript"
+                    {
+                        "ScriptFile"    "spells/ice_block_spell_lua.lua"
+                        "Function"      "immobility"
+                        "Target"        "CASTER"
+                    }
+                    
+                    "RunScript"
+                    {
+                        "ScriptFile"    "spells/ice_block_spell_lua.lua"
+                        "Function"      "set_invul_on"
+                        "Target"        "CASTER"
+                    }
+                }
+            }
+            
+            "modifier_ice_block_slow"
+            {
+                "ThinkInterval" "0.195"
+                "OnIntervalThink"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"    "spells/ice_block_spell_lua.lua"
+                        "Function"      "increase_move_speed"
+                        "Target"        "CASTER"
+                    }
+                }               
+            }
+        }
+    }
+}

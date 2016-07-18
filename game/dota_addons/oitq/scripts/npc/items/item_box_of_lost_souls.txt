@@ -1,0 +1,117 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+    // Item: Box of lost souls
+    //=================================================================================================================
+    "item_box_of_lost_souls"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "ID"                        "1844"
+        "BaseClass"                 "item_datadriven"
+        "AbilityTextureName"        "item_box_of_lost_souls"
+
+        "ItemCost"                  "200"
+        "ItemKillable"              "0"
+        "ItemSellable"              "1"
+        "ItemPurchasable"           "1"
+        "ItemDroppable"             "1"
+        "ItemShareability"          "ITEM_FULLY_SHAREABLE"
+
+        "ItemPermanent"             "1"
+        
+        "HomeShop"                  "1"
+        "SideShop"                  "0"
+        "SecretShop"                "0"
+        "ItemQuality"               "rare"
+
+        "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+        "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"           "15"
+
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "duration"                  "10"
+            }
+            "02"
+            {
+                "var_type"                  "FIELD_FLOAT"
+                "fade_time"                 "1.5"
+            }
+            "03"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "vision_bonus_percentage"   "-800"
+            }
+            "04"
+            {
+                "var_type"                  "FIELD_FLOAT"
+                "vision_apply_delay"     "1.6"
+            }
+        }
+
+        "OnSpellStart"
+        {
+            "ApplyModifier"
+            {
+                "ModifierName"    "modifier_item_shadow_amulet_fade"
+                "Target"          "CASTER"
+                "Duration"        "%duration"
+            }
+            "DelayedAction"
+            {
+                "Delay"     "%vision_apply_delay"
+                "Action"
+                {
+                    "ApplyModifier"
+                    {
+                        "ModifierName"    "modifier_item_box_of_lost_souls_vision_bonus"
+                        "Target"          "CASTER"
+                    }
+                }
+            }
+
+            "FireSound"
+            {
+                "EffectName"    "DOTA_CustomItem.BoxOfLostSouls.Activate"
+                "Target"        "CASTER"
+            }
+        }
+
+        "Modifiers"
+        {
+            "modifier_item_box_of_lost_souls"
+            {
+                "Passive"             "1"
+                "IsHidden"            "1"
+
+                "OnUnitMoved"
+                {
+                    "RemoveModifier"
+                    {
+                        "ModifierName"   "modifier_item_box_of_lost_souls_vision_bonus"
+                        "Target"         "CASTER"
+                    }
+                }
+            }
+            "modifier_item_box_of_lost_souls_vision_bonus"
+            {
+                "IsHidden"            "1"
+                "IsDebuff"            "1"
+                "Duration"            "%duration"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_BONUS_DAY_VISION"   "%vision_bonus_percentage"
+                    "MODIFIER_PROPERTY_BONUS_NIGHT_VISION" "%vision_bonus_percentage"
+                }
+            }
+        }
+    }
+}
