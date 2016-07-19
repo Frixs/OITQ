@@ -43,14 +43,21 @@
 
         "precache"
         {
-            //"particle"  ""
-            //"soundfile" ""
+            "particle"  "particles/econ/items/faceless_void/faceless_void_jewel_of_aeons/fv_time_walk_debuff_jewel.vpcf"
+            "particle"  "particles/units/heroes/hero_abaddon/abaddon_borrowed_time_f.vpcf"
+            "particle"  "particles/units/heroes/hero_weaver/weaver_timelapse_b.vpcf"
         }
 
         // Data Driven
         //-------------------------------------------------------------------------------------
         "OnSpellStart"
         {
+            "FireSound"
+            {
+                "EffectName"     "DOTA_CustomAbility.TimeLapse.Cast"
+                "Target"         "CASTER"
+            }
+
             "ApplyModifier"
             {
                 "ModifierName"    "modifier_ability_time_lapse"
@@ -70,12 +77,28 @@
                     "MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE" "%cooldown_reduction" 
                 }
 
+                "OnCreated"
+                {
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/econ/items/faceless_void/faceless_void_jewel_of_aeons/fv_time_walk_debuff_jewel.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "CASTER"
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/units/heroes/hero_weaver/weaver_timelapse_b.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "CASTER"
+                    }
+                }
+
                 "OnAbilityExecuted"
                 // Any ability (including items) was used by the unit with this modifier.
                 {
                     "ApplyModifier"
                     {
-                        "ModifierName"    "modifier_ability_time_lapse_debuff_lock"
+                        "ModifierName"    "modifier_ability_time_lapse_debuff_controller"
                         "Target"          "CASTER"
                     }
                 }
