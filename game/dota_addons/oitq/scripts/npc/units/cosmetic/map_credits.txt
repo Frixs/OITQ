@@ -1,0 +1,28 @@
+"DOTAUnits"
+{
+    "Frixs"
+    {
+        "BaseClass"                 "npc_dota_creature"
+        "ArmorPhysical"             "100"
+        "Level"                     "100"
+        "AttackDamageMin"           "10000"
+        "AttackDamageMax"           "10000"
+        "StatusHealth"              "10000"
+        "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_GROUND"
+        "Ability1"                  "map_setup"
+
+        "Model"                     "models/heroes/earthshaker/earthshaker.vmdl"
+        "ModelScale"                "1"
+
+        "Creature"
+        {
+            "AttachWearables" // Crimson Beast
+            {
+                "1" { "ItemDef" "8579" } // Belt of the Crimson Beast
+                "2" { "ItemDef" "8577" } // Totem of the Crimson Beast
+                "3" { "ItemDef" "8578" } // Bracers of the Crimson Beast
+                "4" { "ItemDef" "8580" } // Mask of the Crimson Beast
+            }
+        }
+    }
+}

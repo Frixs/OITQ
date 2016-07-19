@@ -1,4 +1,6 @@
-  // Dota Units File
+#base "units/cosmetic/map_credits.txt"
+
+// Dota Units File
 "DOTAUnits"
 {
   "Version" "1"
