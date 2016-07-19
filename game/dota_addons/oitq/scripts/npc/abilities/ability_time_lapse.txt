@@ -18,7 +18,7 @@
 
         // Time   
         //-------------------------------------------------------------------------------------------------------------
-        "AbilityCooldown"       "12 12 11 11 10 10"
+        "AbilityCooldown"       "20 20 18 18 17 17"
 
         // Special
         //-------------------------------------------------------------------------------------
@@ -27,7 +27,7 @@
             "01"
             {
                 "var_type"              "FIELD_FLOAT"
-                "duration"              "1.0 1.5 2.5 3.0 3.5 4.0"
+                "duration"              "1.0 1.5 2.0 2.5 3.0 3.5"
             }
             "02"
             {
@@ -38,6 +38,11 @@
             {
                 "var_type"              "FIELD_INTEGER"
                 "debuff_duration"       "3 4 4 5 5 5"
+            }
+            "03"
+            {
+                "var_type"                         "FIELD_INTEGER"
+                "debuff_additional_cooldown"       "1 2 5 6 8 9"
             }
         }
 
@@ -109,7 +114,6 @@
                     {
                         "ScriptFile"      "spells/ability_time_lapse_lua.lua"
                         "Function"        "OnDestroy"
-                        "DebuffDuration"  "%debuff_duration"
                     }
                 }
             }
