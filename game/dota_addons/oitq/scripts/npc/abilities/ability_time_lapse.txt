@@ -1,0 +1,111 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+    // Spell: Time-lapse
+    //=================================================================================================================    
+    "ability_time_lapse"
+    {
+        // General
+        //-------------------------------------------------------------------------------------
+        "BaseClass"             "ability_datadriven"
+        "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT"
+        "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
+        "AbilityTextureName"    "ability_time_lapse"
+        "MaxLevel"              "6"
+        "LevelsBetweenUpgrades" "1"
+        "FightRecapLevel"       "1"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"       "12 12 11 11 10 10"
+
+        // Special
+        //-------------------------------------------------------------------------------------
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"              "FIELD_FLOAT"
+                "duration"              "1.0 1.5 2.5 3.0 3.5 4.0"
+            }
+            "02"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "cooldown_reduction"    "5 10 12 18 20 25"
+            }
+            "03"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "debuff_duration"       "3 4 4 5 5 5"
+            }
+        }
+
+        "precache"
+        {
+            //"particle"  ""
+            //"soundfile" ""
+        }
+
+        // Data Driven
+        //-------------------------------------------------------------------------------------
+        "OnSpellStart"
+        {
+            "ApplyModifier"
+            {
+                "ModifierName"    "modifier_ability_time_lapse"
+                "Target"          "CASTER"
+                "Duration"        "%duration"
+            }
+        }
+
+        "Modifiers"
+        {
+            "modifier_ability_time_lapse"
+            {
+                "IsBuff"             "1"
+                "IsHidden"           "0"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE" "%cooldown_reduction" 
+                }
+
+                "OnAbilityExecuted"
+                // Any ability (including items) was used by the unit with this modifier.
+                {
+                    "ApplyModifier"
+                    {
+                        "ModifierName"    "modifier_ability_time_lapse_debuff_lock"
+                        "Target"          "CASTER"
+                    }
+                }
+
+                "OnDestroy"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"      "spells/ability_time_lapse_lua.lua"
+                        "Function"        "OnDestroy"
+                        "DebuffDuration"  "%debuff_duration"
+                    }
+                }
+            }
+
+            "modifier_ability_time_lapse_debuff"
+            {
+                "IsDebuff"           "1"
+                "IsHidden"           "0"
+
+                "States"
+                {
+                    "MODIFIER_STATE_SILENCED" "MODIFIER_STATE_VALUE_ENABLED"
+                }
+            }
+
+            "modifier_ability_time_lapse_debuff_controller"
+            {
+                "IsHidden"           "1"
+            }
+        }
+    }
+}

@@ -78,7 +78,7 @@
         "Ability2"                  "dash_spell"
         "Ability3"                  "ability_evasion"
         "Ability4"                  "windrunner_windrun"
-        "Ability5"                  "lion_impale"
+        "Ability5"                  "ability_time_lapse"
         "Ability6"                  "ice_block_spell"
 
         // Armor
@@ -154,7 +154,7 @@
         "Ability2"                  "anger_aura_spell"                      // Ability 2.
         "Ability3"                  "ability_evasion"
         "Ability4"                  "windrunner_windrun"
-        "Ability5"                  "lion_impale"
+        "Ability5"                  "ability_time_lapse"
         "Ability6"                  "ice_block_spell"
 
         // Armor
@@ -230,7 +230,7 @@
         "Ability2"                  "fork_spell"                            // Ability 2.
         "Ability3"                  "ability_evasion"
         "Ability4"                  "windrunner_windrun"
-        "Ability5"                  "lion_impale"
+        "Ability5"                  "ability_time_lapse"
         "Ability6"                  "ice_block_spell"
 
         // Armor
@@ -306,7 +306,7 @@
         "Ability2"                  "ground_pound_spell"                    // Ability 2.
         "Ability3"                  "ability_evasion"
         "Ability4"                  "windrunner_windrun"
-        "Ability5"                  "lion_impale"
+        "Ability5"                  "ability_time_lapse"
         "Ability6"                  "ice_block_spell"
 
         // Armor
@@ -382,7 +382,7 @@
         "Ability2"                  "vanishing_act_spell"                   // Ability 2.
         "Ability3"                  "ability_evasion"
         "Ability4"                  "windrunner_windrun"
-        "Ability5"                  "lion_impale"
+        "Ability5"                  "ability_time_lapse"
         "Ability6"                  "ice_block_spell"
 
         // Armor
