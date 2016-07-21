@@ -309,6 +309,10 @@ function GameMode:OnPlayerPickHero(keys)
   -- send selected map name to chat
   Timers:CreateTimer((ADDITIONAL_STARTING_RESPAWN_TIME + FIXED_RESPAWN_TIME), function()
       GameRules:SendCustomMessage("Selected map: <font color='#FFB422'>"..ARENA_NAMES[CURRENT_PLAYED_ARENA].."</font>",0,0)
+      -- relocate camera to target to current arena | +0.1sec delay for relocating
+      Timers:CreateTimer(0.1, function()
+          CustomGameEventManager:Send_ServerToPlayer( player, "initCameraRelocate", nil )
+      end)
   end)
 end
 

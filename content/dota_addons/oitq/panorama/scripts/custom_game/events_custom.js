@@ -1,5 +1,6 @@
 "use strict";
 
+/*
 // if you want to keep camera on target - disable Schedule
 function InitialCameraRelocate()
 {
@@ -35,7 +36,18 @@ function InitialCameraRelocate_targetOff()
 {
     GameUI.SetCameraTarget( -1 );
 }
+*/
+
+function InitCameraRelocate()
+{
+    var hero = Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() );
+    // !!! IMPORTANT to change same value in settings.lua
+    var start_respawn_time = 5;
+    
+    GameUI.SetCameraTargetPosition( Entities.GetAbsOrigin( hero ), 1.0 )
+}
 
 (function () {
-    InitialCameraRelocate();
+    //InitialCameraRelocate();
+    GameEvents.Subscribe( "InitCameraRelocate", InitCameraRelocate);
 })();
