@@ -15,5 +15,7 @@ It is not simple task to survive… Can you beat it?
 ---
 
 ### Special Thanks
+* [ModDota] - All answers what I looking for, I found there.
+* [[MNoya]](https://github.com/mnoya) - for his respositories. I got a lot of experience there.
 * [BMD] - [Barebones libraries](https://github.com/bmddota/barebones)
 * [Myll] - [ModKit](https://github.com/stephenfournier/Dota-2-ModKit/)
