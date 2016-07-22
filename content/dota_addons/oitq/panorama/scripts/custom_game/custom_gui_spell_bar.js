@@ -121,11 +121,20 @@ function UpdateAbilityLPoints(player)
             {
                 if( y == abilityLevel )
                 {
+                    // for reset when starts a new round
+                    if( $("#abilityBox-"+i+"").GetChild(2).GetChild(0).BHasClass("LPActive") && abilityLevel == 0 )
+                    {
+                        for( var z = y; z < 6; z++ )
+                        {
+                            $("#abilityBox-"+i+"").GetChild(2).GetChild(z).RemoveClass("LPActive");
+                        }
+                    }
+                    
                     break;
                 }
                 else
                 {
-                    $("#abilityBox-"+i+"").GetChild(2).GetChild(y).AddClass("LPActive");                    
+                    $("#abilityBox-"+i+"").GetChild(2).GetChild(y).AddClass("LPActive");
                 }
             }
         }
