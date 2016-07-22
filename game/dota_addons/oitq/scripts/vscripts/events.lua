@@ -27,6 +27,13 @@ function GameMode:OnGameRulesStateChange(keys)
   elseif newState == DOTA_GAMERULES_STATE_HERO_SELECTION then
     -- select a random ARENA
     CURRENT_PLAYED_ARENA = RandomInt( 0, table.getn(ARENA_NAMES) ) -- getn count table values, start in 0
+  elseif newState == DOTA_GAMERULES_STATE_POST_GAME then
+      Timers:CreateTimer(5.0, function()
+          KILLS_TO_END_GAME_FOR_TEAM = 10
+          GameRules:SetSafeToLeave( false )
+          GameRules:SetGameWinner( -1 )
+          GameRules:ResetToHeroSelection()
+      end)
   end
 end
 
