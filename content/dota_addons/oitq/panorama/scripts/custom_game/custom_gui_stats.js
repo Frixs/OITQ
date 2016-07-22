@@ -35,6 +35,7 @@ function UpdateStats(hero)
             var currentXPpercentage  = xpOnLevel / percentOnLevel;
             if ( percentOnLevel == 0 ) { currentXPpercentage = 0; } // because of hero spaws later in game
             var XPbarWidthPercentage = (130 / 100) * currentXPpercentage; //max width of XP progress bar
+            if (!XPbarWidthPercentage){ XPbarWidthPercentage = 0; }
         }
     }
     else
