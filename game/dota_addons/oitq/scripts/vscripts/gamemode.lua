@@ -43,10 +43,10 @@ require('internal/events')
 require('wearables')
 -- settings.lua is where you can specify many different properties for your game mode and is one of the core barebones files.
 require('settings')
--- events.lua is where you can specify the actions to be taken when any event occurs and is one of the core barebones files.
-require('events')
 -- events_custom.lua contains custom functions.
 require('events_custom')
+-- events.lua is where you can specify the actions to be taken when any event occurs and is one of the core barebones files.
+require('events')
 
 
 -- This is a detailed example of many of the containers.lua possibilities, but only activates if you use the provided "playground" map
