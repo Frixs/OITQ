@@ -68,7 +68,7 @@ CustomNetTables:SetTableValue( "gameinfo", "xp_level_table", { XPlevel_1 = 0,
 															   XPlevel_5 = 120,
 															   XPlevel_6 = 200,
 															   XPlevel_6 = 300,
-															 } );
+															 } )
 
 ENABLE_FIRST_BLOOD = true               -- Should we enable first blood for the first kill in this game?
 HIDE_KILL_BANNERS = false               -- Should we hide the kill banners that show when a player is killed?

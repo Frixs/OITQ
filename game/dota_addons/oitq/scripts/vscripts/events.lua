@@ -18,20 +18,31 @@ function GameMode:OnGameRulesStateChange(keys)
 
   local newState = GameRules:State_Get()
 
-  if newState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+  if newState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then                     --[[GAME IN PROGRESS]]
     -- destroy pregame aura buff
     GameRules.npc_dota_pre_game_invul_global:ForceKill(false)
-  elseif newState == DOTA_GAMERULES_STATE_PRE_GAME then
+  elseif newState == DOTA_GAMERULES_STATE_PRE_GAME then                         --[[PRE GAME]]
     -- create pregame aura buff
     GameRules.npc_dota_pre_game_invul_global = CreateUnitByName("npc_dota_pre_game_invul_global", Vector(0,0,0),false,nil,nil,DOTA_TEAM_NEUTRALS)
-  elseif newState == DOTA_GAMERULES_STATE_HERO_SELECTION then
+  elseif newState == DOTA_GAMERULES_STATE_HERO_SELECTION then                   --[[HERO SELECTION]]
+    -- increment next round into CNT
+    local round_info = CustomNetTables:GetTableValue( "gameinfo", "round_info" )
+    local currentRound = 1
+    if not round_info then
+      CustomNetTables:SetTableValue( "gameinfo", "round_info", { roundNumb = currentRound } )
+    else
+      CustomNetTables:SetTableValue( "gameinfo", "round_info", { roundNumb = (round_info.roundNumb + 1) } )
+      currentRound = round_info.roundNumb + 1
+    end
+    -- increment required score
+    KILLS_TO_END_GAME_FOR_TEAM = KILLS_TO_END_GAME_FOR_TEAM * currentRound
+    -- reset winner of the previous round
+    GameRules:SetSafeToLeave( false )
+    GameRules:SetGameWinner( DOTA_TEAM_NOTEAM )
     -- select a random ARENA
     CURRENT_PLAYED_ARENA = RandomInt( 0, table.getn(ARENA_NAMES) ) -- getn count table values, start in 0
-  elseif newState == DOTA_GAMERULES_STATE_POST_GAME then
+  elseif newState == DOTA_GAMERULES_STATE_POST_GAME then                        --[[POST GAME]]
       Timers:CreateTimer(5.0, function()
-          KILLS_TO_END_GAME_FOR_TEAM = 10
-          GameRules:SetSafeToLeave( false )
-          GameRules:SetGameWinner( -1 )
           GameRules:ResetToHeroSelection()
       end)
   end
