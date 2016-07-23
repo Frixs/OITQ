@@ -7,6 +7,7 @@
     </styles>
 
     <scripts>
+        <include src="file://{resources}/scripts/custom_game/multiteam_flyout_scoreboard_custom.js" />
         <include src="s2r://panorama/scripts/custom_game/shared_scoreboard_updater.vjs_c" />
         <include src="s2r://panorama/scripts/custom_game/multiteam_flyout_scoreboard.vjs_c" />
     </scripts>
@@ -25,6 +26,9 @@
                         </Panel>
 					</Panel>
 					<Panel id="PlayersContainer" />
+                    <Panel id="ScoreContainer" class="ScoreCol_Score ScoreboardPanel">
+                        <Label id="PlayerScore" text="0" />
+                    </Panel>
 				</Panel>
 			</Panel>
 			<Panel hittest="false" id="_dynamic_team_3" class="FlyoutTeam">
@@ -37,6 +41,9 @@
                         </Panel>
 					</Panel>
 					<Panel id="PlayersContainer" />
+                    <Panel id="ScoreContainer" class="ScoreCol_Score ScoreboardPanel">
+                        <Label id="PlayerScore" text="0" />
+                    </Panel>
 				</Panel>
 			</Panel>
 			<Panel hittest="false" id="_dynamic_team_6" class="FlyoutTeam">
@@ -49,6 +56,9 @@
                         </Panel>
 					</Panel>
 					<Panel id="PlayersContainer" />
+                    <Panel id="ScoreContainer" class="ScoreCol_Score ScoreboardPanel">
+                        <Label id="PlayerScore" text="0" />
+                    </Panel>
 				</Panel>
 			</Panel>
 			<Panel hittest="false" id="_dynamic_team_7" class="FlyoutTeam">
@@ -61,6 +71,9 @@
                         </Panel>
 					</Panel>
 					<Panel id="PlayersContainer" />
+                    <Panel id="ScoreContainer" class="ScoreCol_Score ScoreboardPanel">
+                        <Label id="PlayerScore" text="0" />
+                    </Panel>
 				</Panel>
 			</Panel>
 			<Panel hittest="false" id="_dynamic_team_8" class="FlyoutTeam">
@@ -73,6 +86,9 @@
                         </Panel>
 					</Panel>
 					<Panel id="PlayersContainer" />
+                    <Panel id="ScoreContainer" class="ScoreCol_Score ScoreboardPanel">
+                        <Label id="PlayerScore" text="0" />
+                    </Panel>
 				</Panel>
 			</Panel>
 			<Panel hittest="false" id="_dynamic_team_9" class="FlyoutTeam">
@@ -85,6 +101,9 @@
                         </Panel>
 					</Panel>
 					<Panel id="PlayersContainer" />
+                    <Panel id="ScoreContainer" class="ScoreCol_Score ScoreboardPanel">
+                        <Label id="PlayerScore" text="0" />
+                    </Panel>
 				</Panel>
 			</Panel>
 			<Panel hittest="false" id="_dynamic_team_10" class="FlyoutTeam">
@@ -97,6 +116,9 @@
                         </Panel>
 					</Panel>
 					<Panel id="PlayersContainer" />
+                    <Panel id="ScoreContainer" class="ScoreCol_Score ScoreboardPanel">
+                        <Label id="PlayerScore" text="0" />
+                    </Panel>
 				</Panel>
 			</Panel>
 			<Panel hittest="false" id="_dynamic_team_11" class="FlyoutTeam">
@@ -109,6 +131,9 @@
                         </Panel>
 					</Panel>
 					<Panel id="PlayersContainer" />
+                    <Panel id="ScoreContainer" class="ScoreCol_Score ScoreboardPanel">
+                        <Label id="PlayerScore" text="0" />
+                    </Panel>
 				</Panel>
 			</Panel>
 			<Panel hittest="false" id="_dynamic_team_12" class="FlyoutTeam">
@@ -121,6 +146,9 @@
                         </Panel>
 					</Panel>
 					<Panel id="PlayersContainer" />
+                    <Panel id="ScoreContainer" class="ScoreCol_Score ScoreboardPanel">
+                        <Label id="PlayerScore" text="0" />
+                    </Panel>
 				</Panel>
 			</Panel>
 			<Panel hittest="false" id="_dynamic_team_13" class="FlyoutTeam">
@@ -133,6 +161,9 @@
                         </Panel>
 					</Panel>
 					<Panel id="PlayersContainer" />
+                    <Panel id="ScoreContainer" class="ScoreCol_Score ScoreboardPanel">
+                        <Label id="PlayerScore" text="0" />
+                    </Panel>
 				</Panel>
 			</Panel>
 		</Panel>

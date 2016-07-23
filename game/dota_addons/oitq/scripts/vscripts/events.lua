@@ -247,6 +247,22 @@ function GameMode:OnPlayerPickHero(keys)
   -- set unlearnable skills to Lv1
   InitialAbilityLvUp( heroEntity )
 
+  -- set starting gold amount
+  local currentGold = heroEntity:GetGold()
+  if currentGold > STARTING_GOLD then
+    heroEntity:SpendGold( (currentGold - STARTING_GOLD), DOTA_ModifyGold_Unspecified )
+  elseif currentGold < STARTING_GOLD then
+    PlayerResource:ModifyGold( player:GetPlayerID(), (STARTING_GOLD - currentGold), true, DOTA_ModifyGold_Unspecified )
+  end
+
+  -- Create OR Reset score per round
+  local teamScore = CustomNetTables:GetTableValue( "gameinfo", "teamScore" )
+  if not teamScore then
+    teamScore = {}
+  end
+  teamScore[playerTeam] = 0
+  CustomNetTables:SetTableValue( "gameinfo", "teamScore", teamScore )
+
   -- Emit sounds
   EmitAnnouncerSoundForPlayer("announcer_dlc_defensegrid_announcer_battle_prepare", player:GetPlayerID())
 
@@ -280,7 +296,7 @@ function GameMode:OnPlayerPickHero(keys)
           CustomGameEventManager:Send_ServerToPlayer( player, "initCameraRelocate", nil )
       end)
   end)
-  
+
 end
 
 --------------------------------------------------------------------------------
@@ -351,6 +367,14 @@ function GameMode:OnEntityKilled( keys )
         killerEntity:SetModifierStackCount("modifier_shuriken_shots", killerEntity, stacks + shurikens_to_add)
       end
 
+      -- increment team score
+      local teamScore = CustomNetTables:GetTableValue( "gameinfo", "teamScore" )
+      local player = killerEntity:GetOwner()
+      local playerTeam = tostring(player:GetTeam())
+      teamScore[playerTeam] = teamScore[playerTeam] + 1
+      CustomNetTables:SetTableValue( "gameinfo", "teamScore", teamScore )
+
+      -- gain experience + custom message
       if killedUnit ~= killerEntity then
         -- Add experience to killerEntity and call custom message
         killerEntity:AddExperience( 10, 0, false, false ) --XP per KILL enemy hero
