@@ -1,0 +1,140 @@
+<root>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/multiteam_flyout_scoreboard_custom.css" />
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="s2r://panorama/styles/custom_game/shared_scoreboard_styles.vcss_c" />
+        <include src="s2r://panorama/styles/custom_game/multiteam_flyout_scoreboard.vcss_c" />
+    </styles>
+
+    <scripts>
+        <include src="s2r://panorama/scripts/custom_game/shared_scoreboard_updater.vjs_c" />
+        <include src="s2r://panorama/scripts/custom_game/multiteam_flyout_scoreboard.vjs_c" />
+    </scripts>
+
+  <Panel hittest="false" class="FlyoutScoreboardRoot">
+		<Panel id="TeamsContainer">
+			<Panel id="RadiantHeader" class="Legend">
+			</Panel>
+			<Panel hittest="false" id="_dynamic_team_2" class="FlyoutTeam">
+				<Panel class="FlyoutTeamData">
+					<Panel class="TeamInfo ScoreCol_TeamInfo">
+						<Panel id="TeamColor_GradentFromTransparentLeft" />
+                        <Panel id="TeamLogo" class="TeamIcon">
+                            <Image class="TeamIconImage" src="file://{resources}/images/custom_game/team_icons/team_icon_tiger_01.png" defaultsrc="" />
+                            <Panel class="TeamIconBg" style="background-color:#3dd296;" />
+                        </Panel>
+					</Panel>
+					<Panel id="PlayersContainer" />
+				</Panel>
+			</Panel>
+			<Panel hittest="false" id="_dynamic_team_3" class="FlyoutTeam">
+				<Panel class="FlyoutTeamData">
+					<Panel class="TeamInfo ScoreCol_TeamInfo">
+						<Panel id="TeamColor_GradentFromTransparentLeft" />
+                        <Panel id="TeamLogo" class="TeamIcon">
+                            <Image class="TeamIconImage" src="file://{resources}/images/custom_game/team_icons/team_icon_monkey_01.png" defaultsrc="" />
+                            <Panel class="TeamIconBg" style="background-color:#F3C909;" />
+                        </Panel>
+					</Panel>
+					<Panel id="PlayersContainer" />
+				</Panel>
+			</Panel>
+			<Panel hittest="false" id="_dynamic_team_6" class="FlyoutTeam">
+				<Panel class="FlyoutTeamData">
+					<Panel class="TeamInfo ScoreCol_TeamInfo">
+						<Panel id="TeamColor_GradentFromTransparentLeft" />
+                        <Panel id="TeamLogo" class="TeamIcon">
+                            <Image class="TeamIconImage" src="file://{resources}/images/custom_game/team_icons/team_icon_dragon_01.png" defaultsrc="" />
+                            <Panel class="TeamIconBg" style="background-color:#c54da8;" />
+                        </Panel>
+					</Panel>
+					<Panel id="PlayersContainer" />
+				</Panel>
+			</Panel>
+			<Panel hittest="false" id="_dynamic_team_7" class="FlyoutTeam">
+				<Panel class="FlyoutTeamData">
+					<Panel class="TeamInfo ScoreCol_TeamInfo">
+						<Panel id="TeamColor_GradentFromTransparentLeft" />
+                        <Panel id="TeamLogo" class="TeamIcon">
+                            <Image class="TeamIconImage" src="file://{resources}/images/custom_game/team_icons/team_icon_dog_01.png" defaultsrc="" />
+                            <Panel class="TeamIconBg" style="background-color:#FF6C00;" />
+                        </Panel>
+					</Panel>
+					<Panel id="PlayersContainer" />
+				</Panel>
+			</Panel>
+			<Panel hittest="false" id="_dynamic_team_8" class="FlyoutTeam">
+				<Panel class="FlyoutTeamData">
+					<Panel class="TeamInfo ScoreCol_TeamInfo">
+						<Panel id="TeamColor_GradentFromTransparentLeft" />
+                        <Panel id="TeamLogo" class="TeamIcon">
+                            <Image class="TeamIconImage" src="file://{resources}/images/custom_game/team_icons/team_icon_rooster_01.png" defaultsrc="" />
+                            <Panel class="TeamIconBg" style="background-color:#3455FF;" />
+                        </Panel>
+					</Panel>
+					<Panel id="PlayersContainer" />
+				</Panel>
+			</Panel>
+			<Panel hittest="false" id="_dynamic_team_9" class="FlyoutTeam">
+				<Panel class="FlyoutTeamData">
+					<Panel class="TeamInfo ScoreCol_TeamInfo">
+						<Panel id="TeamColor_GradentFromTransparentLeft" />
+                        <Panel id="TeamLogo" class="TeamIcon">
+                            <Image class="TeamIconImage" src="file://{resources}/images/custom_game/team_icons/team_icon_ram_01.png" defaultsrc="" />
+                            <Panel class="TeamIconBg" style="background-color:#65d413;" />
+                        </Panel>
+					</Panel>
+					<Panel id="PlayersContainer" />
+				</Panel>
+			</Panel>
+			<Panel hittest="false" id="_dynamic_team_10" class="FlyoutTeam">
+				<Panel class="FlyoutTeamData">
+					<Panel class="TeamInfo ScoreCol_TeamInfo">
+						<Panel id="TeamColor_GradentFromTransparentLeft" />
+                        <Panel id="TeamLogo" class="TeamIcon">
+                            <Image class="TeamIconImage" src="file://{resources}/images/custom_game/team_icons/team_icon_rat_01.png" defaultsrc="" />
+                            <Panel class="TeamIconBg" style="background-color:#815336;" />
+                        </Panel>
+					</Panel>
+					<Panel id="PlayersContainer" />
+				</Panel>
+			</Panel>
+			<Panel hittest="false" id="_dynamic_team_11" class="FlyoutTeam">
+				<Panel class="FlyoutTeamData">
+					<Panel class="TeamInfo ScoreCol_TeamInfo">
+						<Panel id="TeamColor_GradentFromTransparentLeft" />
+                        <Panel id="TeamLogo" class="TeamIcon">
+                            <Image class="TeamIconImage" src="file://{resources}/images/custom_game/team_icons/team_icon_boar_01.png" defaultsrc="" />
+                            <Panel class="TeamIconBg" style="background-color:#1bc0d8;" />
+                        </Panel>
+					</Panel>
+					<Panel id="PlayersContainer" />
+				</Panel>
+			</Panel>
+			<Panel hittest="false" id="_dynamic_team_12" class="FlyoutTeam">
+				<Panel class="FlyoutTeamData">
+					<Panel class="TeamInfo ScoreCol_TeamInfo">
+						<Panel id="TeamColor_GradentFromTransparentLeft" />
+                        <Panel id="TeamLogo" class="TeamIcon">
+                            <Image class="TeamIconImage" src="file://{resources}/images/custom_game/team_icons/team_icon_snake_01.png" defaultsrc="" />
+                            <Panel class="TeamIconBg" style="background-color:#c7e40d;" />
+                        </Panel>
+					</Panel>
+					<Panel id="PlayersContainer" />
+				</Panel>
+			</Panel>
+			<Panel hittest="false" id="_dynamic_team_13" class="FlyoutTeam">
+				<Panel class="FlyoutTeamData">
+					<Panel class="TeamInfo ScoreCol_TeamInfo">
+						<Panel id="TeamColor_GradentFromTransparentLeft" />
+                        <Panel id="TeamLogo" class="TeamIcon">
+                            <Image class="TeamIconImage" src="file://{resources}/images/custom_game/team_icons/team_icon_horse_01.png" defaultsrc="" />
+                            <Panel class="TeamIconBg" style="background-color:#8c2af4;" />
+                        </Panel>
+					</Panel>
+					<Panel id="PlayersContainer" />
+				</Panel>
+			</Panel>
+		</Panel>
+  </Panel>
+</root>

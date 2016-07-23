@@ -1,0 +1,43 @@
+<root>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/multiteam_flyout_scoreboard_custom.css" />
+ 		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/shared_scoreboard_styles.css" />
+        <include src="file://{resources}/styles/custom_game/multiteam_flyout_scoreboard.css" />
+    </styles>
+	<script>
+		function ToggleMute()
+		{
+			var playerId = $.GetContextPanel().GetAttributeInt( "player_id", -1 );
+			if ( playerId !== -1 )
+			{
+				var newIsMuted = !Game.IsPlayerMuted( playerId );
+				Game.SetPlayerMuted( playerId, newIsMuted );
+				$.GetContextPanel().SetHasClass( "player_muted", newIsMuted );
+			}
+		}
+
+		(function()
+		{
+			var playerId = $.GetContextPanel().GetAttributeInt( "player_id", -1 );
+			$.GetContextPanel().SetHasClass( "player_muted", Game.IsPlayerMuted( playerId ) );
+		})();
+	</script>
+	<Panel hittest="false" class="PlayerRow">
+		<Panel hittest="false" id="PlayerRowContainer">
+			<Panel id="Hero" class="ScoreCol_Hero ScoreboardPanel">
+                <Image id="HeroIcon" src="file://{images}/heroes/npc_dota_hero_juggernaut.png" defaultsrc="" />
+			</Panel>
+			<Panel id="PlayerDetailsContainer" class="ScoreCol_PlayerDetails ScoreboardPanel">
+				<Panel id="PlayerAndHeroName">
+					<Label id="PlayerName" text="AAAAA" />
+				</Panel>
+				<Label id="TeammateGoldAmount" text="0" />
+				<Button id="MuteButton" onactivate="ToggleMute();" />
+			</Panel>
+			<Panel id="ScoreContainer" class="ScoreCol_Score ScoreboardPanel">
+				<Label id="PlayerScore" text="0" />
+			</Panel>
+		</Panel>
+	</Panel>
+</root>
