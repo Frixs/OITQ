@@ -25,24 +25,13 @@ function GameMode:OnGameRulesStateChange(keys)
     -- create pregame aura buff
     GameRules.npc_dota_pre_game_invul_global = CreateUnitByName("npc_dota_pre_game_invul_global", Vector(0,0,0),false,nil,nil,DOTA_TEAM_NEUTRALS)
   elseif newState == DOTA_GAMERULES_STATE_HERO_SELECTION then                   --[[HERO SELECTION]]
-    -- increment next round into CNT
-    local round_info = CustomNetTables:GetTableValue( "gameinfo", "round_info" )
-    local currentRound = 1
-    if not round_info then
-      CustomNetTables:SetTableValue( "gameinfo", "round_info", { roundNumb = currentRound } )
-    else
-      CustomNetTables:SetTableValue( "gameinfo", "round_info", { roundNumb = (round_info.roundNumb + 1) } )
-      currentRound = round_info.roundNumb + 1
-    end
-    -- increment required score
-    KILLS_TO_END_GAME_FOR_TEAM = KILLS_TO_END_GAME_FOR_TEAM * currentRound
     -- reset winner of the previous round
     GameRules:SetSafeToLeave( false )
     GameRules:SetGameWinner( DOTA_TEAM_NOTEAM )
     -- select a random ARENA
     CURRENT_PLAYED_ARENA = RandomInt( 0, table.getn(ARENA_NAMES) ) -- getn count table values, start in 0
   elseif newState == DOTA_GAMERULES_STATE_POST_GAME then                        --[[POST GAME]]
-      Timers:CreateTimer(5.0, function()
+      Timers:CreateTimer(10.0, function()
           GameRules:ResetToHeroSelection()
       end)
   end
@@ -352,13 +341,14 @@ function GameMode:OnEntityKilled( keys )
     -- set respawn position according to respawn locations table
     if RANDOM_SPAWN then killedUnit:SetRespawnPosition( SPAWN_LOCATIONS[CURRENT_PLAYED_ARENA][random_spawn_point] ) end
 
-    -- if player controlled hero killed player controlled hero
+    -- controlled hero
+    -- killed
+    -- controlled hero
     if killerEntity:IsRealHero() then
       -- při zabití nepřítele - dodat jeden shuriken (speciální schopnosti i více)
       local ability_shuriken = killerEntity:FindAbilityByName("shuriken_spell")
       if ability_shuriken then
         local shurikens_to_add = 1
-
         if killedUnit:HasModifier("modifier_shuriken_ground_pound_bonus") then
           shurikens_to_add = 2
         end
@@ -370,9 +360,16 @@ function GameMode:OnEntityKilled( keys )
       -- increment team score
       local teamScore = CustomNetTables:GetTableValue( "gameinfo", "teamScore" )
       local player = killerEntity:GetOwner()
-      local playerTeam = tostring(player:GetTeam())
-      teamScore[playerTeam] = teamScore[playerTeam] + 1
+      local playerTeam = player:GetTeam()
+      local playerTeamString = tostring(playerTeam)
+      teamScore[playerTeamString] = teamScore[playerTeamString] + 1
       CustomNetTables:SetTableValue( "gameinfo", "teamScore", teamScore )
+
+      -- check END of GAME
+      if teamScore[playerTeamString] >= KILLS_TO_END_GAME_FOR_TEAM then
+        GameRules:SetSafeToLeave( true )
+        GameRules:SetGameWinner( playerTeam )
+      end
 
       -- gain experience + custom message
       if killedUnit ~= killerEntity then
