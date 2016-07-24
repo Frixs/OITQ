@@ -76,7 +76,7 @@ LOSE_GOLD_ON_DEATH = false              -- Should we have players lose the norma
 SHOW_ONLY_PLAYER_INVENTORY = false      -- Should we only allow players to see their own inventory even when selecting other units?
 DISABLE_STASH_PURCHASING = true        -- Should we prevent players from being able to buy items into their stash when not at a shop?
 DISABLE_ANNOUNCER = true               -- Should we disable the announcer from working in the game?
-FORCE_PICKED_HERO = "npc_dota_hero_juggernaut"                 -- What hero should we force all players to spawn as? (e.g. "npc_dota_hero_axe").  Use nil to allow players to pick their own hero.
+FORCE_PICKED_HERO = "npc_dota_hero_juggernaut"                 -- What hero should we force all players to spawn as? (e.g. "npc_dota_hero_juggernaut").  Use nil to allow players to pick their own hero.
 
 ADDITIONAL_STARTING_RESPAWN_TIME = 2    -- This time + FIXED_RESPAWN_TIME = Spent time in LOBBY ROOM, after that relocate to ARENA. !!! IMPORTANT to change this (this + FIXED_RESPAWN_TIME) in panorama/scripts/custom_game/events_custom.js
 FIXED_RESPAWN_TIME = 3                  -- What time should we use for a fixed respawn timer?  Use -1 to keep the default dota behavior.
@@ -92,9 +92,9 @@ STARTING_GOLD = 50                      -- How much starting gold should we give
 DISABLE_DAY_NIGHT_CYCLE = false         -- Should we disable the day night cycle from naturally occurring? (Manual adjustment still possible)
 DISABLE_KILLING_SPREE_ANNOUNCER = false -- Shuold we disable the killing spree announcer?
 DISABLE_STICKY_ITEM = false             -- Should we disable the sticky item button in the quick buy area?
-SKIP_TEAM_SETUP = true                 -- Should we skip the team setup entirely?
+SKIP_TEAM_SETUP = false                 -- Should we skip the team setup entirely?
 ENABLE_AUTO_LAUNCH = true               -- Should we automatically have the game complete team setup after AUTO_LAUNCH_DELAY seconds?
-AUTO_LAUNCH_DELAY = 0                  -- How long should the default team selection launch timer be?  The default for custom games is 30.  Setting to 0 will skip team selection.
+AUTO_LAUNCH_DELAY = 30                  -- How long should the default team selection launch timer be?  The default for custom games is 30.  Setting to 0 will skip team selection.
 LOCK_TEAM_SETUP = false                 -- Should we lock the teams initially?  Note that the host can still unlock the teams 
 
 
