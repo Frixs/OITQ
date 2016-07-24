@@ -66,6 +66,7 @@
     <!-- CustomUIElements go here.-->
 
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/events_custom.xml" />
+    <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/custom_hero_selection.xml" />
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/custom_gui_hp_bar.xml" />
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/custom_gui_spell_bar.xml" />
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/custom_gui_inventory.xml" />

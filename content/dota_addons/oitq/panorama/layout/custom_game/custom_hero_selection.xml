@@ -1,0 +1,14 @@
+<root>
+  <styles>
+    <include src="file://{resources}/styles/custom_game/custom_hero_selection.css" />
+  </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/custom_hero_selection.js" />
+  </scripts>
+  <Panel class="BaseHud" hittest="false">
+    <Panel id="heroSelection-background" hittest="false">
+        <Label id="selectionUp" text="UP" onactivate="closeWindow();" />
+        <Label id="selectionDown" text="DOWN" onactivate="openWindow();" />
+    </Panel>
+  </Panel>
+</root>

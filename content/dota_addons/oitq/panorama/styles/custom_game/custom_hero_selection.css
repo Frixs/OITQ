@@ -1,0 +1,39 @@
+.BaseHud
+{
+    width: 100%;
+    height: 100%;
+    flow-children: down;
+}
+
+#heroSelection-background
+{
+    z-index: 1;
+    horizontal-align: center;
+    vertical-align: middle;
+    width:  225px;
+    height: 258px;
+    background-color: #FF0000FF;
+    transition: transform 0.5s ease-in-out 0.0s;
+/*
+    background-image: url("file://{images}/custom_game/custom_gui/stats_wrapper.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: left top;
+*/
+}
+
+.translator
+{
+    transform:translate3d(0px,-400px,0px);
+}
+
+#selectionUp, #selectionDown
+{
+    color: #000000FF;
+    font-size: 26px;
+}
+
+#selectionDown
+{
+    margin-left: 40px;
+}
