@@ -1,0 +1,21 @@
+<root>
+    <styles>
+ 		<include src="file://{resources}/styles/dotastyles.css" />
+        <include src="file://{resources}/styles/custom_game/multiteam_end_screen.css" />
+    </styles>
+	<Panel class="PlayerRow">
+		<Panel hittest="false" id="PlayerRowContainer">
+			<Panel id="Hero" class="ScoreCol_Hero ScoreboardPanel">
+                <Image id="HeroIcon" src="" defaultsrc="" />
+			</Panel>
+			<Panel id="PlayerDetailsContainer" class="ScoreCol_PlayerDetails ScoreboardPanel">
+				<Panel id="PlayerAndHeroName">
+					<Label id="PlayerName" text="AAAAA" />
+				</Panel>
+			</Panel>
+			<Panel id="GoldContainer" class="ScoreCol_Gold ScoreboardPanel">
+				<Label id="PlayerGoldAmount" text="0" />
+			</Panel>
+		</Panel>
+	</Panel>
+</root>
