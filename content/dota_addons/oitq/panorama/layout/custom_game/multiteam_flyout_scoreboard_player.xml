@@ -1,0 +1,24 @@
+<root>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/multiteam_flyout_scoreboard_custom.css" />
+		<include src="file://{resources}/styles/custom_game/shared_scoreboard_styles.css" />
+        <include src="file://{resources}/styles/custom_game/multiteam_flyout_scoreboard.css" />
+    </styles>
+	<scripts>
+        
+	</scripts>
+	<Panel hittest="false" class="PlayerRow">
+		<Panel hittest="false" id="PlayerRowContainer">
+			<Panel id="Hero" class="ScoreCol_Hero ScoreboardPanel">
+                <Image id="HeroIcon" src="" defaultsrc="" />
+			</Panel>
+			<Panel id="PlayerDetailsContainer" class="ScoreCol_PlayerDetails ScoreboardPanel">
+				<Panel id="PlayerAndHeroName">
+					<Label id="PlayerName" text="AAAAA" />
+				</Panel>
+				<Label id="TeammateGoldAmount" text="0" />
+				<Button id="MuteButton" onactivate="ToggleMute();" />
+			</Panel>
+		</Panel>
+	</Panel>
+</root>

@@ -1,7 +1,7 @@
 -- In this file you can set up all the properties and settings for your game mode.
 
 
-RANDOM_SPAWN = true 					-- Should the heroes spawn in random locations in current arena
+RANDOM_SPAWN = false 					-- Should the heroes spawn in random locations in current arena
 ENABLE_HERO_RESPAWN = true              -- Should the heroes automatically respawn on a timer or stay dead until manually respawned
 UNIVERSAL_SHOP_MODE = false             -- Should the main shop contain Secret Shop items as well as regular items
 ALLOW_SAME_HERO_SELECTION = true        -- Should we let people select the same hero as each other
@@ -40,8 +40,8 @@ ENABLE_TOWER_BACKDOOR_PROTECTION = false-- Should we enable backdoor protection 
 REMOVE_ILLUSIONS_ON_DEATH = false       -- Should we remove all illusions if the main hero dies?
 DISABLE_GOLD_SOUNDS = false             -- Should we disable the gold sound when players get gold?
 
-END_GAME_ON_KILLS = true                -- Should the game end after a certain number of kills?
-KILLS_TO_END_GAME_FOR_TEAM = 20         -- How many kills for a team should signify an end of game?
+END_GAME_ON_KILLS = false                -- Should the game end after a certain number of kills?
+KILLS_TO_END_GAME_FOR_TEAM = 5         -- How many kills for a team should signify an end of game?
 
 USE_CUSTOM_HERO_LEVELS = true           -- Should we allow heroes to have custom levels?
 MAX_LEVEL = 7                           -- What level should we let heroes get to?
@@ -68,7 +68,7 @@ CustomNetTables:SetTableValue( "gameinfo", "xp_level_table", { XPlevel_1 = 0,
 															   XPlevel_5 = 120,
 															   XPlevel_6 = 200,
 															   XPlevel_6 = 300,
-															 } );
+															 } )
 
 ENABLE_FIRST_BLOOD = true               -- Should we enable first blood for the first kill in this game?
 HIDE_KILL_BANNERS = false               -- Should we hide the kill banners that show when a player is killed?
@@ -76,7 +76,7 @@ LOSE_GOLD_ON_DEATH = false              -- Should we have players lose the norma
 SHOW_ONLY_PLAYER_INVENTORY = false      -- Should we only allow players to see their own inventory even when selecting other units?
 DISABLE_STASH_PURCHASING = true        -- Should we prevent players from being able to buy items into their stash when not at a shop?
 DISABLE_ANNOUNCER = true               -- Should we disable the announcer from working in the game?
-FORCE_PICKED_HERO = nil                 -- What hero should we force all players to spawn as? (e.g. "npc_dota_hero_axe").  Use nil to allow players to pick their own hero.
+FORCE_PICKED_HERO = "npc_dota_hero_juggernaut"                 -- What hero should we force all players to spawn as? (e.g. "npc_dota_hero_juggernaut").  Use nil to allow players to pick their own hero.
 
 ADDITIONAL_STARTING_RESPAWN_TIME = 2    -- This time + FIXED_RESPAWN_TIME = Spent time in LOBBY ROOM, after that relocate to ARENA. !!! IMPORTANT to change this (this + FIXED_RESPAWN_TIME) in panorama/scripts/custom_game/events_custom.js
 FIXED_RESPAWN_TIME = 3                  -- What time should we use for a fixed respawn timer?  Use -1 to keep the default dota behavior.
@@ -92,9 +92,9 @@ STARTING_GOLD = 50                      -- How much starting gold should we give
 DISABLE_DAY_NIGHT_CYCLE = false         -- Should we disable the day night cycle from naturally occurring? (Manual adjustment still possible)
 DISABLE_KILLING_SPREE_ANNOUNCER = false -- Shuold we disable the killing spree announcer?
 DISABLE_STICKY_ITEM = false             -- Should we disable the sticky item button in the quick buy area?
-SKIP_TEAM_SETUP = true                 -- Should we skip the team setup entirely?
+SKIP_TEAM_SETUP = false                 -- Should we skip the team setup entirely?
 ENABLE_AUTO_LAUNCH = true               -- Should we automatically have the game complete team setup after AUTO_LAUNCH_DELAY seconds?
-AUTO_LAUNCH_DELAY = 0                  -- How long should the default team selection launch timer be?  The default for custom games is 30.  Setting to 0 will skip team selection.
+AUTO_LAUNCH_DELAY = 30                  -- How long should the default team selection launch timer be?  The default for custom games is 30.  Setting to 0 will skip team selection.
 LOCK_TEAM_SETUP = false                 -- Should we lock the teams initially?  Note that the host can still unlock the teams 
 
 
