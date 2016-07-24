@@ -46,7 +46,7 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 
 	var playerInfo = Game.GetPlayerInfo( playerId );
 	if ( playerInfo )
-	{
+	{        
 		isTeammate = ( playerInfo.player_team_id == localPlayerTeamId );
 		if ( isTeammate )
 		{
@@ -204,7 +204,12 @@ function _ScoreboardUpdater_UpdateTeamPanel( scoreboardConfig, containerPanel, t
 
 	//-------------------------
 	// Valve why you no SetScore method...
-	teamDetails.team_score  = GetKillsForTeam(teamId)
+    var teamScore = CustomNetTables.GetTableValue( "gameinfo", "teamScore" );
+    if(teamScore)
+    {
+        teamDetails.team_score = teamScore[teamId.toString()];
+    }
+	//teamDetails.team_score  = GetKillsForTeam(teamId)
 	//-------------------------
 
 	var teamPanelName = "_dynamic_team_" + teamId;

@@ -260,7 +260,7 @@ function GameMode:OnPlayerPickHero(keys)
   if not teamScore then
     teamScore = {}
   end
-  teamScore[playerTeam] = 0
+  teamScore[tostring(playerTeam)] = 0
   CustomNetTables:SetTableValue( "gameinfo", "teamScore", teamScore )
 
   -- Emit sounds
