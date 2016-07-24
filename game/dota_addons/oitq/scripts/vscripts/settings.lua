@@ -7,7 +7,7 @@ UNIVERSAL_SHOP_MODE = false             -- Should the main shop contain Secret S
 ALLOW_SAME_HERO_SELECTION = true        -- Should we let people select the same hero as each other
 
 HERO_SELECTION_TIME = 30.0              -- How long should we let people select their hero?
-PRE_GAME_TIME = 20.0                    -- How long after people select their heroes should the horn blow and the game start?
+PRE_GAME_TIME = 25.0                    -- How long after people select their heroes should the horn blow and the game start?
 POST_GAME_TIME = 60.0                   -- How long should we let people look at the scoreboard before closing the server automatically?
 TREE_REGROW_TIME = 60.0                 -- How long should it take individual trees to respawn after being cut down/destroyed?
 
@@ -78,7 +78,7 @@ DISABLE_STASH_PURCHASING = true        -- Should we prevent players from being a
 DISABLE_ANNOUNCER = true               -- Should we disable the announcer from working in the game?
 FORCE_PICKED_HERO = "npc_dota_hero_juggernaut"                 -- What hero should we force all players to spawn as? (e.g. "npc_dota_hero_juggernaut").  Use nil to allow players to pick their own hero.
 
-ADDITIONAL_STARTING_RESPAWN_TIME = 2    -- This time + FIXED_RESPAWN_TIME = Spent time in LOBBY ROOM, after that relocate to ARENA. !!! IMPORTANT to change this (this + FIXED_RESPAWN_TIME) in panorama/scripts/custom_game/events_custom.js
+ADDITIONAL_STARTING_RESPAWN_TIME = 7    -- This time + FIXED_RESPAWN_TIME = Spent time in LOBBY ROOM, after that relocate to ARENA. !!! IMPORTANT to change this (this + FIXED_RESPAWN_TIME) in panorama/scripts/custom_game/events_custom.js
 FIXED_RESPAWN_TIME = 3                  -- What time should we use for a fixed respawn timer?  Use -1 to keep the default dota behavior.
 FOUNTAIN_CONSTANT_MANA_REGEN = -1       -- What should we use for the constant fountain mana regen?  Use -1 to keep the default dota behavior.
 FOUNTAIN_PERCENTAGE_MANA_REGEN = -1     -- What should we use for the percentage fountain mana regen?  Use -1 to keep the default dota behavior.

@@ -52,6 +52,13 @@ function SendCustomMsg( eventSourceIndex, args )
     end
 end
 
+function HeroReplace( eventSourceIndex, args )
+    local playerID = args['playerID']
+    local oldHero  = PlayerResource:GetSelectedHeroEntity(playerID)
+    PlayerResource:ReplaceHeroWith(playerID, args['heroName'], STARTING_GOLD, 0)
+    UTIL_Remove(oldHero)
+end
+
 --//--\\--//--\\--
 CustomGameEventManager:RegisterListener( "OnDropItemInfo", OnDropItem )
 CustomGameEventManager:RegisterListener( "OnEmitSound_countdown", OnEmitSound_global )
