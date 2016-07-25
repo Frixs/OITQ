@@ -95,6 +95,28 @@
 #selection-hero-3{ position: 40px 195px 0px; }
 #selection-hero-4{ position: 0px 260px 0px; }
 
+#selection-hero-preview-wrapper
+{
+    horizontal-align: center;
+    vertical-align: middle;
+    width: 327px;
+    height: 292px;
+    position: -25px -95px 0px;
+}
+
+.selection-hero-portrait
+{
+    width: 327px;
+    height: 292px;
+}
+
+.selection-hero-portrait-frame
+{
+    width: 329px;
+    height: 294px;
+    border: 3px solid #dab77e;    
+}
+
 #selection-name-layer
 {
     z-index: 13;

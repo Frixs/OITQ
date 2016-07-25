@@ -16,7 +16,7 @@ function AutoUpdate()
 function AbilityShowTooltip(spellPosition)
 {
 	var abilityButton = $("#selection-ability-"+spellPosition+"").GetChild(1);
-	var abilityName = $("#selection-ability-"+spellPosition+"").GetChild(1).GetChild(0).text;
+	var abilityName = $("#selection-ability-"+spellPosition+"").GetChild(1).GetChild(0).abilityname;
 
 	$.DispatchEvent( "DOTAShowAbilityTooltip", abilityButton, abilityName );
 }
