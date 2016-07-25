@@ -13,6 +13,20 @@ function AutoUpdate()
     AutoUpdate();
 })();
 
+function AbilityShowTooltip(spellPosition)
+{
+	var abilityButton = $("#selection-ability-"+spellPosition+"").GetChild(1);
+	var abilityName = $("#selection-ability-"+spellPosition+"").GetChild(1).GetChild(0).text;
+
+	$.DispatchEvent( "DOTAShowAbilityTooltip", abilityButton, abilityName );
+}
+      
+function AbilityHideTooltip(spellPosition)
+{
+	var abilityButton = $("#selection-ability-"+spellPosition+"").GetChild(1);
+	$.DispatchEvent( "DOTAHideAbilityTooltip", abilityButton );
+}
+
 function closeWindow()
 {
     $("#heroSelection-background").AddClass("translator");
