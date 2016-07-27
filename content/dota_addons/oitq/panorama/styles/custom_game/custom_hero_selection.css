@@ -55,6 +55,24 @@
     color: #ffefccFF;
 }
 
+#selection-time-info
+{
+    opacity: 0;
+    horizontal-align: center;
+    vertical-align: bottom;
+    margin-bottom: 12px;
+    margin-left: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#selection-time-info2
+{
+    vertical-align: top;
+    margin-top: 12px;
+    margin-left: 4px;
+}
+
 .selection-hero
 {
     horizontal-align: left;

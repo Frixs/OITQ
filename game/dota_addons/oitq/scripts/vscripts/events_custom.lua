@@ -59,10 +59,21 @@ function HeroReplace( eventSourceIndex, args )
     UTIL_Remove(oldHero)
 end
 
+function IsGamePausedStatus( eventSourceIndex, args )
+    local GameStatus = false
+    if GameRules:IsGamePaused() then
+        GameStatus = true
+    end
+
+    CustomGameEventManager:Send_ServerToAllClients( "HeroSelectionPauseInfo", { pause = GameStatus } )
+end
+
 --//--\\--//--\\--
 CustomGameEventManager:RegisterListener( "OnDropItemInfo", OnDropItem )
 CustomGameEventManager:RegisterListener( "OnEmitSound_countdown", OnEmitSound_global )
 CustomGameEventManager:RegisterListener( "SendGameStart", SendCustomMsg )
+CustomGameEventManager:RegisterListener( "is_game_paused", IsGamePausedStatus )
+CustomGameEventManager:RegisterListener( "selectHero", HeroReplace )
 --\\--//--\\--//--
 
 function ApplyWearablesToHeroes( heroEntity )

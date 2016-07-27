@@ -3,19 +3,61 @@
 function AutoUpdate()
 {
     var hero = Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() );
+    RemainingTime();
     
 	$.Schedule( 0.1, AutoUpdate );
 }
 
+function RemainingTime()
+{
+    var GameTime = Game.GetDOTATime(false, true).toFixed(0).replace("-","");
+    var game_times = CustomNetTables.GetTableValue( "gameinfo", "game_times" );
+    if( game_times )
+    {
+        var pregame_time = game_times['pregame'] - game_times['hero_selection'];
+        var selection_remaining = GameTime - pregame_time;
+
+        GameEvents.SendCustomGameEventToServer( "is_game_paused", {} );
+
+        if(selection_remaining < 0){ selection_remaining = 0 };
+        
+        $("#selection-time").text = selection_remaining;
+    }
+}
+
+function HeroSelectionPauseInfo( status )
+{
+    if( status["pause"] == 1 )
+    {
+        $("#selection-time").style.color="#620000";
+        $("#selection-time-info").style.color="#620000";
+        $("#selection-time-info").style.opacity=1;
+    }
+    else
+    {
+        $("#selection-time").style.color="#ffefcc";
+        $("#selection-time-info").style.color="#ffefcc";
+        $("#selection-time-info").style.opacity=0;
+    }
+}
 
 
 (function () {
     AutoUpdate();
     ChangeHeroSelection(0); //initial select
+    GameEvents.Subscribe( "HeroSelectionPauseInfo", HeroSelectionPauseInfo);
     // bug fix
     GameUI.SetRenderTopInsetOverride( 0 );
     GameUI.SetRenderBottomInsetOverride( 0 );
 })();
+
+
+
+function SelectHero()
+{
+    var selectedHero = $("#selection-button").GetChild(1).text;
+    GameEvents.SendCustomGameEventToServer( "selectHero", { "playerID" : Game.GetLocalPlayerID(), "heroName" : selectedHero } );
+}
 
 function ChangeHeroSelection(heroNumb)
 {
@@ -75,13 +117,16 @@ function ChangeHeroSelection(heroNumb)
     $("#selection-hero-"+heroNumb+"").AddClass("selection-hero-active");
     
     // get hero name
-    var heroName = $("#selection-hero-"+heroNumb+"").GetChild(2).text;
+    var heroNames = $("#selection-hero-"+heroNumb+"").GetChild(2).text;
+    heroNames = heroNames.split("|");
+    var heroName = heroNames[0];
+    var heroOriginalName = heroNames[1];
     // set hero name
     $("#selection-hero-name").text = heroName;
     // set hero image
     $("#selection-hero-preview-wrapper").GetChild(0).SetImage("file://{resources}/videos/heroes/npc_dota_hero_"+ heroName.toLowerCase().replace(" ","_") +".gif");
     // set output hero name
-    $("#selection-button").GetChild(1).text = "npc_dota_hero_"+ heroName.toLowerCase().replace(" ","_");
+    $("#selection-button").GetChild(1).text = "npc_dota_hero_"+ heroOriginalName.toLowerCase().replace(" ","_");
 }
 
 function AbilityShowTooltip(spellPosition)

@@ -7,9 +7,14 @@ UNIVERSAL_SHOP_MODE = false             -- Should the main shop contain Secret S
 ALLOW_SAME_HERO_SELECTION = true        -- Should we let people select the same hero as each other
 
 HERO_SELECTION_TIME = 30.0              -- How long should we let people select their hero?
-PRE_GAME_TIME = 25.0                    -- How long after people select their heroes should the horn blow and the game start?
+PRE_GAME_TIME = 55.0                    -- How long after people select their heroes should the horn blow and the game start?
 POST_GAME_TIME = 60.0                   -- How long should we let people look at the scoreboard before closing the server automatically?
 TREE_REGROW_TIME = 60.0                 -- How long should it take individual trees to respawn after being cut down/destroyed?
+
+CustomNetTables:SetTableValue( "gameinfo", "game_times", { hero_selection = HERO_SELECTION_TIME,
+														   pregame = PRE_GAME_TIME,
+														   post_game = POST_GAME_TIME,
+														 } )
 
 GOLD_PER_TICK = 0                     -- How much gold should players get per tick?
 GOLD_TICK_TIME = 5                      -- How long should we wait in seconds between gold ticks?
