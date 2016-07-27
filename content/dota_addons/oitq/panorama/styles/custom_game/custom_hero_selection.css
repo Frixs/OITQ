@@ -95,6 +95,8 @@
 #selection-hero-3{ position: 40px 195px 0px; }
 #selection-hero-4{ position: 0px 260px 0px; }
 
+.selection-heroName {opacity: 0;}
+
 #selection-hero-preview-wrapper
 {
     horizontal-align: center;

@@ -18,25 +18,30 @@
             </Panel>
             
             <!-- Hero Icons -->
-            <Panel id="selection-hero-0" class="selection-hero selection-hero-active">
+            <Panel id="selection-hero-0" class="selection-hero selection-hero-active" onactivate="ChangeHeroSelection(0)">
                 <Panel class="selection-hero-frame" />
                 <Image class="selection-hero-image" src="file://{images}/custom_game/juggernaut.png" alt="jumper" />
+                <Label class="selection-heroName" text="Jumper" hittest="false" />
             </Panel>
-            <Panel id="selection-hero-1" class="selection-hero">
+            <Panel id="selection-hero-1" class="selection-hero" onactivate="ChangeHeroSelection(1)">
                 <Panel class="selection-hero-frame" />
                 <Image class="selection-hero-image" src="file://{images}/custom_game/bloodseeker.png" alt="brawler" />
+                <Label class="selection-heroName" text="Brawler" hittest="false" />
             </Panel>
-            <Panel id="selection-hero-2" class="selection-hero">
+            <Panel id="selection-hero-2" class="selection-hero" onactivate="ChangeHeroSelection(2)">
                 <Panel class="selection-hero-frame" />
                 <Image class="selection-hero-image" src="file://{images}/custom_game/dark_seer.png" alt="enchanter" />
+                <Label class="selection-heroName" text="Enchanter" hittest="false" />
             </Panel>
-            <Panel id="selection-hero-3" class="selection-hero">
+            <Panel id="selection-hero-3" class="selection-hero" onactivate="ChangeHeroSelection(3)">
                 <Panel class="selection-hero-frame" />
                 <Image class="selection-hero-image" src="file://{images}/custom_game/meepo.png" alt="slam_shooter" />
+                <Label class="selection-heroName" text="Slam Shooter" hittest="false" />
             </Panel>
-            <Panel id="selection-hero-4" class="selection-hero">
+            <Panel id="selection-hero-4" class="selection-hero" onactivate="ChangeHeroSelection(4)">
                 <Panel class="selection-hero-frame" />
                 <Image class="selection-hero-image" src="file://{images}/custom_game/bounty_hunter.png" alt="ninja" />
+                <Label class="selection-heroName" text="Ninja" hittest="false" />
             </Panel>
             
             <!-- Hero preview -->
@@ -110,6 +115,7 @@
         <!-- Selection button -->
         <Panel id="selection-button">
             <Label id="selection-button-text" text="SELECT HERO" />
+            <Label class="selection-heroName" text="npc_dota_hero_jumper" />
         </Panel>
     </Panel>
   </Panel>
