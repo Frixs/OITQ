@@ -79,7 +79,7 @@ function ChangeHeroSelection(heroNumb)
     // set hero name
     $("#selection-hero-name").text = heroName;
     // set hero image
-    $("#selection-hero-preview-wrapper").GetChild(0).src = "file://{resources}/videos/heroes/npc_dota_hero_"+ heroName.toLowerCase().replace(" ","_") +".gif";
+    $("#selection-hero-preview-wrapper").GetChild(0).SetImage("file://{resources}/videos/heroes/npc_dota_hero_"+ heroName.toLowerCase().replace(" ","_") +".gif");
     // set output hero name
     $("#selection-button").GetChild(1).text = "npc_dota_hero_"+ heroName.toLowerCase().replace(" ","_");
 }
