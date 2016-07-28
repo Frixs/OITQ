@@ -2,7 +2,6 @@
 
 function AutoUpdate()
 {
-    var hero = Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() );
     RemainingTime();
     
 	$.Schedule( 0.1, AutoUpdate );
@@ -19,7 +18,16 @@ function RemainingTime()
 
         GameEvents.SendCustomGameEventToServer( "is_game_paused", {} );
 
-        if(selection_remaining < 0){ selection_remaining = 0 };
+        if(selection_remaining <= 0)
+        {
+            selection_remaining = 0;
+            
+            //auto pick default hero
+            if( Players.GetPlayerSelectedHero( Game.GetLocalPlayerID() ) == "npc_dota_hero_wisp" )
+            {
+                SelectHero();
+            }
+        };
         
         $("#selection-time").text = selection_remaining;
     }
