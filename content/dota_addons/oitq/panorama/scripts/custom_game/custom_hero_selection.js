@@ -41,11 +41,17 @@ function HeroSelectionPauseInfo( status )
     }
 }
 
+function OpenHeroSelectionScreen()
+{
+    $("#heroSelection-background").RemoveClass("translator");
+}
+
 
 (function () {
     AutoUpdate();
     ChangeHeroSelection(0); //initial select
     GameEvents.Subscribe( "HeroSelectionPauseInfo", HeroSelectionPauseInfo);
+    GameEvents.Subscribe( "OpenHeroSelectionScreen", OpenHeroSelectionScreen);
     // bug fix
     GameUI.SetRenderTopInsetOverride( 0 );
     GameUI.SetRenderBottomInsetOverride( 0 );
@@ -55,8 +61,17 @@ function HeroSelectionPauseInfo( status )
 
 function SelectHero()
 {
-    var selectedHero = $("#selection-button").GetChild(1).text;
-    GameEvents.SendCustomGameEventToServer( "selectHero", { "playerID" : Game.GetLocalPlayerID(), "heroName" : selectedHero } );
+    if( !$("#heroSelection-background").BHasClass("translator") )
+    {
+        var selectedHero = $("#selection-button").GetChild(1).text;
+        GameEvents.SendCustomGameEventToServer( "selectHero", { "playerID" : Game.GetLocalPlayerID(), "heroName" : selectedHero } );
+        
+        // close hero selection screen
+        $("#heroSelection-background").AddClass("translator");
+        //relocate camera to new hero
+        var hero = Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() );
+        GameUI.SetCameraTargetPosition( Entities.GetAbsOrigin( hero ), 1.0 );
+    }
 }
 
 function ChangeHeroSelection(heroNumb)

@@ -24,6 +24,8 @@ function GameMode:OnGameRulesStateChange(keys)
   elseif newState == DOTA_GAMERULES_STATE_PRE_GAME then                         --[[PRE GAME]]
     -- create pregame aura buff
     GameRules.npc_dota_pre_game_invul_global = CreateUnitByName("npc_dota_pre_game_invul_global", Vector(0,0,0),false,nil,nil,DOTA_TEAM_NEUTRALS)
+    -- open hero selection screen
+    CustomGameEventManager:Send_ServerToAllClients( "OpenHeroSelectionScreen", {} )
   elseif newState == DOTA_GAMERULES_STATE_HERO_SELECTION then                   --[[HERO SELECTION]]
     -- reset winner of the previous round
     GameRules:SetSafeToLeave( false )
@@ -225,25 +227,6 @@ function GameMode:OnPlayerPickHero(keys)
   local player = EntIndexToHScript(keys.player)
   local playerTeam = player:GetTeam()
 
-  -- attach wearables to each hero
-  ApplyWearablesToHeroes( heroEntity )
-
-  -- turn off the first ability point on Lv1
-  if heroEntity:GetLevel() == 1 then
-    heroEntity:SetAbilityPoints(0)
-  end
-
-  -- set unlearnable skills to Lv1
-  InitialAbilityLvUp( heroEntity )
-
-  -- set starting gold amount
-  local currentGold = heroEntity:GetGold()
-  if currentGold > STARTING_GOLD then
-    heroEntity:SpendGold( (currentGold - STARTING_GOLD), DOTA_ModifyGold_Unspecified )
-  elseif currentGold < STARTING_GOLD then
-    PlayerResource:ModifyGold( player:GetPlayerID(), (STARTING_GOLD - currentGold), true, DOTA_ModifyGold_Unspecified )
-  end
-
   -- Create OR Reset score per round
   local teamScore = CustomNetTables:GetTableValue( "gameinfo", "teamScore" )
   if not teamScore then
@@ -252,40 +235,63 @@ function GameMode:OnPlayerPickHero(keys)
   teamScore[tostring(playerTeam)] = 0
   CustomNetTables:SetTableValue( "gameinfo", "teamScore", teamScore )
 
-  -- Emit sounds
-  EmitAnnouncerSoundForPlayer("announcer_dlc_defensegrid_announcer_battle_prepare", player:GetPlayerID())
-
-  -- Welcome message
-  GameRules:SendCustomMessage("Welcome to <font color='#FF6000'>One in the Quiver (REMASTER)</font>!", playerTeam, 0)
-  GameRules:SendCustomMessage("Ported by <font color='#FF8F22'>Frixs</font>", playerTeam, 0)
-  GameRules:SendCustomMessage("Version: " .. BAREBONES_VERSION, playerTeam, 0)
-  GameRules:SendCustomMessage("Please report bugs and leave feedback in our workshop page.", playerTeam, 0)
-  GameRules:SendCustomMessage("<br>Have fun!", playerTeam, 0)
-
-  -- CALL function: OnEveryonePicked
-  if (GameRules.PLAYERS_PICKED_HERO==GameRules.PLAYER_COUNT) then
-    GameMode:OnEveryonePicked()
+  -- turn off the first ability point on Lv1
+  if heroEntity:GetLevel() == 1 then
+    heroEntity:SetAbilityPoints(0)
   end
 
-  -- Set respawn time to additional starting time for the first relocate from lobby to arena
-  heroEntity:SetTimeUntilRespawn( ADDITIONAL_STARTING_RESPAWN_TIME )
-  -- get random respawn position
-  local random_spawn_point = RandomInt( 0, table.getn(SPAWN_LOCATIONS[CURRENT_PLAYED_ARENA]) )
-  -- set respawn position according to respawn locations table
-  if RANDOM_SPAWN then heroEntity:SetRespawnPosition( SPAWN_LOCATIONS[CURRENT_PLAYED_ARENA][random_spawn_point] ) end
-  -- respawn unit according to respawn time
-  heroEntity:RespawnUnit()
-  -- return the correct respawn time after relocating (you are relocated after setting a new respawn time)
-  Timers:CreateTimer(ADDITIONAL_STARTING_RESPAWN_TIME, function() heroEntity:SetTimeUntilRespawn(FIXED_RESPAWN_TIME) end)
-  -- send selected map name to chat
-  Timers:CreateTimer((ADDITIONAL_STARTING_RESPAWN_TIME + FIXED_RESPAWN_TIME), function()
-      GameRules:SendCustomMessage("Selected map: <font color='#FFB422'>"..ARENA_NAMES[CURRENT_PLAYED_ARENA].."</font>",0,0)
-      -- relocate camera to target to current arena | +0.1sec delay for relocating
-      Timers:CreateTimer(0.1, function()
-          CustomGameEventManager:Send_ServerToPlayer( player, "initCameraRelocate", nil )
-      end)
-  end)
+  -- split inital functions for hero selection and the pick hero
+  if heroEntity:GetName() ~= "npc_dota_hero_wisp" then
+      -- attach wearables to each hero
+      ApplyWearablesToHeroes( heroEntity )
 
+      -- set unlearnable skills to Lv1
+      InitialAbilityLvUp( heroEntity )
+
+      -- set starting gold amount
+      local currentGold = heroEntity:GetGold()
+      if currentGold > STARTING_GOLD then
+        heroEntity:SpendGold( (currentGold - STARTING_GOLD), DOTA_ModifyGold_Unspecified )
+      elseif currentGold < STARTING_GOLD then
+        PlayerResource:ModifyGold( player:GetPlayerID(), (STARTING_GOLD - currentGold), true, DOTA_ModifyGold_Unspecified )
+      end
+
+      -- Emit sounds
+      EmitAnnouncerSoundForPlayer("announcer_dlc_defensegrid_announcer_battle_prepare", player:GetPlayerID())
+
+      -- Welcome message
+      GameRules:SendCustomMessage("Welcome to <font color='#FF6000'>One in the Quiver (REMASTER)</font>!", playerTeam, 0)
+      GameRules:SendCustomMessage("Ported by <font color='#FF8F22'>Frixs</font>", playerTeam, 0)
+      GameRules:SendCustomMessage("Version: " .. BAREBONES_VERSION, playerTeam, 0)
+      GameRules:SendCustomMessage("Please report bugs and leave feedback in our workshop page.", playerTeam, 0)
+      GameRules:SendCustomMessage("<br>Have fun!", playerTeam, 0)
+
+      -- CALL function: OnEveryonePicked
+      if (GameRules.PLAYERS_PICKED_HERO==GameRules.PLAYER_COUNT) then
+        GameMode:OnEveryonePicked()
+      end
+
+      -- Set respawn time to additional starting time for the first relocate from lobby to arena
+      heroEntity:SetTimeUntilRespawn( ADDITIONAL_STARTING_RESPAWN_TIME )
+      -- get random respawn position
+      local random_spawn_point = RandomInt( 0, table.getn(SPAWN_LOCATIONS[CURRENT_PLAYED_ARENA]) )
+      -- set respawn position according to respawn locations table
+      if RANDOM_SPAWN then heroEntity:SetRespawnPosition( SPAWN_LOCATIONS[CURRENT_PLAYED_ARENA][random_spawn_point] ) end
+      -- respawn unit according to respawn time
+      heroEntity:RespawnUnit()
+      -- return the correct respawn time after relocating (you are relocated after setting a new respawn time)
+      Timers:CreateTimer(ADDITIONAL_STARTING_RESPAWN_TIME, function() heroEntity:SetTimeUntilRespawn(FIXED_RESPAWN_TIME) end)
+      -- send selected map name to chat
+      Timers:CreateTimer((ADDITIONAL_STARTING_RESPAWN_TIME + FIXED_RESPAWN_TIME), function()
+          GameRules:SendCustomMessage("Selected map: <font color='#FFB422'>"..ARENA_NAMES[CURRENT_PLAYED_ARENA].."</font>",0,0)
+          -- relocate camera to target to current arena | +0.1sec delay for relocating
+          Timers:CreateTimer(0.1, function()
+              CustomGameEventManager:Send_ServerToPlayer( player, "initCameraRelocate", nil )
+          end)
+      end)
+  else
+      EmitAnnouncerSound("announcer_dlc_defensegrid_announcer_choose_hero")
+  end
 end
 
 --------------------------------------------------------------------------------

@@ -230,8 +230,10 @@
 
 .translator
 {
-    transform:translate3d(0px,-800px,0px);
+    transform:translate3d(0px,-1100px,0px);
 }
+
+
 
 #selectionUp, #selectionDown
 {

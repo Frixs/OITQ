@@ -81,7 +81,7 @@ LOSE_GOLD_ON_DEATH = false              -- Should we have players lose the norma
 SHOW_ONLY_PLAYER_INVENTORY = false      -- Should we only allow players to see their own inventory even when selecting other units?
 DISABLE_STASH_PURCHASING = true        -- Should we prevent players from being able to buy items into their stash when not at a shop?
 DISABLE_ANNOUNCER = true               -- Should we disable the announcer from working in the game?
-FORCE_PICKED_HERO = "npc_dota_hero_juggernaut"                 -- What hero should we force all players to spawn as? (e.g. "npc_dota_hero_juggernaut").  Use nil to allow players to pick their own hero.
+FORCE_PICKED_HERO = "npc_dota_hero_wisp"                 -- What hero should we force all players to spawn as? (e.g. "npc_dota_hero_wisp").  Use nil to allow players to pick their own hero.
 
 ADDITIONAL_STARTING_RESPAWN_TIME = 7    -- This time + FIXED_RESPAWN_TIME = Spent time in LOBBY ROOM, after that relocate to ARENA. !!! IMPORTANT to change this (this + FIXED_RESPAWN_TIME) in panorama/scripts/custom_game/events_custom.js
 FIXED_RESPAWN_TIME = 3                  -- What time should we use for a fixed respawn timer?  Use -1 to keep the default dota behavior.
