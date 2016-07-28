@@ -6,118 +6,122 @@
     <include src="file://{resources}/scripts/custom_game/custom_hero_selection.js" />
   </scripts>
   <Panel class="BaseHud" hittest="false">
-    <Panel id="heroSelection-background" hittest="false">
-        
-        <Label id="selectionUp" text="UP" onactivate="closeWindow();" />
-        <Label id="selectionDown" text="DOWN" onactivate="openWindow();" />
-        
-        <Panel id="selection-base-wrapper">
-            <!-- Selection Time -->
-            <Panel id="selection-time-wrapper">
-                <Label id="selection-time" text="99" />
-                <Label id="selection-time-info"  text="PAUSED" />
+    <Panel id="selection-screen" hittest="true">
+        <Panel id="heroSelection-background" hittest="true">
+
+            <Label id="selectionUp" text="UP" onactivate="closeWindow();" />
+            <Label id="selectionDown" text="DOWN" onactivate="openWindow();" />
+
+            <Panel id="selection-base-wrapper">
+                <!-- Selection Time -->
+                <Panel id="selection-time-wrapper">
+                    <Label id="selection-time" text="99" />
+                    <Label id="selection-time-info"  text="PAUSED" />
+                </Panel>
+
+                <!-- Hero Icons -->
+                <Panel id="selection-hero-0" class="selection-hero selection-hero-active" onactivate="ChangeHeroSelection(0)">
+                    <Panel class="selection-hero-frame" />
+                    <Image class="selection-hero-image" src="file://{images}/custom_game/juggernaut.png" alt="jumper" />
+                    <Label class="selection-heroName" text="Jumper|Juggernaut" hittest="false" />
+                </Panel>
+                <Panel id="selection-hero-1" class="selection-hero" onactivate="ChangeHeroSelection(1)">
+                    <Panel class="selection-hero-frame" />
+                    <Image class="selection-hero-image" src="file://{images}/custom_game/bloodseeker.png" alt="brawler" />
+                    <Label class="selection-heroName" text="Brawler|Bloodseeker" hittest="false" />
+                </Panel>
+                <Panel id="selection-hero-2" class="selection-hero" onactivate="ChangeHeroSelection(2)">
+                    <Panel class="selection-hero-frame" />
+                    <Image class="selection-hero-image" src="file://{images}/custom_game/dark_seer.png" alt="enchanter" />
+                    <Label class="selection-heroName" text="Enchanter|Dark Seer" hittest="false" />
+                </Panel>
+                <Panel id="selection-hero-3" class="selection-hero" onactivate="ChangeHeroSelection(3)">
+                    <Panel class="selection-hero-frame" />
+                    <Image class="selection-hero-image" src="file://{images}/custom_game/meepo.png" alt="slam_shooter" />
+                    <Label class="selection-heroName" text="Slam Shooter|Meepo" hittest="false" />
+                </Panel>
+                <Panel id="selection-hero-4" class="selection-hero" onactivate="ChangeHeroSelection(4)">
+                    <Panel class="selection-hero-frame" />
+                    <Image class="selection-hero-image" src="file://{images}/custom_game/bounty_hunter.png" alt="ninja" />
+                    <Label class="selection-heroName" text="Ninja|Bounty Hunter" hittest="false" />
+                </Panel>
+
+                <!-- Hero preview -->
+                <Panel id="selection-hero-preview-wrapper" hittest="false">
+                    <Image class='selection-hero-portrait' src="file://{resources}/videos/heroes/npc_dota_hero_jumper.gif" alt="gif" />
+                    <Panel class="selection-hero-portrait-frame" />
+                </Panel>
+
+                <!-- Name layer -->
+                <Panel id="selection-name-layer" hittest="false">
+                    <Label id="selection-hero-name" text="HERO NAME" />
+                </Panel>
+
+                <!-- Spell Icons -->
+                <Panel id="selection-ability-0" class="selection-ability">
+                    <Panel class="selection-ability-frame" hittest="false" />
+                    <Button class="selection-ability-icon"
+                            onmouseover="AbilityShowTooltip(0)"
+                            onmouseout= "AbilityHideTooltip(0)"
+                            >
+                        <DOTAAbilityImage abilityname="ice_block_spell" />
+                    </Button>
+                </Panel>
+                <Panel id="selection-ability-1" class="selection-ability">
+                    <Panel class="selection-ability-frame" hittest="false" />
+                    <Button class="selection-ability-icon"
+                            onmouseover="AbilityShowTooltip(1)"
+                            onmouseout= "AbilityHideTooltip(1)"
+                            >
+                        <DOTAAbilityImage abilityname="ice_block_spell" />
+                    </Button>
+                </Panel>
+                <Panel id="selection-ability-2" class="selection-ability">
+                    <Panel class="selection-ability-frame" hittest="false" />
+                    <Button class="selection-ability-icon"
+                            onmouseover="AbilityShowTooltip(2)"
+                            onmouseout= "AbilityHideTooltip(2)"
+                            >
+                        <DOTAAbilityImage abilityname="ice_block_spell" />
+                    </Button>
+                </Panel>
+                <Panel id="selection-ability-3" class="selection-ability">
+                    <Panel class="selection-ability-frame" hittest="false" />
+                    <Button class="selection-ability-icon"
+                            onmouseover="AbilityShowTooltip(3)"
+                            onmouseout= "AbilityHideTooltip(3)"
+                            >
+                        <DOTAAbilityImage abilityname="ice_block_spell" />
+                    </Button>
+                </Panel>
+                <Panel id="selection-ability-4" class="selection-ability">
+                    <Panel class="selection-ability-frame" hittest="false" />
+                    <Button class="selection-ability-icon"
+                            onmouseover="AbilityShowTooltip(4)"
+                            onmouseout= "AbilityHideTooltip(4)"
+                            >
+                        <DOTAAbilityImage abilityname="ice_block_spell" />
+                    </Button>
+                </Panel>
+                <Panel id="selection-ability-5" class="selection-ability">
+                    <Panel class="selection-ability-frame" hittest="false" />
+                    <Button class="selection-ability-icon"
+                            onmouseover="AbilityShowTooltip(5)"
+                            onmouseout= "AbilityHideTooltip(5)"
+                            >
+                        <DOTAAbilityImage abilityname="ice_block_spell" />
+                    </Button>
+                </Panel>
             </Panel>
-            
-            <!-- Hero Icons -->
-            <Panel id="selection-hero-0" class="selection-hero selection-hero-active" onactivate="ChangeHeroSelection(0)">
-                <Panel class="selection-hero-frame" />
-                <Image class="selection-hero-image" src="file://{images}/custom_game/juggernaut.png" alt="jumper" />
-                <Label class="selection-heroName" text="Jumper|Juggernaut" hittest="false" />
-            </Panel>
-            <Panel id="selection-hero-1" class="selection-hero" onactivate="ChangeHeroSelection(1)">
-                <Panel class="selection-hero-frame" />
-                <Image class="selection-hero-image" src="file://{images}/custom_game/bloodseeker.png" alt="brawler" />
-                <Label class="selection-heroName" text="Brawler|Bloodseeker" hittest="false" />
-            </Panel>
-            <Panel id="selection-hero-2" class="selection-hero" onactivate="ChangeHeroSelection(2)">
-                <Panel class="selection-hero-frame" />
-                <Image class="selection-hero-image" src="file://{images}/custom_game/dark_seer.png" alt="enchanter" />
-                <Label class="selection-heroName" text="Enchanter|Dark Seer" hittest="false" />
-            </Panel>
-            <Panel id="selection-hero-3" class="selection-hero" onactivate="ChangeHeroSelection(3)">
-                <Panel class="selection-hero-frame" />
-                <Image class="selection-hero-image" src="file://{images}/custom_game/meepo.png" alt="slam_shooter" />
-                <Label class="selection-heroName" text="Slam Shooter|Meepo" hittest="false" />
-            </Panel>
-            <Panel id="selection-hero-4" class="selection-hero" onactivate="ChangeHeroSelection(4)">
-                <Panel class="selection-hero-frame" />
-                <Image class="selection-hero-image" src="file://{images}/custom_game/bounty_hunter.png" alt="ninja" />
-                <Label class="selection-heroName" text="Ninja|Bounty Hunter" hittest="false" />
-            </Panel>
-            
-            <!-- Hero preview -->
-            <Panel id="selection-hero-preview-wrapper" hittest="false">
-                <Image class='selection-hero-portrait' src="file://{resources}/videos/heroes/npc_dota_hero_jumper.gif" alt="gif" />
-                <Panel class="selection-hero-portrait-frame" />
-            </Panel>
-            
-            <!-- Name layer -->
-            <Panel id="selection-name-layer" hittest="false">
-                <Label id="selection-hero-name" text="HERO NAME" />
-            </Panel>
-            
-            <!-- Spell Icons -->
-            <Panel id="selection-ability-0" class="selection-ability">
-                <Panel class="selection-ability-frame" hittest="false" />
-                <Button class="selection-ability-icon"
-                        onmouseover="AbilityShowTooltip(0)"
-                        onmouseout= "AbilityHideTooltip(0)"
-                        >
-                    <DOTAAbilityImage abilityname="ice_block_spell" />
-                </Button>
-            </Panel>
-            <Panel id="selection-ability-1" class="selection-ability">
-                <Panel class="selection-ability-frame" hittest="false" />
-                <Button class="selection-ability-icon"
-                        onmouseover="AbilityShowTooltip(1)"
-                        onmouseout= "AbilityHideTooltip(1)"
-                        >
-                    <DOTAAbilityImage abilityname="ice_block_spell" />
-                </Button>
-            </Panel>
-            <Panel id="selection-ability-2" class="selection-ability">
-                <Panel class="selection-ability-frame" hittest="false" />
-                <Button class="selection-ability-icon"
-                        onmouseover="AbilityShowTooltip(2)"
-                        onmouseout= "AbilityHideTooltip(2)"
-                        >
-                    <DOTAAbilityImage abilityname="ice_block_spell" />
-                </Button>
-            </Panel>
-            <Panel id="selection-ability-3" class="selection-ability">
-                <Panel class="selection-ability-frame" hittest="false" />
-                <Button class="selection-ability-icon"
-                        onmouseover="AbilityShowTooltip(3)"
-                        onmouseout= "AbilityHideTooltip(3)"
-                        >
-                    <DOTAAbilityImage abilityname="ice_block_spell" />
-                </Button>
-            </Panel>
-            <Panel id="selection-ability-4" class="selection-ability">
-                <Panel class="selection-ability-frame" hittest="false" />
-                <Button class="selection-ability-icon"
-                        onmouseover="AbilityShowTooltip(4)"
-                        onmouseout= "AbilityHideTooltip(4)"
-                        >
-                    <DOTAAbilityImage abilityname="ice_block_spell" />
-                </Button>
-            </Panel>
-            <Panel id="selection-ability-5" class="selection-ability">
-                <Panel class="selection-ability-frame" hittest="false" />
-                <Button class="selection-ability-icon"
-                        onmouseover="AbilityShowTooltip(5)"
-                        onmouseout= "AbilityHideTooltip(5)"
-                        >
-                    <DOTAAbilityImage abilityname="ice_block_spell" />
-                </Button>
+
+            <!-- Selection button -->
+            <Panel id="selection-button" onactivate="SelectHero()">
+                <Label id="selection-button-text" text="SELECT HERO" />
+                <Label class="selection-heroName" text="npc_dota_hero_juggernaut" />
             </Panel>
         </Panel>
-        
-        <!-- Selection button -->
-        <Panel id="selection-button" onactivate="SelectHero()">
-            <Label id="selection-button-text" text="SELECT HERO" />
-            <Label class="selection-heroName" text="npc_dota_hero_juggernaut" />
-        </Panel>
+        <!-- Selection screen edge -->
+        <Panel id="selection-screen-edge" />
     </Panel>
   </Panel>
 </root>

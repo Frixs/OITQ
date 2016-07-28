@@ -5,6 +5,13 @@
     flow-children: down;
 }
 
+#selection-screen
+{
+    width:  100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out 0.0s;
+}
+
 #heroSelection-background
 {
     z-index: 10;
@@ -13,13 +20,25 @@
     width:  100%;
     height: 100%;
     background-color: gradient( linear, 0% 0%, 0% 100%, from( #a48659 ), to( #361e11 ) );
-    transition: transform 0.5s ease-in-out 0.0s;
-/*
-    background-image: url("file://{images}/custom_game/custom_gui/stats_wrapper.png");
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: left top;
-*/
+    transition: position 0.5s ease-in-out 0.0s;
+}
+
+.translator #heroSelection-background
+{
+    position: 0px -24px 0px;
+}
+
+#selection-screen-edge
+{
+    z-index: 9;
+    horizontal-align: center;
+    vertical-align: bottom;
+    position: 0px 0px 0px;
+    width:  100%;
+    height: 26px;
+    background-image: url("file://{images}/custom_game/custom_gui/selection_screen_edge.png");
+    background-repeat: y-repeat;
+    background-position: center center;
 }
 
 #selection-base-wrapper
