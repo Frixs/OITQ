@@ -71,6 +71,12 @@ function UpdateTimer( data )
 	$.Schedule( 0.1, UpdateTimer );
 }
 
+function AddClassToEmitInitialSounds()
+{
+    $( "#Timer" ).AddClass( "needToEmit_initialSound_1" );
+    $( "#Timer" ).AddClass( "needToEmit_initialSound_2" );
+}
+
 function ShowTimer( data )
 {
 	$( "#Timer" ).AddClass( "timer_visible" );
@@ -111,6 +117,7 @@ function OnGameStateChanged( table, key, data )
     GameEvents.Subscribe( "show_timer", ShowTimer );
     GameEvents.Subscribe( "timer_alert", AlertTimer );
     GameEvents.Subscribe( "overtime_alert", HideTimer );
+    GameEvents.Subscribe( "AddClassToEmitInitialSounds", AddClassToEmitInitialSounds);
 	UpdateTimer();
 })();
 

@@ -26,6 +26,10 @@ function GameMode:OnGameRulesStateChange(keys)
     GameRules.npc_dota_pre_game_invul_global = CreateUnitByName("npc_dota_pre_game_invul_global", Vector(0,0,0),false,nil,nil,DOTA_TEAM_NEUTRALS)
     -- open hero selection screen
     CustomGameEventManager:Send_ServerToAllClients( "OpenHeroSelectionScreen", {} )
+    -- add classes to emit initial battle sounds
+    Timers:CreateTimer(1, function() -- delay because of loading game state
+        CustomGameEventManager:Send_ServerToAllClients( "AddClassToEmitInitialSounds", {} )
+    end)
   elseif newState == DOTA_GAMERULES_STATE_HERO_SELECTION then                   --[[HERO SELECTION]]
     -- reset winner of the previous round
     GameRules:SetSafeToLeave( false )

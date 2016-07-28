@@ -70,7 +70,7 @@ end
 
 --//--\\--//--\\--
 CustomGameEventManager:RegisterListener( "OnDropItemInfo", OnDropItem )
-CustomGameEventManager:RegisterListener( "OnEmitSound_countdown", OnEmitSound_global )
+CustomGameEventManager:RegisterListener( "OnEmitSound_countdown", OnEmitSound_global ) -- overthrow_scoreboard.js
 CustomGameEventManager:RegisterListener( "SendGameStart", SendCustomMsg )
 CustomGameEventManager:RegisterListener( "is_game_paused", IsGamePausedStatus )
 CustomGameEventManager:RegisterListener( "selectHero", HeroReplace )
