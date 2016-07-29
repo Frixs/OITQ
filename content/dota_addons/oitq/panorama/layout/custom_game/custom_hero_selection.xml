@@ -8,10 +8,10 @@
   <Panel class="BaseHud" hittest="false">
     <Panel id="selection-screen" hittest="true">
         <Panel id="heroSelection-background" hittest="true">
-
+<!-- Admin buttons
             <Label id="selectionUp" text="UP" onactivate="closeWindow();" />
             <Label id="selectionDown" text="DOWN" onactivate="openWindow();" />
-
+-->
             <Panel id="selection-base-wrapper">
                 <!-- Selection Time -->
                 <Panel id="selection-time-wrapper">
