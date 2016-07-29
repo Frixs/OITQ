@@ -9,7 +9,7 @@
 {
     width:  100%;
     height: 100%;
-    transition: transform 0.5s ease-in-out 0.0s;
+    transition: transform 2.5s ease-in-out 0.0s;
 }
 
 #heroSelection-background
@@ -20,12 +20,12 @@
     width:  100%;
     height: 100%;
     background-color: gradient( linear, 0% 0%, 0% 100%, from( #a48659 ), to( #361e11 ) );
-    transition: position 0.5s ease-in-out 0.0s;
+    transition: position 0.1s ease-in-out 0.0s;
 }
 
-.translator #heroSelection-background
+#heroSelection-background
 {
-    position: 0px -24px 0px;
+    position: 0px 0px 0px;
 }
 
 #selection-screen-edge

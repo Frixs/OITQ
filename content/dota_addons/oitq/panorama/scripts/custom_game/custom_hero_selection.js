@@ -13,15 +13,18 @@ function RemainingTime()
     var game_times = CustomNetTables.GetTableValue( "gameinfo", "game_times" );
     if( game_times )
     {
+        if( GameTime == 0 ){ GameTime = game_times['pregame'] * 2; }
         var pregame_time = game_times['pregame'] - game_times['hero_selection'];
         var selection_remaining = GameTime - pregame_time;
 
         GameEvents.SendCustomGameEventToServer( "is_game_paused", {} );
 
+        // initial GameTime is 0 = Call SelectHero() in wrong time
+        if( GameTime - pregame_time == game_times['pregame'] + game_times['hero_selection'] ){selection_remaining = game_times['pregame'];}
+
         if(selection_remaining <= 0)
         {
             selection_remaining = 0;
-            
             //auto pick default hero
             if( Players.GetPlayerSelectedHero( Game.GetLocalPlayerID() ) == "npc_dota_hero_wisp" )
             {
@@ -51,8 +54,15 @@ function HeroSelectionPauseInfo( status )
 
 function OpenHeroSelectionScreen()
 {
-    $("#selection-screen").RemoveClass("translator");
+    if( $("#selection-screen").BHasClass("translator") )
+    {
+        HideScreenEdge();
+        $("#selection-screen").RemoveClass("translator");
+        // emit sound - open window
+        Game.EmitSound( "Game.SelectionScreen.Down" );
+    }
 }
+
 
 
 (function () {
@@ -73,9 +83,12 @@ function SelectHero()
     {
         var selectedHero = $("#selection-button").GetChild(1).text;
         GameEvents.SendCustomGameEventToServer( "selectHero", { "playerID" : Game.GetLocalPlayerID(), "heroName" : selectedHero } );
-        
+
         // close hero selection screen
+        ShowScreenEdge();
         $("#selection-screen").AddClass("translator");
+        // emit sound - close window
+        Game.EmitSound( "Game.SelectionScreen.Up" );
         //relocate camera to new hero
         var hero = Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() );
         GameUI.SetCameraTargetPosition( Entities.GetAbsOrigin( hero ), 1.0 );
@@ -166,12 +179,37 @@ function AbilityHideTooltip(spellPosition)
 	$.DispatchEvent( "DOTAHideAbilityTooltip", abilityButton );
 }
 
+function HideScreenEdge()
+{
+    var delayAction = $.Schedule( 2.5, HideScreenEdge );
+    if( !$("#selection-screen").BHasClass("translator") )
+    {
+        //$.Msg("Selection screen: close");
+        $.CancelScheduled( delayAction );
+        $("#heroSelection-background").style.position = "0px 0px 0px";
+    }
+}
+
+function ShowScreenEdge()
+{
+    //$.Msg("Selection screen: open");
+    $("#heroSelection-background").style.position = "0px -24px 0px";
+}
+
+
+
 function closeWindow()
 {
+    ShowScreenEdge();
     $("#selection-screen").AddClass("translator");
+    // emit sound - close window
+    Game.EmitSound( "Game.SelectionScreen.Up" );
 }
 
 function openWindow()
 {
+    HideScreenEdge();
     $("#selection-screen").RemoveClass("translator");
+    // emit sound - open window
+    Game.EmitSound( "Game.SelectionScreen.Down" );
 }
