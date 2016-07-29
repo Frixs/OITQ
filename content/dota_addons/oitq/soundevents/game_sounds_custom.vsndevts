@@ -128,8 +128,8 @@
 		{
 			"reference_operator"
 			{
-				"operator"		"sos_reference_stack"
-				"reference_stack"		"dota_update_default"
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_vo_switch"
 				"operator_variables"
 				{
 					"vsnd_files"
@@ -139,21 +139,13 @@
 							"value0"		"sounds/gameInitialCooldown.vsnd"
 						}
 					}
-					"volume_min"
+					"volume"
 					{
 						"value"		"1.000000"
 					}
-					"volume_max"
+					"pitch"
 					{
-						"value"		"1.000000"
-					}
-					"pitch_min"
-					{
-						"value"		"0.950000"
-					}
-					"pitch_max"
-					{
-						"value"		"1.050000"
+						"value"		"1.00000"
 					}
 					"chan_type"
 					{
@@ -194,7 +186,7 @@
 			"reference_operator"
 			{
 				"operator"		"sos_reference_stack"
-				"reference_stack"		"dota_update_default"
+				"reference_stack"		"dota_update_vo_switch"
 				"operator_variables"
 				{
 					"vsnd_files"
@@ -207,6 +199,10 @@
 					"volume"
 					{
 						"value"		"4.000000"
+					}
+					"pitch"
+					{
+						"value"		"1.00000"
 					}
 					"soundlevel"
 					{
@@ -227,7 +223,7 @@
 			"reference_operator"
 			{
 				"operator"		"sos_reference_stack"
-				"reference_stack"		"dota_update_default"
+				"reference_stack"		"dota_update_vo_switch"
 				"operator_variables"
 				{
 					"vsnd_files"
@@ -240,6 +236,10 @@
 					"volume"
 					{
 						"value"		"4.000000"
+					}
+					"pitch"
+					{
+						"value"		"1.00000"
 					}
 					"soundlevel"
 					{
