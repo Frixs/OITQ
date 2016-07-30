@@ -39,7 +39,7 @@ function GameMode:OnGameRulesStateChange(keys)
   elseif newState == DOTA_GAMERULES_STATE_POST_GAME then                        --[[POST GAME]]
     -- reset votes to rematch
     ResetVotes()
-    Timers:CreateTimer(58.0, function()
+    Timers:CreateTimer(24.0, function()
         GameRules:ResetToHeroSelection()
     end)
   end
