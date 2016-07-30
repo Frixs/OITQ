@@ -212,10 +212,10 @@
                 <Panel id="voting-time" hittest="false">
                     <Label class="voting-remainingTime" text="99" />
                 </Panel>
-                <Button id="ContinueButton" onactivate="VoteYes();">
+                <Button id="ContinueButton" onactivate="PlayerVote(2);">
                     <Label text="Rematch" />
                 </Button>
-                <Button id="QuitButton" onactivate="VoteNo();Game.FinishGame();">
+                <Button id="QuitButton" onactivate="PlayerVote(1);Game.FinishGame();">
                     <Label text="Quit the game" />
                 </Button>
                 <Panel id="voting-progress-wrapper" hittest="false">

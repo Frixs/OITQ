@@ -37,9 +37,11 @@ function GameMode:OnGameRulesStateChange(keys)
     -- select a random ARENA
     CURRENT_PLAYED_ARENA = RandomInt( 0, table.getn(ARENA_NAMES) ) -- getn count table values, start in 0
   elseif newState == DOTA_GAMERULES_STATE_POST_GAME then                        --[[POST GAME]]
-      Timers:CreateTimer(10.0, function()
-          GameRules:ResetToHeroSelection()
-      end)
+    -- reset votes to rematch
+    ResetVotes()
+    Timers:CreateTimer(58.0, function()
+        GameRules:ResetToHeroSelection()
+    end)
   end
 end
 

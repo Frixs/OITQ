@@ -87,7 +87,8 @@
 {
     z-index: 3;
     background-color: #5abc13FA;
-    width: 20%;
+    width: 0%;
+    transition: width 0.1s ease-in-out 0.0s;
 }
 
 .voting-remainingPlayers-wrapper
