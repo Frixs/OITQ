@@ -19,15 +19,6 @@
                     "MODIFIER_STATE_NOT_ON_MINIMAP" "MODIFIER_STATE_VALUE_ENABLED"
                     "MODIFIER_STATE_NO_HEALTH_BAR"  "MODIFIER_STATE_VALUE_ENABLED"
                 }
-
-                "OnCreated"
-                {
-                    "RunScript"
-                    {
-                        "ScriptFile"    "mechanics/wearables.lua"
-                        "Function"      "AdjustCosmetics"
-                    }
-                }
             }
         }
     }

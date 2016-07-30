@@ -1,0 +1,267 @@
+.BaseHud
+{
+    width: 100%;
+    height: 100%;
+    flow-children: down;
+}
+
+#selection-screen
+{
+    width:  100%;
+    height: 100%;
+    transition: transform 2.5s ease-in-out 0.0s;
+}
+
+#heroSelection-background
+{
+    z-index: 10;
+    horizontal-align: center;
+    vertical-align: middle;
+    width:  100%;
+    height: 100%;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #a48659 ), to( #361e11 ) );
+    transition: position 0.1s ease-in-out 0.0s;
+}
+
+#heroSelection-background
+{
+    position: 0px 0px 0px;
+}
+
+#selection-screen-edge
+{
+    z-index: 9;
+    horizontal-align: center;
+    vertical-align: bottom;
+    position: 0px 0px 0px;
+    width:  100%;
+    height: 26px;
+    background-image: url("file://{images}/custom_game/custom_gui/selection_screen_edge.png");
+    background-repeat: y-repeat;
+    background-position: center center;
+}
+
+#selection-base-wrapper
+{
+    horizontal-align: center;
+    vertical-align: middle;
+    width:  980px;
+    height: 703px;
+    background-image: url("file://{images}/custom_game/custom_gui/selection_screen_base.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#selection-time-wrapper
+{
+    horizontal-align: right;
+    vertical-align: top;
+    width:100px;
+    height: 100px;
+    background-color: #00000000;
+    border-radius: 90px;
+    position: -150px 125px 0px;
+    border: 4px solid #000000FA;
+}
+
+#selection-time
+{
+    horizontal-align: center;
+    vertical-align: middle;
+    font-family: Goudy Trajan Medium;
+    font-size: 48px;
+    color: #ffefccFF;
+}
+
+#selection-time-info
+{
+    opacity: 0;
+    horizontal-align: center;
+    vertical-align: bottom;
+    margin-bottom: 12px;
+    margin-left: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#selection-time-info2
+{
+    vertical-align: top;
+    margin-top: 12px;
+    margin-left: 4px;
+}
+
+.selection-hero
+{
+    horizontal-align: left;
+    vertical-align: top;
+}
+
+.selection-hero-frame
+{
+    z-index: 12;
+    horizontal-align: center;
+    vertical-align: middle;
+    width:  163px;
+    height: 107px;
+    background-image: url("file://{images}/custom_game/custom_gui/selection_screen_hero_icon_frame_off.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.selection-hero-frame:hover, .selection-hero-active .selection-hero-frame
+{
+    background-image: url("file://{images}/custom_game/custom_gui/selection_screen_hero_icon_frame_on.png");
+}
+
+.selection-hero-image
+{
+    z-index: 11;
+    horizontal-align: center;
+    vertical-align: middle;
+    width:84px;
+    height: 47px;
+    position: -3px -1px 0px;
+}
+
+#selection-hero-0{ position: 0px 0px 0px; }
+#selection-hero-1{ position: 40px 65px 0px; }
+#selection-hero-2{ position: -40px 130px 0px; }
+#selection-hero-3{ position: 40px 195px 0px; }
+#selection-hero-4{ position: 0px 260px 0px; }
+
+.selection-heroName {opacity: 0;}
+
+#selection-hero-preview-wrapper
+{
+    horizontal-align: center;
+    vertical-align: middle;
+    width: 327px;
+    height: 292px;
+    position: -25px -95px 0px;
+}
+
+.selection-hero-portrait
+{
+    width: 100%;
+    height: 100%;
+}
+
+.selection-hero-portrait-frame
+{
+    width: 329px;
+    height: 294px;
+    border: 3px solid #dab77e;    
+}
+
+#selection-name-layer
+{
+    z-index: 13;
+    horizontal-align: center;
+    vertical-align: middle;
+    width: 717px;
+    height: 204px;
+    background-image: url("file://{images}/custom_game/custom_gui/selection_screen_name_layer.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-top: 180px;
+    margin-right: 50px;
+}
+
+#selection-hero-name {
+    horizontal-align: center;
+    vertical-align: middle;
+    font-family: Goudy Trajan Medium;
+    font-size: 48px;
+    color: #ffefccFF;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.selection-ability
+{
+    horizontal-align: left;
+    vertical-align: bottom;
+}
+
+.selection-ability-frame
+{
+    z-index: 12;
+    horizontal-align: center;
+    vertical-align: middle;
+    width: 125px;
+    height: 131px;
+    background-image: url("file://{images}/custom_game/custom_gui/selection_screen_ability_icon_frame.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.selection-ability-icon
+{
+    z-index: 11;
+    horizontal-align: center;
+    vertical-align: middle;
+    width: 64px;
+    height: 64px;
+    position: -5px -12px 0px;
+}
+
+#selection-ability-0{ position: 150px -50px 0px; }
+#selection-ability-1{ position: 260px -30px 0px; }
+#selection-ability-2{ position: 370px -70px 0px; }
+#selection-ability-3{ position: 480px -10px 0px; }
+#selection-ability-4{ position: 590px -95px 0px; }
+#selection-ability-5{ position: 700px -50px 0px; }
+
+#selection-button
+{
+    horizontal-align: center;
+    vertical-align: bottom;
+    width: 414px;
+    height: 129px;
+    background-image: url("file://{images}/custom_game/custom_gui/selection_button_off.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: 0px -50px 0px;
+}
+
+#selection-button:hover
+{
+    background-image: url("file://{images}/custom_game/custom_gui/selection_button_on.png");
+}
+
+#selection-button-text
+{
+    horizontal-align: center;
+    vertical-align: middle;
+    font-family: Goudy Trajan Medium;
+    font-size: 36px;
+    color: #ffefccFF;
+    margin-right: 15px;
+}
+
+
+
+.translator
+{
+    transform:translate3d(0px,-1100px,0px);
+}
+
+
+
+#selectionUp, #selectionDown
+{
+    vertical-align: bottom;
+    color: #000000FF;
+    font-size: 26px;
+}
+
+#selectionDown
+{
+    margin-left: 40px;
+}

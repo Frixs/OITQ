@@ -58,6 +58,81 @@
   }
 
     //=================================================================================================================
+    // Default Hero Selection
+    //=================================================================================================================
+    "npc_dota_hero_wisp"
+    {
+        "override_hero"             "npc_dota_hero_wisp"
+        //"DisableWearables"          "1"
+        "UnitLabel"                 "npc_dota_hero_wisp"
+        "InternalName"              "npc_dota_hero_wisp"
+        "Level"                     "1"
+        "BotImplemented"            "0"
+        "Enabled"                   "1"
+        "url"                       "IO"
+
+        // Abilities
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityLayout"             "6"
+        "Ability1"                  "shuriken_spell"
+        "Ability2"                  "anger_aura_spell"
+        "Ability3"                  "ability_evasion"
+        "Ability4"                  "windrunner_windrun"
+        "Ability5"                  "ability_time_lapse"
+        "Ability6"                  "ice_block_spell"
+
+        // Armor
+        //-------------------------------------------------------------------------------------------------------------
+        "ArmorPhysical"             "100"                                 // Physical protection.
+        "MagicalResistance"         "100"                                 // Magical protection (percentage).
+
+        // Attack
+        //-------------------------------------------------------------------------------------------------------------
+        "AttackCapabilities"        "DOTA_UNIT_CAP_RANGED_ATTACK"
+        "AttackDamageMin"           "0"                                     // Damage range min.
+        "AttackDamageMax"           "0"                                     // Damage range max.
+        "AttackDamageType"          "DAMAGE_TYPE_ArmorPhysical"             // Type of damage dealt. 
+        "AttackRate"                "1.0"                                   // Speed of attack.
+        "AttackAcquisitionRange"    "600"                                   // Range within a target can be acquired.
+        "AttackRange"               "128"                                   // Range within a target can be attacked.
+        "ProjectileModel"           ""                                      // Particle system model for projectile.
+        "ProjectileSpeed"           "0"                                     // Speed of projectile.
+
+        // Attributes
+        //-------------------------------------------------------------------------------------------------------------
+        "AttributePrimary"          "DOTA_ATTRIBUTE_STRENGTH"
+        "AttributeBaseStrength"     "0"
+        "AttributeStrengthGain"     "0"
+        "AttributeBaseIntelligence" "0"
+        "AttributeIntelligenceGain" "0"
+        "AttributeBaseAgility"      "0"
+        "AttributeAgilityGain"      "0"
+
+        // Bounty
+        //-------------------------------------------------------------------------------------------------------------
+        "BountyXP"                  "0"                                     // Experience earn.
+        "BountyGoldMin"             "0"                                     // Gold earned min.
+        "BountyGoldMax"             "0"                                     // Gold earned max.
+
+        // Movement
+        //-------------------------------------------------------------------------------------------------------------
+        "MovementSpeed"             "300"                                   // Speed.
+        "MovementTurnRate"          "0.6"                                   // Turning rate.
+
+        // Status
+        //-------------------------------------------------------------------------------------------------------------
+        "StatusHealth"              "20"
+        "StatusHealthRegen"         "-1"
+        "StatusMana"                "1000"
+        "StatusManaRegen"           "0"
+        
+        // Vision
+        //-------------------------------------------------------------------------------------------------------------
+        "VisionDaytimeRange"        "1"                                   // Range of vision during day light.
+        "VisionNighttimeRange"      "1"                                   // Range of vision at night time.
+    }
+
+    //=================================================================================================================
     // Jumper
     //=================================================================================================================
     "npc_dota_hero_juggernaut"
@@ -69,7 +144,7 @@
         "Level"                     "1"
         "BotImplemented"            "0"
         "Enabled"                   "1"
-        "url"                       "Jumper"        
+        "url"                       "Jumper"
 
         // Abilities
         //-------------------------------------------------------------------------------------------------------------

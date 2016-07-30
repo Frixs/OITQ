@@ -32,8 +32,6 @@ function Precache( context )
 
   -- Sounds can precached here like anything else
   PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts", context)
-  PrecacheResource("soundfile", "soundevents/voscripts/game_sounds_vo_announcer_dlc_defensegrid.vsndevts", context)
-  PrecacheResource("soundfile", "soundevents/game_sounds_custom.vsndevts", context)
 
   -- Entire items can be precached by name
   -- Abilities can also be precached in this way despite the name
@@ -44,6 +42,27 @@ function Precache( context )
   -- Custom units from npc_units_custom.txt can also have all of their abilities and precache{} blocks precached in this way
   PrecacheUnitByNameSync("npc_dota_hero_ancient_apparition", context)
   PrecacheUnitByNameSync("npc_dota_hero_enigma", context)
+
+
+  -- precatche hero particles
+  PrecacheResource("particle_folder", "particles/units/heroes/hero_bloodseeker", context)
+  PrecacheResource("particle_folder", "particles/units/heroes/hero_juggernaut", context)
+  -- precatche sound sets
+  PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_juggernaut.vsndevts", context)
+  PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_bloodseeker.vsndevts", context)
+  PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_dark_seer.vsndevts", context)
+  PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_meepo.vsndevts", context)
+  PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts", context)
+  PrecacheResource("soundfile", "soundevents/voscripts/game_sounds_vo_juggernaut.vsndevts", context)
+  PrecacheResource("soundfile", "soundevents/voscripts/game_sounds_vo_bloodseeker.vsndevts", context)
+  PrecacheResource("soundfile", "soundevents/voscripts/game_sounds_vo_dark_seer.vsndevts", context)
+  PrecacheResource("soundfile", "soundevents/voscripts/game_sounds_vo_meepo.vsndevts", context)
+  PrecacheResource("soundfile", "soundevents/voscripts/game_sounds_vo_bounty_hunter.vsndevts", context)
+
+  PrecacheResource("soundfile", "soundevents/voscripts/game_sounds_vo_announcer_dlc_defensegrid.vsndevts", context)
+  PrecacheResource("soundfile", "soundevents/game_sounds_custom.vsndevts", context)
+
+  -- precatche units
   PrecacheUnitByNameSync("npc_dota_pre_game_invul_global", context)
 
     -- Wearables

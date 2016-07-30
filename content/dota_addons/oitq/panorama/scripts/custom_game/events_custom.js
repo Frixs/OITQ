@@ -44,7 +44,7 @@ function InitCameraRelocate()
     // !!! IMPORTANT to change same value in settings.lua
     var start_respawn_time = 5;
     
-    GameUI.SetCameraTargetPosition( Entities.GetAbsOrigin( hero ), 1.0 )
+    GameUI.SetCameraTargetPosition( Entities.GetAbsOrigin( hero ), 1.0 );
 }
 
 (function () {

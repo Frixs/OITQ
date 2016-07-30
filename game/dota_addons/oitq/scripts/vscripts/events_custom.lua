@@ -52,10 +52,28 @@ function SendCustomMsg( eventSourceIndex, args )
     end
 end
 
+function HeroReplace( eventSourceIndex, args )
+    local playerID = args['playerID']
+    local oldHero  = PlayerResource:GetSelectedHeroEntity(playerID)
+    PlayerResource:ReplaceHeroWith(playerID, args['heroName'], STARTING_GOLD, 0)
+    UTIL_Remove(oldHero)
+end
+
+function IsGamePausedStatus( eventSourceIndex, args )
+    local GameStatus = false
+    if GameRules:IsGamePaused() then
+        GameStatus = true
+    end
+
+    CustomGameEventManager:Send_ServerToAllClients( "HeroSelectionPauseInfo", { pause = GameStatus } )
+end
+
 --//--\\--//--\\--
 CustomGameEventManager:RegisterListener( "OnDropItemInfo", OnDropItem )
-CustomGameEventManager:RegisterListener( "OnEmitSound_countdown", OnEmitSound_global )
+CustomGameEventManager:RegisterListener( "OnEmitSound_countdown", OnEmitSound_global ) -- overthrow_scoreboard.js
 CustomGameEventManager:RegisterListener( "SendGameStart", SendCustomMsg )
+CustomGameEventManager:RegisterListener( "is_game_paused", IsGamePausedStatus )
+CustomGameEventManager:RegisterListener( "selectHero", HeroReplace )
 --\\--//--\\--//--
 
 function ApplyWearablesToHeroes( heroEntity )

@@ -94,8 +94,6 @@ end
 ]]
 function GameMode:OnAllPlayersLoaded()
   DebugPrint("[BAREBONES] All Players have loaded into the game")
-  
-  EmitAnnouncerSound("announcer_dlc_defensegrid_announcer_choose_hero")
 end
 
 --[[

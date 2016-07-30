@@ -69,12 +69,10 @@
 
         "precache"
         {
-            "soundfile" "soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts"
             "particle"  "particles/units/heroes/hero_nevermore/nevermore_requiemofsouls_ground_cracks.vpcf"
             "particle"  "particles/units/heroes/hero_ursa/ursa_earthshock_rocks.vpcf"
             "particle"  "particles/units/heroes/hero_arc_warden/arc_warden_magnetic_start_dust_hit.vpcf"
 
-            "soundfile" "soundevents/game_sounds_heroes/game_sounds_leshrac.vsndevts"
             "particle"  "particles/econ/items/meepo/meepo_colossal_crystal_chorus/meepo_divining_rod_loadout.vpcf"
             "particle"  "particles/units/unit_greevil/loot_greevil_death_dust.vpcf"
             "particle"  "particles/units/heroes/hero_earth_spirit/espirit_geomagentic_target_spherewarp.vpcf"
@@ -82,7 +80,6 @@
             "particle"  "particles/units/heroes/hero_earthshaker/temp_eruption_dirt.vpcf"
             "particle"  "particles/spells/invoker_sun_strike_ground_smaller.vpcf"
 
-            "soundfile" "soundevents/game_sounds_heroes/game_sounds_tiny.vsndevts"
             "particle"  "particles/units/heroes/hero_tiny/tiny_toss_impact_d.vpcf"
             "particle"  "particles/econ/items/undying/undying_manyone/undying_pale_tower_destruction_dust_hit.vpcf"
             "particle"  "particles/units/heroes/hero_tiny/tiny_toss_impact_b.vpcf"
@@ -96,7 +93,7 @@
         {
             "FireSound"
             {
-                "EffectName"     "Hero_EarthSpirit.RollingBoulder.Target"
+                "EffectName"     "DOTA_CustomAbility.GroundPound.Cast"
                 "Target"         "CASTER"
             }
 
@@ -150,7 +147,7 @@
 
             "FireSound"
             {
-                "EffectName"     "Hero_Leshrac.Split_Earth"
+                "EffectName"     "DOTA_CustomAbility.GroundPound.EarthSplit"
                 "Target"
                 {
                     "Center"    "POINT"
@@ -257,7 +254,7 @@
 
                     "FireSound"
                     {
-                        "EffectName"    "Ability.TossImpact"
+                        "EffectName"    "DOTA_CustomAbility.GroundPound.Impact"
                         "Target"
                         {
                             "Center"    "POINT"

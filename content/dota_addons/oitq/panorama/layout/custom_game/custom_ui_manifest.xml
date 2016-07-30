@@ -70,6 +70,7 @@
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/custom_gui_spell_bar.xml" />
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/custom_gui_inventory.xml" />
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/custom_gui_stats.xml" />
+    <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/custom_hero_selection.xml" />
 
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/barebones_notifications.xml" /> 
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/barebones_attachments.xml" /> 
