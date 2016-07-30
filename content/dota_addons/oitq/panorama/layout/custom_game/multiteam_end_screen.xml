@@ -206,12 +206,31 @@
                     </Panel>
                 </Panel>
 			</Panel>
-			<Button id="CloseButton" onactivate="Game.FinishGame();">
-				<Label text="#CustomEndScreenClose" />
-			</Button>
-<!--
-            <Panel id="Loading" class="Spinner"/>
--->
+            
+            <!-- Voting System -->
+            <Panel id="voting-wrapper" hittest="false">
+                <Panel id="voting-time" hittest="false">
+                    <Label class="voting-remainingTime" text="99" />
+                </Panel>
+                <Button id="ContinueButton" onactivate="VoteYes();">
+                    <Label text="Rematch" />
+                </Button>
+                <Button id="QuitButton" onactivate="VoteNo();Game.FinishGame();">
+                    <Label text="Quit the game" />
+                </Button>
+                <Panel id="voting-progress-wrapper" hittest="false">
+                    <Panel class="voting-progress-bar" hittest="false">
+                        <Panel class="progress-vote-yes" hittest="false" />
+                        <Panel class="progress-vote-default" hittest="false" />
+                    </Panel>
+                    <Panel class="voting-remainingPlayers-wrapper" hittest="false">
+                        <Label class="voting-remainingPlayers-header" text="Needed votes to rematch:" hittest="false" />
+                        <Label class="voting-remainingPlayers" text="99" hittest="false" />
+                    </Panel>
+                    <Panel id="Loading" class="Spinner" />
+                </Panel>
+            </Panel>
+            
 		</Panel>
 	</Panel>
 </root>
