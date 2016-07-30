@@ -3,15 +3,9 @@
 function AutoUpdate()
 {
     CurrentVoteStatus();
+    Countdown();
 
 	$.Schedule( 0.1, AutoUpdate );
-}
-
-function AutoUpdateSec()
-{
-    CountdownTimer();
-
-	$.Schedule( 1.0, AutoUpdateSec );
 }
 
 function CurrentVoteStatus()
@@ -59,26 +53,13 @@ function CurrentVoteStatus()
     }
 }
 
-function CountdownTimer()
+function Countdown()
 {
-    var votes         = CustomNetTables.GetTableValue( "gameinfo", "votes" );
-    var specialValues = CustomNetTables.GetTableValue( "gameinfo", "special_values" );
-    var gameTimes     = CustomNetTables.GetTableValue( "gameinfo", "game_times" );
-    if( specialValues && gameTimes )
+    var votingTime = CustomNetTables.GetTableValue( "gameinfo", "rematch_voting_time" );
+    if( votingTime )
     {
-        //voting countdown
-        gameTimes['post_game'];
-        var remainingVotingTime = $("#voting-time").GetAttributeInt( "countdown", specialValues['rematchVotingTime'] );
-        
-        if( remainingVotingTime >= 0 )
-        {
-            $("#voting-time").GetChild(0).text = remainingVotingTime;
-            $("#voting-time").SetAttributeInt( "countdown", (remainingVotingTime - 1) );
-        }
-        else
-        {
-            
-        }
+        if( votingTime['voting_time'] < 0 ){votingTime['voting_time'] = 0;}
+        $("#voting-time").GetChild(0).text = votingTime['voting_time'];
     }
 }
 
@@ -86,7 +67,6 @@ function CountdownTimer()
 
 (function () {
     AutoUpdate();
-    AutoUpdateSec();
 })();
 
 

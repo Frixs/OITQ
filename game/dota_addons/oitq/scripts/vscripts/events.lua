@@ -21,6 +21,7 @@ function GameMode:OnGameRulesStateChange(keys)
   if newState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then                     --[[GAME IN PROGRESS]]
     -- destroy pregame aura buff
     GameRules.npc_dota_pre_game_invul_global:ForceKill(false)
+
   elseif newState == DOTA_GAMERULES_STATE_PRE_GAME then                         --[[PRE GAME]]
     -- create pregame aura buff
     GameRules.npc_dota_pre_game_invul_global = CreateUnitByName("npc_dota_pre_game_invul_global", Vector(0,0,0),false,nil,nil,DOTA_TEAM_NEUTRALS)
@@ -30,18 +31,22 @@ function GameMode:OnGameRulesStateChange(keys)
     Timers:CreateTimer(1, function() -- delay because of loading game state
         CustomGameEventManager:Send_ServerToAllClients( "AddClassToEmitInitialSounds", {} )
     end)
+
   elseif newState == DOTA_GAMERULES_STATE_HERO_SELECTION then                   --[[HERO SELECTION]]
     -- reset winner of the previous round
     GameRules:SetSafeToLeave( false )
     GameRules:SetGameWinner( DOTA_TEAM_NOTEAM )
+    -- reset rematch voting on the end of the round
+    CustomNetTables:SetTableValue( "gameinfo", "rematch_voting_time", { voting_time = REMATCH_VOTING_TIME } )
     -- select a random ARENA
     CURRENT_PLAYED_ARENA = RandomInt( 0, table.getn(ARENA_NAMES) ) -- getn count table values, start in 0
+
   elseif newState == DOTA_GAMERULES_STATE_POST_GAME then                        --[[POST GAME]]
     -- reset votes to rematch
     ResetVotes()
-    Timers:CreateTimer(24.0, function()
-        GameRules:ResetToHeroSelection()
-    end)
+    -- apply rematch voting countdown
+    RematchVotingCountdown()
+
   end
 end
 
