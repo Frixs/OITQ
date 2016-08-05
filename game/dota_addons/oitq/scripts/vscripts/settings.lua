@@ -104,6 +104,9 @@ AUTO_LAUNCH_DELAY = 30                  -- How long should the default team sele
 LOCK_TEAM_SETUP = false                 -- Should we lock the teams initially?  Note that the host can still unlock the teams 
 MINIMUM_VOTES_TO_REMATCH = 6			-- minimum votes to rematch
 
+INVENTORY_SAFE_SLOTS = 2				-- safe slots in a player inventory
+INVENTORY_DROP_SUM = 2					-- number of items which will be dropped after death
+
 CustomNetTables:SetTableValue( "gameinfo", "special_values", { minimumVotes = MINIMUM_VOTES_TO_REMATCH,
 															   rematchVotingTime = REMATCH_VOTING_TIME,
 															} )
