@@ -8,7 +8,8 @@ ALLOW_SAME_HERO_SELECTION = true        -- Should we let people select the same 
 
 HERO_SELECTION_TIME = 30.0              -- How long should we let people select their hero?
 PRE_GAME_TIME = 55.0                    -- How long after people select their heroes should the horn blow and the game start?
-POST_GAME_TIME = 60.0                   -- How long should we let people look at the scoreboard before closing the server automatically?
+POST_GAME_TIME = 30.0                   -- How long should we let people look at the scoreboard before closing the server automatically?
+REMATCH_VOTING_TIME = 20.0              -- How long should we let people vote to rematch?
 TREE_REGROW_TIME = 60.0                 -- How long should it take individual trees to respawn after being cut down/destroyed?
 
 CustomNetTables:SetTableValue( "gameinfo", "game_times", { hero_selection = HERO_SELECTION_TIME,
@@ -66,13 +67,13 @@ for i=1,MAX_LEVEL do
   --XP_PER_LEVEL_TABLE[i] = (i-1) * 100
 end
 -- save Level table to NET TABLES for panorama
-CustomNetTables:SetTableValue( "gameinfo", "xp_level_table", { XPlevel_1 = 0,
-															   XPlevel_2 = 10,
-															   XPlevel_3 = 40,
-															   XPlevel_4 = 75,
-															   XPlevel_5 = 120,
-															   XPlevel_6 = 200,
-															   XPlevel_6 = 300,
+CustomNetTables:SetTableValue( "gameinfo", "xp_level_table", { XPlevel_1 = XP_PER_LEVEL_TABLE[1],
+															   XPlevel_2 = XP_PER_LEVEL_TABLE[2],
+															   XPlevel_3 = XP_PER_LEVEL_TABLE[3],
+															   XPlevel_4 = XP_PER_LEVEL_TABLE[4],
+															   XPlevel_5 = XP_PER_LEVEL_TABLE[5],
+															   XPlevel_6 = XP_PER_LEVEL_TABLE[6],
+															   XPlevel_7 = XP_PER_LEVEL_TABLE[7],
 															 } )
 
 ENABLE_FIRST_BLOOD = true               -- Should we enable first blood for the first kill in this game?
@@ -101,7 +102,11 @@ SKIP_TEAM_SETUP = false                 -- Should we skip the team setup entirel
 ENABLE_AUTO_LAUNCH = true               -- Should we automatically have the game complete team setup after AUTO_LAUNCH_DELAY seconds?
 AUTO_LAUNCH_DELAY = 30                  -- How long should the default team selection launch timer be?  The default for custom games is 30.  Setting to 0 will skip team selection.
 LOCK_TEAM_SETUP = false                 -- Should we lock the teams initially?  Note that the host can still unlock the teams 
+MINIMUM_VOTES_TO_REMATCH = 6			-- minimum votes to rematch
 
+CustomNetTables:SetTableValue( "gameinfo", "special_values", { minimumVotes = MINIMUM_VOTES_TO_REMATCH,
+															   rematchVotingTime = REMATCH_VOTING_TIME,
+															} )
 
 -- NOTE: You always need at least 2 non-bounty type runes to be able to spawn or your game will crash!
 ENABLED_RUNES = {}                      -- Which runes should be enabled to spawn in our game mode?

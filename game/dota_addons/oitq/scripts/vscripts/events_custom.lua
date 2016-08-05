@@ -68,13 +68,30 @@ function IsGamePausedStatus( eventSourceIndex, args )
     CustomGameEventManager:Send_ServerToAllClients( "HeroSelectionPauseInfo", { pause = GameStatus } )
 end
 
+function SetPlayerVote( eventSourceIndex, args )
+    local votes = CustomNetTables:GetTableValue( "gameinfo", "votes" )
+    if votes then
+        votes[args['playerID']] = args['voteStatus']
+        CustomNetTables:SetTableValue( "gameinfo", "votes", votes )
+    else
+        local newVote = {}
+        newVote[args['playerID']] = args['voteStatus']
+        CustomNetTables:SetTableValue( "gameinfo", "votes", newVote )
+    end
+end
+
+
+
 --//--\\--//--\\--
 CustomGameEventManager:RegisterListener( "OnDropItemInfo", OnDropItem )
 CustomGameEventManager:RegisterListener( "OnEmitSound_countdown", OnEmitSound_global ) -- overthrow_scoreboard.js
 CustomGameEventManager:RegisterListener( "SendGameStart", SendCustomMsg )
 CustomGameEventManager:RegisterListener( "is_game_paused", IsGamePausedStatus )
 CustomGameEventManager:RegisterListener( "selectHero", HeroReplace )
+CustomGameEventManager:RegisterListener( "SetPlayerVote", SetPlayerVote )
 --\\--//--\\--//--
+
+
 
 function ApplyWearablesToHeroes( heroEntity )
     if heroEntity:GetClassname() == "npc_dota_hero_juggernaut" then
@@ -170,4 +187,45 @@ function InitialAbilityLvUp( heroEntity )
     if ability_lvup then ability_lvup:SetLevel(1) end
     local ability_lvup = heroEntity:FindAbilityByName("ice_block_spell")
     if ability_lvup then ability_lvup:SetLevel(1) end
+end
+
+function ResetVotes()
+    local votes = CustomNetTables:GetTableValue( "gameinfo", "votes" )
+    if votes then
+        local resetValues = {}
+        CustomNetTables:SetTableValue( "gameinfo", "votes", resetValues )
+    end
+end
+
+function RematchVotingCountdown()
+    local currentTime = CustomNetTables:GetTableValue( "gameinfo", "rematch_voting_time" )
+
+    Timers:CreateTimer(1.0, function()
+        local newTime = currentTime['voting_time'] - 1
+        CustomNetTables:SetTableValue( "gameinfo", "rematch_voting_time", { voting_time = newTime } )
+
+        -- endup countdown
+        if currentTime['voting_time'] >= 0 then
+            RematchVotingCountdown()
+            return
+        else
+            -- on the end of the countdown
+            local votes = CustomNetTables:GetTableValue( "gameinfo", "votes" )
+            if votes then
+                local YesVotes = 0
+                for key,value in pairs(votes) do
+                    if value == 2 then
+                        YesVotes = YesVotes + 1
+                    end
+                end
+
+                if YesVotes >= MINIMUM_VOTES_TO_REMATCH then
+                    -- rematch after delay
+                    Timers:CreateTimer(1.0, function()
+                        GameRules:ResetToHeroSelection()
+                    end)
+                end
+            end
+        end
+    end)
 end

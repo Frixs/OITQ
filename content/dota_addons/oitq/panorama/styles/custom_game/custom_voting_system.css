@@ -1,0 +1,116 @@
+#voting-wrapper
+{
+    horizontal-align: center;
+    vertical-align: middle;
+    width: 100%;
+    height: 300px;
+    margin-top: 50px;
+}
+
+#voting-time
+{
+    horizontal-align: center;
+    vertical-align: top;
+    width: 75px;
+    height: 75px;
+    border-radius: 90px;
+    border: 4px solid #000000FA;
+    background-color: #00000033;
+    box-shadow: 0px 0px 5px #000000FF;
+}
+
+.voting-remainingTime
+{
+    horizontal-align: center;
+    vertical-align: middle;
+    font-family: Goudy Trajan Medium;
+    font-size: 36px;
+    color: #ffefccFF;
+}
+
+#ContinueButton, #QuitButton
+{
+    vertical-align: top;
+    width: 49%;
+    margin-top: 90px;
+    background-color: #000000FA;
+}
+#ContinueButton:hover, #QuitButton:hover { background-color: #000000FF; }
+
+#ContinueButton Label, #QuitButton Label
+{
+    vertical-align: middle;
+    horizontal-align: center;
+    font-family: Goudy Trajan Medium;
+    font-size: 36px;
+    color: #ffefccFF;
+    padding: 15px;
+}
+#ContinueButton { horizontal-align: left; }
+#QuitButton { horizontal-align: right; }
+
+#voting-progress-wrapper
+{
+    vertical-align: bottom;
+    horizontal-align: center;
+    
+    width: 100%;
+    height: 95px;
+}
+
+.voting-progress-bar, .voting-remainingPlayers-wrapper
+{
+    margin-top: 45px;
+}
+
+.voting-progress-bar
+{
+    vertical-align: top;
+    horizontal-align: center;
+    width: 100%;
+    height: 10px;
+}
+
+.progress-vote-yes, .progress-vote-default
+{
+    vertical-align: middle;
+    horizontal-align: left;
+    height: 10px;
+}
+.progress-vote-default
+{
+    z-index: 2;
+    background-color: #c10000FA;
+    width: 100%;
+}
+.progress-vote-yes
+{
+    z-index: 3;
+    background-color: #5abc13FA;
+    width: 0%;
+    transition: width 0.1s ease-in-out 0.0s;
+}
+
+.voting-remainingPlayers-wrapper
+{
+    vertical-align: bottom;
+    horizontal-align: right;
+    width: 50%;
+}
+
+.voting-remainingPlayers-header, .voting-remainingPlayers
+{
+    color: #ffffff;
+    font-size: 22px;
+}
+
+.voting-remainingPlayers
+{
+    horizontal-align: right;
+}
+
+#Loading
+{
+    vertical-align: top;
+    horizontal-align: center;
+}
