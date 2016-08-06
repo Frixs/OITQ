@@ -394,6 +394,9 @@ function GameMode:OnEntityKilled( keys )
         killerEntity:AddExperience( 10, 0, false, false ) --XP per KILL enemy hero
         GameRules:SendCustomMessage("%s1 killed <font color='#FFFFFF'>"..PlayerResource:GetPlayerName(killedUnit:GetPlayerID()).."</font>", 0, 0)
       end
+
+      -- launch inventory drop
+      DropInventory( killedUnit )
     end
 
     -- Kill feed message and popup based on what the gold filter modified earlier

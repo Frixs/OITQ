@@ -122,7 +122,7 @@
                     onmouseover ="ItemShowTooltip(5)"
                     onmouseout  ="ItemHideTooltip(5)"
                     onactivate     ="ActivateItem(5)"
-                    oncontextmenu="RightClickItem(6)"
+                    oncontextmenu="RightClickItem(5)"
                     >
                 <DOTAItemImage class="itemIcon" />
                 <Panel class="cooldownBox">

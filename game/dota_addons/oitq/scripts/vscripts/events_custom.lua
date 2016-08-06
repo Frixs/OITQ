@@ -229,3 +229,68 @@ function RematchVotingCountdown()
         end
     end)
 end
+
+function DropInventory( hero )
+    -- This timer is needed because OnEquip triggers before the item actually being in inventory
+    Timers:CreateTimer(0.1,function()
+        local droppedItem = {}
+        droppedItem[0] = false
+        droppedItem[1] = false
+        droppedItem[2] = false
+        droppedItem[3] = false
+        droppedItem[4] = false
+        droppedItem[5] = false
+
+        -- get number of droppable items
+        local itemToDrop = 0
+        for y = INVENTORY_SAFE_SLOTS, 5, 1 do
+            if hero:GetItemInSlot( y ) then
+                itemToDrop = itemToDrop + 1
+            end
+        end
+
+        if itemToDrop > INVENTORY_DROP_SUM then
+            -- define slots to drop
+            for z = 1, INVENTORY_DROP_SUM, 1 do
+                local slot = DropInventRand(hero, droppedItem)
+                --print("*"..slot.."*")
+                droppedItem[slot] = true
+            end
+        else
+            -- drop all remaining items
+            for z = INVENTORY_SAFE_SLOTS, 5, 1 do
+                droppedItem[z] = true
+            end
+        end
+
+        -- Go through dangerous item slots (2 slots are safe)
+        for itemSlot = INVENTORY_SAFE_SLOTS, 5, 1 do
+            if droppedItem[itemSlot] then
+                local Item = hero:GetItemInSlot( itemSlot )
+                if Item ~= nil then
+                    DropItem(Item, hero)
+                end
+            end
+        end
+    end)
+end
+
+function DropInventRand( hero, droppedItem )
+    local key = RandomInt( INVENTORY_SAFE_SLOTS, 5 )
+    local item = hero:GetItemInSlot( key )
+    
+    --print("===")
+    --print(key)
+    --print(item)
+    --print("===")
+    if droppedItem[key] or item == nil then
+        --print("v1")
+        return DropInventRand( hero, droppedItem )
+    elseif item ~= nil and not item:IsDroppable() then
+        --print("v2")
+        return DropInventRand( hero, droppedItem )
+    else
+        --print("v3")
+        return key
+    end
+end
