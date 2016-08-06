@@ -278,7 +278,7 @@ end
 function DropInventRand( hero, droppedItem )
     local key = RandomInt( INVENTORY_SAFE_SLOTS, 5 )
     local item = hero:GetItemInSlot( key )
-    
+
     --print("===")
     --print(key)
     --print(item)
@@ -293,4 +293,8 @@ function DropInventRand( hero, droppedItem )
         --print("v3")
         return key
     end
+end
+
+function OnPlayerDeathLoot( hero )
+    -- body
 end
