@@ -253,6 +253,7 @@ function DropInventory( hero )
             -- define slots to drop
             for z = 1, INVENTORY_DROP_SUM, 1 do
                 local slot = DropInventRand(hero, droppedItem)
+                --print("*"..slot.."*")
                 droppedItem[slot] = true
             end
         else
@@ -277,10 +278,19 @@ end
 function DropInventRand( hero, droppedItem )
     local key = RandomInt( INVENTORY_SAFE_SLOTS, 5 )
     local item = hero:GetItemInSlot( key )
-
-    if droppedItem[key] or not item or (item and not item:IsDroppable()) then
-        DropInventRand( droppedItem )
+    
+    --print("===")
+    --print(key)
+    --print(item)
+    --print("===")
+    if droppedItem[key] or item == nil then
+        --print("v1")
+        return DropInventRand( hero, droppedItem )
+    elseif item ~= nil and not item:IsDroppable() then
+        --print("v2")
+        return DropInventRand( hero, droppedItem )
     else
+        --print("v3")
         return key
     end
 end

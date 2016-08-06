@@ -47,7 +47,14 @@ function InitCameraRelocate()
     GameUI.SetCameraTargetPosition( Entities.GetAbsOrigin( hero ), 1.0 );
 }
 
+function InitGameFuncs()
+{
+    //Hide scan button
+    $.GetContextPanel().GetParent().GetParent().GetParent().FindChild("HUDElements").FindChild("RadarButton").DeleteAsync(0);
+}
+
 (function () {
     //InitialCameraRelocate();
     GameEvents.Subscribe( "InitCameraRelocate", InitCameraRelocate);
+    InitGameFuncs();
 })();
