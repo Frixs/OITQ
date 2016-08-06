@@ -296,5 +296,35 @@ function DropInventRand( hero, droppedItem )
 end
 
 function OnPlayerDeathLoot( hero )
-    -- body
+    local lootKV = LoadKeyValues("scripts/kv/loot.kv")
+
+    local dropped = false
+    randomNumber = RandomInt( 1, lootKV['percentageLevel'] )
+    if randomNumber < 2500 and dropped == false then  -- 25% chance (common)
+        --drop
+        dropped = true
+    else
+        randomNumber = RandomInt( 1, lootKV['percentageLevel'] )
+        if randomNumber < 1500 and dropped == false then  -- 15% chance (uncommon)
+            --drop
+            dropped = true
+        else
+            randomNumber = RandomInt( 1, lootKV['percentageLevel'] )
+            if randomNumber < 500 and dropped == false then  -- 5% chance (rare)
+                --drop
+                dropped = true
+            else
+                randomNumber = RandomInt( 1, lootKV['percentageLevel'] )
+                if randomNumber < 200 and dropped == false then  -- 2% chance (epic)
+                    --drop
+                    dropped = true
+                else
+                    randomNumber = RandomInt( 1, lootKV['percentageLevel'] )
+                    if randomNumber < 50 and dropped == false then  -- 0.5% chance (artifact)
+                        --drop
+                    end
+                end
+            end
+        end
+    end
 end
