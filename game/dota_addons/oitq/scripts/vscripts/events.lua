@@ -397,6 +397,9 @@ function GameMode:OnEntityKilled( keys )
 
       -- launch inventory drop
       DropInventory( killedUnit )
+
+      -- launch loot
+      OnPlayerDeathLoot( killedUnit )
     end
 
     -- Kill feed message and popup based on what the gold filter modified earlier
