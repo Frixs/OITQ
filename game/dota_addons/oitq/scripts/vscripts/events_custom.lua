@@ -385,9 +385,6 @@ end
 function LaunchWorldItemFromUnit( sItemName, flLaunchHeight, flDuration, hUnit )
     -- This timer is needed because OnEquip triggers before the item actually being in inventory
     Timers:CreateTimer(0.1,function()
-        -- Drop Sound
-        EmitSoundOnClient("General.CastFail_InvalidTarget_Hero", hUnit:GetPlayerOwner())
-
         -- Create a new empty item
         local newItem = CreateItem( sItemName, nil, nil )
         newItem:SetPurchaseTime( 0 )
@@ -396,6 +393,13 @@ function LaunchWorldItemFromUnit( sItemName, flLaunchHeight, flDuration, hUnit )
         local spawnPoint = Vector( 0, 0, 0 )
         spawnPoint = hUnit:GetAbsOrigin()
         local drop = CreateItemOnPositionSync( spawnPoint, newItem )
-        newItem:LaunchLoot( false, flLaunchHeight, flDuration, spawnPoint + RandomVector( RandomFloat( 300, 500 ) ) )
+        local launchVector = spawnPoint + RandomVector( RandomFloat( 300, 500 ) )
+        newItem:LaunchLoot( false, flLaunchHeight, flDuration, launchVector )
+
+        Timers:CreateTimer(0.6,function()
+            -- particles
+            local particleLoot = ParticleManager:CreateParticle("particles/econ/items/meepo/meepo_diggers_divining_rod/meepo_divining_rod_poof_end_rays_burst.vpcf", PATTACH_ABSORIGIN, hUnit)
+            ParticleManager:SetParticleControl(particleLoot, 0 , launchVector)
+        end)
     end)
 end
