@@ -1,0 +1,190 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+    // Spell: Everlasting Spirit
+    //=================================================================================================================    
+    "ability_everlasting_spirit"
+    {
+        // General
+        //-------------------------------------------------------------------------------------
+        "BaseClass"             "ability_datadriven"
+        "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT"
+        "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
+        "AbilityTextureName"    "ability_everlasting_spirit"
+        "MaxLevel"              "6"
+        "LevelsBetweenUpgrades" "1"
+        "FightRecapLevel"       "1"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"       "60 58 55 52 50 8"
+
+        // Special
+        //-------------------------------------------------------------------------------------
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"              "FIELD_FLOAT"
+                "effect_duration"       "3.0 3.2 3.5 3.8 4.0 5.0"
+            }
+            "02"
+            {
+                "var_type"              "FIELD_FLOAT"
+                "active_duration"       "1.5 1.8 2.0 2.2 2.5 3.0"
+            }
+            "03"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "minimal_earned_damage" "2 2 2 1 1 1"
+            }
+        }
+
+        "precache"
+        {
+            "particle"  "particles/units/heroes/hero_skeletonking/wraith_king_ghosts_spirits_copy.vpcf"
+            "particle"  "particles/ui/ui_lina_goalburst_1.vpcf"
+            "particle"  "particles/econ/items/templar_assassin/templar_assassin_butterfly/templar_assassin_trap_core_ring_butterfly.vpcf"
+            "particle"  "particles/econ/items/templar_assassin/templar_assassin_butterfly/templar_assassin_trap_explode_points_butterfly.vpcf"
+            "particle"  "particles/units/heroes/hero_arc_warden/arc_warden_flux_tgt_rope.vpcf"
+            "particle"  "particles/dire_fx/bad_ancient_arc_green.vpcf"
+            "particle"  "particles/econ/items/templar_assassin/templar_assassin_butterfly/templar_assassin_trap_ring_inner_start_butterfly.vpcf"
+            "particle"  "particles/status_fx/status_effect_ghost.vpcf"
+            "particle"  "particles/econ/events/ti4/teleport_end_volume_magic_ti4.vpcf"
+            "particle"  "particles/econ/items/juggernaut/bladekeeper_healing_ward/juggernaut_healing_ward_dc.vpcf"
+            "particle"  "particles/units/heroes/hero_brewmaster/brewmaster_pulverize_shock.vpcf"
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
+        }
+
+        // Data Driven
+        //-------------------------------------------------------------------------------------
+        "OnSpellStart"
+        {
+            "ApplyModifier"
+            {
+                "ModifierName"      "modifier_everlasting_spirit"
+                "Target"            "CASTER"
+                "Duration"          "%active_duration"
+            }
+
+            "RunScript"
+            {
+                "ScriptFile"        "spells/ability_everlasting_spirit_lua.lua"
+                "Function"          "GetHealth"
+            }
+        }
+
+        "Modifiers"
+        {
+            "modifier_everlasting_spirit"
+            {
+                "Passive"            "0"
+                "IsHidden"           "0"
+                "IsBuff"             "1"
+
+                "StatusEffectName"     "particles/status_fx/status_effect_ghost.vpcf"
+                "StatusEffectPriority" "10"
+
+                "OnCreated"
+                {
+                    "FireSound"
+                    {
+                        "EffectName"        "DOTA_Item.GhostScepter.Activate"
+                        "Target"            "CASTER"
+                    }
+
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/ui/ui_lina_goalburst_1.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "CASTER"
+                    }
+                }
+
+                "OnTakeDamage"
+                // "%attack_damage" is set to the damage value after mitigation
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"        "spells/ability_everlasting_spirit_lua.lua"
+                        "Function"          "OnTakeDamage"
+                        "damage"            "%attack_damage"
+                        "min_damage"        "%minimal_earned_damage"
+                        "effect_duration"   "%effect_duration"
+                    }
+
+                    "RemoveModifier"
+                    {
+                        "ModifierName"      "modifier_everlasting_spirit"
+                        "Target"            "CASTER"
+                    }
+                }
+            }
+
+            "modifier_everlasting_spirit_invul"
+            {
+                "Passive"            "0"
+                "IsHidden"           "0"
+                "IsBuff"             "1"
+
+                "StatusEffectName"     "particles/status_fx/status_effect_ghost.vpcf"
+                "StatusEffectPriority" "10"
+
+                "OnCreated"
+                {
+                    "FireSound"
+                    {
+                        "EffectName"        "Hero_PhantomAssassin.Arcana_Layer"
+                        "Target"            "CASTER"
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/units/heroes/hero_skeletonking/wraith_king_ghosts_spirits_copy.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "CASTER"
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/econ/items/templar_assassin/templar_assassin_butterfly/templar_assassin_trap_core_ring_butterfly.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "CASTER"
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/units/heroes/hero_arc_warden/arc_warden_flux_tgt_rope.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "CASTER"
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/dire_fx/bad_ancient_arc_green.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "CASTER"
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/econ/items/juggernaut/bladekeeper_healing_ward/juggernaut_healing_ward_dc.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "CASTER"
+                    }
+
+                    "RunScript"
+                    {
+                        "ScriptFile"        "spells/ability_everlasting_spirit_lua.lua"
+                        "Function"          "ApplyResistances"
+                    }
+                }
+
+                "OnDestroy"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"        "spells/ability_everlasting_spirit_lua.lua"
+                        "Function"          "RemoveResistances"
+                    }
+                }
+            }
+        }
+    }
+}

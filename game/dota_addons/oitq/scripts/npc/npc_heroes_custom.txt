@@ -152,7 +152,7 @@
         "Ability1"                  "shuriken_spell"
         "Ability2"                  "dash_spell"
         "Ability3"                  "ability_evasion"
-        "Ability4"                  "windrunner_windrun"
+        "Ability4"                  "ability_everlasting_spirit"
         "Ability5"                  "ability_time_lapse"
         "Ability6"                  "ice_block_spell"
 
@@ -228,7 +228,7 @@
         "Ability1"                  "shuriken_spell"                        // Ability 1.
         "Ability2"                  "anger_aura_spell"                      // Ability 2.
         "Ability3"                  "ability_evasion"
-        "Ability4"                  "windrunner_windrun"
+        "Ability4"                  "ability_everlasting_spirit"
         "Ability5"                  "ability_time_lapse"
         "Ability6"                  "ice_block_spell"
 
@@ -304,7 +304,7 @@
         "Ability1"                  "shuriken_spell"                        // Ability 1.
         "Ability2"                  "fork_spell"                            // Ability 2.
         "Ability3"                  "ability_evasion"
-        "Ability4"                  "windrunner_windrun"
+        "Ability4"                  "ability_everlasting_spirit"
         "Ability5"                  "ability_time_lapse"
         "Ability6"                  "ice_block_spell"
 
@@ -380,7 +380,7 @@
         "Ability1"                  "shuriken_spell"                        // Ability 1.
         "Ability2"                  "ground_pound_spell"                    // Ability 2.
         "Ability3"                  "ability_evasion"
-        "Ability4"                  "windrunner_windrun"
+        "Ability4"                  "ability_everlasting_spirit"
         "Ability5"                  "ability_time_lapse"
         "Ability6"                  "ice_block_spell"
 
@@ -456,7 +456,7 @@
         "Ability1"                  "shuriken_spell"                        // Ability 1.
         "Ability2"                  "vanishing_act_spell"                   // Ability 2.
         "Ability3"                  "ability_evasion"
-        "Ability4"                  "windrunner_windrun"
+        "Ability4"                  "ability_everlasting_spirit"
         "Ability5"                  "ability_time_lapse"
         "Ability6"                  "ice_block_spell"
 

@@ -120,11 +120,11 @@ function ChangeHeroSelection(heroNumb)
                             "ability_evasion"
                         ],
                         [
-                            "",
-                            "",
-                            "",
-                            "",
-                            ""
+                            "ability_everlasting_spirit",
+                            "ability_everlasting_spirit",
+                            "ability_everlasting_spirit",
+                            "ability_everlasting_spirit",
+                            "ability_everlasting_spirit"
                         ],
                         [
                             "ability_time_lapse",

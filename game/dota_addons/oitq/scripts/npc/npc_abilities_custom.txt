@@ -8,6 +8,7 @@
 #base "abilities/ability_vanishing_act.txt"
 #base "abilities/ability_evasion.txt"
 #base "abilities/ability_time_lapse.txt"
+#base "abilities/ability_everlasting_spirit.txt"
 // functions
 #base "abilities/functional/pre_game_invul_global.txt"
 #base "abilities/cosmetic/map_setup.txt"
