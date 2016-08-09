@@ -1,3 +1,6 @@
+---------------------------------------------------------------------------
+-- OnDropItem
+---------------------------------------------------------------------------
 function OnDropItem( eventSourceIndex, args )
     if IsServer() then
         local hero = EntIndexToHScript( args['hero'] )
@@ -40,18 +43,27 @@ function DropItem( item, hero )
     hero:RemoveItem(item)
 end
 
+---------------------------------------------------------------------------
+-- OnEmitSound_global
+---------------------------------------------------------------------------
 function OnEmitSound_global( eventSourceIndex, args )
     if IsServer() then
         EmitAnnouncerSound( args['soundName'] )
     end
 end
 
+---------------------------------------------------------------------------
+-- SendCustomMsg
+---------------------------------------------------------------------------
 function SendCustomMsg( eventSourceIndex, args )
     if IsServer() then
         GameRules:SendCustomMessage(args['textMessage'], 0, args['forWhom'])
     end
 end
 
+---------------------------------------------------------------------------
+-- HeroReplace
+---------------------------------------------------------------------------
 function HeroReplace( eventSourceIndex, args )
     local playerID = args['playerID']
     local oldHero  = PlayerResource:GetSelectedHeroEntity(playerID)
@@ -59,6 +71,9 @@ function HeroReplace( eventSourceIndex, args )
     UTIL_Remove(oldHero)
 end
 
+---------------------------------------------------------------------------
+-- IsGamePausedStatus
+---------------------------------------------------------------------------
 function IsGamePausedStatus( eventSourceIndex, args )
     local GameStatus = false
     if GameRules:IsGamePaused() then
@@ -68,6 +83,9 @@ function IsGamePausedStatus( eventSourceIndex, args )
     CustomGameEventManager:Send_ServerToAllClients( "HeroSelectionPauseInfo", { pause = GameStatus } )
 end
 
+---------------------------------------------------------------------------
+-- SetPlayerVote
+---------------------------------------------------------------------------
 function SetPlayerVote( eventSourceIndex, args )
     local votes = CustomNetTables:GetTableValue( "gameinfo", "votes" )
     if votes then
@@ -93,6 +111,9 @@ CustomGameEventManager:RegisterListener( "SetPlayerVote", SetPlayerVote )
 
 
 
+---------------------------------------------------------------------------
+-- ApplyWearablesToHeroes
+---------------------------------------------------------------------------
 function ApplyWearablesToHeroes( heroEntity )
     if heroEntity:GetClassname() == "npc_dota_hero_juggernaut" then
         SwapWearable( heroEntity, "models/heroes/juggernaut/jugg_mask.vmdl",        "models/items/juggernaut/thousand_faces_mask/thousand_faces_mask.vmdl" )
@@ -168,6 +189,9 @@ function ApplyWearablesToHeroes( heroEntity )
     end
 end
 
+---------------------------------------------------------------------------
+-- InitialAbilityLvUp
+---------------------------------------------------------------------------
 function InitialAbilityLvUp( heroEntity )
     -- set unlearnable skills to Lv1
     local ability_lvup = heroEntity:FindAbilityByName("shuriken_spell")
@@ -230,6 +254,9 @@ function RematchVotingCountdown()
     end)
 end
 
+---------------------------------------------------------------------------
+-- DropInventory
+---------------------------------------------------------------------------
 function DropInventory( hero )
     -- This timer is needed because OnEquip triggers before the item actually being in inventory
     Timers:CreateTimer(0.1,function()
@@ -278,7 +305,7 @@ end
 function DropInventRand( hero, droppedItem )
     local key = RandomInt( INVENTORY_SAFE_SLOTS, 5 )
     local item = hero:GetItemInSlot( key )
-    
+
     --print("===")
     --print(key)
     --print(item)
@@ -293,4 +320,86 @@ function DropInventRand( hero, droppedItem )
         --print("v3")
         return key
     end
+end
+
+---------------------------------------------------------------------------
+-- OnPlayerDeathLoot
+---------------------------------------------------------------------------
+function OnPlayerDeathLoot( hero )
+    local lootKV = LoadKeyValues("scripts/kv/loot.kv")
+
+    local dropped = false
+    -- common
+    randomNumber = RandomInt( 1, lootKV['percentageLevel'] )
+    if randomNumber < 150 and dropped == false then  -- 15% chance (common)
+        ChooseRandomItem( hero, "common", lootKV )
+        dropped = true
+    else
+        -- uncommon
+        randomNumber = RandomInt( 1, lootKV['percentageLevel'] )
+        if randomNumber < 80 and dropped == false then  -- 8% chance (uncommon)
+            ChooseRandomItem( hero, "uncommon", lootKV )
+            dropped = true
+        else
+            -- rare
+            randomNumber = RandomInt( 1, lootKV['percentageLevel'] )
+            if randomNumber < 50 and dropped == false then  -- 5% chance (rare)
+                ChooseRandomItem( hero, "rare", lootKV )
+                dropped = true
+            else
+                -- epic
+                randomNumber = RandomInt( 1, lootKV['percentageLevel'] )
+                if randomNumber < 20 and dropped == false then  -- 2% chance (epic)
+                    ChooseRandomItem( hero, "epic", lootKV )
+                    dropped = true
+                else
+                    -- artifact
+                    randomNumber = RandomInt( 1, lootKV['percentageLevel'] )
+                    if randomNumber < 5 and dropped == false then  -- 0.5% chance (artifact)
+                        ChooseRandomItem( hero, "artifact", lootKV )
+                    end
+                end
+            end
+        end
+    end
+end
+
+function ChooseRandomItem( hero, rarity, lootKV )
+    local itemCount = 0
+    for Key, Value in pairs( lootKV[rarity]['items'] ) do
+      itemCount = itemCount + 1
+    end
+
+    -- choose item from pack
+    randomItem = RandomInt( 0, (itemCount - 1) )
+    -- launch height
+    local flMaxHeight = RandomFloat( 300, 450 )
+
+    -- create item & launch
+    LaunchWorldItemFromUnit( lootKV[rarity]['items'][tostring(randomItem)], flMaxHeight, 0.5, hero )
+end
+
+---------------------------------------------------------------------------
+-- LaunchWorldItemFromUnit
+---------------------------------------------------------------------------
+function LaunchWorldItemFromUnit( sItemName, flLaunchHeight, flDuration, hUnit )
+    -- This timer is needed because OnEquip triggers before the item actually being in inventory
+    Timers:CreateTimer(0.1,function()
+        -- Create a new empty item
+        local newItem = CreateItem( sItemName, nil, nil )
+        newItem:SetPurchaseTime( 0 )
+
+        -- Make a new item and launch it near the hero
+        local spawnPoint = Vector( 0, 0, 0 )
+        spawnPoint = hUnit:GetAbsOrigin()
+        local drop = CreateItemOnPositionSync( spawnPoint, newItem )
+        local launchVector = spawnPoint + RandomVector( RandomFloat( 300, 500 ) )
+        newItem:LaunchLoot( false, flLaunchHeight, flDuration, launchVector )
+
+        Timers:CreateTimer(0.6,function()
+            -- particles
+            local particleLoot = ParticleManager:CreateParticle("particles/econ/items/meepo/meepo_diggers_divining_rod/meepo_divining_rod_poof_end_rays_burst.vpcf", PATTACH_ABSORIGIN, hUnit)
+            ParticleManager:SetParticleControl(particleLoot, 0 , launchVector)
+        end)
+    end)
 end
