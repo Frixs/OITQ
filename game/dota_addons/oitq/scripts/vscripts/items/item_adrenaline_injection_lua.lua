@@ -5,6 +5,9 @@ function item_adrenaline_injection_on_spell_start( keys )
 	local new_charges = charges - 1
 	local damage_stacks  = ability:GetLevelSpecialValueFor( "damage_absorb", ability:GetLevel() - 1 )
 	
+	-- Set health on spell start
+	keys.caster.adrenaline_injection_preHealth = caster:GetHealth()
+
 	-- Applies the damage absorb buff
 	ability:ApplyDataDrivenModifier(caster, caster, "modifier_item_adrenaline_injection", {})
 	caster:SetModifierStackCount("modifier_item_adrenaline_injection", ability, damage_stacks)
@@ -34,14 +37,17 @@ function modifier_item_adrenaline_injection_on_take_damage( keys )
 	local modifier = "modifier_item_adrenaline_injection"
 	local damage   = keys.damage
 	local stacks   = caster:GetModifierStackCount(modifier, ability)
-	local true_damage = damage - stacks
-
-	if true_damage < 0 then true_damage = 0 end
+	local absorb_damage = keys.absorb_damage
+	local heroPreHealth = caster.adrenaline_injection_preHealth
 
 	-- Ensures the caster is affected by the modifier
 	if caster:HasModifier(modifier) then
-		-- Replaces the health the caster lost when taking damage
-		caster:SetHealth(caster:GetHealth() + (damage - true_damage))
+	    -- set earned damage
+	    if heroPreHealth > (damage - absorb_damage) and (damage - absorb_damage) > 0 then
+	    	caster:SetHealth( (heroPreHealth - (damage - absorb_damage)) )
+	    elseif (damage - absorb_damage) < 0 then
+	    	caster:SetHealth( heroPreHealth )
+	    end
 		
 		-- Removes damage stacks from the damage absorb modifier
 		stacks = stacks - damage

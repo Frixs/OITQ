@@ -19,7 +19,7 @@
         "ItemShareability"          "ITEM_FULLY_SHAREABLE"
 
         "ItemInitialCharges"        "3" //How many charges should the item start with - Tango x3 
-        "ItemDisplayCharges"        "1" //Hide the charges of the item - Aegis 
+        "ItemDisplayCharges"        "1" //Hide the charges of the item - Aegis
         "ItemRequiresCharges"       "1" //The active ability needs charges to be used - Urn
         "ItemPermanent"             "0"
         
@@ -68,8 +68,8 @@
             
             "RunScript"
             {
-                "ScriptFile"    "items/item_adrenaline_injection_lua.lua"
-                "Function"      "item_adrenaline_injection_on_spell_start"
+                "ScriptFile"     "items/item_adrenaline_injection_lua.lua"
+                "Function"       "item_adrenaline_injection_on_spell_start"
             }
         }
 
@@ -97,6 +97,7 @@
                         "ScriptFile"    "items/item_adrenaline_injection_lua.lua"
                         "Function"      "modifier_item_adrenaline_injection_on_take_damage"
                         "damage"        "%attack_damage"
+                        "absorb_damage" "%damage_absorb"
                         "sound"         "Hero_TemplarAssassin.Refraction.Absorb"
                     }
                 }
