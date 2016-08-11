@@ -405,11 +405,14 @@ function GameMode:OnEntityKilled( keys )
     -- Kill feed message and popup based on what the gold filter modified earlier
     if SPAWNED_UNIT and killedUnit ~= killerEntity then
       local killGold   = SPAWNED_UNIT.KillGold
+        if not killGold then killGold = 0 end
       local assistGold = SPAWNED_UNIT.AssistGold
+        if not assistGold then assistGold = 0 end
       local gold       = killGold + assistGold
       local killerID   = killerEntity:GetPlayerID()
       --GameRules:SendCustomMessage("%s1 killed a hero for <font color='#F0BA36'>"..gold.."</font> gold!", 0, 0)
-        
+      print("*** Player %s1 earned "..gold.." gold!")
+
       SPAWNED_UNIT.KillGold = nil
       SPAWNED_UNIT.AssistGold = nil
 
