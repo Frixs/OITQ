@@ -57,6 +57,14 @@
                     <Label id="selection-hero-name" text="HERO NAME" />
                 </Panel>
 
+                <!-- Stats -->
+                <Panel id="selection-stat-layer" hittest="false">
+                    <Label id="selection-stat-damage" class="selection-stat" text="Damage: 99" />
+                    <Label id="selection-stat-attkSpeed" class="selection-stat" text="Attkspeed: 9.9/s" />
+                    <Label id="selection-stat-resistance" class="selection-stat" text="Resist: 999" />
+                    <Label id="selection-stat-moveSpeed" class="selection-stat" text="Movespeed: 999" />
+                </Panel>
+                
                 <!-- Spell Icons -->
                 <Panel id="selection-ability-0" class="selection-ability">
                     <Panel class="selection-ability-frame" hittest="false" />

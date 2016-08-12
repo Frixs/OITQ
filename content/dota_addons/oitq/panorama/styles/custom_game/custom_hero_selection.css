@@ -265,3 +265,28 @@
 {
     margin-left: 40px;
 }
+
+#selection-stat-layer
+{
+    horizontal-align: left;
+    vertical-align: middle;
+    width: 175px;
+    height: 100px;
+    position: -65px 90px 0px;
+}
+
+.selection-stat
+{
+    horizontal-align: right;
+    vertical-align: top;
+    margin-top: 60px;
+    
+    font-size: 16px;
+    font-style: italic;
+    color: #d1a487;
+}
+
+#selection-stat-damage     { position: 0px -50px 0px; }
+#selection-stat-resistance { position: 0px -30px 0px; }
+#selection-stat-attkSpeed  { position: 0px -10px 0px; }
+#selection-stat-moveSpeed  { position: 0px 10px 0px; }

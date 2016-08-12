@@ -163,6 +163,18 @@ function ChangeHeroSelection(heroNumb)
     $("#selection-hero-preview-wrapper").GetChild(0).SetImage("file://{resources}/videos/heroes/npc_dota_hero_"+ heroName.toLowerCase().replace(" ","_") +".gif");
     // set output hero name
     $("#selection-button").GetChild(1).text = "npc_dota_hero_"+ heroOriginalName.toLowerCase().replace(" ","_");
+    // set stats
+    var strength = 99; var attkSpeed = 9.9; var resistance = 999; var movSpeed = 999;
+    if ( heroName == "Jumper" ){ strength = 5;attkSpeed = 1.0;resistance = 0;movSpeed = 300; }
+    else if ( heroName == "Brawler" ){ strength = 6;attkSpeed = 1.0;resistance = 0;movSpeed = 300; }
+    else if ( heroName == "Enchanter" ){ strength = 5;attkSpeed = 1.0;resistance = 0;movSpeed = 300; }
+    else if ( heroName == "Slam Shooter" ){ strength = 3;attkSpeed = 1.0;resistance = 0;movSpeed = 300; }
+    else if ( heroName == "Ninja" ){ strength = 4;attkSpeed = 1.0;resistance = 0;movSpeed = 300; }
+    
+    $("#selection-stat-damage").text     = "Damage: " + strength;
+    $("#selection-stat-attkSpeed").text  = "Attkspeed: " + attkSpeed.toFixed(2) + "/s";
+    $("#selection-stat-resistance").text = "Resist: " + resistance;
+    $("#selection-stat-moveSpeed").text  = "Movespeed: " + movSpeed;
 }
 
 function AbilityShowTooltip(spellPosition)
