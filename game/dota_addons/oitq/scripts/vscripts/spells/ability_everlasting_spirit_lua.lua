@@ -31,9 +31,9 @@ function OnTakeDamage( keys )
     caster:SetHealth( (heroHealth + damage - minimal_earned_damage) )
 
     -- particles
-    caster.evasion_particle = ParticleManager:CreateParticle("particles/econ/items/templar_assassin/templar_assassin_butterfly/templar_assassin_trap_explode_points_butterfly.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
-    caster.evasion_particle = ParticleManager:CreateParticle("particles/econ/items/templar_assassin/templar_assassin_butterfly/templar_assassin_trap_ring_inner_start_butterfly.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
-    caster.evasion_particle = ParticleManager:CreateParticle("particles/units/heroes/hero_brewmaster/brewmaster_pulverize_shock.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
+    ParticleManager:CreateParticle("particles/econ/items/templar_assassin/templar_assassin_butterfly/templar_assassin_trap_explode_points_butterfly.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
+    ParticleManager:CreateParticle("particles/econ/items/templar_assassin/templar_assassin_butterfly/templar_assassin_trap_ring_inner_start_butterfly.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
+    ParticleManager:CreateParticle("particles/units/heroes/hero_brewmaster/brewmaster_pulverize_shock.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
 
     -- apply modifier
     ability:ApplyDataDrivenModifier(caster, caster, "modifier_everlasting_spirit_invul", {duration = effect_duration})

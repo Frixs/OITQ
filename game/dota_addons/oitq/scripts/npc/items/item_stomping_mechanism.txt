@@ -11,7 +11,7 @@
         "BaseClass"                 "item_datadriven"
         "AbilityTextureName"        "item_stomping_mechanism"
 
-        "ItemCost"                  "250"
+        "ItemCost"                  "450"
         "ItemKillable"              "0"
         "ItemSellable"              "1"
         "ItemPurchasable"           "1"

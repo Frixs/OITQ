@@ -10,6 +10,7 @@
 #base "items/item_stone_of_life.txt"
 #base "items/item_thunderstorm_totem.txt"
 #base "items/item_stomping_mechanism.txt"
+#base "items/item_frost_shield.txt"
 
 "DOTAAbilities"
 {

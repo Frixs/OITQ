@@ -1,0 +1,204 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+    // Item: Frost Shield
+    //=================================================================================================================
+    "item_frost_shield"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "ID"                        "1850"
+        "BaseClass"                 "item_datadriven"
+        "AbilityTextureName"        "item_frost_shield"
+
+        "ItemCost"                  "200"
+        "ItemKillable"              "0"
+        "ItemSellable"              "1"
+        "ItemPurchasable"           "1"
+        "ItemDroppable"             "1"
+        "ItemShareability"          "ITEM_FULLY_SHAREABLE"
+
+        "ItemPermanent"             "1"
+        
+        "HomeShop"                  "1"
+        "SideShop"                  "0"
+        "SecretShop"                "0"
+        "ItemQuality"               "common"
+
+        "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"           "60"
+
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"               "FIELD_INTEGER"
+                "damage_reduction_prcnt" "20"
+            }
+            "02"
+            {
+                "var_type"               "FIELD_FLOAT"
+                "duration"               "8.0"
+            }
+            "03"
+            {
+                "var_type"               "FIELD_FLOAT"
+                "slow_duration"          "1.5"
+            }
+            "04"
+            {
+                "var_type"               "FIELD_INTEGER"
+                "slow"                   "-50"
+            }
+            "05"
+            {
+                "var_type"               "FIELD_INTEGER"
+                "reflect_damage_prcnt"   "10"
+            }
+        }
+
+        "precache"
+        {
+            "particle"  "particles/econ/courier/courier_wyvern_hatchling/courier_wyvern_hatchling_ice_f.vpcf"
+            "particle"  "particles/units/heroes/hero_obsidian_destroyer/obsidian_destroyer_prison_dust.vpcf"
+            "particle"  "particles/units/heroes/hero_winter_wyvern/wyvern_arctic_burn_buff_ground_dust.vpcf"
+            "particle"  "particles/units/heroes/hero_medusa/medusa_mana_shield_shell_add.vpcf"
+            "particle"  "particles/units/heroes/hero_medusa/medusa_mana_shield_shell_add.vpcf"
+        }
+
+        "OnSpellStart"
+        {
+            "ApplyModifier"
+            {
+                "ModifierName"      "modifier_item_frost_shield"
+                "Target"            "CASTER"
+                "Duration"          "%duration"
+            }
+
+            "RunScript"
+            {
+                "ScriptFile"        "items/item_frost_shield_lua.lua"
+                "Function"          "GetHealth"
+            }
+        }
+
+        "Modifiers"
+        {
+            "modifier_item_frost_shield"
+            {
+                "IsHidden"            "0"
+                "IsBuff"              "1"
+                "Duration"            "%duration"
+
+                "OnCreated"
+                {
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/neutral_fx/tornado_ambient_f.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "CASTER"
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/units/heroes/hero_invoker/invoker_tornado_base_swirl.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "CASTER"
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/neutral_fx/tornado_ambient_b.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "CASTER"
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/econ/courier/courier_wyvern_hatchling/courier_wyvern_hatchling_ice_f.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "CASTER"
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/units/heroes/hero_obsidian_destroyer/obsidian_destroyer_prison_dust.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "CASTER"
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/units/heroes/hero_winter_wyvern/wyvern_arctic_burn_buff_ground_dust.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "CASTER"
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/units/heroes/hero_medusa/medusa_mana_shield_shell_add.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "CASTER"
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/units/heroes/hero_medusa/medusa_mana_shield_spiral02.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "CASTER"
+                    }
+
+                    "RunScript"
+                    {
+                        "ScriptFile"        "items/item_frost_shield_lua.lua"
+                        "Function"          "AttachParticles"
+                        "duration"          "%duration"
+                    }
+                }
+                "OnTakeDamage"
+                // "%attack_damage" is set to the damage value after mitigation
+                {
+                    "ApplyModifier"
+                    {
+                        "ModifierName"      "modifier_item_frost_shield_slow"
+                        "Target"            "ATTACKER"
+                        "Duration"          "%slow_duration"
+                    }
+
+                    "RunScript"
+                    {
+                        "ScriptFile"        "items/item_frost_shield_lua.lua"
+                        "Function"          "OnTakeDamage"
+                        "damage"            "%attack_damage"
+                        "reduction"         "%damage_reduction_prcnt"
+                        "reflect"           "%reflect_damage_prcnt"
+                    }
+
+                    "RunScript"
+                    {
+                        "ScriptFile"        "items/item_frost_shield_lua.lua"
+                        "Function"          "GetHealth"
+                    }
+                }
+            }
+
+            "modifier_item_frost_shield_slow"
+            {
+                "IsHidden"            "0"
+                "IsDebuff"            "1"
+                "StatusEffectName"     "particles/status_fx/status_effect_frost_lich.vpcf"
+                "StatusEffectPriority" "1"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT" "%slow"
+                }
+
+                "OnCreated"
+                {
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/econ/courier/courier_wyvern_hatchling/courier_wyvern_hatchling_ice_f.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "TARGET"
+                    }
+                }
+            }
+        }
+    }
+}

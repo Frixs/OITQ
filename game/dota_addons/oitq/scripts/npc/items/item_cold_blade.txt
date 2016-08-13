@@ -11,7 +11,7 @@
         "BaseClass"                 "item_datadriven"
         "AbilityTextureName"        "item_cold_blade"
 
-        "ItemCost"                  "100"
+        "ItemCost"                  "250"
         "ItemKillable"              "0"
         "ItemSellable"              "1"
         "ItemPurchasable"           "1"
