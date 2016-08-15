@@ -1,10 +1,15 @@
 <root> 
   <styles>
     <include src="file://{resources}/styles/custom_loading_screen.css" />
+    <include src="file://{resources}/styles/custom_game/custom_team_selection.css" />
   </styles>
   <Panel class="AddonLoadingRoot">
-    <Panel id="CustomBg" >
-      <Image id="gamemode" class="SeqImg" src="file://{images}/custom_game/loading_screen/gamemode.png" />
+    <Panel id="img" >
+      <Image id="bg" src="file://{images}/custom_game/loading_screen/team_selection_bg.png" />
+      <Image id="txt_0" class="team_selection_txts" src="file://{images}/custom_game/loading_screen/team_selection_txt_one.png" />
+      <Image id="txt_1" class="team_selection_txts" src="file://{images}/custom_game/loading_screen/team_selection_txt_in.png" />
+      <Image id="txt_2" class="team_selection_txts" src="file://{images}/custom_game/loading_screen/team_selection_txt_the_quiver.png" />
+      <Image id="txt_3" class="team_selection_txts" src="file://{images}/custom_game/loading_screen/team_selection_txt_remaster.png" />
     </Panel>
     <Panel id="TitlePanel"> 
       <!--Label id="AddonTitle" text="#addon_game_name" style="" /-->

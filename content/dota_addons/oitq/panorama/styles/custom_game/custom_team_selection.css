@@ -1,0 +1,83 @@
+@define TotalLength: 30s;
+@define TimingFunc: linear;
+@define IterationCount: 1;
+
+.team_selection_txts
+{
+    horizontal-align: left;
+    vertical-align: bottom;
+}
+
+#txt_0, #txt_1, #txt_2, #txt_3
+{
+    animation-duration: TotalLength;
+    animation-timing-function: ease;
+    animation-iteration-count: IterationCount;
+}
+
+#txt_0
+{
+    position: 75px -350px 0px;
+    animation-name: seq_txt_0;
+}
+#txt_1
+{
+    position: 270px -250px 0px;
+    animation-name: seq_txt_1;
+}
+#txt_2
+{
+    position: 100px -80px 0px;
+    animation-name: seq_txt_2;
+}
+#txt_3
+{
+    position: 720px -65px 0px;
+    animation-name: seq_txt_3;
+}
+
+@keyframes 'x' {}
+
+@keyframes 'seq_txt_0'
+{
+  0%
+  {
+    transform: translateX( -25px );
+  }
+  100%
+  {
+  }
+}
+
+@keyframes 'seq_txt_1'
+{
+  0%
+  {
+    transform: translateX( 50px );
+  }
+  100%
+  {
+  }
+}
+
+@keyframes 'seq_txt_2'
+{
+  0%
+  {
+    transform: translateX( -50px );
+  }
+  100%
+  {
+  }
+}
+
+@keyframes 'seq_txt_3'
+{
+  0%
+  {
+    transform: translateX( 30px );
+  }
+  100%
+  {
+  }
+}
