@@ -67,3 +67,10 @@ function modifier_item_adrenaline_injection_on_take_damage( keys )
 		ParticleManager:DestroyParticle(ability.particle, true)
 	end
 end
+
+function OnEquip( keys )
+	local ability = keys.ability
+	if ability ~= nil then
+		ability:StartCooldown(keys.Cooldown)
+	end
+end

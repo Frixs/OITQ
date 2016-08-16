@@ -51,11 +51,26 @@
                 "var_type"             "FIELD_FLOAT"
                 "damageCooldown"       "1.5"
             }
+            "03"
+            {
+                "var_type"             "FIELD_INTEGER"
+                "equip_cooldown"       "25"
+            }
         }
 
         "precache"
         {
             "soundfile" "soundevents/game_sounds_heroes/game_sounds_templar_assassin.vsndevts"
+        }
+
+        "OnEquip"
+        {
+            "RunScript"
+            {
+                "ScriptFile"     "items/item_adrenaline_injection_lua.lua"
+                "Function"       "OnEquip"
+                "Cooldown"       "%equip_cooldown"
+            }
         }
 
         "OnSpellStart"
