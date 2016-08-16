@@ -96,6 +96,7 @@
     //"item"    "item_moon_shard"
 
     "item"    "item_cold_blade"
+    "item"    "item_frost_shield"
   }
 
   // Level 2 - Blue Recipes
@@ -118,6 +119,8 @@
     //"item"    "item_vladmir"  
     //"item"    "item_mekansm"          
     //"item"    "item_pipe"
+
+    "item"    "item_sudden_death"
   }
         
   "magics"      

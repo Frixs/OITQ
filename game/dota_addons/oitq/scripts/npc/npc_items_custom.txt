@@ -11,6 +11,7 @@
 #base "items/item_thunderstorm_totem.txt"
 #base "items/item_stomping_mechanism.txt"
 #base "items/item_frost_shield.txt"
+#base "items/item_sudden_death.txt"
 
 "DOTAAbilities"
 {

@@ -1,0 +1,216 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+    // Item: Adrenaline injection
+    //=================================================================================================================
+    "item_adrenaline_injection"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "ID"                        "1852"
+        "BaseClass"                 "item_datadriven"
+        "AbilityTextureName"        "item_sudden_death"
+
+        "ItemCost"                  "1000"
+        "ItemKillable"              "0"
+        "ItemSellable"              "0"
+        "ItemPurchasable"           "1"
+        "ItemDroppable"             "1"
+        "ItemShareability"          "ITEM_FULLY_SHAREABLE"
+
+        "ItemInitialCharges"        "1" //How many charges should the item start with - Tango x3 
+        "ItemDisplayCharges"        "0" //Hide the charges of the item - Aegis
+        "ItemRequiresCharges"       "1" //The active ability needs charges to be used - Urn
+        "ItemPermanent"             "0"
+        
+        "HomeShop"                  "1"
+        "SideShop"                  "0"
+        "SecretShop"                "0"
+        "ItemQuality"               "rare"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"           "10"
+
+        // Casting
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCastRange"          "500"
+        "AbilityCastPoint"          "0.5"
+
+        "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT"
+        "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_BOTH"
+        "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
+        "SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_YES"
+        "AbilityUnitDamageType"     "DAMAGE_TYPE_PHYSICAL"
+        "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_2"
+        "AOERadius"                 "%radius"
+
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"             "FIELD_FLOAT"
+                "duration"             "10.0"
+            }
+            "02"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "small_radius"              "200"
+            }
+            "03"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "big_radius"                "500"
+            }
+            "04"
+            {
+                "var_type"                  "FIELD_FLOAT"
+                "activation_time"           "1.75"
+            }
+            "05"
+            {
+                "var_type"                  "FIELD_FLOAT"
+                "explode_delay"             "0.3"
+            }
+            "06"
+            {
+                "var_type"                  "FIELD_FLOAT"
+                "fade_time"                 "2.0"
+            }
+            // Extra
+            "07"
+            {
+                "var_type"                  "FIELD_FLOAT"
+                "vision_radius"             "300"
+            }
+            "08"
+            {
+                "var_type"                  "FIELD_FLOAT"
+                "vision_duration"           "1.0"
+            }
+        }
+
+        // Precache
+        //-------------------------------------------------------------------------------------------------------------
+        "precache"
+        {
+            "soundfile"     "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+            "particle"      "particles/units/heroes/hero_techies/techies_land_mine.vpcf"
+            "particle"      "particles/units/heroes/hero_techies/techies_land_mine_explode.vpcf"
+            "model"         "models/heroes/techies/fx_techiesfx_mine.vmdl"
+        }
+
+        "OnSpellStart"
+        {
+            "FireSound"
+            {
+                "EffectName"    "Hero_Techies.LandMine.Plant"
+                "Target"        "CASTER"
+            }
+
+            "RunScript"
+            {
+                "ScriptFile"    "items/item_sudden_death_lua.lua"
+                "Function"      "OnSpellStart"
+                "Target"        "POINT"
+                "modifier_land_mine"                "modifier_item_sudden_death_land"
+                "modifier_tracker"                  "modifier_item_sudden_death_tracker"
+                "modifier_caster"                   "modifier_item_sudden_death_caster"
+                "modifier_land_mine_invisibility"   "modifier_item_sudden_death_invisibility"
+            }
+        }
+
+        "Modifiers"
+        {
+            "modifier_item_sudden_death"
+            {
+                "IsHidden"            "0"
+                "IsDebuff"            "1"
+            }
+
+            "modifier_item_sudden_death_land"
+            {
+                "IsHidden"      "1"
+                "IsPurgable"    "0"
+
+                "OnDeath"
+                {
+                    "CreateThinker"
+                    {
+                        "ModifierName"  "modifier_land_mine_thinker"
+                        "Target"        "UNIT"
+                    }
+
+                    "FireEffect"
+                    {
+                        "EffectName"        "particles/units/heroes/hero_techies/techies_land_mine_explode.vpcf"
+                        "EffectAttachType"  "follow_hitloc"
+                        "Target"
+                        {
+                            "Center"    "UNIT"
+                            "Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
+                        }
+                    }
+
+                    "RunScript"
+                    {
+                        "ScriptFile"        "items/item_sudden_death_lua.lua"
+                        "Function"          "LandMineDeath"
+                    }
+                }
+
+                "States"
+                {
+                    "MODIFIER_STATE_NO_UNIT_COLLISION"      "MODIFIER_STATE_VALUE_ENABLED"
+                }
+            }
+
+            "modifier_item_sudden_death_tracker"
+            {
+                "IsHidden"      "1"
+                "IsPurgable"    "0"
+
+                "EffectName"        "particles/units/heroes/hero_techies/techies_land_mine.vpcf"
+                "EffectAttachType"  "follow_origin"
+
+                "ThinkInterval"  "0.1"
+                "OnIntervalThink"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"    "items/item_sudden_death_lua.lua"
+                        "Function"      "Tracker"
+                    }
+                }
+            }
+
+            "modifier_item_sudden_death_invisibility"
+            {
+                "IsHidden"      "1"
+                "IsPurgable"    "0"
+
+                "States"
+                {
+                    "MODIFIER_STATE_INVISIBLE"      "MODIFIER_STATE_VALUE_ENABLED"
+                }
+            }
+
+            "modifier_item_sudden_death_thinker"
+            {
+                "Duration"  "0.03"
+                "OnCreated"
+                {
+                    "FireSound"
+                    {
+                        "EffectName"    "Hero_Techies.LandMine.Detonate"
+                        "Target"
+                        {
+                            "Center"    "TARGET"
+                            "Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
