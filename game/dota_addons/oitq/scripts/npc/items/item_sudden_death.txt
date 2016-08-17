@@ -1,9 +1,9 @@
 "DOTAAbilities"
 {
     //=================================================================================================================
-    // Item: Adrenaline injection
+    // Item: Sudden death
     //=================================================================================================================
-    "item_adrenaline_injection"
+    "item_sudden_death"
     {
         // General
         //-------------------------------------------------------------------------------------------------------------
@@ -13,14 +13,11 @@
 
         "ItemCost"                  "1000"
         "ItemKillable"              "0"
-        "ItemSellable"              "0"
+        "ItemSellable"              "1"
         "ItemPurchasable"           "1"
-        "ItemDroppable"             "1"
+        "ItemDroppable"             "0"
         "ItemShareability"          "ITEM_FULLY_SHAREABLE"
 
-        "ItemInitialCharges"        "1" //How many charges should the item start with - Tango x3 
-        "ItemDisplayCharges"        "0" //Hide the charges of the item - Aegis
-        "ItemRequiresCharges"       "1" //The active ability needs charges to be used - Urn
         "ItemPermanent"             "0"
         
         "HomeShop"                  "1"
@@ -37,20 +34,20 @@
         "AbilityCastRange"          "500"
         "AbilityCastPoint"          "0.5"
 
-        "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT"
-        "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_BOTH"
+        "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+        "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
         "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
         "SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_YES"
         "AbilityUnitDamageType"     "DAMAGE_TYPE_PHYSICAL"
         "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_2"
-        "AOERadius"                 "%radius"
+        "AOERadius"                 "%small_radius"
 
         "AbilitySpecial"
         {
             "01"
             {
-                "var_type"             "FIELD_FLOAT"
-                "duration"             "10.0"
+                "var_type"                  "FIELD_FLOAT"
+                "duration"                  "10.0"
             }
             "02"
             {
@@ -60,7 +57,7 @@
             "03"
             {
                 "var_type"                  "FIELD_INTEGER"
-                "big_radius"                "500"
+                "big_radius"                "2750"
             }
             "04"
             {
@@ -97,6 +94,7 @@
             "soundfile"     "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
             "particle"      "particles/units/heroes/hero_techies/techies_land_mine.vpcf"
             "particle"      "particles/units/heroes/hero_techies/techies_land_mine_explode.vpcf"
+            "particle"      "particles/units/heroes/hero_dazzle/dazzle_weave.vpcf"
             "model"         "models/heroes/techies/fx_techiesfx_mine.vmdl"
         }
 
@@ -115,17 +113,26 @@
                 "Target"        "POINT"
                 "modifier_land_mine"                "modifier_item_sudden_death_land"
                 "modifier_tracker"                  "modifier_item_sudden_death_tracker"
-                "modifier_caster"                   "modifier_item_sudden_death_caster"
                 "modifier_land_mine_invisibility"   "modifier_item_sudden_death_invisibility"
             }
         }
 
         "Modifiers"
         {
-            "modifier_item_sudden_death"
+            "modifier_item_sudden_death_debuff"
             {
                 "IsHidden"            "0"
                 "IsDebuff"            "1"
+
+                "OnCreated"
+                {
+                    "Damage"
+                    {
+                        "Target"        "UNIT"
+                        "Type"          "DAMAGE_TYPE_MAGICAL"
+                        "Damage"        "3"
+                    }
+                }
             }
 
             "modifier_item_sudden_death_land"
@@ -137,7 +144,7 @@
                 {
                     "CreateThinker"
                     {
-                        "ModifierName"  "modifier_land_mine_thinker"
+                        "ModifierName"  "modifier_item_sudden_death_thinker"
                         "Target"        "UNIT"
                     }
 
@@ -149,6 +156,48 @@
                         {
                             "Center"    "UNIT"
                             "Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
+                        }
+                    }
+
+                    "FireEffect"
+                    {
+                        "EffectName"        "particles/units/heroes/hero_dazzle/dazzle_weave.vpcf"
+                        "EffectAttachType"  "start_at_customorigin"
+                        "Target"
+                        {
+                            "Center"    "UNIT"
+                            "Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
+                        }
+
+                        "ControlPoints"
+                        {
+                            "01"    "%big_radius 0 0"
+                        }
+                    }
+
+                    "ActOnTargets"
+                    {
+                        "Target"
+                        {
+                            "Center"    "UNIT"
+                            "Radius"    "%big_radius"
+                            "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                            "Types"     "DOTA_UNIT_TARGET_HERO"
+                            "Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+                        }
+                    
+                        "Action"    
+                        {
+                            "ApplyModifier"
+                            {
+                                "ModifierName"    "modifier_item_sudden_death_debuff"
+                                "Target"
+                                {
+                                    "Center"    "TARGET"
+                                    "Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+                                }
+                                "Duration"        "%duration"
+                            }
                         }
                     }
 
