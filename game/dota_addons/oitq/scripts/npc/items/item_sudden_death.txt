@@ -91,10 +91,9 @@
         //-------------------------------------------------------------------------------------------------------------
         "precache"
         {
-            "soundfile"     "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
             "particle"      "particles/units/heroes/hero_techies/techies_land_mine.vpcf"
             "particle"      "particles/units/heroes/hero_techies/techies_land_mine_explode.vpcf"
-            "particle"      "particles/units/heroes/hero_dazzle/dazzle_weave.vpcf"
+            "particle"      "particles/items/sudden_death/sudden_death.vpcf"
             "model"         "models/heroes/techies/fx_techiesfx_mine.vmdl"
         }
 
@@ -102,7 +101,7 @@
         {
             "FireSound"
             {
-                "EffectName"    "Hero_Techies.LandMine.Plant"
+                "EffectName"    "DOTA_CustomItem.SuddenDeath.Plant"
                 "Target"        "CASTER"
             }
 
@@ -128,7 +127,7 @@
                 {
                     "Damage"
                     {
-                        "Target"        "UNIT"
+                        "Target"        "TARGET"
                         "Type"          "DAMAGE_TYPE_MAGICAL"
                         "Damage"        "3"
                     }
@@ -146,59 +145,6 @@
                     {
                         "ModifierName"  "modifier_item_sudden_death_thinker"
                         "Target"        "UNIT"
-                    }
-
-                    "FireEffect"
-                    {
-                        "EffectName"        "particles/units/heroes/hero_techies/techies_land_mine_explode.vpcf"
-                        "EffectAttachType"  "follow_hitloc"
-                        "Target"
-                        {
-                            "Center"    "UNIT"
-                            "Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
-                        }
-                    }
-
-                    "FireEffect"
-                    {
-                        "EffectName"        "particles/units/heroes/hero_dazzle/dazzle_weave.vpcf"
-                        "EffectAttachType"  "start_at_customorigin"
-                        "Target"
-                        {
-                            "Center"    "UNIT"
-                            "Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
-                        }
-
-                        "ControlPoints"
-                        {
-                            "01"    "%big_radius 0 0"
-                        }
-                    }
-
-                    "ActOnTargets"
-                    {
-                        "Target"
-                        {
-                            "Center"    "UNIT"
-                            "Radius"    "%big_radius"
-                            "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-                            "Types"     "DOTA_UNIT_TARGET_HERO"
-                            "Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-                        }
-                    
-                        "Action"    
-                        {
-                            "ApplyModifier"
-                            {
-                                "ModifierName"    "modifier_item_sudden_death_debuff"
-                                "Target"
-                                {
-                                    "Center"    "TARGET"
-                                    "Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-                                }
-                                "Duration"        "%duration"
-                            }
-                        }
                     }
 
                     "RunScript"
@@ -231,6 +177,19 @@
                         "Function"      "Tracker"
                     }
                 }
+
+                "OnDestroy"
+                {
+                    "FireSound"
+                    {
+                        "EffectName"        "DOTA_CustomItem.SuddenDeath.Explode"
+                        "Target"
+                        {
+                            "Center"    "TARGET"
+                            "Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
+                        }
+                    }
+                }
             }
 
             "modifier_item_sudden_death_invisibility"
@@ -241,6 +200,34 @@
                 "States"
                 {
                     "MODIFIER_STATE_INVISIBLE"      "MODIFIER_STATE_VALUE_ENABLED"
+                }
+            }
+
+            "modifier_item_sudden_death_particle"
+            {
+                "Passive"            "0"
+                "IsHidden"           "1"
+                "IsDebuff"           "0"
+            
+                "OnCreated"
+                {
+                    "FireSound"
+                    {
+                        "EffectName"        "DOTA_CustomItem.SuddenDeath.Wave"
+                        "Target"            "TARGET"
+                    }
+
+                    "FireEffect"
+                    {
+                        "EffectName"        "particles/items/sudden_death/sudden_death.vpcf"
+                        "EffectAttachType"  "attach_hitloc"
+                        "Target"            "TARGET"
+
+                        "ControlPoints"
+                        {
+                            "01"    "%big_radius 0 0"
+                        }
+                    }
                 }
             }
 

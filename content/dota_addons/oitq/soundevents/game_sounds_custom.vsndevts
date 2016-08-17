@@ -710,3 +710,79 @@
 		}
 	}
 }
+
+"DOTA_CustomItem.SuddenDeath.Plant"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/weapons/hero/techies/land_mine_plant.vsnd"
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+"DOTA_CustomItem.SuddenDeath.Wave"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/weapons/hero/dazzle/weave.vsnd"
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+"DOTA_CustomItem.SuddenDeath.Explode"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/weapons/hero/techies/land_mine01.vsnd"
+							"value1"		"sounds/weapons/hero/techies/land_mine02.vsnd"
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -43,6 +43,10 @@ function LandMineDeath( keys )
 	-- Ability variables
 	local vision_radius   = ability:GetLevelSpecialValueFor("vision_radius", ability_level) 
 	local vision_duration = ability:GetLevelSpecialValueFor("vision_duration", ability_level)
+	local big_radius      = ability:GetLevelSpecialValueFor("big_radius", ability_level)
+
+	local mineExplode = ParticleManager:CreateParticle("particles/units/heroes/hero_techies/techies_land_mine_explode.vpcf", PATTACH_ABSORIGIN, caster)
+	ParticleManager:SetParticleControlEnt(mineExplode, 0, unit, PATTACH_POINT_FOLLOW, "attach_hitloc", unit:GetAbsOrigin(), true)
 
 	-- Find the mine and remove it from the table
 	for i = 1, #caster.land_mine_table do
@@ -63,7 +67,9 @@ function Tracker( keys )
 
 	-- Ability variables
 	local trigger_radius = ability:GetLevelSpecialValueFor("small_radius", ability_level) 
+	local big_radius	 = ability:GetLevelSpecialValueFor("big_radius", ability_level) 
 	local explode_delay  = ability:GetLevelSpecialValueFor("explode_delay", ability_level) 
+	local duration  	 = ability:GetLevelSpecialValueFor("duration", ability_level) 
 
 	-- Target variables
 	local target_team  = DOTA_UNIT_TARGET_TEAM_ENEMY
@@ -77,7 +83,21 @@ function Tracker( keys )
 	if #units > 0 then
 		Timers:CreateTimer(explode_delay, function()
 			if target:IsAlive() then
-				target:ForceKill(true) 
+				-- particles
+				ability:ApplyDataDrivenModifier(target, target, "modifier_item_sudden_death_particle", {})
+				
+				-- apply debuff
+				local unitsToDebuff = FindUnitsInRadius(target:GetTeamNumber(), target:GetAbsOrigin(), nil, big_radius, target_team, target_types, target_flags, 0, false) 
+				if #unitsToDebuff > 0 then
+					for _,unit in pairs(unitsToDebuff) do
+						ability:ApplyDataDrivenModifier(unit, unit, "modifier_item_sudden_death_debuff", {duration = duration})
+					end
+				end
+
+				-- remove mine
+				Timers:CreateTimer(1, function()
+					target:ForceKill(true)
+				end)
 			end
 		end)
 	end
