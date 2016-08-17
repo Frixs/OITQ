@@ -13,7 +13,7 @@ function OnDropItem( eventSourceIndex, args )
 
                 -- When we find the item we want to check
                 if Item ~= nil then
-                    if args['itemName'] == Item:GetName() then
+                    if args['itemName'] == Item:GetName() and not Item:IsDroppable() then
                         DropItem(Item, hero)
                     end
                 end
@@ -286,7 +286,10 @@ function DropInventory( hero )
         else
             -- drop all remaining items
             for z = INVENTORY_SAFE_SLOTS, 5, 1 do
-                droppedItem[z] = true
+                local item = hero:GetItemInSlot( z )
+                if not item:IsDroppable() then
+                    droppedItem[z] = true
+                end
             end
         end
 

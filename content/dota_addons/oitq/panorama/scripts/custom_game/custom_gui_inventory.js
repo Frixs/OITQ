@@ -118,6 +118,7 @@ function RightClickItem(itemSlot)
 	var bControllable = Entities.IsControllableByPlayer( hero, Game.GetLocalPlayerID() );
 	var bSellable     = Items.IsSellable( item_index ) && Items.CanBeSoldByLocalPlayer( item_index );
 	var bShowInShop   = Items.IsPurchasable( item_index );
+	var bDroppable    = Items.IsDroppable( item_index );
 
 	if ( !bSellable && !bShowInShop )
 	{
@@ -131,6 +132,6 @@ function RightClickItem(itemSlot)
 	contextMenu.GetContentsPanel().Item = item_index;
 	contextMenu.GetContentsPanel().SetHasClass( "bSellable", bSellable );
 	contextMenu.GetContentsPanel().SetHasClass( "bShowInShop", bShowInShop );
-	contextMenu.GetContentsPanel().SetHasClass( "bDropFromStash", true ); //Drop Item
+	contextMenu.GetContentsPanel().SetHasClass( "bDropFromStash", bDroppable ); //Drop Item
 	contextMenu.GetContentsPanel().BLoadLayout( "file://{resources}/layout/custom_game/inventory_context_menu.xml", false, false );
 }
