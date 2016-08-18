@@ -14,7 +14,8 @@ function OnSpellStart( keys )
 
 	-- Ability variables
 	local activation_time = ability:GetLevelSpecialValueFor("activation_time", ability_level) 
-	local fade_time = ability:GetLevelSpecialValueFor("fade_time", ability_level)
+	local fade_time		  = ability:GetLevelSpecialValueFor("fade_time", ability_level)
+	local mine_duration   = ability:GetLevelSpecialValueFor("mine_duration", ability_level)
 
 	-- Create the land mine and apply the land mine modifier
 	local land_mine = CreateUnitByName("npc_dota_techies_land_mine", target_point, false, nil, nil, caster:GetTeamNumber())
@@ -30,7 +31,47 @@ function OnSpellStart( keys )
 
 	-- Apply the invisibility after the fade time
 	Timers:CreateTimer(fade_time, function()
-		ability:ApplyDataDrivenModifier(caster, land_mine, modifier_land_mine_invisibility, {})
+		ability:ApplyDataDrivenModifier(caster, land_mine, modifier_land_mine_invisibility, {duration = (mine_duration - fade_time)})
+	end)
+end
+
+function MineDestroy( keys )
+	local target = keys.target
+	local ability 		= keys.ability
+	if not ability then
+		target:ForceKill(true)
+		return
+	end
+	local ability_level = ability:GetLevel() - 1
+
+	-- Ability variables
+	local big_radius	 = ability:GetLevelSpecialValueFor("big_radius", ability_level) 
+	local explode_delay  = ability:GetLevelSpecialValueFor("explode_delay", ability_level) 
+	local duration  	 = ability:GetLevelSpecialValueFor("duration", ability_level) 
+
+	-- Target variables
+	local target_team  = DOTA_UNIT_TARGET_TEAM_ENEMY
+	local target_types = DOTA_UNIT_TARGET_HERO
+	local target_flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES
+
+	Timers:CreateTimer(explode_delay, function()
+		if target:IsAlive() then
+			-- particles
+			ability:ApplyDataDrivenModifier(target, target, "modifier_item_sudden_death_particle", {})
+			
+			-- apply debuff
+			local unitsToDebuff = FindUnitsInRadius(target:GetTeamNumber(), target:GetAbsOrigin(), nil, big_radius, target_team, target_types, target_flags, 0, false) 
+			if #unitsToDebuff > 0 then
+				for _,unit in pairs(unitsToDebuff) do
+					ability:ApplyDataDrivenModifier(unit, unit, "modifier_item_sudden_death_debuff", {duration = duration})
+				end
+			end
+
+			-- remove mine
+			Timers:CreateTimer(1, function()
+				target:ForceKill(true)
+			end)
+		end
 	end)
 end
 
@@ -38,12 +79,6 @@ function LandMineDeath( keys )
 	local caster 		= keys.caster
 	local unit 			= keys.unit
 	local ability 		= keys.ability
-	local ability_level = ability:GetLevel() - 1
-
-	-- Ability variables
-	local vision_radius   = ability:GetLevelSpecialValueFor("vision_radius", ability_level) 
-	local vision_duration = ability:GetLevelSpecialValueFor("vision_duration", ability_level)
-	local big_radius      = ability:GetLevelSpecialValueFor("big_radius", ability_level)
 
 	local mineExplode = ParticleManager:CreateParticle("particles/units/heroes/hero_techies/techies_land_mine_explode.vpcf", PATTACH_ABSORIGIN, caster)
 	ParticleManager:SetParticleControlEnt(mineExplode, 0, unit, PATTACH_POINT_FOLLOW, "attach_hitloc", unit:GetAbsOrigin(), true)
@@ -56,13 +91,25 @@ function LandMineDeath( keys )
 		end
 	end
 
-	-- Create vision on the mine position
-	ability:CreateVisibilityNode(unit:GetAbsOrigin(), vision_radius, vision_duration)
+	if ability then
+		local ability_level = ability:GetLevel() - 1
+
+		-- Ability variables
+		local vision_radius   = ability:GetLevelSpecialValueFor("vision_radius", ability_level) 
+		local vision_duration = ability:GetLevelSpecialValueFor("vision_duration", ability_level)
+
+		-- Create vision on the mine position
+		ability:CreateVisibilityNode(unit:GetAbsOrigin(), vision_radius, vision_duration)
+	end
 end
 
 function Tracker( keys )
 	local target 		= keys.target
 	local ability 		= keys.ability
+	if not ability then
+		target:ForceKill(true)
+		return
+	end
 	local ability_level = ability:GetLevel() - 1
 
 	-- Ability variables

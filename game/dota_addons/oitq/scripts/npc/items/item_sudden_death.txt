@@ -27,7 +27,7 @@
 
         // Time   
         //-------------------------------------------------------------------------------------------------------------
-        "AbilityCooldown"           "10"
+        "AbilityCooldown"           "15"
 
         // Casting
         //-------------------------------------------------------------------------------------------------------------
@@ -61,29 +61,44 @@
             }
             "04"
             {
-                "var_type"                  "FIELD_FLOAT"
-                "activation_time"           "1.75"
+                "var_type"                  "FIELD_INTEGER"
+                "damage_radius"             "425"
             }
             "05"
             {
                 "var_type"                  "FIELD_FLOAT"
-                "explode_delay"             "0.3"
+                "activation_time"           "1.75"
             }
             "06"
+            {
+                "var_type"                  "FIELD_FLOAT"
+                "explode_delay"             "0.3"
+            }
+            "07"
             {
                 "var_type"                  "FIELD_FLOAT"
                 "fade_time"                 "2.0"
             }
             // Extra
-            "07"
+            "08"
             {
                 "var_type"                  "FIELD_FLOAT"
                 "vision_radius"             "300"
             }
-            "08"
+            "09"
             {
                 "var_type"                  "FIELD_FLOAT"
                 "vision_duration"           "1.0"
+            }
+            "10"
+            {
+                "var_type"                  "FIELD_FLOAT"
+                "damage"                    "3"
+            }
+            "11"
+            {
+                "var_type"                  "FIELD_FLOAT"
+                "mine_duration"             "120"
             }
         }
 
@@ -91,6 +106,8 @@
         //-------------------------------------------------------------------------------------------------------------
         "precache"
         {
+            "particle"      "particles/econ/items/juggernaut/jugg_fortunes_tout/jugg_healling_ward_fortunes_tout_ward_flame.vpcf"
+            "particle"      "particles/econ/items/necrolyte/necronub_ambient/necrolyte_ambient_trail_ka_sand.vpcf"
             "particle"      "particles/units/heroes/hero_techies/techies_land_mine.vpcf"
             "particle"      "particles/units/heroes/hero_techies/techies_land_mine_explode.vpcf"
             "particle"      "particles/items/sudden_death/sudden_death.vpcf"
@@ -125,11 +142,25 @@
 
                 "OnCreated"
                 {
-                    "Damage"
+                    "AttachEffect"
                     {
-                        "Target"        "TARGET"
-                        "Type"          "DAMAGE_TYPE_MAGICAL"
-                        "Damage"        "3"
+                        "EffectName"        "particles/econ/items/juggernaut/jugg_fortunes_tout/jugg_healling_ward_fortunes_tout_ward_flame.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "TARGET"
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/econ/items/necrolyte/necronub_ambient/necrolyte_ambient_trail_ka_sand.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "TARGET"
+                    }
+                }
+                "OnDeath"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"        "events_custom.lua"
+                        "Function"          "OnDeathFullLoot"
                     }
                 }
             }
@@ -141,16 +172,23 @@
 
                 "OnDeath"
                 {
-                    "CreateThinker"
-                    {
-                        "ModifierName"  "modifier_item_sudden_death_thinker"
-                        "Target"        "UNIT"
-                    }
-
                     "RunScript"
                     {
                         "ScriptFile"        "items/item_sudden_death_lua.lua"
                         "Function"          "LandMineDeath"
+                    }
+
+                    "Damage"
+                    {
+                        "Target"
+                        {
+                            "Center"        "UNIT"
+                            "Radius"        "%damage_radius"
+                            "Teams"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                            "Types"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+                        }
+                        "Type"          "DAMAGE_TYPE_PHYSICAL"
+                        "Damage"        "%damage"
                     }
                 }
 
@@ -197,6 +235,15 @@
                 "IsHidden"      "1"
                 "IsPurgable"    "0"
 
+                "OnDestroy"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"        "items/item_sudden_death_lua.lua"
+                        "Function"          "MineDestroy"
+                    }
+                }
+
                 "States"
                 {
                     "MODIFIER_STATE_INVISIBLE"      "MODIFIER_STATE_VALUE_ENABLED"
@@ -226,23 +273,6 @@
                         "ControlPoints"
                         {
                             "01"    "%big_radius 0 0"
-                        }
-                    }
-                }
-            }
-
-            "modifier_item_sudden_death_thinker"
-            {
-                "Duration"  "0.03"
-                "OnCreated"
-                {
-                    "FireSound"
-                    {
-                        "EffectName"    "Hero_Techies.LandMine.Detonate"
-                        "Target"
-                        {
-                            "Center"    "TARGET"
-                            "Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
                         }
                     }
                 }

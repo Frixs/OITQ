@@ -13,7 +13,7 @@ function OnDropItem( eventSourceIndex, args )
 
                 -- When we find the item we want to check
                 if Item ~= nil then
-                    if args['itemName'] == Item:GetName() and not Item:IsDroppable() then
+                    if args['itemName'] == Item:GetName() and Item:IsDroppable() == true then
                         DropItem(Item, hero)
                     end
                 end
@@ -287,8 +287,10 @@ function DropInventory( hero )
             -- drop all remaining items
             for z = INVENTORY_SAFE_SLOTS, 5, 1 do
                 local item = hero:GetItemInSlot( z )
-                if not item:IsDroppable() then
-                    droppedItem[z] = true
+                if item then
+                    if item:IsDroppable() == true then
+                        droppedItem[z] = true
+                    end
                 end
             end
         end
@@ -316,7 +318,7 @@ function DropInventRand( hero, droppedItem )
     if droppedItem[key] or item == nil then
         --print("v1")
         return DropInventRand( hero, droppedItem )
-    elseif item ~= nil and not item:IsDroppable() then
+    elseif item:IsDroppable() == false then
         --print("v2")
         return DropInventRand( hero, droppedItem )
     else
@@ -404,5 +406,26 @@ function LaunchWorldItemFromUnit( sItemName, flLaunchHeight, flDuration, hUnit )
             local particleLoot = ParticleManager:CreateParticle("particles/econ/items/meepo/meepo_diggers_divining_rod/meepo_divining_rod_poof_end_rays_burst.vpcf", PATTACH_ABSORIGIN, hUnit)
             ParticleManager:SetParticleControl(particleLoot, 0 , launchVector)
         end)
+    end)
+end
+
+---------------------------------------------------------------------------
+-- Ability: Sudden Death
+---------------------------------------------------------------------------
+function OnDeathFullLoot( keys )
+    local hero = keys.caster
+
+    -- This timer is needed because OnEquip triggers before the item actually being in inventory
+    Timers:CreateTimer(0.1,function()
+        -- Go through every item slot
+        for itemSlot = 0, 5, 1 do
+            local Item = hero:GetItemInSlot( itemSlot )
+
+            if Item ~= nil then
+                if Item:IsDroppable() == true then
+                    DropItem(Item, hero)
+                end
+            end
+        end
     end)
 end
