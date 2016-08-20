@@ -9,20 +9,25 @@ function AutoUpdate()
 
 function RemainingTime()
 {
-    var GameTime = Game.GetDOTATime(false, true).toFixed(0).replace("-","");
-    var game_times = CustomNetTables.GetTableValue( "gameinfo", "game_times" );
+    var GameTime     = Game.GetDOTATime(false, true).toFixed(0).replace("-","");
+    var GameTimeTrue = Game.GetDOTATime(false, true).toFixed(0);
+    var game_times   = CustomNetTables.GetTableValue( "gameinfo", "game_times" );
     if( game_times )
     {
         if( GameTime == 0 ){ GameTime = game_times['pregame'] * 2; }
+        if( GameTimeTrue == 0 ){ GameTimeTrue = -(game_times['pregame'] * 2); }
         var pregame_time = game_times['pregame'] - game_times['hero_selection'];
         var selection_remaining = GameTime - pregame_time;
 
         GameEvents.SendCustomGameEventToServer( "is_game_paused", {} );
 
-        // initial GameTime is 0 = Call SelectHero() in wrong time
-        if( GameTime - pregame_time == game_times['pregame'] + game_times['hero_selection'] ){selection_remaining = game_times['pregame'];}
-
-        if(selection_remaining <= 0)
+        // initial GameTime is 0 => Call SelectHero() in wrong time (= fix the fist second)
+        if( GameTime - pregame_time == game_times['pregame'] + game_times['hero_selection'] )
+        {
+            selection_remaining = game_times['pregame'];
+        }
+        
+        if( GameTimeTrue >= -(pregame_time) )
         {
             selection_remaining = 0;
             //auto pick default hero
@@ -79,6 +84,7 @@ function OpenHeroSelectionScreen()
 
 function SelectHero()
 {
+    // select hero
     if( !$("#selection-screen").BHasClass("translator") )
     {
         var selectedHero = $("#selection-button").GetChild(1).text;

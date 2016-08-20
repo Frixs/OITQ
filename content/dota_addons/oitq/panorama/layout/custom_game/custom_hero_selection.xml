@@ -16,7 +16,7 @@
                 <!-- Selection Time -->
                 <Panel id="selection-time-wrapper">
                     <Label id="selection-time" text="99" />
-                    <Label id="selection-time-info"  text="PAUSED" />
+                    <Label id="selection-time-info" text="PAUSED" />
                 </Panel>
 
                 <!-- Hero Icons -->
