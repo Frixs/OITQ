@@ -1,0 +1,130 @@
+"Game.Start.Countdown"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_vo_switch"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/gameInitialCooldown.vsnd"
+						}
+					}
+					"volume"
+					{
+						"value"		"1.000000"
+					}
+					"pitch"
+					{
+						"value"		"1.00000"
+					}
+					"chan_type"
+					{
+						"value"		"6"
+					}
+					"memory_type"
+					{
+						"value"		"0"
+					}
+					"soundlevel"
+					{
+						"value"		"100.000000"
+					}
+					"spread_radius"
+					{
+						"value"		"15000.000000"
+					}
+                    "distance_max"
+                    {
+                    	"value"     "15000.000"
+                    }
+                    "event_type"
+                    {
+                    	"value"     "1.000000"
+                    }
+				}
+			}
+		}
+	}
+}
+
+"Game.SelectionScreen.Up"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"dota_update_vo_switch"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/gameHeroSelectionScreenUP.vsnd"
+						}
+					}
+					"volume"
+					{
+						"value"		"4.000000"
+					}
+					"pitch"
+					{
+						"value"		"1.00000"
+					}
+					"soundlevel"
+					{
+						"value"		"100.000000"
+					}
+				}
+			}
+		}
+	}
+}
+
+"Game.SelectionScreen.Down"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"dota_update_vo_switch"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/gameHeroSelectionScreenDOWN.vsnd"
+						}
+					}
+					"volume"
+					{
+						"value"		"4.000000"
+					}
+					"pitch"
+					{
+						"value"		"1.00000"
+					}
+					"soundlevel"
+					{
+						"value"		"100.000000"
+					}
+				}
+			}
+		}
+	}
+}

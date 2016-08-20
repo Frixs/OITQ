@@ -48,7 +48,7 @@ end
 ---------------------------------------------------------------------------
 function OnEmitSound_global( eventSourceIndex, args )
     if IsServer() then
-        EmitAnnouncerSound( args['soundName'] )
+        EmitGlobalSound( args['soundName'] )
     end
 end
 

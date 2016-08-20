@@ -61,6 +61,7 @@ function Precache( context )
 
   PrecacheResource("soundfile", "soundevents/voscripts/game_sounds_vo_announcer_dlc_defensegrid.vsndevts", context)
   PrecacheResource("soundfile", "soundevents/game_sounds_custom.vsndevts", context)
+  PrecacheResource("soundfile", "soundevents/background_music_custom.vsndevts", context)
 
   -- precatche units
   PrecacheUnitByNameSync("npc_dota_pre_game_invul_global", context)
