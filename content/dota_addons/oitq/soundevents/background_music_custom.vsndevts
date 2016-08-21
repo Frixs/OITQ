@@ -128,3 +128,262 @@
 		}
 	}
 }
+
+"Game.HeroSelection.BGM"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_countdown"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/music/ui_hero_select_intl.vsnd"
+						}
+					}
+					"volume"
+					{
+						"value"		"1.000000"
+					}
+					"pitch"
+					{
+						"value"		"1.00000"
+					}
+					"soundlevel"
+					{
+						"value"		"100.000000"
+					}
+				}
+			}
+		}
+	}
+}
+
+"Game.PreGame.BGM"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_countdown"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/music/valve_ti4/music/countdown.vsnd"
+						}
+					}
+					"volume"
+					{
+						"value"		"1.000000"
+					}
+					"pitch"
+					{
+						"value"		"1.00000"
+					}
+					"soundlevel"
+					{
+						"value"		"100.000000"
+					}
+				}
+			}
+		}
+	}
+}
+
+"Game.Progress.BGM.OasisAttack.0"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_battle_music"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/music/valve_ti6/music/laning_01_layer_01.vsnd"
+						}
+					}
+					"volume"
+					{
+						"value"		"1.000000"
+					}
+					"pitch"
+					{
+						"value"		"1.00000"
+					}
+					"soundlevel"
+					{
+						"value"		"100.000000"
+					}
+				}
+			}
+		}
+	}
+}
+
+"Game.Progress.BGM.OasisAttack.1"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_battle_music"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/music/valve_ti6/music/laning_01_layer_02.vsnd"
+						}
+					}
+					"volume"
+					{
+						"value"		"1.000000"
+					}
+					"pitch"
+					{
+						"value"		"1.00000"
+					}
+					"soundlevel"
+					{
+						"value"		"100.000000"
+					}
+				}
+			}
+		}
+	}
+}
+
+"Game.Progress.BGM.OasisAttack.2"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_battle_music"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/music/mhawken_01/music/laning_01_layer_03.vsnd"
+						}
+					}
+					"volume"
+					{
+						"value"		"1.000000"
+					}
+					"pitch"
+					{
+						"value"		"1.00000"
+					}
+					"soundlevel"
+					{
+						"value"		"100.000000"
+					}
+				}
+			}
+		}
+	}
+}
+
+"Game.Progress.BGM.OasisAttack.3"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_battle_music"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/music/valve_ti6/music/laning_02_layer_01.vsnd"
+						}
+					}
+					"volume"
+					{
+						"value"		"1.000000"
+					}
+					"pitch"
+					{
+						"value"		"1.00000"
+					}
+					"soundlevel"
+					{
+						"value"		"100.000000"
+					}
+				}
+			}
+		}
+	}
+}
+
+"Game.Progress.BGM.OasisAttack.4"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_battle_music"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/music/mhawken_01/music/laning_03_layer_01.vsnd"
+						}
+					}
+					"volume"
+					{
+						"value"		"1.000000"
+					}
+					"pitch"
+					{
+						"value"		"1.00000"
+					}
+					"soundlevel"
+					{
+						"value"		"100.000000"
+					}
+				}
+			}
+		}
+	}
+}

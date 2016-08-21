@@ -44,11 +44,20 @@ function DropItem( item, hero )
 end
 
 ---------------------------------------------------------------------------
+-- OnEmitSound_announcer
+---------------------------------------------------------------------------
+function OnEmitSound_announcer( eventSourceIndex, args )
+    if IsServer() then
+        EmitAnnouncerSound( args['soundName'] )
+    end
+end
+
+---------------------------------------------------------------------------
 -- OnEmitSound_global
 ---------------------------------------------------------------------------
 function OnEmitSound_global( eventSourceIndex, args )
     if IsServer() then
-        EmitAnnouncerSound( args['soundName'] )
+        EmitGlobalSound( args['soundName'] )
     end
 end
 
@@ -102,7 +111,7 @@ end
 
 --//--\\--//--\\--
 CustomGameEventManager:RegisterListener( "OnDropItemInfo", OnDropItem )
-CustomGameEventManager:RegisterListener( "OnEmitSound_countdown", OnEmitSound_global ) -- overthrow_scoreboard.js
+CustomGameEventManager:RegisterListener( "OnEmitSound_countdown", OnEmitSound_announcer ) -- overthrow_scoreboard.js
 CustomGameEventManager:RegisterListener( "SendGameStart", SendCustomMsg )
 CustomGameEventManager:RegisterListener( "is_game_paused", IsGamePausedStatus )
 CustomGameEventManager:RegisterListener( "selectHero", HeroReplace )
@@ -213,6 +222,9 @@ function InitialAbilityLvUp( heroEntity )
     if ability_lvup then ability_lvup:SetLevel(1) end
 end
 
+---------------------------------------------------------------------------
+-- Votes & Rematch
+---------------------------------------------------------------------------
 function ResetVotes()
     local votes = CustomNetTables:GetTableValue( "gameinfo", "votes" )
     if votes then
@@ -246,6 +258,7 @@ function RematchVotingCountdown()
                 if YesVotes >= MINIMUM_VOTES_TO_REMATCH then
                     -- rematch after delay
                     Timers:CreateTimer(1.0, function()
+                        SendToConsole("stopsound")
                         GameRules:ResetToHeroSelection()
                     end)
                 end

@@ -47,7 +47,7 @@ REMOVE_ILLUSIONS_ON_DEATH = false       -- Should we remove all illusions if the
 DISABLE_GOLD_SOUNDS = false             -- Should we disable the gold sound when players get gold?
 
 END_GAME_ON_KILLS = false                -- Should the game end after a certain number of kills?
-KILLS_TO_END_GAME_FOR_TEAM = 20         -- How many kills for a team should signify an end of game?
+KILLS_TO_END_GAME_FOR_TEAM = 3         -- How many kills for a team should signify an end of game?
 
 USE_CUSTOM_HERO_LEVELS = true           -- Should we allow heroes to have custom levels?
 MAX_LEVEL = 7                           -- What level should we let heroes get to?
@@ -102,7 +102,7 @@ SKIP_TEAM_SETUP = false                 -- Should we skip the team setup entirel
 ENABLE_AUTO_LAUNCH = true               -- Should we automatically have the game complete team setup after AUTO_LAUNCH_DELAY seconds?
 AUTO_LAUNCH_DELAY = 30                  -- How long should the default team selection launch timer be?  The default for custom games is 30.  Setting to 0 will skip team selection.
 LOCK_TEAM_SETUP = false                 -- Should we lock the teams initially?  Note that the host can still unlock the teams 
-MINIMUM_VOTES_TO_REMATCH = 6			-- minimum votes to rematch
+MINIMUM_VOTES_TO_REMATCH = 1			-- minimum votes to rematch
 
 INVENTORY_SAFE_SLOTS = 2				-- safe slots in a player inventory
 INVENTORY_DROP_SUM = 2					-- number of items which will be dropped after death
@@ -177,3 +177,14 @@ SPAWN_LOCATIONS[0] = {}
 	SPAWN_LOCATIONS[0][11] = Vector( 2985, 2512, 129 )   -- small desert-bottom
 	SPAWN_LOCATIONS[0][12] = Vector( 4440, 2782, 257 )   -- desert cliff-right
 	SPAWN_LOCATIONS[0][13] = Vector( 3414, 1025, 257 )   -- desert cliff-left
+
+-- MAP BGM
+------------------
+MAP_BGM = {}
+-- Oasis Attack
+MAP_BGM[0] = {}
+	MAP_BGM[0][0] = "Game.Progress.BGM.OasisAttack.0"
+	MAP_BGM[0][1] = "Game.Progress.BGM.OasisAttack.1"
+	MAP_BGM[0][2] = "Game.Progress.BGM.OasisAttack.2"
+	MAP_BGM[0][3] = "Game.Progress.BGM.OasisAttack.3"
+	MAP_BGM[0][4] = "Game.Progress.BGM.OasisAttack.4"

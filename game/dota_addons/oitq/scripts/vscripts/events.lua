@@ -21,6 +21,8 @@ function GameMode:OnGameRulesStateChange(keys)
   if newState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then                     --[[GAME IN PROGRESS]]
     -- destroy pregame aura buff
     GameRules.npc_dota_pre_game_invul_global:ForceKill(false)
+    -- emit BGM
+    OnEmitSound_global( false, {soundName = MAP_BGM[CURRENT_PLAYED_ARENA][0]} )
 
   elseif newState == DOTA_GAMERULES_STATE_PRE_GAME then                         --[[PRE GAME]]
     -- create pregame aura buff
@@ -57,6 +59,13 @@ function GameMode:OnNPCSpawned(keys)
 
   local npc = EntIndexToHScript(keys.entindex)
   SPAWNED_UNIT = npc -- global variable for function FilterGold
+
+  -- emit random map BGM in Game Progress
+  if GameRules:State_Get() == 7 then
+    local SoundIndex = RandomInt( 0, table.getn(MAP_BGM[CURRENT_PLAYED_ARENA]) )
+    local SoundName = MAP_BGM[CURRENT_PLAYED_ARENA][SoundIndex]
+    npc:EmitSound(SoundName)
+  end
 end
 
 -- An entity somewhere has been hurt.  This event fires very often with many units so don't do too many expensive
@@ -269,6 +278,7 @@ function GameMode:OnPlayerPickHero(keys)
 
       -- Emit sounds
       EmitAnnouncerSoundForPlayer("announcer_dlc_defensegrid_announcer_battle_prepare", player:GetPlayerID())
+      heroEntity:EmitSound("Game.PreGame.BGM")
 
       -- Welcome message
       GameRules:SendCustomMessage("Welcome to <font color='#FF6000'>One in the Quiver (REMASTER)</font>!", playerTeam, 0)
@@ -302,6 +312,10 @@ function GameMode:OnPlayerPickHero(keys)
       end)
   else
       EmitAnnouncerSound("announcer_dlc_defensegrid_announcer_choose_hero")
+      -- emit hero selection bg music (timer because of stopsound)
+      Timers:CreateTimer(0.1, function()
+          OnEmitSound_global( false, {soundName = "Game.HeroSelection.BGM"} )
+      end)
   end
 end
 
