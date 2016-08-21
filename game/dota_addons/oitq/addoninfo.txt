@@ -1,22 +1,10 @@
 "AddonInfo"
 {
-  "TeamCount" "10"
-  "maps"      "oitq_global"
-  "IsPlayable"  "1"
+  "TeamCount"  "10"
+  "maps"       "oitq_global"
+  "IsPlayable" "1"
   "oitq_global"
   {
           "MaxPlayers"                    "10"
   }
-//  "template_map"
-//  {
-//          "MaxPlayers"                    "10"
-//  }
-//  "oasis_attack"
-//  {
-//          "MaxPlayers"                    "10"
-//  }
-//  "playground"
-//  {
-//          "MaxPlayers"                    "10"
-//  }
 }
