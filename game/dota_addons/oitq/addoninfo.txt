@@ -1,7 +1,7 @@
 "AddonInfo"
 {
   "TeamCount" "10"
-  "maps"      "template_map oasis_attack playground"
+  "maps"      "oitq_global"
   "IsPlayable"  "1"
   "oitq_global"
   {

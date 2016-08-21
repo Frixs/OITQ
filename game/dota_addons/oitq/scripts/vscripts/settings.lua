@@ -1,7 +1,7 @@
 -- In this file you can set up all the properties and settings for your game mode.
 
 
-RANDOM_SPAWN = false 					-- Should the heroes spawn in random locations in current arena
+RANDOM_SPAWN = true 					-- Should the heroes spawn in random locations in current arena
 ENABLE_HERO_RESPAWN = true              -- Should the heroes automatically respawn on a timer or stay dead until manually respawned
 UNIVERSAL_SHOP_MODE = false             -- Should the main shop contain Secret Shop items as well as regular items
 ALLOW_SAME_HERO_SELECTION = true        -- Should we let people select the same hero as each other
@@ -47,7 +47,7 @@ REMOVE_ILLUSIONS_ON_DEATH = false       -- Should we remove all illusions if the
 DISABLE_GOLD_SOUNDS = false             -- Should we disable the gold sound when players get gold?
 
 END_GAME_ON_KILLS = false                -- Should the game end after a certain number of kills?
-KILLS_TO_END_GAME_FOR_TEAM = 3         -- How many kills for a team should signify an end of game?
+KILLS_TO_END_GAME_FOR_TEAM = 25         -- How many kills for a team should signify an end of game?
 
 USE_CUSTOM_HERO_LEVELS = true           -- Should we allow heroes to have custom levels?
 MAX_LEVEL = 7                           -- What level should we let heroes get to?
@@ -102,7 +102,7 @@ SKIP_TEAM_SETUP = false                 -- Should we skip the team setup entirel
 ENABLE_AUTO_LAUNCH = true               -- Should we automatically have the game complete team setup after AUTO_LAUNCH_DELAY seconds?
 AUTO_LAUNCH_DELAY = 30                  -- How long should the default team selection launch timer be?  The default for custom games is 30.  Setting to 0 will skip team selection.
 LOCK_TEAM_SETUP = false                 -- Should we lock the teams initially?  Note that the host can still unlock the teams 
-MINIMUM_VOTES_TO_REMATCH = 1			-- minimum votes to rematch
+MINIMUM_VOTES_TO_REMATCH = 4			-- minimum votes to rematch
 
 INVENTORY_SAFE_SLOTS = 2				-- safe slots in a player inventory
 INVENTORY_DROP_SUM = 2					-- number of items which will be dropped after death
