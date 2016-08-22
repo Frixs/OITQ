@@ -408,7 +408,7 @@ function GameMode:OnEntityKilled( keys )
       if killedUnit ~= killerEntity then
         -- Add experience to killerEntity and call custom message
         killerEntity:AddExperience( 10, 0, false, false ) --XP per KILL enemy hero
-        GameRules:SendCustomMessage("%s1 killed <font color='#FFFFFF'>"..PlayerResource:GetPlayerName(killedUnit:GetPlayerID()).."</font>", 0, 0)
+        GameRules:SendCustomMessage(PlayerResource:GetPlayerName(killerEntity:GetPlayerID()).." killed <font color='#FFFFFF'>"..PlayerResource:GetPlayerName(killedUnit:GetPlayerID()).."</font>", 0, 0)
       end
 
       -- launch inventory drop
