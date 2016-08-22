@@ -82,10 +82,30 @@
 					{
 						"value"		"1.00000"
 					}
+					"chan_type"
+					{
+						"value"		"6"
+					}
+					"memory_type"
+					{
+						"value"		"0"
+					}
 					"soundlevel"
 					{
 						"value"		"100.000000"
 					}
+					"spread_radius"
+					{
+						"value"		"15000.000000"
+					}
+                    "distance_max"
+                    {
+                    	"value"     "15000.000"
+                    }
+                    "event_type"
+                    {
+                    	"value"     "1.000000"
+                    }
 				}
 			}
 		}

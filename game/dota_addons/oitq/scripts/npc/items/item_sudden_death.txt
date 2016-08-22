@@ -57,7 +57,7 @@
             "03"
             {
                 "var_type"                  "FIELD_INTEGER"
-                "big_radius"                "2750"
+                "big_radius"                "1550"
             }
             "04"
             {
@@ -106,7 +106,8 @@
         //-------------------------------------------------------------------------------------------------------------
         "precache"
         {
-            "particle"      "particles/econ/items/juggernaut/jugg_fortunes_tout/jugg_healling_ward_fortunes_tout_ward_flame.vpcf"
+            "particle"      "particles/items/sudden_death/sudden_death_track_trail_circle.vpcf"
+            "particle"      "particles/econ/items/tiny/tiny_dryad_tree/tiny_dryad_tree_spiral.vpcf"
             "particle"      "particles/econ/items/necrolyte/necronub_ambient/necrolyte_ambient_trail_ka_sand.vpcf"
             "particle"      "particles/units/heroes/hero_techies/techies_land_mine.vpcf"
             "particle"      "particles/units/heroes/hero_techies/techies_land_mine_explode.vpcf"
@@ -144,7 +145,13 @@
                 {
                     "AttachEffect"
                     {
-                        "EffectName"        "particles/econ/items/juggernaut/jugg_fortunes_tout/jugg_healling_ward_fortunes_tout_ward_flame.vpcf"
+                        "EffectName"        "particles/items/sudden_death/sudden_death_track_trail_circle.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "TARGET"
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/econ/items/tiny/tiny_dryad_tree/tiny_dryad_tree_spiral.vpcf"
                         "EffectAttachType"  "follow_origin"
                         "Target"            "TARGET"
                     }

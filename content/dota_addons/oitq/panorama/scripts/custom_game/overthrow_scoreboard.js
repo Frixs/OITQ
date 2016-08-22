@@ -47,8 +47,8 @@ function UpdateTimer( data )
         if( $( "#Timer" ).BHasClass("needToEmit_initialSound_1") )
         {
             $( "#Timer" ).RemoveClass( "needToEmit_initialSound_1" );
-            Game.EmitSound( "Game.Start.Announcer_count_battle_10" );
             Game.EmitSound( "Game.Start.Countdown" );
+            Game.EmitSound( "Game.Start.Announcer_count_battle_10" );
         }
         
         // Call Battle begins!
