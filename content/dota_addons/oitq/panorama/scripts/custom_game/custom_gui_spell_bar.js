@@ -143,8 +143,21 @@ function UpdateAbilityLPoints(player)
 
 function UpdateShurikenCharges(player)
 {
-    var buffIndex = Entities.GetBuff( player, 0 );
-    var buff_charges = Buffs.GetStackCount( player, buffIndex );
+    var modifierName = "modifier_shuriken_shots";
+    var nBuffs       = Entities.GetNumBuffs(player);
+    var buff_charges = 0;
+    var BuffIndex    = 0;
+    
+    for (var i = 0; i < nBuffs; i++)
+    {
+        BuffIndex = Entities.GetBuff(player, i);
+        if (Buffs.GetName( player, BuffIndex ) == modifierName)
+        {
+            buff_charges = Buffs.GetStackCount( player, BuffIndex );
+            $.Msg(buff_charges);
+            break;
+        }
+    }
     
     $("#shurikenCharges").text = buff_charges;
 }
