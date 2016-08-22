@@ -1,0 +1,119 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+    // Spell: Reveal the Truth
+    //=================================================================================================================    
+    "ability_reveal_the_truth"
+    {
+        // General
+        //-------------------------------------------------------------------------------------
+        "BaseClass"             "ability_datadriven"
+        "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT"
+        "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
+        "AbilityTextureName"    "ability_reveal_the_truth"
+        "MaxLevel"              "6"
+        "LevelsBetweenUpgrades" "1"
+        "FightRecapLevel"       "1"
+
+        "AbilityCastAnimation"  "ACT_DOTA_CAST_ABILITY_2"
+        "AbilityCastRange"      "%cast_range"
+        "AOERadius"             "%radius"
+
+        // Time   
+        //-------------------------------------------------------------------------------------
+        "AbilityCooldown"       "25"
+
+        // Special
+        //-------------------------------------------------------------------------------------
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"              "FIELD_FLOAT"
+                "duration"              "2.0 3.0 4.0 4.5 5.0 5.5"
+            }
+            "02"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "radius"                "300 350 400 500 600 650"
+            }
+            "03"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "cast_range"            "800 1000 1200 1300 1400 1600"
+            }
+        }
+
+        "precache"
+        {
+            "particle"  "particles/econ/items/centaur/centaur_ti6_gold/centaur_ti6_warstomp_gold_sparkle.vpcf"
+            "particle"  "particles/econ/items/luna/luna_lucent_ti5_gold/luna_eclipse_cast_moonlight_glow04_ti_5_gold.vpcf"
+            "particle"  "particles/units/heroes/hero_meepo/meepo_earthbind_model_catch_sparkles_b.vpcf"
+        }
+
+        // Data Driven
+        //-------------------------------------------------------------------------------------
+        "OnSpellStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"                "spells/ability_reveal_the_truth_lua.lua"
+                "Function"                  "OnSpellStart"
+                "Target"                    "POINT"
+                "modifier_reveal_spirit"    "modifier_reveal_the_truth_spirit"
+            }
+        }
+
+        "Modifiers"
+        {
+            "modifier_reveal_the_truth_spirit"
+            {
+                "Passive"             "0"
+                "IsHidden"            "1"
+                "IsDebuff"            "0"
+
+                "States"
+                {
+                    "MODIFIER_STATE_INVISIBLE"      "MODIFIER_STATE_VALUE_ENABLED"
+                    "MODIFIER_STATE_NO_HEALTH_BAR"  "MODIFIER_STATE_VALUE_ENABLED"
+                }
+
+                "OnCreated"
+                {
+                    "FireSound"
+                    {
+                        "EffectName"        "DOTA_CustomAbility.RevealTheTruth.Cast"
+                        "Target"            "TARGET"
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/econ/items/centaur/centaur_ti6_gold/centaur_ti6_warstomp_gold_sparkle.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "TARGET"
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/econ/items/luna/luna_lucent_ti5_gold/luna_eclipse_cast_moonlight_glow04_ti_5_gold.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "TARGET"
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind_model_catch_sparkles_b.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "TARGET"
+                    }
+                }
+
+                "OnDestroy"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"                "spells/ability_reveal_the_truth_lua.lua"
+                        "Function"                  "Spirit_OnDestroy"
+                    }
+                }
+            }
+        }
+    }
+}

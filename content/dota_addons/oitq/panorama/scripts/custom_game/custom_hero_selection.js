@@ -133,11 +133,11 @@ function ChangeHeroSelection(heroNumb)
                             "ability_everlasting_spirit"
                         ],
                         [
-                            "ability_time_lapse",
-                            "ability_time_lapse",
-                            "ability_time_lapse",
-                            "ability_time_lapse",
-                            "ability_time_lapse"
+                            "ability_reveal_the_truth",
+                            "ability_reveal_the_truth",
+                            "ability_reveal_the_truth",
+                            "ability_reveal_the_truth",
+                            "ability_reveal_the_truth"
                         ],
                         [
                             "ice_block_spell",

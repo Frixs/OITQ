@@ -154,7 +154,6 @@ function UpdateShurikenCharges(player)
         if (Buffs.GetName( player, BuffIndex ) == modifierName)
         {
             buff_charges = Buffs.GetStackCount( player, BuffIndex );
-            $.Msg(buff_charges);
             break;
         }
     }

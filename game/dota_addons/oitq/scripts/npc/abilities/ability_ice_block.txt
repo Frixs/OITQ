@@ -13,7 +13,6 @@
         "AbilityType"               "DOTA_ABILITY_TYPE_ULTIMATE"
 	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NOASSIST | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 	    "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_2"
-	    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
 	    "SpellImmunityType"         "SPELL_IMMUNITY_ALLIES_YES"
 	    "FightRecapLevel"           "1"

@@ -9,7 +9,6 @@
         //-------------------------------------------------------------------------------------
         "BaseClass"             "ability_datadriven"
         "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT"
-        "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
         "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
         "AbilityTextureName"    "ability_time_lapse"
         "MaxLevel"              "6"

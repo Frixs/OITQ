@@ -9,6 +9,7 @@
 #base "abilities/ability_evasion.txt"
 #base "abilities/ability_time_lapse.txt"
 #base "abilities/ability_everlasting_spirit.txt"
+#base "abilities/ability_reveal_the_truth.txt"
 // functions
 #base "abilities/functional/pre_game_invul_global.txt"
 #base "abilities/cosmetic/map_setup.txt"
