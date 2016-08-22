@@ -172,7 +172,7 @@ function ChangeHeroSelection(heroNumb)
     // set stats
     var strength = 99; var attkSpeed = 9.9; var resistance = 999; var movSpeed = 999;
     if ( heroName == "Jumper" ){ strength = 5;attkSpeed = 1.0;resistance = 0;movSpeed = 300; }
-    else if ( heroName == "Brawler" ){ strength = 6;attkSpeed = 1.0;resistance = 0;movSpeed = 300; }
+    else if ( heroName == "Brawler" ){ strength = 7;attkSpeed = 1.0;resistance = 0;movSpeed = 300; }
     else if ( heroName == "Enchanter" ){ strength = 5;attkSpeed = 1.0;resistance = 0;movSpeed = 300; }
     else if ( heroName == "Slam Shooter" ){ strength = 3;attkSpeed = 1.0;resistance = 0;movSpeed = 300; }
     else if ( heroName == "Ninja" ){ strength = 4;attkSpeed = 1.0;resistance = 0;movSpeed = 300; }

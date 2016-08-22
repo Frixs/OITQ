@@ -21,7 +21,7 @@
             "01"
             {
                 "var_type"              "FIELD_INTEGER"
-                "bonus_damage"          "1"
+                "bonus_damage"          "2"
             }         
         }
 
@@ -34,6 +34,11 @@
                 "Passive"            "1"
                 "IsHidden"           "0"
                 "IsBuff"             "1"
+
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE" "%bonus_damage"
+                }
             }
         }
     }

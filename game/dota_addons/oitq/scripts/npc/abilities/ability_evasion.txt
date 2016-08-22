@@ -79,11 +79,6 @@
                         "Function"      "evasion_onDestroy"
                     }
                 }
-
-                "States"
-                { 
-                    "MODIFIER_STATE_INVULNERABLE" "MODIFIER_STATE_VALUE_ENABLED"
-                }
             }
         }
     }
