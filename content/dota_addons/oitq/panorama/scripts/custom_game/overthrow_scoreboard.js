@@ -47,16 +47,15 @@ function UpdateTimer( data )
         if( $( "#Timer" ).BHasClass("needToEmit_initialSound_1") )
         {
             $( "#Timer" ).RemoveClass( "needToEmit_initialSound_1" );
-            GameEvents.SendCustomGameEventToServer( "OnEmitSound_countdown", { "soundName" : "announcer_dlc_defensegrid_announcer_count_battle_10" } );
-            GameEvents.SendCustomGameEventToServer( "OnEmitSound_countdown", { "soundName" : "Game.Start.Countdown" } );
+            Game.EmitSound( "Game.Start.Announcer_count_battle_10" );
+            Game.EmitSound( "Game.Start.Countdown" );
         }
         
         // Call Battle begins!
         if( $( "#Timer" ).BHasClass( "needToEmit_initialSound_2" ) && timerValue > (-1.5) )
         {
             $( "#Timer" ).RemoveClass( "needToEmit_initialSound_2" );
-            GameEvents.SendCustomGameEventToServer( "OnEmitSound_countdown", { "soundName" : "announcer_dlc_defensegrid_announcer_battle_begin" } );
-            GameEvents.SendCustomGameEventToServer( "SendGameStart", { "forWhom" : 0, "textMessage" : "THE BATTLE BEGINS!" } );
+            Game.EmitSound( "Game.Start.Announcer_battle_begin" );
         }
         
         timerText = "PRE-GAME";

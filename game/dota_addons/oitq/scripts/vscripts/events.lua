@@ -23,6 +23,8 @@ function GameMode:OnGameRulesStateChange(keys)
     GameRules.npc_dota_pre_game_invul_global:ForceKill(false)
     -- emit BGM
     OnEmitSound_global( false, {soundName = MAP_BGM[CURRENT_PLAYED_ARENA][0]} )
+    -- type: The battle begins!
+    GameRules:SendCustomMessage("THE BATTLE BEGINS!", 0, 0)
 
   elseif newState == DOTA_GAMERULES_STATE_PRE_GAME then                         --[[PRE GAME]]
     -- create pregame aura buff

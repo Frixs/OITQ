@@ -55,6 +55,80 @@
 	}
 }
 
+"Game.Start.Announcer_count_battle_10"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_vo_switch"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/vo/announcer_dlc_defensegrid/announcer_count_battle_10.vsnd"
+						}
+					}
+					"volume"
+					{
+						"value"		"1.000000"
+					}
+					"pitch"
+					{
+						"value"		"1.00000"
+					}
+					"soundlevel"
+					{
+						"value"		"100.000000"
+					}
+				}
+			}
+		}
+	}
+}
+
+"Game.Start.Announcer_battle_begin"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_vo_switch"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/vo/announcer_dlc_defensegrid/announcer_battle_begin.vsnd"
+						}
+					}
+					"volume"
+					{
+						"value"		"1.000000"
+					}
+					"pitch"
+					{
+						"value"		"1.00000"
+					}
+					"soundlevel"
+					{
+						"value"		"100.000000"
+					}
+				}
+			}
+		}
+	}
+}
+
 "Game.SelectionScreen.Up"
 {
 	"operator_stacks"
