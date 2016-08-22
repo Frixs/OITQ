@@ -45,8 +45,27 @@ function Precache( context )
 
 
   -- precatche hero particles
-  PrecacheResource("particle_folder", "particles/units/heroes/hero_bloodseeker", context)
   PrecacheResource("particle_folder", "particles/units/heroes/hero_juggernaut", context)
+  PrecacheResource("particle_folder", "particles/units/heroes/hero_bloodseeker", context)
+  PrecacheResource("particle_folder", "particles/units/heroes/hero_dark_seer", context)
+  PrecacheResource("particle_folder", "particles/units/heroes/hero_meepo", context)
+  PrecacheResource("particle_folder", "particles/units/heroes/hero_bounty_hunter", context)
+
+  PrecacheResource("model_folder", "particles/heroes/juggernaut", context)
+  PrecacheResource("model", "particles/heroes/juggernaut/juggernaut.vmdl", context)
+  PrecacheModel("models/heroes/juggernaut/juggernaut.vmdl", context)
+  PrecacheResource("model_folder", "particles/heroes/bloodseeker", context)
+  PrecacheResource("model", "particles/heroes/bloodseeker/bloodseeker.vmdl", context)
+  PrecacheModel("models/heroes/bloodseeker/bloodseeker.vmdl", context)
+  PrecacheResource("model_folder", "particles/heroes/dark_seer", context)
+  PrecacheResource("model", "particles/heroes/dark_seer/dark_seer.vmdl", context)
+  PrecacheModel("models/heroes/dark_seer/dark_seer.vmdl", context)
+  PrecacheResource("model_folder", "particles/heroes/meepo", context)
+  PrecacheResource("model", "particles/heroes/meepo/meepo.vmdl", context)
+  PrecacheModel("models/heroes/meepo/meepo.vmdl", context)
+  PrecacheResource("model_folder", "particles/heroes/bounty_hunter", context)
+  PrecacheResource("model", "particles/heroes/bounty_hunter/bounty_hunter.vmdl", context)
+  PrecacheModel("models/heroes/bounty_hunter/bounty_hunter.vmdl", context)
   -- precatche sound sets
   PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_juggernaut.vsndevts", context)
   PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_bloodseeker.vsndevts", context)
