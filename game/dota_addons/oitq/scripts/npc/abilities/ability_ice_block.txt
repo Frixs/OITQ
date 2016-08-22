@@ -17,7 +17,7 @@
 	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
 	    "SpellImmunityType"         "SPELL_IMMUNITY_ALLIES_YES"
 	    "FightRecapLevel"           "1"
-	        
+
 	    // Casting
 	    //-------------------------------------------------------------------------------------------------------------
 	    "AbilityCastRange"          "700"
@@ -35,23 +35,18 @@
 	    {
 	      	"01"
 	      	{
-		        "var_type"              "FIELD_INTEGER"
-		        "cooldown"          	"10 9 8 7"
-	      	}
-	      	"02"
-	      	{
 		      	"var_type"              "FIELD_INTEGER"
 		        "duration"              "3"
 	      	}
-	      	"03"
+	      	"02"
 	      	{
 		        "var_type"        		"FIELD_INTEGER"
 		        "time_to_recovery"    	"4"
 	      	}
-	      	"04"
+	      	"03"
 	      	{
 		        "var_type"        		"FIELD_INTEGER"
-		        "slow_steps"      		"10"
+		        "slow_steps"      		"-20"
 	      	}            
 	    }
         
@@ -69,8 +64,16 @@
         {
             "ApplyModifier"
             {
-                "ModifierName" "modifier_ice_block_animation"
+                "ModifierName" "modifier_ice_block"
                 "Target"       "CASTER"
+                "Duration"     "%duration"
+            }
+
+            "ApplyModifier"
+            {
+                "ModifierName" "modifier_ice_block_slow_control"
+                "Target"       "CASTER"
+                "Duration"     "%time_to_recovery"
             }
             
             "ApplyModifier"
@@ -78,18 +81,50 @@
                 "ModifierName" "modifier_ice_block_slow"
                 "Target"       "CASTER"
             }
-            
-            "DelayedAction"
+            "ApplyModifier"
             {
-                "Delay"     "%time_to_recovery"
-                "Action"
-                {
-                    "RemoveModifier"
-                    {
-                        "ModifierName" "modifier_ice_block_slow"
-                        "Target"       "CASTER"
-                    }                
-                }
+                "ModifierName" "modifier_ice_block_slow"
+                "Target"       "CASTER"
+            }
+            "ApplyModifier"
+            {
+                "ModifierName" "modifier_ice_block_slow"
+                "Target"       "CASTER"
+            }
+            "ApplyModifier"
+            {
+                "ModifierName" "modifier_ice_block_slow"
+                "Target"       "CASTER"
+            }
+            "ApplyModifier"
+            {
+                "ModifierName" "modifier_ice_block_slow"
+                "Target"       "CASTER"
+            }
+            "ApplyModifier"
+            {
+                "ModifierName" "modifier_ice_block_slow"
+                "Target"       "CASTER"
+            }
+            "ApplyModifier"
+            {
+                "ModifierName" "modifier_ice_block_slow"
+                "Target"       "CASTER"
+            }
+            "ApplyModifier"
+            {
+                "ModifierName" "modifier_ice_block_slow"
+                "Target"       "CASTER"
+            }
+            "ApplyModifier"
+            {
+                "ModifierName" "modifier_ice_block_slow"
+                "Target"       "CASTER"
+            }
+            "ApplyModifier"
+            {
+                "ModifierName" "modifier_ice_block_slow"
+                "Target"       "CASTER"
             }
         }
         
@@ -97,7 +132,7 @@
         {
             "RemoveModifier"
             {
-                "ModifierName" "modifier_ice_block_animation"
+                "ModifierName" "modifier_ice_block"
                 "Target"       "CASTER"
             }
             
@@ -106,32 +141,16 @@
                 "EffectName" "particles/units/heroes/hero_winter_wyvern/wyvern_cold_embrace_borealis_magic_instant.vpcf"
                 "EffectAttachType" "follow_origin"
                 "Target" "CASTER"
-            }            
-            
-            "RunScript"
-            {
-                "ScriptFile"    "spells/ice_block_spell_lua.lua"
-                "Function"      "set_invul_off"
-                "Target"        "CASTER"
             }
         }        
 
         "Modifiers"
         {
-            "modifier_ice_block_animation"
-            {            
+            "modifier_ice_block"
+            {
+                "IsHidden" "0"
                 "IsBuff"   "1"
-                "IsHidden" "1"
-                
-                "precache"
-                {
-                    "soundfile" "soundevents/game_sounds_heroes/game_sounds_winter_wyvern.vsndevts"
-                    "particle"  "particles/units/heroes/hero_winter_wyvern/wyvern_cold_embrace_buff.vpcf"
-                    "particle"  "particles/units/heroes/hero_winter_wyvern/wyvern_cold_embrace_start.vpcf"
-                    "particle"  "particles/units/heroes/hero_winter_wyvern/wyvern_cold_embrace_buff_vapor.vpcf"
-                    "particle"  "particles/units/heroes/hero_winter_wyvern/wyvern_cold_embrace_buff_smoke.vpcf"
-                }
-                
+
                 "OnCreated"
                 {
                     "FireSound"
@@ -172,13 +191,6 @@
                         "EffectName" "particles/units/heroes/hero_winter_wyvern/wyvern_cold_embrace_buff_smoke.vpcf"
                         "EffectAttachType" "follow_origin"
                         "Target" "CASTER"
-                    }                    
-                    
-                    "RunScript"
-                    {
-                        "ScriptFile"    "spells/ice_block_spell_lua.lua"
-                        "Function"      "immobility"
-                        "Target"        "CASTER"
                     }
                     
                     "RunScript"
@@ -188,20 +200,43 @@
                         "Target"        "CASTER"
                     }
                 }
-            }
-            
-            "modifier_ice_block_slow"
-            {
-                "ThinkInterval" "0.195"
-                "OnIntervalThink"
+
+                "OnDestroy"
                 {
                     "RunScript"
                     {
                         "ScriptFile"    "spells/ice_block_spell_lua.lua"
-                        "Function"      "increase_move_speed"
+                        "Function"      "set_invul_off"
                         "Target"        "CASTER"
                     }
-                }               
+                }
+            }
+            
+            "modifier_ice_block_slow_control"
+            {
+                "IsHidden"      "1"
+
+                "ThinkInterval" "0.395"
+                "OnIntervalThink"
+                {
+                    "RemoveModifier"
+                    {
+                        "ModifierName" "modifier_ice_block_slow"
+                        "Target"       "CASTER"
+                    }
+                }
+            }
+
+            "modifier_ice_block_slow"
+            {
+                "IsHidden"      "1"
+                "Duration"      "%time_to_recovery"
+                "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"      "%slow_steps"
+                }
             }
         }
     }
