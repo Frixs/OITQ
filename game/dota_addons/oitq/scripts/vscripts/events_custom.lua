@@ -347,31 +347,31 @@ function OnPlayerDeathLoot( hero )
     local dropped = false
     -- common
     randomNumber = RandomInt( 1, lootKV['percentageLevel'] )
-    if randomNumber < 150 and dropped == false then  -- 15.0% chance (common)
-        ChooseRandomItem( hero, "common", lootKV )
-        dropped = true
+    if randomNumber < 1000 and dropped == false then  -- 100.0% chance (common) -- OFF
+        --ChooseRandomItem( hero, "common", lootKV )
+        --dropped = true
     else
         -- uncommon
         randomNumber = RandomInt( 1, lootKV['percentageLevel'] )
-        if randomNumber < 80 and dropped == false then  -- 8.0% chance (uncommon)
+        if randomNumber < 50 and dropped == false then  -- 5.0% chance (uncommon)
             ChooseRandomItem( hero, "uncommon", lootKV )
             dropped = true
         else
             -- rare
             randomNumber = RandomInt( 1, lootKV['percentageLevel'] )
-            if randomNumber < 65 and dropped == false then  -- 6.5% chance (rare)
+            if randomNumber < 40 and dropped == false then  -- 4.0% chance (rare)
                 ChooseRandomItem( hero, "rare", lootKV )
                 dropped = true
             else
                 -- epic
                 randomNumber = RandomInt( 1, lootKV['percentageLevel'] )
-                if randomNumber < 40 and dropped == false then  -- 4.0% chance (epic)
+                if randomNumber < 30 and dropped == false then  -- 3.0% chance (epic)
                     ChooseRandomItem( hero, "epic", lootKV )
                     dropped = true
                 else
                     -- artifact
                     randomNumber = RandomInt( 1, lootKV['percentageLevel'] )
-                    if randomNumber < 20 and dropped == false then  -- 2.0% chance (artifact)
+                    if randomNumber < 25 and dropped == false then  -- 2.5% chance (artifact)
                         ChooseRandomItem( hero, "artifact", lootKV )
                     end
                 end
