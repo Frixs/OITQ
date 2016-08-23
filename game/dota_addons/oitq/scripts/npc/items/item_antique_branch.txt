@@ -1,0 +1,94 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+    // Item: Antique branch
+    //=================================================================================================================
+    "item_antique_branch"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "ID"                        "1853"
+        "BaseClass"                 "item_datadriven"
+        "AbilityTextureName"        "item_antique_branch"
+
+        "ItemCost"                  "400"
+        "ItemKillable"              "0"
+        "ItemSellable"              "1"
+        "ItemPurchasable"           "1"
+        "ItemDroppable"             "1"
+        "ItemShareability"          "ITEM_FULLY_SHAREABLE"
+
+        "ItemPermanent"             "1"
+        
+        "HomeShop"                  "1"
+        "SideShop"                  "0"
+        "SecretShop"                "0"
+        "ItemQuality"               "rare"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"           "17"
+
+        "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT + DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+        "AbilityCastPoint"          "0.3"
+        "AbilityCastRange"          "%range"
+
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "range"                     "625"
+            }
+            "02"
+            {
+                "var_type"                  "FIELD_FLOAT"
+                "delay"                     "2.0"
+            }
+            "03"
+            {
+                "var_type"                  "FIELD_FLOAT"
+                "damage_cooldown"           "3.0"
+            }
+        }
+
+        // Precache
+        //-------------------------------------------------------------------------------------------------------------
+        "precache"
+        {
+            "particle"      "particles/items/antique_branch/antique_branch_start.vpcf"
+            "particle"      "particles/items/antique_branch/antique_branch_end.vpcf"
+        }
+
+        "OnSpellStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"    "items/item_antique_branch_lua.lua"
+                "Function"      "OnSpellStart"
+                "Target"        "POINT"
+                "delay"         "%delay"
+            }
+        }
+
+        "Modifiers"
+        {
+            "modifier_item_antique_branch"
+            {
+                "Passive"           "1"
+                "IsHidden"          "1"
+
+                "OnTakeDamage"
+                // "%attack_damage" is set to the damage value after mitigation
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"     "items/item_antique_branch_lua.lua"
+                        "Function"       "OnTakeDamage"
+                        "damageCooldown" "%damage_cooldown"
+                    }
+                }
+            }
+        }
+    }
+}
