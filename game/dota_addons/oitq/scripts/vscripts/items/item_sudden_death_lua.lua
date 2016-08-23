@@ -36,12 +36,13 @@ function OnSpellStart( keys )
 end
 
 function MineDestroy( keys )
-	local target = keys.target
-	local ability 		= keys.ability
+	local target  = keys.target
+	local ability = keys.ability
 	if not ability then
 		target:ForceKill(true)
 		return
 	end
+	local owner   = ability:GetOwner()
 	local ability_level = ability:GetLevel() - 1
 
 	-- Ability variables
@@ -70,6 +71,7 @@ function MineDestroy( keys )
 			-- remove mine
 			Timers:CreateTimer(1, function()
 				target:ForceKill(true)
+				owner:RemoveItem(ability)
 			end)
 		end
 	end)
@@ -104,12 +106,13 @@ function LandMineDeath( keys )
 end
 
 function Tracker( keys )
-	local target 		= keys.target
-	local ability 		= keys.ability
+	local target  = keys.target
+	local ability = keys.ability
 	if not ability then
 		target:ForceKill(true)
 		return
 	end
+	local owner   = ability:GetOwner()
 	local ability_level = ability:GetLevel() - 1
 
 	-- Ability variables
@@ -144,6 +147,7 @@ function Tracker( keys )
 				-- remove mine
 				Timers:CreateTimer(1, function()
 					target:ForceKill(true)
+					owner:RemoveItem(ability)
 				end)
 			end
 		end)

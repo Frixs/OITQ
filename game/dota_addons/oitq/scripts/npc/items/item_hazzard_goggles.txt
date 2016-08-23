@@ -11,7 +11,7 @@
         "BaseClass"                 "item_datadriven"
         "AbilityTextureName"        "item_hazzard_goggles"
 
-        "ItemCost"                  "2000"
+        "ItemCost"                  "950"
         "ItemKillable"              "0" 
         "ItemSellable"              "0"
         "ItemPurchasable"           "1"

@@ -63,7 +63,7 @@
             "07"
             {
                 "var_type"                  "FIELD_INTEGER"
-                "ability_fork_bounce_range" "525"                   // Fork spell
+                "ability_fork_bounce_range" "725"                   // Fork spell
             }
             "08"
             {

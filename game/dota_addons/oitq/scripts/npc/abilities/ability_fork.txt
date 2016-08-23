@@ -24,7 +24,7 @@
             {
                 "var_type"              "FIELD_INTEGER"
                 // !!! This value must be also changed in ability_shuriken.txt (ability_fork_bounce_range) !!!
-                "bounce_range"          "525"
+                "bounce_range"          "725"
             }
             "02"
             {

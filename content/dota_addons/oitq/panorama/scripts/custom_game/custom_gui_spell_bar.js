@@ -173,7 +173,7 @@ function OnLoadAbilities()
         
         if( Abilities.IsPassive( abilityIndex ) )
         {
-            ability_hotkey = "\\/\\";
+            ability_hotkey = "";
             $("#abilityBox-"+i+"").GetChild(0).GetChild(4).AddClass("passiveBox-on");
         }
         else

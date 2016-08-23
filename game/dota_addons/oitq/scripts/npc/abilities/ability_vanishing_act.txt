@@ -22,12 +22,12 @@
             "01"
             {
                 "var_type"              "FIELD_FLOAT"
-                "duration"              "5.0"
+                "duration"              "6.0"
             }
             "02"
             {
                 "var_type"              "FIELD_INTEGER"
-                "bonus_speed_pcnt"      "10"
+                "bonus_speed_pcnt"      "15"
             }
             "03"
             {

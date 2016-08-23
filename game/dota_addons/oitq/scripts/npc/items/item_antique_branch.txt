@@ -11,7 +11,7 @@
         "BaseClass"                 "item_datadriven"
         "AbilityTextureName"        "item_antique_branch"
 
-        "ItemCost"                  "400"
+        "ItemCost"                  "150"
         "ItemKillable"              "0"
         "ItemSellable"              "1"
         "ItemPurchasable"           "1"
@@ -38,7 +38,7 @@
             "01"
             {
                 "var_type"                  "FIELD_INTEGER"
-                "range"                     "625"
+                "range"                     "725"
             }
             "02"
             {

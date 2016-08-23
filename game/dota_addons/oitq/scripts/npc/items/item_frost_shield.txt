@@ -11,7 +11,7 @@
         "BaseClass"                 "item_datadriven"
         "AbilityTextureName"        "item_frost_shield"
 
-        "ItemCost"                  "200"
+        "ItemCost"                  "150"
         "ItemKillable"              "0"
         "ItemSellable"              "1"
         "ItemPurchasable"           "1"
