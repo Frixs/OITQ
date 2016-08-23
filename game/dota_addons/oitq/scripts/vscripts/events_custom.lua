@@ -347,7 +347,7 @@ function OnPlayerDeathLoot( hero )
     local dropped = false
     -- common
     randomNumber = RandomInt( 1, lootKV['percentageLevel'] )
-    if randomNumber < 1000 and dropped == false then  -- 100.0% chance (common) -- OFF
+    if randomNumber < 0 and dropped == false then  -- 0.0% chance (common) -- OFF
         --ChooseRandomItem( hero, "common", lootKV )
         --dropped = true
     else
