@@ -713,3 +713,78 @@
 		}
 	}
 }
+
+"DOTA_CustomItem.ScarySense.Cast"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/weapons/hero/windrunner/windrun.vsnd"
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+"DOTA_CustomItem.RedRage.Cast"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/weapons/hero/lifestealer/rage.vsnd"
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+"DOTA_CustomItem.RedRage.Root"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/weapons/hero/underlord/pit_target_hero.vsnd"
+						}
+					}
+				}
+			}
+		}
+	}
+}

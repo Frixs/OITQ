@@ -1,0 +1,161 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+    // Item: Red Rage
+    //=================================================================================================================
+    "item_red_rage"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "ID"                        "1855"
+        "BaseClass"                 "item_datadriven"
+        "AbilityTextureName"        "item_red_rage"
+
+        "ItemCost"                  "350"
+        "ItemKillable"              "0"
+        "ItemSellable"              "1"
+        "ItemPurchasable"           "1"
+        "ItemDroppable"             "1"
+        "ItemShareability"          "ITEM_FULLY_SHAREABLE"
+
+        "ItemPermanent"             "1"
+        
+        "HomeShop"                  "1"
+        "SideShop"                  "1"
+        "SecretShop"                "0"
+        "ItemQuality"               "epic"
+
+        "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET + DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+        "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
+
+        "AbilityCastRange"          "475"
+
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"                  "FIELD_FLOAT"
+                "duration"                  "5.0"
+            }
+            "02"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "damage_reduction_prcnt"    "-40"
+            }
+            "03"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "attack_speed"              "210"
+            }
+            "03"
+            {
+                "var_type"                  "FIELD_FLOAT"
+                "root_duration"             "1.5"
+            }
+        }
+
+        // Precache
+        //-------------------------------------------------------------------------------------------------------------
+        "precache"
+        {
+            "particle"      "particles/items/red_rage/red_rage_root.vpcf"
+            "particle"      "particles/econ/items/alchemist/alchemist_aurelian_weapon/alchemist_chemical_rage_aurelian.vpcf"
+            "particle"      "particles/status_fx/status_effect_gods_strength.vpcf"
+        }
+
+        "OnSpellStart"
+        {
+            "ApplyModifier"
+            {
+                "ModifierName"      "modifier_item_red_rage"
+                "Target"            "CASTER"
+                "Duration"          "%duration"
+            }
+            "ApplyModifier"
+            {
+                "ModifierName"      "modifier_item_red_rage_debuff"
+                "Target"            "TARGET"
+                "Duration"          "%duration"
+            }
+        }
+
+        "Modifiers"
+        {
+            "modifier_item_red_rage"
+            {
+                "Passive"           "0"
+                "IsHidden"          "0"
+                "IsDebuff"          "0"
+
+                "StatusEffectName"      "particles/status_fx/status_effect_gods_strength.vpcf"
+                "StatusEffectPriority"  "8"
+
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"    "%attack_speed"
+                    "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "%damage_reduction_prcnt"
+                }
+
+                "OnCreated"
+                {
+                    "FireSound"
+                    {
+                        "EffectName"        "DOTA_CustomItem.RedRage.Cast"
+                        "Target"            "CASTER"
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/econ/items/alchemist/alchemist_aurelian_weapon/alchemist_chemical_rage_aurelian.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "CASTER"
+                    }
+                }
+
+                "OnDealDamage"
+                // "%attack_damage" is set to the damage value after mitigation
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"        "items/item_red_rage_lua.lua"
+                        "Function"          "OnDealDamage"
+                        "modifier_debuff"   "modifier_item_red_rage_debuff"
+                        "modifier_root"     "modifier_item_red_rage_root"
+                    }
+                }
+            }
+
+            "modifier_item_red_rage_root"
+            {
+                "Passive"           "0"
+                "IsHidden"          "0"
+                "IsDebuff"          "1"
+
+                "States"
+                {
+                    "MODIFIER_STATE_ROOTED" "MODIFIER_STATE_VALUE_ENABLED"
+                }
+
+                "OnCreated"
+                {
+                    "FireSound"
+                    {
+                        "EffectName"        "DOTA_CustomItem.RedRage.Root"
+                        "Target"            "CASTER"
+                    }
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/items/red_rage/red_rage_root.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "TARGET"
+                    }
+                }
+            }
+
+            "modifier_item_red_rage_debuff"
+            {
+                "IsHidden"          "1"
+            }
+        }
+    }
+}

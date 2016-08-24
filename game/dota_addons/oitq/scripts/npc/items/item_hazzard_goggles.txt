@@ -23,7 +23,7 @@
         "ItemRequiresCharges"       "0" //The active ability needs charges to be used - Urn
         "ItemPermanent"             "1"
         
-        "HomeShop"                  "0"
+        "HomeShop"                  "1"
         "SideShop"                  "0"
         "SecretShop"                "1"
         "ItemQuality"               "artifact"

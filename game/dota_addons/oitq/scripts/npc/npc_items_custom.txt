@@ -13,6 +13,8 @@
 #base "items/item_frost_shield.txt"
 #base "items/item_sudden_death.txt"
 #base "items/item_antique_branch.txt"
+#base "items/item_scary_sense.txt"
+#base "items/item_red_rage.txt"
 
 "DOTAAbilities"
 {

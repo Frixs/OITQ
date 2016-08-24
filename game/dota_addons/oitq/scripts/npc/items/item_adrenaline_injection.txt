@@ -23,7 +23,7 @@
         "ItemRequiresCharges"       "1" //The active ability needs charges to be used - Urn
         "ItemPermanent"             "0"
         
-        "HomeShop"                  "0"
+        "HomeShop"                  "1"
         "SideShop"                  "1"
         "SecretShop"                "0"
         "ItemQuality"               "epic"
@@ -44,7 +44,7 @@
             "02"
             {
                 "var_type"             "FIELD_INTEGER"
-                "damage_absorb"        "3"
+                "damage_absorb"        "6"
             }
             "03"
             {

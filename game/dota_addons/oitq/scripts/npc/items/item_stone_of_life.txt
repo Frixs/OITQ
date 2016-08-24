@@ -20,7 +20,7 @@
 
         "ItemPermanent"             "1"
         
-        "HomeShop"                  "0"
+        "HomeShop"                  "1"
         "SideShop"                  "1"
         "SecretShop"                "0"
         "ItemQuality"               "epic"

@@ -97,6 +97,7 @@
 
     "item"    "item_cold_blade"
     "item"    "item_frost_shield"
+    "item"    "item_scary_sense"
   }
 
   // Level 2 - Blue Recipes
@@ -182,8 +183,8 @@
     //"item"    "item_butterfly"
     //"item"    "item_rapier"
     //"item"    "item_abyssal_blade"  
-          
-          
+
+    "item"    "item_red_rage"
   }
     
   // Level 4 - Orange / Orb / Artifacts       

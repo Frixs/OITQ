@@ -1,0 +1,115 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+    // Item: Scary Sense
+    //=================================================================================================================
+    "item_scary_sense"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "ID"                        "1854"
+        "BaseClass"                 "item_datadriven"
+        "AbilityTextureName"        "item_scary_sense"
+
+        "ItemCost"                  "200"
+        "ItemKillable"              "0"
+        "ItemSellable"              "1"
+        "ItemPurchasable"           "1"
+        "ItemDroppable"             "1"
+        "ItemShareability"          "ITEM_FULLY_SHAREABLE"
+
+        "ItemPermanent"             "1"
+        
+        "HomeShop"                  "1"
+        "SideShop"                  "0"
+        "SecretShop"                "0"
+        "ItemQuality"               "common"
+
+        "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET + DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "stack_speed"               "35"
+            }
+            "02"
+            {
+                "var_type"                  "FIELD_FLOAT"
+                "duration"                  "5.0"
+            }
+            "03"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "stack_cooldown"            "7"
+            }
+            "04"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "start_cooldown"            "11"
+            }
+            "05"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "stacks_max"                "4"
+            }
+        }
+
+        // Precache
+        //-------------------------------------------------------------------------------------------------------------
+        "precache"
+        {
+            "particle"      "particles/units/heroes/hero_windrunner/windrunner_windrun.vpcf"
+        }
+
+        "OnSpellStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "items/item_scary_sense_lua.lua"
+                "Function"          "OnSpellStart"
+            }
+        }
+
+        "Modifiers"
+        {
+            "modifier_item_scary_sense_speed"
+            {
+                "Passive"           "0"
+                "IsHidden"          "1"
+                "IsDebuff"          "0"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT" "%stack_speed" 
+                }
+
+                "OnCreated"
+                {
+                    "FireSound"
+                    {
+                        "EffectName"        "DOTA_CustomItem.ScarySense.Cast"
+                        "Target"            "CASTER"
+                    }
+                    
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/units/heroes/hero_windrunner/windrunner_windrun.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "CASTER"
+                    }
+                }
+
+                "OnDestroy"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"        "items/item_scary_sense_lua.lua"
+                        "Function"          "OnDestroy"
+                    }
+                }
+            }
+        }
+    }
+}
