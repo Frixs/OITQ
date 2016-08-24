@@ -29,6 +29,10 @@
         "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
         "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
 
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"           "34"
+
         "AbilityCastRange"          "475"
 
         "AbilitySpecial"
@@ -62,6 +66,7 @@
             "particle"      "particles/items/red_rage/red_rage_root.vpcf"
             "particle"      "particles/econ/items/alchemist/alchemist_aurelian_weapon/alchemist_chemical_rage_aurelian.vpcf"
             "particle"      "particles/status_fx/status_effect_gods_strength.vpcf"
+            "particle"      "particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_shield_mark.vpcf"
         }
 
         "OnSpellStart"
@@ -155,6 +160,16 @@
             "modifier_item_red_rage_debuff"
             {
                 "IsHidden"          "1"
+
+                "OnCreated"
+                {
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_shield_mark.vpcf"
+                        "EffectAttachType"  "follow_overhead"
+                        "Target"            "TARGET"
+                    }
+                }
             }
         }
     }

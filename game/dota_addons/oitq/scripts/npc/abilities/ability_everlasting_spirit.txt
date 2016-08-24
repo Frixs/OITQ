@@ -8,7 +8,7 @@
         // General
         //-------------------------------------------------------------------------------------
         "BaseClass"             "ability_datadriven"
-        "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT"
+        "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET + DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
         "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
         "SpellImmunityType"     "SPELL_IMMUNITY_ALLIES_YES"
         "AbilityTextureName"    "ability_everlasting_spirit"
