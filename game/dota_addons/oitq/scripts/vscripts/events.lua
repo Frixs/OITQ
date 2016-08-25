@@ -21,6 +21,8 @@ function GameMode:OnGameRulesStateChange(keys)
   if newState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then                     --[[GAME IN PROGRESS]]
     -- destroy pregame aura buff
     GameRules.npc_dota_pre_game_invul_global:ForceKill(false)
+    -- create global buff unit handler
+    if GameRules.npc_dota_buffs_global == nil then GameRules.npc_dota_buffs_global = CreateUnitByName("npc_dota_buffs_global", Vector(0,0,0),false,nil,nil,DOTA_TEAM_NEUTRALS) end
     -- emit BGM
     OnEmitSound_global( false, {soundName = MAP_BGM[CURRENT_PLAYED_ARENA][0]} )
     -- type: The battle begins!
@@ -203,6 +205,30 @@ function GameMode:OnTreeCut(keys)
 
   local treeX = keys.tree_x
   local treeY = keys.tree_y
+
+  -- drop item from tree
+  local itemName = nil
+  if CURRENT_PLAYED_ARENA == 0 then
+      itemName = "item_banana"
+  end
+  if itemName ~= nil then
+      randomNumber = RandomInt( 1, 1000 )
+      if randomNumber < 80 then -- 8.0% chance
+          -- This timer is needed because OnEquip triggers before the item actually being in inventory
+          Timers:CreateTimer(0.1,function()
+              -- Create a new empty item
+              local newItem = CreateItem( itemName, nil, nil )
+              newItem:SetPurchaseTime( 0 )
+              -- Make a new item and launch it near the hero
+              local spawnPoint = Vector( 0, 0, 0 )
+              spawnPoint = Vector( treeX, treeY, 0 )
+              local drop = CreateItemOnPositionSync( spawnPoint, newItem )
+              local launchVector = spawnPoint + RandomVector( RandomFloat( 50, 150 ) )
+              newItem:LaunchLoot( false, 200, 0.5, launchVector )
+          end)
+      end
+  end
+
 end
 
 -- A rune was activated by a player

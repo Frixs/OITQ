@@ -12,6 +12,7 @@
 #base "abilities/ability_reveal_the_truth.txt"
 // functions
 #base "abilities/functional/pre_game_invul_global.txt"
+#base "abilities/functional/ability_buffs_global.txt"
 #base "abilities/cosmetic/map_setup.txt"
 
 // Dota Abilities Override File

@@ -77,6 +77,7 @@
         	"soundfile" "soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
             "particle"  "particles/items2_fx/mask_of_madness.vpcf"
             "particle"  "particles/spells/shuriken_spell.vpcf"
+            "particle"  "particles/econ/events/ti6/mjollnir_shield_ti6.vpcf"
       	}
 
 		// Data Driven
@@ -219,6 +220,38 @@
             "modifier_ability_fork_target_lock"
             {
                 "IsHidden" "1"
+            }
+
+// --- RESPAWN AURA ---------------------------------------------------------------------------
+            "modifier_get_dota_ability_buffs_global_respawn_invul"
+            {
+                "IsHidden"      "1"
+
+                "EffectName"        "particles/econ/events/ti6/mjollnir_shield_ti6.vpcf"
+                "EffectAttachType"  "follow_origin"
+
+                "States"
+                {
+                    "MODIFIER_STATE_UNSELECTABLE"   "MODIFIER_STATE_VALUE_ENABLED"
+                    "MODIFIER_STATE_INVULNERABLE"   "MODIFIER_STATE_VALUE_ENABLED"
+                    "MODIFIER_STATE_SILENCED"       "MODIFIER_STATE_VALUE_ENABLED"
+                }
+            }
+
+            "modifier_get_dota_ability_buffs_global_respawn_invul_checker"
+            {
+                "Passive"       "1"
+                "IsHidden"      "1"
+
+                "OnRespawn"
+                {
+                    "ApplyModifier"
+                    {
+                        "ModifierName"      "modifier_get_dota_ability_buffs_global_respawn_invul"
+                        "Target"            "CASTER"
+                        "Duration"          "1.5"
+                    }
+                }
             }
         }     
   	}
