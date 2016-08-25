@@ -10,6 +10,9 @@
 #base "abilities/ability_time_lapse.txt"
 #base "abilities/ability_everlasting_spirit.txt"
 #base "abilities/ability_reveal_the_truth.txt"
+// traps
+#base "abilities/traps/ability_trap_unselectable.txt"
+#base "abilities/traps/ability_spike_trap.txt"
 // functions
 #base "abilities/functional/pre_game_invul_global.txt"
 #base "abilities/functional/ability_buffs_global.txt"

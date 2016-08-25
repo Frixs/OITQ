@@ -788,3 +788,61 @@
 		}
 	}
 }
+
+"Conquest.SpikeTrap.Activate.Generic"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/addons/conquest/spike_trap.vsnd"
+						}
+					}
+					"soundlevel_max"
+					{
+						"value"		"84.000000"
+					}
+				}
+			}
+		}
+	}
+}
+
+"Conquest.SpikeTrap.Plate"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/addons/conquest/spike_trap_plate.vsnd"
+						}
+					}
+					"soundlevel_max"
+					{
+						"value"		"84.000000"
+					}
+				}
+			}
+		}
+	}
+}

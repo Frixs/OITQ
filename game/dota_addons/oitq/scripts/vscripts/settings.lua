@@ -170,13 +170,12 @@ SPAWN_LOCATIONS[0] = {}
 	SPAWN_LOCATIONS[0][4]  = Vector( -3445, -660, 129 )  -- cliff-camp-bottom
 	SPAWN_LOCATIONS[0][5]  = Vector( -2280, 1590, 17 )   -- cliffs
 	SPAWN_LOCATIONS[0][6]  = Vector( -1630, 3740, 129 )  -- cliff-camp-top
-	SPAWN_LOCATIONS[0][7]  = Vector( 1278, 1580, 385 )   -- mid hill
-	SPAWN_LOCATIONS[0][8]  = Vector( 820, 3265, 129 )    -- camp on mid island
-	SPAWN_LOCATIONS[0][9]  = Vector( 1750, 5120, 257 )   -- camp-enemy-top
-	SPAWN_LOCATIONS[0][10] = Vector( 3512, 4100, 129 )   -- small desert-shop
-	SPAWN_LOCATIONS[0][11] = Vector( 2985, 2512, 129 )   -- small desert-bottom
-	SPAWN_LOCATIONS[0][12] = Vector( 4440, 2782, 257 )   -- desert cliff-right
-	SPAWN_LOCATIONS[0][13] = Vector( 3414, 1025, 257 )   -- desert cliff-left
+	SPAWN_LOCATIONS[0][7]  = Vector( 820, 3265, 129 )    -- camp on mid island
+	SPAWN_LOCATIONS[0][8]  = Vector( 1750, 5120, 257 )   -- camp-enemy-top
+	SPAWN_LOCATIONS[0][9]  = Vector( 3512, 4100, 129 )   -- small desert-shop
+	SPAWN_LOCATIONS[0][10] = Vector( 2985, 2512, 129 )   -- small desert-bottom
+	SPAWN_LOCATIONS[0][11] = Vector( 4440, 2782, 257 )   -- desert cliff-right
+	SPAWN_LOCATIONS[0][12] = Vector( 3414, 1025, 257 )   -- desert cliff-left
 
 -- MAP BGM
 ------------------

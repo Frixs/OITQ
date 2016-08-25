@@ -442,36 +442,38 @@ function GameMode:OnEntityKilled( keys )
 
       -- launch loot
       OnPlayerDeathLoot( killedUnit )
+
+      -- Kill GOLDs
+      -- Kill feed message and popup based on what the gold filter modified earlier
+      if SPAWNED_UNIT and killedUnit ~= killerEntity then
+        local killGold   = SPAWNED_UNIT.KillGold
+          if not killGold then killGold = 0 end
+        local assistGold = SPAWNED_UNIT.AssistGold
+          if not assistGold then assistGold = 0 end
+        local gold       = killGold + assistGold
+        local killerID   = killerEntity:GetPlayerID()
+        --GameRules:SendCustomMessage("%s1 killed a hero for <font color='#F0BA36'>"..gold.."</font> gold!", 0, 0)
+        print("*** Player %s1 earned "..gold.." gold!")
+
+        SPAWNED_UNIT.KillGold = nil
+        SPAWNED_UNIT.AssistGold = nil
+
+        -- Fake Hero gold popup
+        EmitSoundOnLocationForAllies(killedUnit:GetAbsOrigin(), "Gold.Coins", killerEntity)
+        local digits = #tostring(gold) + 1
+        local particleName = "particles/msg_fx/msg_goldbounty.vpcf" --"particles/msg_fx/msg_gold.vpcf"
+        local particle = ParticleManager:CreateParticleForTeam(particleName, PATTACH_OVERHEAD_FOLLOW, killedUnit, DOTA_TEAM_GOODGUYS)
+        ParticleManager:SetParticleControl(particle, 0, killedUnit:GetAbsOrigin())
+        ParticleManager:SetParticleControl(particle, 1, Vector(0, tonumber(gold), 0))
+        ParticleManager:SetParticleControl(particle, 2, Vector(2.0, digits, 0))
+        ParticleManager:SetParticleControl(particle, 3, Vector(255, 200, 33))
+
+        print(killerEntity:GetUnitName().." recieved a total of "..gold.." gold for killing "..killedUnit:GetUnitName())
+
+        PlayerResource:ModifyGold(killerID, gold, true, DOTA_ModifyGold_Unspecified)
+      end
     end
 
-    -- Kill feed message and popup based on what the gold filter modified earlier
-    if SPAWNED_UNIT and killedUnit ~= killerEntity then
-      local killGold   = SPAWNED_UNIT.KillGold
-        if not killGold then killGold = 0 end
-      local assistGold = SPAWNED_UNIT.AssistGold
-        if not assistGold then assistGold = 0 end
-      local gold       = killGold + assistGold
-      local killerID   = killerEntity:GetPlayerID()
-      --GameRules:SendCustomMessage("%s1 killed a hero for <font color='#F0BA36'>"..gold.."</font> gold!", 0, 0)
-      print("*** Player %s1 earned "..gold.." gold!")
-
-      SPAWNED_UNIT.KillGold = nil
-      SPAWNED_UNIT.AssistGold = nil
-
-      -- Fake Hero gold popup
-      EmitSoundOnLocationForAllies(killedUnit:GetAbsOrigin(), "Gold.Coins", killerEntity)
-      local digits = #tostring(gold) + 1
-      local particleName = "particles/msg_fx/msg_goldbounty.vpcf" --"particles/msg_fx/msg_gold.vpcf"
-      local particle = ParticleManager:CreateParticleForTeam(particleName, PATTACH_OVERHEAD_FOLLOW, killedUnit, DOTA_TEAM_GOODGUYS)
-      ParticleManager:SetParticleControl(particle, 0, killedUnit:GetAbsOrigin())
-      ParticleManager:SetParticleControl(particle, 1, Vector(0, tonumber(gold), 0))
-      ParticleManager:SetParticleControl(particle, 2, Vector(2.0, digits, 0))
-      ParticleManager:SetParticleControl(particle, 3, Vector(255, 200, 33))
-
-      print(killerEntity:GetUnitName().." recieved a total of "..gold.." gold for killing "..killedUnit:GetUnitName())
-
-      PlayerResource:ModifyGold(killerID, gold, true, DOTA_ModifyGold_Unspecified)
-    end
   end
 end
 
