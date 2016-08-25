@@ -846,3 +846,78 @@
 		}
 	}
 }
+
+"DOTA_CustomItem.Tomahawk.Cut"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/items/tango.vsnd"
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+"DOTA_CustomItem.Tomahawk.Cast"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/weapons/hero/troll_warlord/whirling_ranged_cast.vsnd"
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+"DOTA_CustomItem.Tomahawk.Hit"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/weapons/hero/shredder/timberchain_impact_damage.vsnd"
+						}
+					}
+				}
+			}
+		}
+	}
+}

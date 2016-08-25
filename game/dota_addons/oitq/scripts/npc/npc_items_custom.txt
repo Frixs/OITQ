@@ -15,6 +15,7 @@
 #base "items/item_antique_branch.txt"
 #base "items/item_scary_sense.txt"
 #base "items/item_red_rage.txt"
+#base "items/item_tomahawk.txt"
 
 "DOTAAbilities"
 {

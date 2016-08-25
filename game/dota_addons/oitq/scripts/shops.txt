@@ -95,6 +95,7 @@
     //"item"    "item_travel_boots"   
     //"item"    "item_moon_shard"
 
+    "item"    "item_tomahawk"
     "item"    "item_cold_blade"
     "item"    "item_frost_shield"
     "item"    "item_scary_sense"
@@ -121,8 +122,8 @@
     //"item"    "item_mekansm"          
     //"item"    "item_pipe"
 
-    "item"    "item_sudden_death"
     "item"    "item_antique_branch"
+    "item"    "item_sudden_death"
   }
         
   "magics"      
@@ -164,8 +165,8 @@
     //"item"    "item_crimson_guard"    
     //"item"    "item_lotus_orb"
 
-    "item"    "item_stone_of_life"
     "item"    "item_adrenaline_injection"
+    "item"    "item_stone_of_life"
   }
       
   "weapons"
@@ -225,8 +226,8 @@
     //"item"    "item_energy_booster"
     //"item"    "item_broadsword"
 
-    "item"    "item_stone_of_life"
     "item"    "item_adrenaline_injection"
+    "item"    "item_stone_of_life"
   }
 
   "sideshop2"
@@ -245,8 +246,8 @@
     //"item"    "item_ultimate_orb"
     //"item"    "item_blink"
 
-    "item"    "item_stone_of_life"
     "item"    "item_adrenaline_injection"
+    "item"    "item_stone_of_life"
   }
   
   "secretshop"

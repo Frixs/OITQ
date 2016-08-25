@@ -1,0 +1,109 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+    // Item: Tomahawk
+    //=================================================================================================================
+    "item_tomahawk"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "ID"                        "1856"
+        "BaseClass"                 "item_datadriven"
+        "AbilityTextureName"        "item_tomahawk"
+
+        "ItemCost"                  "50"
+        "ItemKillable"              "0"
+        "ItemSellable"              "1"
+        "ItemPurchasable"           "1"
+        "ItemDroppable"             "1"
+        "ItemShareability"          "ITEM_FULLY_SHAREABLE"
+
+        "ItemPermanent"             "0"
+        
+        "HomeShop"                  "1"
+        "SideShop"                  "0"
+        "SecretShop"                "0"
+        "ItemQuality"               "common"
+
+        "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT + DOTA_ABILITY_BEHAVIOR_DIRECTIONAL"
+        "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_TREE"
+        "AbilityUnitDamageType"     "DAMAGE_TYPE_PHYSICAL"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"           "3.5"
+
+        "AbilityCastRange"          "325"
+
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "distance"                  "950"
+            }
+            "02"
+            {
+                "var_type"                  "FIELD_FLOAT"
+                "damage"                    "6"
+            }
+            "03"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "toss_speed"                "875"
+            }
+        }
+
+        // Precache
+        //-------------------------------------------------------------------------------------------------------------
+        "precache"
+        {
+            "particle"      "particles/items/tomahawk_axe.vpcf"
+        }
+
+        "OnSpellStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "items/item_tomahawk_lua.lua"
+                "Function"          "OnSpellStart"
+                "Target"            "POINT"
+                "particle_toss"     "particles/items/tomahawk_axe.vpcf"
+            }
+        }
+
+        "OnProjectileHitUnit"
+        {
+            "DeleteOnHit"    "1"
+
+            "Damage"
+            {
+                "Target"        "TARGET"
+                "Type"          "DAMAGE_TYPE_PHYSICAL"
+                "Damage"        "%damage"
+            }
+
+            "FireSound"
+            {
+                "EffectName"        "DOTA_CustomItem.Tomahawk.Hit"
+                "Target"            "TARGET"
+            }
+
+            "RunScript"
+            {
+                "ScriptFile"        "items/item_tomahawk_lua.lua"
+                "Function"          "OnProjectileEnd"
+            }
+        }
+
+        "OnProjectileFinish"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "items/item_tomahawk_lua.lua"
+                "Function"          "OnProjectileEnd"
+            }
+        }
+    }
+}
