@@ -85,6 +85,14 @@ function Precache( context )
   -- precatche units
   PrecacheUnitByNameSync("npc_dota_pre_game_invul_global", context)
 
+  -- precatche item particles & models
+  PrecacheResource("model", "models/heroes/troll_warlord/troll_warlord_axe_ranged_r.vmdl", context)
+  PrecacheResource("particle", "particles/items/tomahawk_projectile.vpcf", context)
+  
+  -- precatche traps
+  PrecacheResource("particle", "particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf", context)
+  PrecacheResource("particle", "particles/units/heroes/hero_venomancer/venomancer_venomous_gale.vpcf", context)
+
     -- Wearables
     _G.HATS = LoadKeyValues("scripts/kv/upgrades.kv")
     for k,slot_table in pairs(HATS) do

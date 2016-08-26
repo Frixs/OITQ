@@ -59,7 +59,7 @@
         //-------------------------------------------------------------------------------------------------------------
         "precache"
         {
-            "particle"      "particles/items/tomahawk_axe.vpcf"
+            "particle"      "particles/items/tomahawk_projectile.vpcf"
         }
 
         "OnSpellStart"
@@ -69,7 +69,7 @@
                 "ScriptFile"        "items/item_tomahawk_lua.lua"
                 "Function"          "OnSpellStart"
                 "Target"            "POINT"
-                "particle_toss"     "particles/items/tomahawk_axe.vpcf"
+                "particle_toss"     "particles/items/tomahawk_projectile.vpcf"
             }
         }
 

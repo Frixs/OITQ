@@ -847,6 +847,64 @@
 	}
 }
 
+"Conquest.FireTrap.Generic"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/weapons/hero/dragon_knight/dragonknight_fire.vsnd"
+						}
+					}
+					"soundlevel_max"
+					{
+						"value"		"84.000000"
+					}
+				}
+			}
+		}
+	}
+}
+
+"Conquest.PoisonTrap.Generic"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/weapons/hero/venomancer/venomancer_venomous_gale.vsnd"
+						}
+					}
+					"soundlevel_max"
+					{
+						"value"		"84.000000"
+					}
+				}
+			}
+		}
+	}
+}
+
 "DOTA_CustomItem.Tomahawk.Cut"
 {
 	"operator_stacks"

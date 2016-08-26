@@ -1,7 +1,7 @@
 -- In this file you can set up all the properties and settings for your game mode.
 
 
-RANDOM_SPAWN = true 					-- Should the heroes spawn in random locations in current arena
+RANDOM_SPAWN = false 					-- Should the heroes spawn in random locations in current arena
 ENABLE_HERO_RESPAWN = true              -- Should the heroes automatically respawn on a timer or stay dead until manually respawned
 UNIVERSAL_SHOP_MODE = false             -- Should the main shop contain Secret Shop items as well as regular items
 ALLOW_SAME_HERO_SELECTION = true        -- Should we let people select the same hero as each other
@@ -163,7 +163,7 @@ ARENA_NAMES[0] = "Oasis Attack"
 SPAWN_LOCATIONS = {}
 -- Oasis Attack
 SPAWN_LOCATIONS[0] = {}
-	SPAWN_LOCATIONS[0][0]  = Vector( 1000, 1225, 129 )   -- camp-right
+	SPAWN_LOCATIONS[0][0]  = Vector( 1000, -1225, 129 )   -- camp-right
 	SPAWN_LOCATIONS[0][1]  = Vector( -575, -2650, 129 )  -- camp-center
 	SPAWN_LOCATIONS[0][2]  = Vector( 1780, -40, 17 )     -- water under mid island - stairs
 	SPAWN_LOCATIONS[0][3]  = Vector( 4800, 170, 130 )    -- desert

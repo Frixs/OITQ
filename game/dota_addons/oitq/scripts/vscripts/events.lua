@@ -213,7 +213,7 @@ function GameMode:OnTreeCut(keys)
   end
   if itemName ~= nil then
       randomNumber = RandomInt( 1, 1000 )
-      if randomNumber < 80 then -- 8.0% chance
+      if randomNumber < 150 then -- 15.0% chance
           -- This timer is needed because OnEquip triggers before the item actually being in inventory
           Timers:CreateTimer(0.1,function()
               -- Create a new empty item
@@ -472,6 +472,15 @@ function GameMode:OnEntityKilled( keys )
 
         PlayerResource:ModifyGold(killerID, gold, true, DOTA_ModifyGold_Unspecified)
       end
+
+    else
+      -- decrement team score
+      local teamScore = CustomNetTables:GetTableValue( "gameinfo", "teamScore" )
+      local player = killedUnit:GetOwner()
+      local playerTeam = player:GetTeam()
+      local playerTeamString = tostring(playerTeam)
+      if teamScore[playerTeamString] > 0 then teamScore[playerTeamString] = teamScore[playerTeamString] - 1 end
+      CustomNetTables:SetTableValue( "gameinfo", "teamScore", teamScore )
     end
 
   end

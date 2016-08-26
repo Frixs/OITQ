@@ -25,7 +25,7 @@ function OnSpellStart( keys )
 			--  iUnitTargetFlags    = ,
 			iUnitTargetType     = DOTA_UNIT_TARGET_HERO,
 			--  fExpireTime         = ,
-			bDeleteOnHit        = true,
+			bDeleteOnHit        = false,
 			vVelocity           = direction_toss * toss_speed,
 			bProvidesVision     = false,
 			--  iVisionRadius       = ,
