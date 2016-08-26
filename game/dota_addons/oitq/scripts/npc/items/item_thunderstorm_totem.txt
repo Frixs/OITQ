@@ -22,7 +22,7 @@
         
         "HomeShop"                  "1"
         "SideShop"                  "0"
-        "SecretShop"                "1"
+        "SecretShop"                "0"
         "ItemQuality"               "artifact"
 
         "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_AOE"
@@ -63,7 +63,7 @@
             "04"
             {
                 "var_type"              "FIELD_INTEGER"
-                "bonus_damage_per_tick" "1"
+                "bonus_damage_per_tick" "2"
             }
             "05"
             {

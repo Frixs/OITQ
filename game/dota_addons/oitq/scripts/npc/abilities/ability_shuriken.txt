@@ -80,6 +80,11 @@
                 "var_type"                  "FIELD_INTEGER"
                 "ability_fork_bounce_max"   "2"                     // Fork spell
             }
+            "11"
+            {
+                "var_type"                  "FIELD_FLOAT"
+                "respawn_invul"             "2.5"                   // RESPAWN INVUL BUFF
+            }
       	}
 
       	"precache"
@@ -261,7 +266,7 @@
                     {
                         "ModifierName"      "modifier_get_dota_ability_buffs_global_respawn_invul"
                         "Target"            "CASTER"
-                        "Duration"          "1.5"
+                        "Duration"          "%respawn_invul"
                     }
                 }
             }

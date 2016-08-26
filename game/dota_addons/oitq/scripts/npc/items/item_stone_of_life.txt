@@ -7,7 +7,7 @@
     {
         // General
         //-------------------------------------------------------------------------------------------------------------
-        "ID"                        "1849"
+        "ID"                        "1857"
         "BaseClass"                 "item_datadriven"
         "AbilityTextureName"        "item_stone_of_life"
 
@@ -21,7 +21,7 @@
         "ItemPermanent"             "1"
         
         "HomeShop"                  "1"
-        "SideShop"                  "1"
+        "SideShop"                  "0"
         "SecretShop"                "0"
         "ItemQuality"               "epic"
 

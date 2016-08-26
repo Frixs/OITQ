@@ -1,7 +1,7 @@
 -- In this file you can set up all the properties and settings for your game mode.
 
 
-RANDOM_SPAWN = true 					-- Should the heroes spawn in random locations in current arena
+RANDOM_SPAWN = false 					-- Should the heroes spawn in random locations in current arena
 ENABLE_HERO_RESPAWN = true              -- Should the heroes automatically respawn on a timer or stay dead until manually respawned
 UNIVERSAL_SHOP_MODE = false             -- Should the main shop contain Secret Shop items as well as regular items
 ALLOW_SAME_HERO_SELECTION = true        -- Should we let people select the same hero as each other
@@ -59,10 +59,10 @@ for i=1,MAX_LEVEL do
     if     i == 1 then XP_PER_LEVEL_TABLE[i] = 0
     elseif i == 2 then XP_PER_LEVEL_TABLE[i] = 10
     elseif i == 3 then XP_PER_LEVEL_TABLE[i] = 40
-    elseif i == 4 then XP_PER_LEVEL_TABLE[i] = 75
-    elseif i == 5 then XP_PER_LEVEL_TABLE[i] = 120
-    elseif i == 6 then XP_PER_LEVEL_TABLE[i] = 200
-    else               XP_PER_LEVEL_TABLE[i] = 300
+    elseif i == 4 then XP_PER_LEVEL_TABLE[i] = 70
+    elseif i == 5 then XP_PER_LEVEL_TABLE[i] = 110
+    elseif i == 6 then XP_PER_LEVEL_TABLE[i] = 160
+    else               XP_PER_LEVEL_TABLE[i] = 220
     end
   --XP_PER_LEVEL_TABLE[i] = (i-1) * 100
 end
@@ -105,7 +105,7 @@ LOCK_TEAM_SETUP = false                 -- Should we lock the teams initially?  
 MINIMUM_VOTES_TO_REMATCH = 4			-- minimum votes to rematch
 
 INVENTORY_SAFE_SLOTS = 2				-- safe slots in a player inventory
-INVENTORY_DROP_SUM = 2					-- number of items which will be dropped after death
+INVENTORY_DROP_SUM = 1					-- number of items which will be dropped after death
 
 CustomNetTables:SetTableValue( "gameinfo", "special_values", { minimumVotes = MINIMUM_VOTES_TO_REMATCH,
 															   rematchVotingTime = REMATCH_VOTING_TIME,

@@ -33,7 +33,7 @@
     "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_BOTH"
     //"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_ALL"
     "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_ALL"
-    "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL" 
+    "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
     "BaseClass"         "ability_lua"
     "AbilityTextureName"        "rubick_empty1"
     "ScriptFile"          "libraries/abilities/containers_lua_targeting"

@@ -24,7 +24,7 @@
         "ItemPermanent"             "0"
         
         "HomeShop"                  "1"
-        "SideShop"                  "1"
+        "SideShop"                  "0"
         "SecretShop"                "0"
         "ItemQuality"               "epic"
 

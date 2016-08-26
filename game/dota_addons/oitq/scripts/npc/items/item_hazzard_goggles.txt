@@ -25,7 +25,7 @@
         
         "HomeShop"                  "1"
         "SideShop"                  "0"
-        "SecretShop"                "1"
+        "SecretShop"                "0"
         "ItemQuality"               "artifact"
 
         "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
