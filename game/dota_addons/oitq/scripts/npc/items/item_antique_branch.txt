@@ -38,7 +38,7 @@
             "01"
             {
                 "var_type"                  "FIELD_INTEGER"
-                "range"                     "725"
+                "range"                     "850"
             }
             "02"
             {

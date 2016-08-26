@@ -146,6 +146,7 @@
 
     "item"    "item_box_of_lost_souls"
     "item"    "item_stomping_mechanism"
+    "item"    "item_pull_request"
   }
     
   // Level 3 - Purple Recipes 

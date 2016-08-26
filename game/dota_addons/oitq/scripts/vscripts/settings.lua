@@ -1,7 +1,7 @@
 -- In this file you can set up all the properties and settings for your game mode.
 
 
-RANDOM_SPAWN = false 					-- Should the heroes spawn in random locations in current arena
+RANDOM_SPAWN = true 					-- Should the heroes spawn in random locations in current arena
 ENABLE_HERO_RESPAWN = true              -- Should the heroes automatically respawn on a timer or stay dead until manually respawned
 UNIVERSAL_SHOP_MODE = false             -- Should the main shop contain Secret Shop items as well as regular items
 ALLOW_SAME_HERO_SELECTION = true        -- Should we let people select the same hero as each other

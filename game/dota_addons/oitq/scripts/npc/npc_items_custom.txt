@@ -16,6 +16,7 @@
 #base "items/item_scary_sense.txt"
 #base "items/item_red_rage.txt"
 #base "items/item_tomahawk.txt"
+#base "items/item_pull_request.txt"
 
 "DOTAAbilities"
 {

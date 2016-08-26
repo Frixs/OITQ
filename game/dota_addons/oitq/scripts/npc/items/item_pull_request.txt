@@ -1,0 +1,179 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+    // Item: Pull Request
+    //=================================================================================================================
+    "item_pull_request"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "ID"                        "1858"
+        "BaseClass"                 "item_datadriven"
+        "AbilityTextureName"        "item_pull_request"
+
+        "ItemCost"                  "275"
+        "ItemKillable"              "0"
+        "ItemSellable"              "1"
+        "ItemPurchasable"           "1"
+        "ItemDroppable"             "1"
+        "ItemShareability"          "ITEM_FULLY_SHAREABLE"
+
+        "ItemPermanent"             "1"
+        
+        "HomeShop"                  "1"
+        "SideShop"                  "0"
+        "SecretShop"                "0"
+        "ItemQuality"               "rare"
+
+        "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+        "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+        "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+        "SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
+
+        "AOERadius"                 "%radius"
+
+        // Casting
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCastRange"              "500"
+        "AbilityCastPoint"              "0.4"
+
+        // Time     
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"               "25"
+
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "radius"                "375"
+            }
+            "02"
+            {
+                "var_type"              "FIELD_FLOAT"
+                "duration"              "0.5"
+            }
+            "03"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "damage"                "1"
+            }
+            "04"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "radius_tree"           "325"
+            }
+        }
+
+        // Precache
+        //-------------------------------------------------------------------------------------------------------------
+        "precache"
+        {
+            "soundfile"         "soundevents/game_sounds_heroes/game_sounds_dark_seer.vsndevts"
+            "particle"          "particles/units/heroes/hero_dark_seer/dark_seer_vacuum.vpcf"
+        }
+
+        "OnSpellStart"
+        {
+            "FireEffect"
+            {
+                "EffectName"        "particles/units/heroes/hero_dark_seer/dark_seer_vacuum.vpcf"
+                "EffectAttachType"  "start_at_customorigin"
+                "TargetPoint"       "POINT"
+
+                "ControlPoints"
+                {
+                    "01"    "%radius 0 0"
+                }
+            }
+
+            "CreateThinker"
+            {
+                "ModifierName"  "modifier_item_pull_request_thinker"
+                "Target"        "POINT"
+            }
+        }
+
+        "Modifiers"
+        {
+            "modifier_item_pull_request_thinker"
+            {
+                "IsHidden"      "1"
+                "Duration"      "%duration"
+
+                "OnCreated"
+                {
+                    "FireSound"
+                    {
+                        "EffectName"    "Hero_Dark_Seer.Vacuum"
+                        "Target"        "TARGET"
+                    }
+
+                    "DestroyTrees"
+                    {
+                        "Target"        "TARGET"
+                        "Radius"        "%radius_tree"
+                    }
+
+                    "RunScript"
+                    {
+                        "ScriptFile"    "items/item_pull_request_lua.lua"
+                        "Function"      "VacuumStart"
+                    }
+                }
+
+                "OnDestroy"
+                {
+                    "ActOnTargets"
+                    {
+                        "Target"
+                        {
+                            "Center"    "TARGET"
+                            "Radius"    "%radius"
+                            "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                            "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+                            "Flags"     "DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+                        }
+                    
+                        "Action"    
+                        {
+                            "Damage"
+                            {
+                                "Target"        "TARGET"
+                                "Type"          "DAMAGE_TYPE_MAGICAL"
+                                "Damage"        "%damage"
+                            }
+                        }
+                    }
+                }
+
+                "ThinkInterval"  "0.03"
+                "OnIntervalThink"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"        "items/item_pull_request_lua.lua"
+                        "Function"          "Vacuum"
+                        "vacuum_modifier"   "modifier_item_pull_request"
+                    }
+                }
+            }
+
+            "modifier_item_pull_request"
+            {
+                "IsPurgable"    "0"
+                "IsHidden"      "1"
+
+                "OverrideAnimation"     "ACT_DOTA_FLAIL"
+
+                "States"
+                {
+                    "MODIFIER_STATE_STUNNED"            "MODIFIER_STATE_VALUE_ENABLED"
+                    "MODIFIER_STATE_NO_UNIT_COLLISION"  "MODIFIER_STATE_VALUE_ENABLED"
+                }
+            }
+        }
+    }
+}
