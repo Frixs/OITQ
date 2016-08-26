@@ -26,7 +26,7 @@ function OnStartTouch(trigger)
 	DoEntFire( button, "SetAnimation", "ancient_trigger001_idle", 2.5, self, self )
 
 	DoEntFire( model, "SetAnimation", "bark_attack", .4, self, self )
-	local heroIndex = trigger.activator:GetEntityIndex()
+	local heroIndex = npc:GetEntityIndex()
 	local heroHandle = EntIndexToHScript(heroIndex)
 	npc.KillerToCredit = heroHandle
 end

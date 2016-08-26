@@ -106,6 +106,8 @@ end
 function ShurikenOnHit( keys )
 	local caster 			= keys.caster
 	local target 			= keys.target
+	local caster_position 	= caster:GetAbsOrigin()
+	local target_position 	= target:GetAbsOrigin()
 	local ability 			= keys.ability
 	local ability_level 	= ability:GetLevel() - 1
 	local radius 			= keys.bounce_range
@@ -114,13 +116,15 @@ function ShurikenOnHit( keys )
 	local channel_time      = keys.channel_time
 	local AbilityDamageType = ability:GetAbilityDamageType()
 	local particle_shuriken = keys.particle_shuriken
+	local distance_damage_cap 		= keys.distance_damage_cap
+	local distance_damage_reduction = keys.distance_damage_reduction
 
 	-- if caster has fork ability
 	if caster:HasModifier("modifier_ability_fork_spell") and not target:HasModifier("modifier_ability_fork_target_lock") then
 		-- caster is Enchanter with Fork spell
 		-- get all units in a target radius
-		local units_in_radius = FindUnitsInRadius(caster:GetTeam(), target:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, ability:GetAbilityTargetType(), 0, 0, false)
-		--DebugDrawCircle(target:GetAbsOrigin(), Vector(255,0,0), 50, radius, true, 3)
+		local units_in_radius = FindUnitsInRadius(caster:GetTeam(), target_position, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, ability:GetAbilityTargetType(), 0, 0, false)
+		--DebugDrawCircle(target_position, Vector(255,0,0), 50, radius, true, 3)
 
 		local enemy_count = 0
         if #units_in_radius > 0 then
@@ -139,7 +143,7 @@ function ShurikenOnHit( keys )
 				    local toss_distance_max	 = ability:GetLevelSpecialValueFor("toss_distance_max", ability_level)
 				    local toss_radius_min    = ability:GetLevelSpecialValueFor("radius_min", ability_level)
 				    local toss_radius_max    = ability:GetLevelSpecialValueFor("radius_max", ability_level)
-				    local direction_shuriken = ( unitAbsOrigin - target:GetAbsOrigin() ):Normalized()
+				    local direction_shuriken = ( unitAbsOrigin - target_position ):Normalized()
 
 				    -- SET channeled speed
 				    local speed_add = (channel_time_numb - 1) * 20 -- speciální hodnota pro získání požadované maximální výsledné hodnoty
@@ -149,7 +153,7 @@ function ShurikenOnHit( keys )
 				    local shuriken_projectile = {
 				        Ability             = ability,
 				        EffectName          = particle_shuriken,
-				        vSpawnOrigin        = target:GetAbsOrigin(),
+				        vSpawnOrigin        = target_position,
 				        fDistance           = toss_distance_max,
 				        fStartRadius        = toss_radius_max,
 				        fEndRadius          = toss_radius_min,
@@ -177,6 +181,11 @@ function ShurikenOnHit( keys )
     	target:RemoveModifierByName("modifier_ability_fork_target_lock")
 	end
 	
+	-- check distance between caster and target
+	local distance_difference = math.sqrt( ( ( target_position.x - caster_position.x ) * ( target_position.x - caster_position.x ) ) + ( ( target_position.y - caster_position.y ) * ( target_position.y - caster_position.y ) ) )
+	if distance_difference < 0 then distance_difference = distance_difference * (-1) end
+	if distance_difference <= distance_damage_cap then damage = damage - distance_damage_reduction end
+
 	-- deal damage to target
 	ApplyDamage({ victim = target, attacker = caster, damage = damage, damage_type = AbilityDamageType})
 end
