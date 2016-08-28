@@ -49,7 +49,7 @@
 
         "precache"
         {
-            "particle"  "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff_circle.vpcf"
+            "particle"  "particles/items_fx/buckler.vpcf"
         }
 
         "OnSpellStart"
@@ -92,7 +92,7 @@
                 {
                     "AttachEffect"
                     {
-                        "EffectName"        "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff_circle.vpcf"
+                        "EffectName"        "particles/items_fx/buckler.vpcf"
                         "EffectAttachType"  "follow_origin"
                         "Target"            "CASTER"
                     }

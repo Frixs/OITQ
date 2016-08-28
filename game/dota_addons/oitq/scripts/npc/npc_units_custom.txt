@@ -466,4 +466,61 @@
         //----------------------------------------------------------------
         "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
     }
+
+//-----------------------
+//--- BUILDINGS ---------
+//-----------------------
+    "npc_house_large"
+    {
+        "BaseClass"                 "npc_dota_creature"
+        "Model"                     "models/development/invisiblebox.vmdl"
+        "Ability1"                  "dota_ability_house_large"
+        "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
+        "BountyXP"                  "0"
+        "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+        "StatusHealth"              "5000"
+        "StatusHealthRegen"         "5"
+        "ArmorPhysical"             "1000"
+        "MagicalResistance"         "100"
+        "TeamName"                  "DOTA_TEAM_NEUTRALS"
+        // Bounds
+        //----------------------------------------------------------------
+        "BoundsHullName"            "DOTA_HULL_SIZE_BARRACKS"
+    }
+
+    "npc_house_medium"
+    {
+        "BaseClass"                 "npc_dota_creature"
+        "Model"                     "models/development/invisiblebox.vmdl"
+        "Ability1"                  "dota_ability_house_medium"
+        "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
+        "BountyXP"                  "0"
+        "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+        "StatusHealth"              "5000"
+        "StatusHealthRegen"         "5"
+        "ArmorPhysical"             "1000"
+        "MagicalResistance"         "100"
+        "TeamName"                  "DOTA_TEAM_NEUTRALS"
+        // Bounds
+        //----------------------------------------------------------------
+        "BoundsHullName"            "DOTA_HULL_SIZE_BARRACKS"
+    }
+
+    "npc_house_small"
+    {
+        "BaseClass"                 "npc_dota_creature"
+        "Model"                     "models/development/invisiblebox.vmdl"
+        "Ability1"                  "dota_ability_house_small"
+        "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
+        "BountyXP"                  "0"
+        "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+        "StatusHealth"              "5000"
+        "StatusHealthRegen"         "5"
+        "ArmorPhysical"             "1000"
+        "MagicalResistance"         "100"
+        "TeamName"                  "DOTA_TEAM_NEUTRALS"
+        // Bounds
+        //----------------------------------------------------------------
+        "BoundsHullName"            "DOTA_HULL_SIZE_BARRACKS"
+    }
 }

@@ -19,6 +19,9 @@
 // functions
 #base "abilities/functional/pre_game_invul_global.txt"
 #base "abilities/functional/ability_buffs_global.txt"
+#base "abilities/functional/ability_house_large.txt"
+#base "abilities/functional/ability_house_medium.txt"
+#base "abilities/functional/ability_house_small.txt"
 #base "abilities/cosmetic/map_setup.txt"
 
 // Dota Abilities Override File

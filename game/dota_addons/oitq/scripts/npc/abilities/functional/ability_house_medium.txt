@@ -1,0 +1,50 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+    // Function: House Unselectable
+    //=================================================================================================================    
+    "dota_ability_house_medium"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "BaseClass"                 "ability_datadriven"
+        "AbilityName"               "dota_ability_house_medium"
+        "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+        // Special
+        //-------------------------------------------------------------------------------------
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "hull_size"             "280"
+            }
+        }
+
+        "Modifiers"
+        {
+            "modifier_dota_ability_house_medium"
+            {
+                "IsHidden"              "1"
+                "Passive"               "1"
+
+                "States"
+                {
+                    "MODIFIER_STATE_UNSELECTABLE"   "MODIFIER_STATE_VALUE_ENABLED"
+                    "MODIFIER_STATE_NO_HEALTH_BAR"  "MODIFIER_STATE_VALUE_ENABLED"
+                }
+
+                "OnCreated"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"        "abilities/functional/ability_house_hull_size.lua"
+                        "Function"          "SetHullRadius"
+                        "hull_size"         "%hull_size"
+                    }
+                }
+            }
+        }
+    }
+}

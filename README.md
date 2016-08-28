@@ -20,3 +20,5 @@ It is not simple task to survive… Can you beat it?
 * [BMD] - [Barebones libraries](https://github.com/bmddota/barebones)
 * [Myll] - [ModKit](https://github.com/stephenfournier/Dota-2-ModKit/)
 * [invalidnick] - CORE asset pack - houses
+* [[MrZajic]](https://github.com/MrZajic) - 3D models
+* [Aleteh] - Mine model
