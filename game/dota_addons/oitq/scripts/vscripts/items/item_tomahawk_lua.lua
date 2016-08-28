@@ -23,7 +23,7 @@ function OnSpellStart( keys )
 			bReplaceExisting    = false,
 			iUnitTargetTeam     = DOTA_UNIT_TARGET_TEAM_ENEMY,
 			--  iUnitTargetFlags    = ,
-			iUnitTargetType     = DOTA_UNIT_TARGET_HERO,
+			iUnitTargetType     = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_BUILDING,
 			--  fExpireTime         = ,
 			bDeleteOnHit        = false,
 			vVelocity           = direction_toss * toss_speed,

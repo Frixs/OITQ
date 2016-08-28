@@ -17,6 +17,7 @@
 #base "items/item_red_rage.txt"
 #base "items/item_tomahawk.txt"
 #base "items/item_pull_request.txt"
+#base "items/item_worm_pill.txt"
 
 "DOTAAbilities"
 {

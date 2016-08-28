@@ -1,0 +1,103 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+    // Item: Worm Pill
+    //=================================================================================================================
+    "item_worm_pill"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "ID"                        "1859"
+        "BaseClass"                 "item_datadriven"
+        "AbilityTextureName"        "item_worm_pill"
+        "Model"                     "models/worm/worm.vmdl"
+
+        "ItemCost"                  "0"
+        "ItemKillable"              "0"
+        "ItemSellable"              "1"
+        "ItemPurchasable"           "0"
+        "ItemDroppable"             "1"
+        "ItemShareability"          "ITEM_FULLY_SHAREABLE"
+
+        "ItemStackable"             "1"
+        "ItemPermanent"             "0"
+
+        "ItemInitialCharges"        "1" //How many charges should the item start with - Tango x3 
+        "ItemDisplayCharges"        "1" //Hide the charges of the item - Aegis 
+        "ItemRequiresCharges"       "1" //The active ability needs charges to be used - Urn
+        
+        "HomeShop"                  "0"
+        "SideShop"                  "0"
+        "SecretShop"                "0"
+        "ItemQuality"               "component"
+
+        "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"          "FIELD_INTEGER"
+                "duration"          "6"
+            }
+            "02"
+            {
+                "var_type"          "FIELD_INTEGER"
+                "heal_per_tick"     "1"
+            }
+        }
+
+        "precache"
+        {
+            "particle"  "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff_circle.vpcf"
+        }
+
+        "OnSpellStart"
+        {
+            "SpendCharge" {}
+
+            "FireSound"
+            {
+                "EffectName"        "DOTA_CustomItem.WormPill.Cast"
+                "Target"            "CASTER"
+            }
+
+            "ApplyModifier"
+            {
+                "ModifierName"      "modifier_item_worm_pill"
+                "Target"            "CASTER"
+                "Duration"          "%duration"
+            }
+        }
+
+        "Modifiers"
+        {
+            "modifier_item_worm_pill"
+            {
+                "Passive"             "0"
+                "IsHidden"            "0"
+                "Attributes"          "MODIFIER_ATTRIBUTE_MULTIPLE"
+
+                "ThinkInterval" "0.95"
+                "OnIntervalThink"
+                {
+                    "Heal"
+                    {
+                        "Target"        "CASTER"
+                        "HealAmount"    "%heal_per_tick"
+                    }
+                }
+
+                "OnCreated"
+                {
+                    "AttachEffect"
+                    {
+                        "EffectName"        "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff_circle.vpcf"
+                        "EffectAttachType"  "follow_origin"
+                        "Target"            "CASTER"
+                    }
+                }
+            }
+        }
+    }
+}

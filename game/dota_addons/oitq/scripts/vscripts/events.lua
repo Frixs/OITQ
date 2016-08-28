@@ -212,8 +212,8 @@ function GameMode:OnTreeCut(keys)
       itemName = "item_banana"
   end
   if itemName ~= nil then
-      randomNumber = RandomInt( 1, 1000 )
-      if randomNumber < 150 then -- 15.0% chance
+      randomNumber = RandomInt( 1, 100 )
+      if randomNumber < 20 then -- 20.0% chance
           -- This timer is needed because OnEquip triggers before the item actually being in inventory
           Timers:CreateTimer(0.1,function()
               -- Create a new empty item

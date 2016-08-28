@@ -77,17 +77,17 @@
         {
             "DeleteOnHit"    "1"
 
+            "FireSound"
+            {
+                "EffectName"        "DOTA_CustomItem.Tomahawk.Hit"
+                "Target"            "TARGET"
+            }
+
             "Damage"
             {
                 "Target"        "TARGET"
                 "Type"          "DAMAGE_TYPE_PHYSICAL"
                 "Damage"        "%damage"
-            }
-
-            "FireSound"
-            {
-                "EffectName"        "DOTA_CustomItem.Tomahawk.Hit"
-                "Target"            "TARGET"
             }
 
             "RunScript"
