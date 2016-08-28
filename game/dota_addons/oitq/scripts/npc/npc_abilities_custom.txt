@@ -15,6 +15,7 @@
 #base "abilities/traps/ability_spike_trap.txt"
 #base "abilities/traps/ability_breathe_fire.txt"
 #base "abilities/traps/ability_breathe_poison.txt"
+#base "abilities/traps/ability_gate_trap_controls.txt"
 // functions
 #base "abilities/functional/pre_game_invul_global.txt"
 #base "abilities/functional/ability_buffs_global.txt"

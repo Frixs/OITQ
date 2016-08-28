@@ -6,7 +6,7 @@
     "breathe_fire"
     {
         "BaseClass"                     "ability_lua"
-        "ScriptFile"                    "breathe_fire"
+        "ScriptFile"                    "abilities/traps/breathe_fire"
         "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"                  
 
         // Casting

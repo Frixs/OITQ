@@ -847,6 +847,35 @@
 	}
 }
 
+"Conquest.SpikeTrap.PreLight"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/weapons/hero/lina/prelightstrikearray.vsnd"
+						}
+					}
+					"soundlevel_max"
+					{
+						"value"		"84.000000"
+					}
+				}
+			}
+		}
+	}
+}
+
 "Conquest.FireTrap.Generic"
 {
 	"operator_stacks"

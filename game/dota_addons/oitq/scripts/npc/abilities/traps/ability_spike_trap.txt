@@ -6,7 +6,7 @@
     "spike_trap"
     {
         "BaseClass"                     "ability_lua"
-        "ScriptFile"                    "spike_trap"
+        "ScriptFile"                    "abilities/traps/spike_trap"
         "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"                  
 
         // Casting

@@ -6,7 +6,7 @@
     "breathe_poison"
     {
         "BaseClass"                     "ability_lua"
-        "ScriptFile"                    "breathe_poison"
+        "ScriptFile"                    "abilities/traps/breathe_poison"
         "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"                  
 
         // Casting
