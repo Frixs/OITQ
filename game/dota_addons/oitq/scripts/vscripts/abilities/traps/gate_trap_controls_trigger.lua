@@ -18,16 +18,20 @@ function OnStartTouch(trigger)
 	end
 	triggerActive = false
 	npc:SetContextThink( "ResetButtonModel", function() ResetButtonModel() end, 25 )
-	npc:CastAbilityNoTarget( gateTrap, -1 )
+	npc:CastAbilityOnPosition( target:GetOrigin(), gateTrap, -1 )
 	DoEntFire( button, "SetAnimation", "ancient_trigger001_down", 0, self, self )
 	DoEntFire( button, "SetAnimation", "ancient_trigger001_down_idle", .35, self, self )
 	DoEntFire( button, "SetAnimation", "ancient_trigger001_up", 25, self, self )
 	DoEntFire( button, "SetAnimation", "ancient_trigger001_idle", 25.5, self, self )
 
+	npc:EmitSound("Conquest.GateTrap.Interact")
 	DoEntFire( model, "SetAnimation", "gate_entrance_custom_close", 0, self, self )
 	DoEntFire( model, "SetAnimation", "gate_entrance_custom_close_idle", 0.8, self, self )
 	DoEntFire( model, "SetAnimation", "gate_entrance_custom_open", 10.8, self, self )
 	DoEntFire( model, "SetAnimation", "gate_entrance_custom_open_idle", 11.6, self, self )
+    Timers:CreateTimer(10.8, function()
+        npc:EmitSound("Conquest.GateTrap.Interact")
+    end)
 
 	local heroIndex = npc:GetEntityIndex()
 	local heroHandle = EntIndexToHScript(heroIndex)

@@ -934,6 +934,36 @@
 	}
 }
 
+"Conquest.GateTrap.Interact"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/ambient/tut_gate_metal_open01.vsnd"
+							"value2"		"sounds/ambient/tut_gate_metal_open02.vsnd"
+						}
+					}
+					"soundlevel_max"
+					{
+						"value"		"84.000000"
+					}
+				}
+			}
+		}
+	}
+}
+
 "DOTA_CustomItem.Tomahawk.Cut"
 {
 	"operator_stacks"

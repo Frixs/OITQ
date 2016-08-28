@@ -2,7 +2,7 @@
 --[[ fire_trap_trigger.lua ]]
 
 local triggerActive = true
-print("Trap Button Trigger Entered")
+
 function OnStartTouch(trigger)
 	local triggerName = thisEntity:GetName()
 	local team = trigger.activator:GetTeam()
