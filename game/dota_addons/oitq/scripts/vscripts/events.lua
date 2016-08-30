@@ -210,6 +210,8 @@ function GameMode:OnTreeCut(keys)
   local itemName = nil
   if CURRENT_PLAYED_ARENA == 0 then
       itemName = "item_banana"
+  elseif CURRENT_PLAYED_ARENA == 1 then
+      itemName = "item_worm_pill"
   end
   if itemName ~= nil then
       randomNumber = RandomInt( 1, 100 )

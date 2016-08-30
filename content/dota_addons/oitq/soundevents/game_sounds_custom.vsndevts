@@ -954,6 +954,10 @@
 							"value2"		"sounds/ambient/tut_gate_metal_open02.vsnd"
 						}
 					}
+					"volume"
+					{
+						"value"		"0.200000"
+					}
 					"soundlevel_max"
 					{
 						"value"		"84.000000"

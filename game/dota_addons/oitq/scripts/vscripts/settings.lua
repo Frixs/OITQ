@@ -157,13 +157,14 @@ CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_8] = 1
 ------------------
 ARENA_NAMES = {}
 ARENA_NAMES[0] = "Oasis Attack"
+ARENA_NAMES[1] = "Gold Rush"
 
 -- SPAWN LOCATIONS
 ------------------
 SPAWN_LOCATIONS = {}
 -- Oasis Attack
 SPAWN_LOCATIONS[0] = {}
-	SPAWN_LOCATIONS[0][0]  = Vector( 1000, -1225, 129 )   -- camp-right
+	SPAWN_LOCATIONS[0][0]  = Vector( 1000, -1225, 129 )  -- camp-right
 	SPAWN_LOCATIONS[0][1]  = Vector( -575, -2650, 129 )  -- camp-center
 	SPAWN_LOCATIONS[0][2]  = Vector( 1780, -40, 17 )     -- water under mid island - stairs
 	SPAWN_LOCATIONS[0][3]  = Vector( 4800, 170, 130 )    -- desert
@@ -176,6 +177,17 @@ SPAWN_LOCATIONS[0] = {}
 	SPAWN_LOCATIONS[0][10] = Vector( 2985, 2512, 129 )   -- small desert-bottom
 	SPAWN_LOCATIONS[0][11] = Vector( 4440, 2782, 257 )   -- desert cliff-right
 	SPAWN_LOCATIONS[0][12] = Vector( 3414, 1025, 257 )   -- desert cliff-left
+-- Gold Rush
+SPAWN_LOCATIONS[1] = {}
+	SPAWN_LOCATIONS[1][0]  = Vector( -1792, -10304, 128 )   -- top spikes
+	SPAWN_LOCATIONS[1][1]  = Vector( -257, -11196, 128 )    -- passage to top
+	SPAWN_LOCATIONS[1][2]  = Vector( 2879, -13119, 256 )    -- mine - top layer
+	SPAWN_LOCATIONS[1][3]  = Vector( 3648, -14784, 1 )      -- mine
+	SPAWN_LOCATIONS[1][4]  = Vector( 2496, -15100, 128 )    -- mine shop
+	SPAWN_LOCATIONS[1][5]  = Vector( 1405, -15742, 256 )    -- bot rails
+	SPAWN_LOCATIONS[1][6]  = Vector( -1025, -16062, 256 )   -- bot house
+	SPAWN_LOCATIONS[1][7]  = Vector( -2818, -15869, 128 )   -- left bot - rails
+	SPAWN_LOCATIONS[1][8]  = Vector( -1978, -13694, 128 )   -- mid
 
 -- MAP BGM
 ------------------
@@ -187,3 +199,9 @@ MAP_BGM[0] = {}
 	MAP_BGM[0][2] = "Game.Progress.BGM.OasisAttack.2"
 	MAP_BGM[0][3] = "Game.Progress.BGM.OasisAttack.3"
 	MAP_BGM[0][4] = "Game.Progress.BGM.OasisAttack.4"
+-- Gold Rush
+MAP_BGM[1] = {}
+	MAP_BGM[1][0] = "Game.Progress.BGM.GoldRush.0"
+	MAP_BGM[1][1] = "Game.Progress.BGM.GoldRush.1"
+	MAP_BGM[1][2] = "Game.Progress.BGM.GoldRush.2"
+	MAP_BGM[1][3] = "Game.Progress.BGM.GoldRush.3"

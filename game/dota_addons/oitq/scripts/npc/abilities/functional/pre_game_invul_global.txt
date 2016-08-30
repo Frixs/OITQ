@@ -24,7 +24,7 @@
                 "Passive"               "1"
 
                 "Aura"                  "modifier_get_pre_game_invul_global"
-                "Aura_Radius"           "15000"
+                "Aura_Radius"           "30000"
                 "Aura_Teams"            "DOTA_UNIT_TARGET_TEAM_BOTH"
                 "Aura_Types"            "DOTA_UNIT_TARGET_HERO"
                 "Aura_ApplyToCaster"    "0"
