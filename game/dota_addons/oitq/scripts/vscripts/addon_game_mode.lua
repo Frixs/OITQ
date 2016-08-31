@@ -88,6 +88,7 @@ function Precache( context )
   -- precatche item particles & models
   PrecacheResource("model", "models/heroes/troll_warlord/troll_warlord_axe_ranged_r.vmdl", context)
   PrecacheResource("particle", "particles/items/tomahawk_projectile.vpcf", context)
+  PrecacheResource("model", "models/worm/worm.vmdl", context)
   
   -- precatche traps
   PrecacheResource("particle", "particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf", context)
